@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户表</title>
+    <style>
+        #yhbTabel {
+            height: calc(100% - 80px);
+        }
+        #yhbTabels {
+            height: 100%;
+        }
+        #yhbDialog .dijitDialogPaneContent {
+            padding: 0;
+        }
+        #yhbDialogPanel {
+            width: 800px;
+            height: 600px;
+        }
+        #yhbTabel .field-dojoId{width: 40px}
+        #yhbTabel .field-USER_NAME{width: 110px}
+        #yhbTabel .field-USER_PWD{width: 110px}
+        #yhbTabel .field-RG_NAME{width: 100px}
+        #yhbTabel .field-USER_TEL{width: 100px}
+        #yhbTabel .field-REAL_NAME{width: 100px}
+        #yhbTabel .field-ISLOGINM{width: 100px}
+        #yhbTabel .field-BA_NAME{width: 260px}
+        #yhbTabel .field-COMP_NAME{width: 260px}
+        #yhbTabel .field-NOTE{width: 40px}
+    </style>
+</head>
+<body>
+
+<div class="">
+    <div class="iFInputItem">
+        <div class="iFInlineItem">
+            <label class="iFLabel">关键字</label>
+            <div class="iFInput" style="width: 160px;">
+                <input type="text" id="yhb-gjz">
+            </div>
+        </div>
+        <div class="iFInlineItem" style="line-height: 30px;">
+            <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="yhbQuery">查询</a>
+            <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="yhbAdd">添加</a>
+            <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="yhbUpd">修改</a>
+            <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="yhbDel">删除</a>
+<!--             <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="yhbExit">注销</a> -->
+            <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="yhbDc">导出为Excel表</a>
+        </div>
+    </div>
+</div>
+<div id="yhbTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="yhbDialog" id="yhbDialog">
+    <div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="yhbDialogPanel" id="yhbDialogPanel"></div>
+</div>
+<script type="text/javascript">
+    require(['app/html/czchtgl/yhb', "dojo/domReady!"], function (YHB) {
+        new YHB();
+    });
+    function test(obj,name){
+    	var type = "";
+    	if(obj.length==5){
+    		type="(公司)"
+    	}else if(obj.length==8){
+    		type="(分公司)"
+    	}
+    	if($("#qxlb").html().indexOf(name+type)<0){
+	    	$("#qxlb").append("<tr class='tdcss1'><td>"+(name+type)+"</td><td><input type='checkbox' name='qxlbbox' value='"+obj+"'checked='checked'/></td></tr>");
+    	}
+    	console.log(obj,name);
+    }
+</script>
+</body>
+</html>

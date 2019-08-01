@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>报警查询--添加</title>
+    <style>
+        #form{color: #010067}
+        #form .left{float: left;margin-right: 50px}
+        #form .layui-form-item{
+            height: 30px;
+            margin: 10px 0;
+            /*border-bottom: 1px solid #ddd;*/
+        }
+        #form input{height: 20px;}
+        #form input,#form textarea{
+            outline: none;
+            border: none;
+            border: 1px solid #1E8CFF;
+        }
+        #form .layui-form-label{
+            display: inline-block;
+            width: 70px;
+            text-align: right;
+            color: #010067;
+        }
+        #dwqkjqdw,#cjjgqtnr,#hxcl{
+            border: none !important;
+            width: 150px;
+            height:20px;
+            display: inline-block;
+            border-bottom: 1px solid #1E8CFF !important;}
+        #form .panel-conterBar{
+            text-align: center;}
+        #sjnr_item{
+            height: 80px;
+        }
+        #bjjkx_addEditor-bz{width: 440px}
+        #form .panel-conterBar .layui-btn{
+            background-color: #fff;
+            border: 1px solid #1E8CFF;
+            border-radius: 3px;
+            padding: 3px 15px;
+            color: #010067;
+        }
+        #bjjkx_addEditor-cancel{margin-left: 80px}
+        input[type="radio"]{
+            width: 15px;
+            height: 15px !important;
+        }
+        /*#sjnr_item{position: relative}
+        #sjnr_item .layui-form-label{
+            position: absolute;
+            top:0;
+            left: 0;
+        }*/
+        /*#sjnr{margin-left: 74px}*/
+        #form .iFComboBox .iFList li{border-bottom-color:#1E8CFF }
+        #form .iFComboBox{border-color:#1E8CFF}
+        #form .iFComboBox a{color: #1E8CFF}
+        #form .iFComboBox .iFList{border-color:#1E8CFF}
+        #form .iFComboBox input[type=text]{padding: 0;width: calc(100% - 30px);}
+    </style>
+</head>
+<body>
+<form id="form" class="layui-form" action="" style="margin-right: 50px">
+    <div class="layui-form-item">
+        <div id="cjsj" class="left">
+            <label class="layui-form-label">处警时间：</label>
+            <input id="bjjkx_addEditor-cjsj" type="text" class="layui-input" value="" width="171" readonly="readonly">
+        </div>
+        <div id="cjgh" class="right">
+            <label class="layui-form-label">处警工号：</label>
+            <input id="bjjkx_addEditor-cjgh" type="text" class="layui-input" value="" width="171" readonly="readonly">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div id="cphm" class="left">
+            <label class="layui-form-label">车牌号码：</label>
+            <input id="bjjkx_addEditor-cphm" type="text" class="layui-input" value="" width="171" readonly="readonly">
+        </div>
+        <div id="jjlx" class="right">
+            <label class="layui-form-label">司机电话：</label>
+            <input id="bjjkx_addEditor-jjlx" type="text" class="layui-input" value="" width="171">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+    	<div id="fsmc" class="left">
+            <label class="layui-form-label">公司名称：</label>
+            <input id="bjjkx_addEditor-gsmc" type="text" class="layui-input" value="" width="171" readonly="readonly">
+        </div>
+        <div id="bblx" class="right">
+            <label class="layui-form-label">终端类型：</label>
+            <input id="bjjkx_addEditor-zdlx" type="text" class="layui-input" value="" width="171" readonly="readonly">
+        </div>
+        
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">监控情况:</label>
+        <input type="radio" name="jkqk" value="无异常" title="无异常" checked="checked">
+        <span>无异常&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <input type="radio" name="jkqk" value="异常" title="异常">
+        <span>异常</span>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">定位情况:</label>
+        <input type="radio" name="dwqk" value="非精确" title="非精确" checked="checked">
+        <span>非精确&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <input type="radio" name="dwqk" value="精确" title="精确">
+        <span>在<input type="text" name="address" id="dwqkjqdw" disabled="disabled">附近上传报警</span>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">处警结果:</label>
+        <input type="radio" name="cjjg" value="报警解除" title="报警解除" checked="checked">
+        <span>报警解除&nbsp;&nbsp;&nbsp;</span>
+        <input type="radio" name="cjjg" value="后续处理" title="后续处理">
+        <span>其他<input type="text" name="address" id="cjjgqtnr" disabled="disabled"></span>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">报警类型:</label>
+        <input type="radio" name="bjlx" value="真实报警" title="真实报警">
+        <span>真实报警</span>
+        <input type="radio" name="bjlx" value="测试报警" title="测试报警">
+        <span>测试报警</span>
+        <input type="radio" name="bjlx" value="报警开关故障" title="报警开关故障">
+        <span>报警开关故障</span>
+        <input type="radio" name="bjlx" value="误报警" title="误报警" checked="checked">
+        <span>误报警</span>
+    </div>
+
+    <!--<div class="iFInputItem iFTextArea">
+        <label class="iFLabel">事件内容:</label>
+        <div class="iFInput">
+            <textarea></textarea>
+        </div>
+    </div>-->
+
+    <div id="sjnr_item">
+        <label class="layui-form-label" style="vertical-align: top">事件内容:</label>
+        <div class="input_text" style="width: 440px;height:70px;display: inline-block">
+            <textarea id="bjjkx_addEditor-sjnr" type="text" style="width: 100%;height: 100%"></textarea>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div id="bz">
+            <label class="layui-form-label">备注：</label>
+            <input id="bjjkx_addEditor-bz" type="text" class="layui-input" value="">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class=" panel-conterBar">
+            <button class="layui-btn" id="bjjkx_addEditor-add" type="button">添加</button>
+            <button class="layui-btn layui-btn-primary" id="bjjkx_addEditor-cancel" type="button">取消</button>
+        </div>
+    </div>
+</form>
+<script>
+    /*$('#form .iFComboBox').on('click', function () {
+        var thisOne = this;
+        if ($(this).hasClass('selected')) {
+            $(this).removeClass('selected');
+        } else {
+            $(this).addClass('selected');
+            $(this).find('.iFList').on('click', function () {
+            	if (event.stopPropagation) {   
+			        // 针对 Mozilla 和 Opera   
+			        event.stopPropagation();   
+		        }else if (window.event) {   
+			        // 针对 IE   
+		        	window.event.cancelBubble = true;   
+		        }
+            }).find('li').off('click').on('click', function () {
+                $(this).addClass('selected').siblings('.selected').removeClass('selected');
+                $(thisOne).find('input').data('value', $(this).data('value')).val($(this).text()).end().removeClass('selected');
+                $(thisOne).find('input').trigger('change');
+            });
+        }
+    });*/
+		addEventComboBox('#form');
+</script>
+</body>
+</html>

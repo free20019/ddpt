@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>短信发送</title>
+    <style>
+        .claro .dijitDialogPaneContent{
+            padding: 0;
+        }
+
+        #ywbhEditorPanle .dxkjList{
+            width: 100%;
+            background-color: #fff;
+            overflow: auto;
+            overflow-x: hidden;
+/*             border-top: 1px solid #e0e0e0; */
+        }
+
+
+        #ywbhEditorPanle .dxkjList li {
+            /*height: 25px;*/
+            line-height: 25px;
+            font-size: 14px;
+            padding-left: 10px;
+            cursor: pointer;
+        }
+        #ywbhEditorPanle .dxkjList li:hover {
+            color: #ffffff;
+            background: #007bff;
+        }
+        #ywbhEditorPanle .dxkjList li:hover a{
+            color: #ffffff;
+        }
+        #ywbhEditorPanle .dxkjList li a{
+            text-decoration: none;
+            color: black;
+        }
+       /* #ywbhEditorPanle .dxkjList li:hover{
+            background-color: #2e6784;
+            color: #ffffff;
+        }*/
+
+        #ywbhEditorPanle .iFInlineItem{
+            margin: 10px 0;
+        }
+        #ywbhEditorPanle .iFLabel{
+            font-size: 14px;
+            line-height: 25px;
+            width: 100%;
+            text-align: left
+        }
+        #ywbhEditorPanle .posA{
+            position: absolute;
+            right: 20px;
+            top: 100px;
+            outline:none;
+            z-index: 200;
+
+            margin-top: 17px;
+            background-color: #fff;
+            border: 1px solid #a5a9ab;
+            border-radius: 5px;
+            color: #181819;
+            width: 40px;
+            height: 20px;
+            line-height: 20px;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+        }
+        #ywbhEditorPanle .posA:hover{
+            color: #ffffff;
+            background-color: #0069d9;
+            border-color: #0062cc;
+        }
+        #ywbhEditorPanle .topBox{
+            border-bottom: 2px solid #e0e0e0;
+            margin-left: -8px;
+            margin-right: -8px;
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+        #ywbhEditorPanle .btn-bottom-leg{
+            margin-top: 17px;
+            background-color: #fff;
+            border: 1px solid #a5a9ab;
+            border-radius: 5px;
+            color: #181819;
+            width: 40px;
+            height: 20px;
+            line-height: 20px;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+        }
+        #ywbhEditorPanle .btn-bottom-leg:hover {
+            color: #212529;
+            background-color: #e2e6ea;
+            /*border-color: #dae0e5;*/
+        }
+        #syclList li[selected]{
+            background-color: #2e6784;
+            color: #ffffff;
+        }
+
+        #fclxxcl li[selected]{
+              background-color: #a6cef7;
+            color: #ffffff;
+          }
+    </style>
+</head>
+<body>
+<div id="ywbhEditorPanle" class="formItems" style="padding: 0">
+    <a href="javascript:void(0);" class="posA" id="ywbhEditor-add">发送</a>
+    <a href="javascript:void(0);" class="posA" id="ywbhEditor-guan" style="top: 160px">关闭</a>
+<!--     <a href="javascript:void(0);" class="posA" id="ywbhEditor-char" style="top: 199px">添加</a> -->
+    <div class="topBox">
+        <div class="iFInlineItem">
+            <label class=" iFTitleName" style="font-size: 14px">业务编号</label>
+            <div class="iFInput" style="width: 135px;border: 0">
+                <input type="text" id="ywbhEditor-ywbh" readonly>
+            </div>
+        </div>
+        <div class="iFInlineItem">
+            <label class=" iFTitleName" style="font-size: 14px">自动回码</label>
+            <input type="checkbox" id="ywbhEditor-zdhm">
+        </div>
+    </div>
+    <div class="center-legend" style="margin-top: 10px;height:170px;">
+        <div style="padding: 5px;width:35%;float: left">
+            <fieldset style="border: 2px solid #e0e0e0;border-radius: .5em;">
+            <legend style="margin-left: 30px;font-size: 14px">所有车辆</legend>
+                <ul id="syclList" class="dxkjList" style="height: 145px;">
+                </ul>
+            </fieldset>
+        </div>
+        <div style="padding: 5px;width: 10%;float: left">
+            <a href="javascript:void(0);" id="ywbh-delall" style="margin-top: 34px;" class="btn-bottom-leg">&lt;&lt;</a>
+            <a href="javascript:void(0);" id="ywbh-add" class="btn-bottom-leg">&gt;</a>
+            <a href="javascript:void(0);" id="ywbh-del" class="btn-bottom-leg">&lt;</a>
+        </div>
+        <div style="padding: 5px;width: 35%;float: left">
+            <fieldset style="border: 2px solid #e0e0e0;border-radius: .5em;">
+                <legend style="margin-left: 30px;font-size: 14px">消息车辆</legend>
+                <ul id="fclxxcl" class="dxkjList" style="height: 145px; border: none;" ></ul>
+            </fieldset>
+        </div>
+    </div>
+
+    <div class="iFInputItem">
+        <label class="iFLabel" style="color:#5c92b7;">短信内容</label>
+        <label class="iFLabel iFTitleName" style="font-size: 14px">请输入需要发送的消息</label>
+        <div class="iFInput" style=" width:100% ;">
+            <textarea type="text" id="ywbhEditor-xxnr"></textarea>
+        </div>
+    </div>
+    <div class="iFInputItem" style=" width: 100%">
+        <label class="iFLabel" style="color:#5c92b7;">定制内容</label>
+        <label class="iFLabel iFTitleName" style="position: relative;font-size: 14px" >请选择自定消息发送</label>
+        <ul class="dxkjList" style="height:121px;border: 1px solid #5AABFF;border-radius: .5em " id="fcldxkjList">
+        </ul>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    $('.iFInlineItem .iFComboBox').on('click', function () {
+        var thisOne = this;
+        if ($(this).hasClass('selected')) {
+            $(this).removeClass('selected');
+        } else {
+            $(this).addClass('selected');
+            $(this).find('.iFList').on('click', function () {
+                event.stopPropagation();
+            }).find('li').off('click').on('click', function () {
+                $(this).addClass('selected').siblings('.selected').removeClass('selected');
+                $(thisOne).find('input').data('value', $(this).data('value')).val($(this).text()).end().removeClass('selected');
+                $(thisOne).find('input').trigger('change');
+            });
+        }
+    });
+</script>

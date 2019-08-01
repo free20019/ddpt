@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>营运日报</title>
+	<style>
+		#yyrbTabel {
+			height: calc(100% - 100px);
+		}
+		
+			.field-dojoId{width: 80px;white-space: nowrap;}
+			.field-BA_NAME{width: 110px;white-space: nowrap;}
+			.field-TOTAL_MILEAGE{width: 80px;white-space: nowrap;}
+			.field-RUN_TAXIS{width: 100px;white-space: nowrap;}
+			.field-ACTUAL_LOAD_RATE{width: 130px;white-space: nowrap;}
+			.field-ACTUAL_LOAD_MILEAGE{width: 110px;white-space: nowrap;}
+			.field-NO_LOAD_MILEAGE{width: 100px;white-space: nowrap;}
+			.field-RUN_TIME{width: 100px;white-space: nowrap;}
+			.field-RUN_TIMES{width: 100px;white-space: nowrap;}
+			.field-RUN_PROFIT{width: 80px;white-space: nowrap;}
+			.field-WAITTING_TIME{width: 110px;white-space: nowrap;}
+	</style>
+</head>
+<body>
+<div class="" id="yyrbPanel">
+	<div class="iFInlineItem">
+		<label class="iFLabel">起始时间</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="yyrb-startTime">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">结束时间</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="yyrb-endTime">
+		</div>
+	</div>
+	
+	
+	<div class="iFInlineItem" id="yyrb-company">
+		<label class="iFLabel">公司</label>
+		<div class="iFComboBox" id="yyrb-company-comboBox" style="width: 160px;">
+			<input type="text" >
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+			</ul>
+		</div>
+	</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="yyrbQuery">查询</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="yyrbDaochu">导出Excel</a>
+	</div>
+</div>
+<div id="yyrbTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="yyrbDialog" id="yyrbDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="yyrbDialogPanel" id="yyrbDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	require(['app/html/zhywbb/yysjfx/yyrb', "dojo/domReady!"], function (YYRB) {
+		new YYRB();
+	});
+</script>
+</body>
+</html>

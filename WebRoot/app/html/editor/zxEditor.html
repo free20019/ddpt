@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>咨询修改</title>
+</head>
+<body>
+<div id="zxeditpanal">
+<div class="iFInputItem">
+	<label class="iFLabel">业务编号</label>
+	<div class="iFInput">
+		<input type="text" id="zxxg-ywbh" readonly="readonly">
+	</div>
+</div>
+<div class="iFInputItem">
+	<label class="iFLabel">来电号码</label>
+	<div class="iFInput">
+		<input type="text" id="zxxg-ldhm">
+	</div>
+</div>
+<div class="iFInputItem">
+		
+		<label class="iFLabel">受理对象:</label>
+			<div class="iFComboBox" id="zxxg-cldx-box" style="display: inline-block; width: 184px">
+				<input type="text" id="zxxg-cldx">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+							<li data-value="公司">公司</li>
+							<li data-value="司机">司机</li>
+							<li data-value="乘客">乘客</li>
+							<li data-value="运管">运管</li>
+							<li data-value="其他">其他</li>
+						</ul>
+			</div>
+</div>
+<div class="iFInputItem">
+	<label class="iFLabel">处理类型:</label>
+			<div class="iFComboBox" id="zxxg-cllx-box" style="display: inline-block; width: 184px">
+				<input type="text" id="zxxg-cllx">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+						<li data-value="0">地址咨询查找</li>
+						<li data-value="1">测距里程费用</li>
+						<li data-value="2">定位导航指路</li>
+						<li data-value="3">公交铁路客运</li>
+						<li data-value="4">司机路况反馈</li>
+						<li data-value="5">司机建议投诉</li>
+						<li data-value="6">乘客投诉</li>
+						<li data-value="7">其他</li>
+						</ul>
+			</div>
+</div>
+<div class="iFInputItem">
+	<label class="iFLabel">客户姓名</label>
+	<div class="iFInput">
+		<input type="text" id="zxxg-khxm">
+	</div>
+</div>
+<div class="iFInputItem">
+	<label class="iFLabel">车牌号码</label>
+	<div class="iFInput">
+		<input type="text" id="zxxg-cphm">
+	</div>
+</div>
+<div class="iFInputItem iFTextArea" style="vertical-align: middle;">
+	<label class="iFLabel">服务内容</label>
+	<div class="iFInput">
+		<textarea id="zxxg-fwnr"></textarea>
+	</div>
+</div>
+<div class="iFBtnItem">
+	<a href="javascript:void(0);" class="iFBtn" id="zxxgtjbtn">提交</a>
+	<a href="javascript:void(0);" class="iFBtn" id="zxxgtcbtn">退出</a>
+</div>
+</div>
+</body>
+</html>

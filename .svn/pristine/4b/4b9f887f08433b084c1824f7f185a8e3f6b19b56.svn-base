@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>翻译记录-编辑</title>
+	<style>
+		#fyjlEditorPanel {
+			margin-right: 30px;
+		}
+		#fyjlEditorPanel .iFInputItem > .iFLabel {
+			width: 6em;
+		}
+		#fyjlEditorPanel .iFInputItem > .iFInput {
+			width: calc(100% - 7em);;
+		}
+	</style>
+</head>
+<body>
+<form action="" id="fyjl-form">
+	<div class="iFFormPanel" id="fyjlEditorPanel">
+		<div class="clearfix">
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">接待工号</label>
+					<div class="iFInput">
+						<input type="text" id="fyjl-jdgh">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">服务类别</label>
+					<div class="iFComboBox" id="fyjlEditor-fwlb" style="width: calc(100% - 7em);;">
+						<input type="text" readonly data-value="0" value="翻译乘客去向" id="fyjl-fwlb" name="SERVICE_TYPE">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+							<li data-value="0">翻译乘客去向</li>
+							<li data-value="1">翻译价格</li>
+							<li data-value="2">其他</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">语种</label>
+					<div class="iFComboBox" id="fyjlEditor-fyyz" style="width: calc(100% - 7em);;">
+						<input type="text" readonly data-value="0" value="英语" id="fyjl-yz" name="LANGUAGE_TYPE">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+							<li data-value="0">英语</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">服务对象</label>
+					<div class="iFComboBox" id="fyjlEditor-fwdx" style="width: calc(100% - 7em);;">
+						<input type="text" readonly id="fyjl-fwdx" name="CLICENT_TYPE" value="乘客">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+							<li data-value="0">乘客</li>
+							<li data-value="1">司机</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="iFInputInlen">
+				<div class="iFInputItem" style="line-height: 24px;">
+					<label class="iFLabel">服务结果</label>
+					<div class="iFRadio">
+						<input type="radio" name="RESULT" value="处理完成" id="fyjlEditor-fwjgclwc" checked>
+						<label for="fyjlEditor-fwjgclwc">处理完成</label>
+						<input type="radio" name="RESULT" value="转接处理" id="fyjlEditor-fwjgzjcl">
+						<label for="fyjlEditor-fwjgclwc">转接处理</label>
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem sjBox" id="fyjlEditor-cphmBox">
+					<label class="iFLabel" id="fyjl-cphm-label">乘客姓名</label>
+					<div class="iFInput">
+						<input type="text" id="fyjl-cphm" name="CLICENT_NAME">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="iFInputInlen">
+				<div class="iFInputItem sjBox" id="fyjlEditor-sjdhBox">
+					<label class="iFLabel" id="fyjl-sjdh-label">乘客电话</label>
+					<div class="iFInput">
+						<input type="text" id="fyjl-sjdh" name="CLICENT_TEL">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">时间</label>
+					<div class="iFInput">
+						<input type="text" id="fyjlEditor-sj" readonly name="DATE_TIME">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="iFInputItem iFTextArea">
+			<label class="iFLabel">服务内容</label>
+			<div class="iFInput">
+				<textarea id="fyjl-fwnr" name="SERVICE_CONTENT"></textarea>
+			</div>
+		</div>
+		<div class="iFInputItem iFTextArea">
+			<label class="iFLabel">备注</label>
+			<div class="iFInput">
+				<textarea id="fyjl-bz" name="REMARK"></textarea>
+			</div>
+		</div>
+	    <div class="iFInputItem">
+	        <label class="iFLabel">反馈意见</label>
+	        <div class="iFRadio">
+	            <input type="radio" name="RESULT_BREAK" value="满意" id="fyjlEditor-fkyjmy" checked>
+	            <label for="fyjlEditor-fkyjmy">满意</label>
+	            <input type="radio" name="RESULT_BREAK" value="不满意" id="fyjlEditor-fkyjbmy">
+	            <label for="fyjlEditor-fkyjbmy">不满意</label>
+	        </div>
+	    </div>
+		<div class="iFBtnItem">
+			<a href="javascript:void(0);" class="iFBtn iFBtnCommit">提交</a>
+			<a href="javascript:void(0);" class="iFBtn iFBtnClose">关闭</a>
+		</div>
+	</div>
+</form>
+</body>
+</html>

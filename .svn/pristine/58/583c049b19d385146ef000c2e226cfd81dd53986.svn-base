@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>地址查询-编辑</title>
+</head>
+<body>
+<div class="iFInputItem">
+	<label class="iFLabel">目标</label>
+	<div class="iFInput">
+		<input type="text" id="dzmb">
+	</div>
+</div>
+<div class="iFInputItem">
+	<label class="iFLabel">定位地址</label>
+	<div class="iFInput">
+		<input type="text" id="dzdwdz">
+	</div>
+</div>
+<div class="iFInputItem iFTextArea" style="vertical-align: middle;">
+	<label class="iFLabel">备注</label>
+	<div class="iFInput">
+		<textarea id="dzbz"></textarea>
+	</div>
+</div>
+<div class="iFBtnItem">
+	<a href="javascript:void(0);" class="iFBtn" id="dzczbtn">提交</a>
+	<a href="javascript:void(0);" class="iFBtn" id="dztcbtn">退出</a>
+</div>
+</body>
+</html>

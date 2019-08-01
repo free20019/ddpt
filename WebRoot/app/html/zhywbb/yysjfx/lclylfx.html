@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>里程利用率分析</title>
+	<style>
+		.field-message{width: 90px;white-space: nowrap;}
+		.field-y0{width: 60px;white-space: nowrap;}
+		.field-y1{width: 60px;white-space: nowrap;}
+		.field-y2{width: 60px;white-space: nowrap;}
+		.field-y3{width: 60px;white-space: nowrap;}
+		.field-y4{width: 60px;white-space: nowrap;}
+		.field-y5{width: 60px;white-space: nowrap;}
+		.field-y6{width: 60px;white-space: nowrap;}
+		.field-y7{width: 60px;white-space: nowrap;}
+		.field-y8{width: 60px;white-space: nowrap;}
+		.field-y9{width: 60px;white-space: nowrap;}
+		.field-y10{width: 60px;white-space: nowrap;}
+		.field-y11{width: 60px;white-space: nowrap;}
+		.field-y12{width: 60px;white-space: nowrap;}
+		.field-y13{width: 60px;white-space: nowrap;}
+		.field-y14{width: 60px;white-space: nowrap;}
+		.field-y15{width: 60px;white-space: nowrap;}
+		.field-y16{width: 60px;white-space: nowrap;}
+		.field-y17{width: 60px;white-space: nowrap;}
+		.field-y18{width: 60px;white-space: nowrap;}
+		.field-y19{width: 60px;white-space: nowrap;}
+		.field-y20{width: 60px;white-space: nowrap;}
+		.field-y21{width: 60px;white-space: nowrap;}
+		.field-y22{width: 60px;white-space: nowrap;}
+		.field-y23{width: 60px;white-space: nowrap;}
+	</style>
+</head>
+<body>
+<div class="" id="lclylfxPanel">
+	<div class="iFInlineItem">
+		<label class="iFLabel">时间</label>
+		<div class="iFInput" style="width: 110px;">
+			<input type="text" id="lclylfx-Time">
+		</div>
+	</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="lclylfxQuery">查询</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="lclylfxDaochu">导出Excel</a>
+	</div>
+</div>
+
+<div class="dataListPanel center">
+		<div id="lclylfxTabel" style="height:calc(100%-50%);min-height: 300px;"></div>
+		<div id="lclylfxEchart" style="height:calc(100%-50%);min-height: 300px;width:100%"></div>
+</div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="lclylfxDialog" id="lclylfxDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="lclylfxDialogPanel" id="lclylfxDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	require(['app/html/zhywbb/yysjfx/lclylfx', "dojo/domReady!"], function (LCLYLFX) {
+		new LCLYLFX();
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>公司统计</title>
+	<style>
+		#gstjTabel {
+			height: calc(100% - 50px);
+		}
+		
+			.field-dojoId{width: 80px;white-space: nowrap;}
+				.field-FGS{width: 200px;white-space: nowrap;}
+		.field-QY{width: 100px;white-space: nowrap;}
+		.field-RYYCS{width: 120px;white-space: nowrap;}
+		.field-CLZS{width: 120px;white-space: nowrap;}
+		.field-RYYCL{width: 120px;white-space: nowrap;}
+		.field-RZLC{width: 120px;white-space: nowrap;}
+		.field-RZKLC{width: 120px;white-space: nowrap;}
+		.field-RKSLC{width: 120px;white-space: nowrap;}
+		.field-RYSJE{width: 120px;white-space: nowrap;}
+		.field-DHSJ{width: 120px;white-space: nowrap;}
+		.field-RYYSC{width: 120px;white-space: nowrap;}
+		.field-ZZCS{width: 120px;white-space: nowrap;}
+		.field-PJYS{width: 120px;white-space: nowrap;}
+		.field-PJXSSD{width: 120px;white-space: nowrap;}
+		.field-PJYYSC{width: 120px;white-space: nowrap;}
+		.field-PJDHSJ{width: 120px;white-space: nowrap;}
+		.field-SLL{width: 120px;white-space: nowrap;}
+	</style>
+</head>
+<body>
+<div class="" id="gstjPanel">
+	<div class="iFInlineItem">
+		<label class="iFLabel">起始时间</label>
+		<div class="iFInput" style="width: 110px;">
+			<input type="text" id="gstj-startTime">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">结束时间</label>
+		<div class="iFInput" style="width: 110px;">
+			<input type="text" id="gstj-endTime">
+		</div>
+	</div>
+	
+	<div class="iFInlineItem" id="gstj-quyu">
+		<label class="iFLabel">区域</label>
+	<div class="iFComboBox" id="gstj-quyu-comboBox" style="width: 110px;">
+			<input type="text" value="主城区" data-value="1" >
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+				<li data-value="0" >全部</li>
+				<li data-value="1" >主城区</li>
+				<li data-value="2" >余杭区</li>
+				<li data-value="3" >萧山区</li>
+				<li data-value="4" >临安区</li>
+				<li data-value="5" >富阳区</li>
+				<li data-value="6" >淳安区</li>
+				<li data-value="7" >建德市</li>
+			</ul>
+		</div>
+	</div>
+	<div class="iFInlineItem" id="gstj-company">
+		<label class="iFLabel">公司</label>
+		<div class="iFComboBox" id="gstj-company-comboBox" style="width: 160px;">
+			<input type="text" >
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+			</ul>
+		</div>
+	</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="gstjQuery">查询</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="gstjDaochu">导出Excel</a>
+	</div>
+</div>
+<div id="gstjTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="gstjDialog" id="gstjDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="gstjDialogPanel" id="gstjDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	require(['app/html/zhywbb/czsjcx/gstj', "dojo/domReady!"], function (GSTJ) {
+		new GSTJ();
+	});
+</script>
+</body>
+</html>

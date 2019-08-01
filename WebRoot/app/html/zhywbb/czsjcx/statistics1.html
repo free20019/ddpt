@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>出租数据查询-统计1</title>
+	<style>
+		#statistics1-queryTable {  width: 100%;  height: 100%;  }
+		#statistics1Table {
+			width: 100%;
+			height: 400px;
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body>
+<div class="topQueryPanel clearfix">
+	<div class="queryPanel" style="float: left; width: 300px;">
+		<div class="iFInputItem" id="statistics1-kssjBox">
+			<label class="iFLabel" style="width: 6em;">起始时间</label>
+			<div class="iFInput" style="width: calc(100% - 7em);">
+				<input type="text" id="statistics1-startTime">
+			</div>
+		</div>
+		<div class="iFInputItem" id="statistics1-jssjBox">
+			<label class="iFLabel" style="width: 6em;">结束时间</label>
+			<div class="iFInput" style="width: calc(100% - 7em);">
+				<input type="text" id="statistics1-endTime">
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel" style="width: 6em;"><input type="checkbox" style="position: absolute; left: 0.5em;">速度过滤</label>
+			<div class="iFInput" style="width: 40px; margin-right: 10px;">
+				<input type="text" value="10">
+			</div>码
+		</div>
+		<div class="iFInputItem" id="statistics1-yycsrqBox">
+			<label class="iFLabel" style="width: 6em;">营运次数日期</label>
+			<div class="iFInput" style="width: calc(100% - 7em);">
+				<input type="text" id="statistics1-yycsrq">
+			</div>
+		</div>
+		<div class="iFInlineItem" style="line-height: 35px;">
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="statistics1-queryNum">查询数目</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="statistics1-czmx">查找明细</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="statistics1-yycs">营运次数</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange">导出</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="statistics1-djgz">调价跟踪</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="statistics1-ylgz">英伦跟踪</a>
+		</div>
+	</div>
+	<div class="queryTablePanel" style="float: left; width: calc(100% - 305px); height: 223px; margin-left: 5px;">
+		<div id="statistics1-queryTable"></div>
+	</div>
+</div>
+<div id="statistics1Table" style="display: none;"></div>
+<script type="text/javascript">
+	require(['app/html/zhywbb/czsjcx/statistics1', "dojo/domReady!"], function (STATISTICS1) {
+		new STATISTICS1();
+	});
+</script>
+</body>
+</html>

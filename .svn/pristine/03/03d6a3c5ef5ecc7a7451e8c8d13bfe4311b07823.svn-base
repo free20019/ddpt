@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>远诚国旅后台管理</title>
+    <link rel="stylesheet" href="app/main.css"/>
+
+    <script type="text/javascript" src="app/config.js"></script>
+    <script type="text/javascript" src="http://115.236.61.148:9085/jslib/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="http://115.236.61.148:9085/jslib/echarts-all.js"></script>
+    <script type="text/javascript" src="http://115.236.61.148:9085/jslib/myDojo/dojo/dojo.js"></script>
+    <script type="text/javascript" src= "resources/script/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="app/main.js"></script>
+    <style type="text/css">
+
+        #indexContainer {
+            width: 100%; height: 100%; margin: 0; padding: 0;
+        }
+        #indexContainer > #headerContainer_splitter {
+            height: 0;
+        }
+        #indexContainer > #leftContentPane_splitter {
+            width: 0;
+        }
+        #headerContainer {
+            padding: 1px;
+        }
+        #leftContentPane {
+            padding: 0;
+            background: #2b3243;
+        }
+        #mainSplitterLeft {
+            width: 240px;
+            height: 100%;
+        }
+        #mainSplitterLeft_ul {
+            margin: 0;
+            padding: 0;
+            color: #ffffff;
+        }
+        #indexHref {
+            margin: 0;
+            padding: 0;
+        }
+        .li1 {
+            height: 25px;
+            line-height: 25px;
+            padding-top: 5px;
+            margin-bottom: 5px;
+            text-indent: .5em;
+            cursor: pointer;
+        }
+        .li1 span {
+            width: 16px;
+            height: 16px;
+            margin-right: 5px;
+            display: inline-block;
+        }
+        .li2 {
+            text-indent: 1.5em;
+            cursor: pointer;
+        }
+        .li2 span {
+            width: 16px;
+            height: 16px;
+            margin-right: 5px;
+            display: inline-block;
+            background: url('resources/images/menu/2jcd.png') no-repeat;
+        }
+        .menu_ssjk, .menu_lsgj, .menu_tjfx, .menu_gpxx, .menu_bbfx, .menu_qygl {
+            background: url('resources/images/menu/yxztjk.png') no-repeat;
+        }
+    </style>
+</head>
+<body class="claro">
+<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="gutters:true, liveSplitters:false" id="indexContainer">
+    <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top', splitter:false" class="headerContentPane" id="headerContainer">
+        <span>远诚国旅后台管理</span>
+        <button class="btnB">变</button>
+    </div>
+    <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'left', splitter:false" id="leftContentPane">
+        <div id="mainSplitterLeft">
+            <ul id="mainSplitterLeft_ul"></ul>
+        </div>
+    </div>
+    <div data-dojo-type="dojox/layout/ContentPane" data-dojo-props="region:'center', splitter:false" id="indexHref" href="" style="background: blue;">
+        <div id="tabIndex"></div>
+    </div><!-- end ContentPane -->
+</div><!-- end BorderContainer -->
+<script type="text/javascript">
+    require(["app/TreeLayout3", "dijit/layout/TabContainer", "dojox/layout/ContentPane", "dojo/domReady!"], function (TreeLayout, TabContainer, ContentPane) {
+        tc = new TabContainer({
+            style: "height: 100%; width: 100%;"
+        }, "tabIndex");
+
+        var cp1 = new ContentPane({
+            title: "值班",
+            href: ''
+        });
+        cp1.onShow = function () {
+            tc.resize();
+        };
+        tc.addChild(cp1);
+        tc.startup();
+		new TreeLayout('mainSplitterLeft_ul', zscxkMenu, {defaultDisplay: false}).init();
+//        new TreeLayout('mainSplitterLeft_ul', leftYjzhMenu, {
+//            m2: menuHandlerLevel2,
+//            m3: menuHandlerLevel3
+//        }, {'bgc': '#cfe5fa', 'fc': '#fff'}).init();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>小货车管理</title>
+	<style>
+		#cldEditorPanel .iFPanel {
+			padding: 10px;
+		}
+		#cldEditorPanel .iFComboBox {
+			width: calc(100% - 6em);
+		}
+		#cldEditorPanel .iFSubItem {
+			width: calc(33% - 60px);
+			padding-right: 60px;
+			margin-top: 0px;
+		}
+		#cldEditorPanel .iFTextArea {
+			width: calc(100% - 60px);
+			padding-right: 60px;
+		}
+	</style>
+</head>
+<body>
+<form id="clbEditorForm">
+	<div id="cldEditorPanel">
+		<div class="iFTabularPanel" style="margin-bottom: 10px;">
+			<div class="iFTitle">
+				<label>人员基本信息</label>
+			</div>
+			<div class="iFContent">
+				<div class="iFPanel" style="padding-left: 20px; padding-right: 10px;">
+					<div class="iFW33 clearfix">					
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">姓名</label>
+								<div class="iFInput">
+									<input  type="text"  id="tc-name">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">身份证号</label>
+								<div class="iFInput">
+									<input  type="text" id="tc-sfz">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">驾龄(年)</label>
+								<div class="iFInput">
+									<input  type="text" id="tc-jl">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">所在地市</label>
+								<div class="iFInput">
+									<input  type="text" id="tc-szds">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">IC卡号</label>
+								<div class="iFInput">
+									<input  type="text" id="tc-icid">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">上岗企业</label>
+								<div class="iFInput">
+									<input  type="text" id="tc-sgqy">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">电话号码</label>
+								<div class="iFInput">
+									<input  type="text" id="tc-dhhm">
+								</div>
+							</div>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		<div class="iFTabularPanel">
+			<div class="iFTitle">
+				<label>证件基本信息</label>
+			</div>
+			<div class="iFContent">
+				<div class="iFPanel" style="padding-left: 20px; padding-right: 10px;">
+					<div class="iFW33 clearfix">
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">车牌号码</label>
+								<div class="iFInput">
+									<input type="text" id="tc-cp">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">资格证号</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-zgzh">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">有效期止</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-zjend">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">证件编号</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-zjbh">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">有效期起</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-zjstart">
+								</div>
+							</div>
+						</div>
+						
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">补换证次数</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-bhz">
+								</div>
+							</div>
+						</div>
+						
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">经营许可证号</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-jyxk">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">上岗有效期起</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-sgstart">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">上岗有效期止</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-sgend">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">服务监督卡号</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-fwjd">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">服务监督卡有效期起</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-fwjdstart">
+								</div>
+							</div>
+						</div>
+						
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">服务监督卡有效期止</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-fwjdend">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">培训次数</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-cphm">
+								</div>
+							</div>
+						</div>
+						
+				</div>
+			</div>
+		</div>
+	</div>
+		<div class="iFBtnItem">
+<!-- 			<a href="javascript:void(0);" class="iFBtn clb-iFBtnCommit">提交</a>
+ -->			<a href="javascript:void(0);" class="iFBtn clb-iFBtnClose">关闭</a>
+		</div>
+	</div>
+</form>
+</body>
+</html>

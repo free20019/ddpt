@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>出租故障</title>
+	<style>
+		#czgzTabel {
+			height: calc(100% - 50px);
+		}
+		#czgzDialog .dijitDialogPaneContent {
+			padding: 0;
+		}
+		#czgzDialogPanel {
+			width: 550px;
+			height: 220px;
+		}
+	</style>
+</head>
+<body>
+<div class="" id="czgzPanel" style="margin-bottom: 10px;">
+	<div class="iFInlineItem">
+		<label class="iFLabel">日期</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="czgz-date" onfocus="WdatePicker({dateFmt: STATEYEARMONTH})">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">状态</label>
+		<div class="iFComboBox" id="cynr-comboBox" style="width: 160px;">
+			<input type="text" readonly data-value="0" value="全部" id="czgz-type">
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+				<li data-value="0">全部</li>
+				<li data-value="1">未修好</li>
+				<li data-value="2">已修好</li>
+			</ul>
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">查询内容</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="czgz-gjz">
+		</div>
+	</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="czgzQuery">查询</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="czgz-add">添加</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="czgz-excel">导出</a>
+	</div>
+</div>
+<dl class="iFTitlePanel" id="czgz-infoPanel">
+	<dt class="iFTitle">
+		<div class="iFInlineItem">
+			<input type="checkbox" class="iFCheckBox" id="czgz-allSelect">
+			<label for="czgz-allSelect">全选</label>
+		</div>
+		<div class="iFBtn iFBtnDelect" id="czgz-AllDelete">删除</div>
+	</dt>
+<!-- 	<dd class="iFItem iFContent"> -->
+<!-- 		<div class="iFTabularPanel"> -->
+<!-- 			<div class="iFTitle"> -->
+<!-- 				<input type="checkbox" class="iFCheckBox iFCheckboxItem"> -->
+<!-- 				<label>记录编号</label> -->
+<!-- 				<span>[132234]</span> -->
+<!-- 			</div> -->
+<!-- 			<div class="iFContent" data-numId="1"> -->
+<!-- 				<div class="iFWAuto iFItem clearfix"> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 25%"> -->
+<!-- 						<label class="iFLabel iFTitleName">时间</label> -->
+<!-- 						<div class="iFText">2017-08-23 09:21:31</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 20%;"> -->
+<!-- 						<label class="iFLabel iFTitleName">记录人</label> -->
+<!-- 						<div class="iFText">丁艳萍</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 20%;"> -->
+<!-- 						<label class="iFLabel iFTitleName">状态</label> -->
+<!-- 						<div class="iFText">已修好</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFBtnBox" style="width: 35%; line-height: 30px; text-align: center;"> -->
+<!-- 						<a href="javascript:void(0);" class="iFBtn iFBtnMin iFBtnEditor">编辑</a> -->
+<!-- 						<a href="javascript:void(0);" class="iFBtn iFBtnMin iFBtnDelect">删除</a> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="iFItem iFTextAreaItem"> -->
+<!-- 					<label class="iFLabel iFTitleName">内容</label> -->
+<!-- 					<div class="iFTextArea">30日22:46高通数据终端接收，重开0.21恢复。</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</dd> -->
+</dl>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="czgzDialog" id="czgzDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="czgzDialogPanel" id="czgzDialogPanel"></div>
+</div>
+<script type="text/javascript">
+$("#czgz-date").val(setformat_month(new Date));
+	require(['app/html/oa/xtgz/czgz', "dojo/domReady!"], function (CZGZ) {
+		new CZGZ();
+	});
+</script>
+</body>
+</html>

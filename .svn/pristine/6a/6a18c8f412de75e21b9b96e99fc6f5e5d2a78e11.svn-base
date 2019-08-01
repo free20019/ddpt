@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>分时段统计</title>
+	<style></style>
+</head>
+<body>
+<div class="" id="fsdtjPanel">
+	<div class="iFInlineItem" id="fsdtj-qsrqBox">
+		<label class="iFLabel">起始日期</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="fsdtj_fsdtj-startTime" readonly>
+		</div>
+	</div>
+	<div class="iFInlineItem" id="fsdtj-jsrqBox">
+		<label class="iFLabel">结束日期</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="fsdtj_fsdtj-endTime" readonly>
+		</div>
+	</div>
+	<div class="iFInlineItem" id="fsdtj-zgfsjBox">
+		<label class="iFLabel">早高峰时间</label>
+		<div class="iFInput" style="width: 80px;">
+			<input type="text" id="fsdtj_zgfsj-startTime" value="07:00" readonly>
+		</div>
+		<label>-</label>
+		<div class="iFInput" style="width: 80px;">
+			<input type="text" id="fsdtj_zgfsj-endTime" value="08:30" readonly>
+		</div>
+	</div>
+	<div class="iFInlineItem" id="fsdtj-wgfsjBox">
+		<label class="iFLabel">晚高峰时间</label>
+		<div class="iFInput" style="width: 80px;">
+			<input type="text" id="fsdtj_wgfsj-startTime" value="17:00" readonly>
+		</div>
+		<label>-</label>
+		<div class="iFInput" style="width: 80px;">
+			<input type="text" id="fsdtj_wgfsj-endTime" value="18:30" readonly>
+		</div>
+	</div>
+	<div class="iFInlineItem" id="fsdtj-wugfsjBox">
+		<label class="iFLabel">午高峰时间</label>
+		<div class="iFInput" style="width: 80px;">
+			<input type="text" id="fsdtj_wugfsj-startTime" value="11:00" readonly>
+		</div>
+		<label>-</label>
+		<div class="iFInput" style="width: 80px;">
+			<input type="text" id="fsdtj_wugfsj-endTime" value="13:00" readonly>
+		</div>
+	</div>
+	<div class="iFInlineItem" id="fsdtj-txsjBox">
+		<label class="iFLabel">通宵时间</label>
+		<div class="iFInput" style="width: 80px;">
+			<input type="text" id="fsdtj_txsj-startTime" value="19:00" readonly>
+		</div>
+		<label>-</label>
+		<div class="iFInput" style="width: 80px;">
+			<input type="text" id="fsdtj_txsj-endTime" value="07:00" readonly>
+		</div>
+	</div>
+	<div class="iFInlineItem" id="fsdtj-zdysjBox">
+		<label class="iFLabel">自定义时间</label>
+		<div class="iFInput" style="width: 80px;">
+			<input type="text" id="fsdtj_zdysj-startTime" readonly>
+		</div>
+		<label>-</label>
+		<div class="iFInput" style="width: 80px;">
+			<input type="text" id="fsdtj_zdysj-endTime" readonly>
+		</div>
+	</div>
+
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="fsdtjQuery">查询</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange">导出Excel</a>
+	</div>
+</div>
+<div style="margin-top: 20px;">
+	<div class="iFInlineItem">
+		<label class="iFLabel">早高峰</label>
+		<label>成功</label>
+		<div class="iFInput" style="width: 80px;">
+			<input type="text" id="fsdtj-zgfSuccess" readonly>
+		</div>
+		<label>失败</label>
+		<div class="iFInput" style="width: 80px;">
+			<input type="text" id="fsdtj-zgfNoth" readonly>
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">午高峰</label>
+		<label>成功</label>
+		<div class="iFInput" style="width: 80px;">
+			<input type="text" id="fsdtj-wugfSuccess" readonly>
+		</div>
+		<label>失败</label>
+		<div class="iFInput" style="width: 80px;">
+			<input type="text" id="fsdtj-wugfNoth" readonly>
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">晚高峰</label>
+		<label>成功</label>
+		<div class="iFInput" style="width: 80px;">
+			<input type="text" id="fsdtj-wgfSuccess" readonly>
+		</div>
+		<label>失败</label>
+		<div class="iFInput" style="width: 80px;">
+			<input type="text" id="fsdtj-wgfNoth" readonly>
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">通宵</label>
+		<label>成功</label>
+		<div class="iFInput" style="width: 80px;">
+			<input type="text" id="fsdtj-txSuccess" readonly>
+		</div>
+		<label>失败</label>
+		<div class="iFInput" style="width: 80px;">
+			<input type="text" id="fsdtj-txNoth" readonly>
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel" style="width: 6em;">自定义时间</label>
+		<label>成功</label>
+		<div class="iFInput" style="width: 80px;">
+			<input type="text" id="fsdtj-zdysjSuccess" readonly>
+		</div>
+		<label>失败</label>
+		<div class="iFInput" style="width: 80px;">
+			<input type="text" id="fsdtj-zdysjNoth" readonly>
+		</div>
+	</div>
+</div>
+<!-- <div> -->
+<!-- </div> -->
+<!--<div data-dojo-type="dijit/Dialog" data-dojo-id="fsdtjDialog" id="fsdtjDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="fsdtjDialogPanel" id="fsdtjDialogPanel"></div>
+</div>-->
+<script type="text/javascript">
+	require(['app/html/czbb/ddyw/fsdtj', "dojo/domReady!"], function (FSDTJ) {
+		new FSDTJ();
+	});
+</script>
+</body>
+</html>

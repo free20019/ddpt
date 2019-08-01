@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用户管理</title>
+	<style>
+		#yhglTabel {
+			height: 100%;
+			box-sizing: border-box;
+		}
+		#yhgl_dialog table tr{
+			display: block;
+			margin: 5px;
+		}
+		#yhgl_dialog table tr:last-child{
+			text-align: right;
+		}
+		#yhgl_dialog table tr th{
+			width: 150px;
+		}
+		#yhgl_dialog .inputItemBox {
+			margin: 10px 0;
+		}
+		#yhgl_dialog .inputName {
+			display: inline-block;
+			width: 7em;
+		}
+		#yhgl_dialog .inputItemBox > input[type=text],
+		#yhgl_dialog .inputItemBox > input[type=password] {
+			display: inline-block;
+			width: 16em;
+		}
+		#yhgl_dialog .inputItemBox {
+			margin: 10px 0;
+		}
+		#yhgl_dialog .inputItemBox .inputName {
+			/*width: em;*/
+		}
+		/*#treeDemo {*/
+			/*min-height: 200px;*/
+			/*border: 1px solid #ffc539;*/
+		/*}*/
+		#yhgl_gwm{
+			width: 150px;
+		}
+		#yhgl_sfz{
+			width: 200px;
+		}
+	</style>
+</head>
+<body>
+<div data-dojo-type="dojox/layout/ContentPane" id="yhglCenterContainer">
+	<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top', splitter:false" id="yhglQueryContentPane">
+		<form action="" method="post">
+			<div class="queryInlineBox">
+				<label class="inputName" for="yhgl_phone">用户名</label>
+				<input id="yhgl_phone" type="text">
+			</div>
+			<div class="queryInlineBox">
+				<label class="inputName" for="yhgl_sfz">身份证号</label>
+				<input id="yhgl_sfz" type="text">
+			</div>
+			<div class="btnInlineBox">
+				<button class="btn" id="yhgl_btnQuery" type="submit">查询</button>
+			</div>
+			<div class="btnInlineBox">
+				<button class="btn" id="yhgl_btnAdd" type="submit">添加</button>
+			</div>
+		</form>
+	</div>
+	<div id="yhglTabel"></div>
+</div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="yhgl_dialog" id="yhgl_dialog" title="">
+	<form action="" method="post">
+		<input type="hidden" id="user_id">
+		<div class="inputItemBox">
+			<label class="inputName" for="yhgl_username">用户名</label>
+			<input id="yhgl_username" type="text" maxlength="16">
+		</div>
+		<div class="inputItemBox">
+			<label class="inputName" for="yhgl_passeord">密码</label>
+			<input id="yhgl_passeord" type="password" maxlength="16">
+		</div>
+		<div class="inputItemBox">
+			<label class="inputName" for="yhgl_name">姓名</label>
+			<input id="yhgl_name" type="text">
+		</div>
+		<div class="inputItemBox">
+			<label class="inputName" for="yhgl_card">身份证号</label>
+			<input id="yhgl_card" type="text" maxlength="18">
+		</div>
+		<!--<div class="inputItemBox">-->
+			<!--<label class="inputName" for="yhgl_powerID">对应权限ID</label>-->
+			<!--<input id="yhgl_powerID" type="text">-->
+		<!--</div>-->
+		<div class="inputItemBox">
+			<label class="inputName">是否为管理员</label>
+			<input type="radio" name="yhgl_isAdmin" value="1" checked>是
+			<input type="radio" name="yhgl_isAdmin" value="0">否
+		</div>
+		<div class="inputItemBox">
+			<label class="inputName" for="yhgl_gwm">权限</label>
+			<select name="ddztQb" id="yhgl_gwm">
+			</select>
+		</div>
+		<!--<div id="treeDemo" class="ztree"></div>-->
+		<div class="btnItemBox">
+			<input type="hidden" id="yhglIsAdmin">
+			<button class="btn" type="submit" id="yhgl_confirm">确认</button>
+			<button class="btn" type="button" id="yhgl_del">取消</button>
+		</div>
+	</form>
+</div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="yhgl_delete" id="yhgl_delete" title="">
+	确认删除该用户信息？
+	<form action="" method="post">
+		<div class="btnItemBox">
+			<button class="btn" type="submit" id="yhgl_confirmD">确认</button>
+			<button class="btn" type="button" id="yhgl_delD">取消</button>
+		</div>
+	</form>
+</div>
+<script type="text/javascript">
+	require(['app/html/glxt/yhgl', "dojo/domReady!"],
+		function (YHGL) {
+			new YHGL();
+		});
+</script>
+</body>
+</html>

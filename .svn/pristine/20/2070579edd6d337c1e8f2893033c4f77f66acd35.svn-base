@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=10" />
+	<title>标签页</title>
+	<style type="text/css">
+		#xddContainer {
+			padding: 0;
+		}
+		#xddContainerCenter {
+			padding: 0;
+		}
+		#xddContainer-tabBox_tablist {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+
+<div id="xddContainer" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="persist:true,gutters:true, liveSplitters:true">
+	<div id="xddContainerCenter" data-dojo-type="dojox/layout/ContentPane" data-dojo-props="splitter:false, region:'center'">
+		<div id="xddContainer-tabBox"></div>
+	</div>
+</div>
+
+<script>
+	require(['dijit/layout/TabContainer', 'dojox/layout/ContentPane', 'dojo/query', 'dojo/domReady!'],
+		function (TabContainer, ContentPane, query){
+			var _self = this;
+			tc = new TabContainer({style: 'height: 100%; width: 100%; margin: 0; padding: 0;'}, 'xddContainer-tabBox');
+			var cp = new ContentPane({id: 'xdd', title: '调度', pid: 'root', href: 'app/html/ddxpt/xdd.html', style: {padding: '0'}, closable: true});
+			cp.onShow = function(){ tc.resize(); };
+			tc.addChild(cp);
+			tc.startup();
+
+			_self.menu = {
+                'xdd': {id: 'xdd', title: '调度', pid: 'root', href: 'app/html/ddxpt/xdd.html', closable: true},
+                'yytz': {id: 'yytz', title: '咨询', pid: 'root', href: 'app/html/ddxpt/zx.html', closable: true},
+                'jfcx': {id: 'jfcx', title: '积分', pid: 'root', href: 'app/html/ddxpt/jfcx.html', closable: true}
+			};
+			query('#topContentPane li').on('click', function () {
+				var menu = _self.menu[$(this).data('skip')];
+					rmtitle = $(this).find('span').text();
+				$(this).addClass('selected').siblings('.selected').removeClass('selected');
+				var index = getBasisTabIndex(rmtitle);
+// 				console.info(index, rmtitle)
+				if(rmtitle=="咨询"){
+					$("#zx-ldhm").val($("#xddldhm").val());
+				}
+				if(index === -1){
+					var newJson = {style: {padding: '0'}};
+					var cp = new ContentPane($.extend({}, newJson, menu));
+					tc.addChild(cp);
+					tc.selectChild(cp);
+				} else {
+					tc.selectChild(tc.getChildren()[index]);
+				}
+			});
+		});
+		
+</script>
+</body>
+</html>

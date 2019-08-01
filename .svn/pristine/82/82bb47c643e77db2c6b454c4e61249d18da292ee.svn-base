@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>营运交易次数综合统计</title>
+	<style>
+		#yytsTabel {
+			height: calc(100% - 100px);
+		}
+		
+		.field-dojoId{width: 70px;white-space: nowrap;}
+		.field-YF{width: 100px;white-space: nowrap;}
+		.field-FGS{width: 200px;white-space: nowrap;}
+		.field-QY{width: 110px;white-space: nowrap;}
+		.field-CPHM{width: 110px;white-space: nowrap;}
+		.field-YYTS{width: 120px;white-space: nowrap;}
+	</style>
+</head>
+<body>
+<div class="" id="yytsPanel">
+	<div class="iFInlineItem">
+		<label class="iFLabel">月份</label>
+		<div class="iFInput" style="width: 110px;">
+			<input type="text" id="yyts-mon">
+		</div>
+	</div>
+	
+<div class="iFInlineItem" id="clxjjy-quyu">
+		<label class="iFLabel">区域</label>
+	<div class="iFComboBox" id="yyts-quyu-comboBox" style="width: 120px;">
+			<input type="text" value="主城区" data-value="1" >
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+				<li data-value="0" >全部</li>
+				<li data-value="1" >主城区</li>
+				<li data-value="2" >余杭区</li>
+				<li data-value="3" >萧山区</li>
+				<li data-value="4" >临安区</li>
+				<li data-value="5" >富阳区</li>
+				<li data-value="6" >淳安区</li>
+				<li data-value="7" >建德市</li>
+			</ul>
+		</div>
+	</div>
+	<div class="iFInlineItem" id="yyts-company">
+		<label class="iFLabel">公司</label>
+		<div class="iFComboBox" id="yyts-company-comboBox" style="width: 160px;">
+			<input type="text" >
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+			</ul>
+		</div>
+	</div>
+	
+	<div class="iFInlineItem" id="yyts-cphm">
+		<label class="iFLabel">车牌</label>
+		<div class="iFComboBox" id="yyts-cphm-comboBox" style="width: 120px;">
+			<input type="text" >
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+			</ul>
+		</div>
+	</div>
+<!-- 	<div class="iFInlineItem" id="yyts-cllx"> -->
+<!-- 		<label class="iFLabel">车辆类型</label> -->
+<!-- 		<div class="iFComboBox" id="yyts-cllx-comboBox" style="width: 120px;"> -->
+<!-- 			<input type="text" data-value="0" value="燃油车"> -->
+<!-- 			<a href="javascript:void(0);"></a> -->
+<!-- 			<ul class="iFList"> -->
+<!-- 				<li data-value='0'>燃油车</li> -->
+<!-- 				<li data-value='1'>新能源车</li> -->
+<!-- 			</ul> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="yytsQuery">查询</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="yytsDaochu">导出Excel</a>
+	</div>
+</div>
+<div id="yytsTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="yytsDialog" id="yytsDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="yytsDialogPanel" id="yytsDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	require(['app/html/zhywbb/zhtj/yyjyts', "dojo/domReady!"], function (YYTS) {
+		new YYTS();
+	});
+</script>
+</body>
+</html>

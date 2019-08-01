@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定位表-编辑</title>
+    <style>
+    	.newinput{
+   		    width: calc(100% - 10em);
+    	}
+    </style>
+</head>
+<body>
+<form action="" id="sjbEditorForm">
+	<div class="iFInputItem">
+	    <label class="iFLabel">司机姓名</label>
+	    <div class="iFInput" tabindex="1">
+	        <input type="text" id="sjb_name" name="NAME">
+	    </div>
+	</div>
+	<div class="iFInputItem">
+	    <label class="iFLabel sjb">联系电话</label>
+	    <div class="iFInput">
+	        <input type="text" id="sjb_phone" name="PHONE">
+	    </div>
+	</div>
+	<div class="iFInputItem">
+	    <label class="iFLabel sjb">车牌号码</label>
+	    <div class="iFInput">
+	        <input type="text" id="sjb_cphm" name="VEHI_NO">
+	    </div>
+	</div>
+	<div class="iFInputItem">
+	    <label class="iFLabel sjb">所属公司</label>
+	    <div class="iFInput">
+	        <input type="text" id="sjb_compname" readonly="readonly">
+	    </div>
+	</div>
+	<div class="iFInputItem">
+	    <label class="iFLabel sjb">车型</label>
+	    <div class="iFInput">
+	        <input type="text" id="sjb_cx" readonly="readonly">
+	    </div>
+	</div>
+	<div class="iFInputItem">
+	    <label class="iFLabel sjb">燃料类型</label>
+	    <div class="iFInput">
+	        <input type="text" id="sjb_rllx" readonly="readonly">
+	    </div>
+	</div>
+	<div class="iFInputItem iFTextArea">
+	    <label class="iFLabel">备注</label>
+	    <div class="iFInput">
+	        <textarea  id="qkb_bz" name="NOTE"></textarea>
+	    </div>
+	</div>
+	<div class="iFBtnItem">
+	    <a href="javascript:void(0);" class="iFBtn sjb-iFBtnCommit">提交</a>
+	    <a href="javascript:void(0);" class="iFBtn sjb-iFBtnClose">关闭</a>
+	</div>
+</form>
+</body>
+</html>

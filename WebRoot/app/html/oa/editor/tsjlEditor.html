@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>翻译记录-编辑</title>
+	<style>
+		#tsjlEditorPanel {
+			margin-right: 30px;
+		}
+		#tsjlEditorPanel .iFInputItem > .iFLabel {
+			width: 6em;
+		}
+		#tsjlEditorPanel .iFInputItem > .iFInput {
+			width: calc(100% - 7em);;
+		}
+	</style>
+</head>
+<body>
+<form action="" id="tsjl-form">
+	<div class="iFFormPanel" id="tsjlEditorPanel">
+		<div class="clearfix">
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">受理工号</label>
+					<div class="iFInput">
+						<input type="text" id="tsjl-slgh">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">受理时间</label>
+					<div class="iFInput">
+						<input type="text" id="tsjl-slsj" name="DB_TIME" onfocus="WdatePicker({dateFmt: STATEDATETIME})">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">业务单号</label>
+					<div class="iFInput">
+						<input type="text" id="tsjl-ywdh" name="BU_NO">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">派单工号</label>
+					<div class="iFInput">
+						<input type="text" id="tsjl-pdgh" name="TO_BU_NO">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">投诉类型</label>
+					<div class="iFComboBox" id="tsjlEditor-fwlb" style="width: calc(100% - 7em);;">
+						<input type="text" readonly data-value="0" value="服务技巧" id="tsjl-tslx" name="COMP_TYPE">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+							<li data-value="0">服务技巧</li>
+							<li data-value="1">服务纠纷</li>
+							<li data-value="2">三方责任</li>
+							<li data-value="3">系统技术</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">投诉类别</label>
+					<div class="iFComboBox" id="tsjlEditor-fyyz" style="width: calc(100% - 7em);;">
+						<input type="text" readonly data-value="0" value="普通投诉" id="tsjl-tslb" name="COMP_BTYPE">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+							<li data-value="0">普通投诉</li>
+							<li data-value="1">驻点扬招投诉</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">服务对象</label>
+					<div class="iFComboBox" id="tsjlEditor-fwdx" style="width: calc(100% - 7em);;">
+						<input type="text" readonly id="tsjl-fwdx" name="SER_TYPE">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+							<li data-value="0">乘客</li>
+							<li data-value="1">司机</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem" id="tsjlEditor-tsssgsBox" style="display: none;">
+					<label class="iFLabel">所属公司</label>
+<!-- 					<div class="iFComboBox" id="" style="width: calc(100% - 7em);;"> -->
+<!-- 						<input type="text" readonly id="tsjl-tsssgs" name="T_DCOM"> -->
+<!-- 						<a href="javascript:void(0);"></a> -->
+<!-- 						<ul class="iFList" id="tsjl-tsssgs-ul"> -->
+<!-- 						</ul> -->
+<!-- 					</div> -->
+					<div class="iFInput">
+						<input type="text" id="tsjl-tsssgs" name="T_DCOM" readonly>
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem ckBox" id="tsjlEditor-ckxmBox" style="display: none;">
+					<label class="iFLabel">乘客姓名</label>
+					<div class="iFInput">
+						<input type="text" id="tsjl-ckxm" name="CLI_NAME">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem ckBox1" id="tsjlEditor-ckdhBox" style="display: none;">
+					<label class="iFLabel" id="tsjl-ckdh-label">乘客电话</label>
+					<div class="iFInput">
+						<input type="text" id="tsjl-ckdh" name="CLI_TEL">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem ckBox" id="tsjlEditor-tscpBox" style="display: none;">
+					<label class="iFLabel">投诉车牌</label>
+					<div class="iFInput">
+						<input type="text" id="tsjl-tscp" name="T_CARNO">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem" id="tsjlEditor-ssgsBox" style="display: none;">
+					<label class="iFLabel">所属公司</label>
+<!-- 					<div class="iFComboBox" style="width: calc(100% - 7em);;"> -->
+<!-- 						<input type="text" readonly id="tsjl-ssgs" name="COM_NAME"> -->
+<!-- 						<a href="javascript:void(0);"></a> -->
+<!-- 						<ul class="iFList" id="tsjl-ssgs-ul"> -->
+<!-- 						</ul> -->
+<!-- 					</div> -->
+					<div class="iFInput">
+						<input type="text" id="tsjl-ssgs" name="COM_NAME" readonly>
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem sjBox" id="tsjlEditor-cphmBox" style="display: none;">
+					<label class="iFLabel">车牌号码</label>
+					<div class="iFInput">
+						<input type="text" id="tsjl-cphm" name="CAR_NO">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem sjBox" id="tsjlEditor-tsckBox" style="display: none;">
+					<label class="iFLabel">投诉乘客</label>
+					<div class="iFInput">
+						<input type="text" id="tsjl-tsck" name="T_CNAME">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem sjBox" id="tsjlEditor-tsckdhBox" style="display: none;">
+					<label class="iFLabel">乘客电话</label>
+					<div class="iFInput">
+						<input type="text" id="sj_tsjl-ckdh" name="T_CTEL">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">约车时间</label>
+					<div class="iFInput">
+						<input type="text" id="tsjl-ycsj" name="ON_CAR_TIME" onfocus="WdatePicker({dateFmt: STATEDATETIME})">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">约车类型</label>
+					<div class="iFComboBox" id="tsjlEditor-yclx" style="width: calc(100% - 7em);;">
+						<input type="text" readonly data-value="0" value="电话预约" id="tsjl-yclx" name="ON_CAR_TYPE">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+							<li data-value="0">电话预约</li>
+							<li data-value="1">非电话预约</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="iFInputItem">
+			<label class="iFLabel">约车地点</label>
+			<div class="iFInput">
+				<input type="text" id="tsjl-ycdd" name="ON_CAR_ADD">
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">处理工号</label>
+					<div class="iFInput">
+						<input type="text" id="tsjl-clgh" name="USER_NO"  readonly="readonly">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">后续处理</label>
+					<div class="iFComboBox" id="tsjlEditor-hxcl" style="width: calc(100% - 7em);;">
+						<input type="text" readonly data-value="0" value="" id="tsjl-hxcl" name="AFERT_ACTION_YPE">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+							<li data-value="1">班长处理</li>
+							<li data-value="2">调度员或组长处理</li>
+							<li data-value="3">转公司处理</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="iFInputItem iFTextArea">
+			<label class="iFLabel">事件内容</label>
+			<div class="iFInput">
+				<textarea id="tsjl-sjnr" name="CONTENT"></textarea>
+			</div>
+		</div>
+		<div class="iFInputItem iFTextArea">
+			<label class="iFLabel">处理结果</label>
+			<div class="iFInput">
+				<textarea id="tsjl-cljg" name="RESULT"></textarea>
+			</div>
+		</div>
+		<div class="iFInputItem iFTextArea">
+			<label class="iFLabel">备注</label>
+			<div class="iFInput">
+				<textarea id="tsjl-bz" name="REMARK"></textarea>
+			</div>
+		</div>
+		<div class="iFBtnItem">
+			<a href="javascript:void(0);" class="iFBtn iFBtnCommit">提交</a>
+			<a href="javascript:void(0);" class="iFBtn iFBtnClose">关闭</a>
+		</div>
+	</div>
+</form>
+</body>
+</html>

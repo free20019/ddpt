@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>账户管理</title>
+    <style>
+        #zhglTabel {
+            height: 100%;
+            box-sizing: border-box;
+        }
+        #zhgl_dialog table tr{
+            display: block;
+            margin: 5px;
+        }
+        #zhgl_dialog table tr:last-child{
+            text-align: right;
+        }
+        #zhgl_dialog table tr th{
+            width: 150px;
+        }
+        #zhgl_dialog .inputItemBox {
+            margin: 10px 0;
+        }
+        #zhgl_dialog .inputName {
+            display: inline-block;
+            width: 7em;
+        }
+        #zhgl_dialog .inputItemBox > input[type=text],
+        #zhgl_dialog .inputItemBox > input[type=password] {
+            display: inline-block;
+            width: 16em;
+        }
+        #zhgl_dialog .inputItemBox {
+            margin: 10px 0;
+        }
+        .field-JLTLE,.field-KFTEL,.field-CZ,.field-COMPANY,.field-ZFB{
+            width: 130px;
+        }
+        #zhgl_gsd{
+            width: 120px;
+        }
+        #zhglCenterContainer{
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+<body>
+<div data-dojo-type="dojox/layout/ContentPane" id="zhglCenterContainer">
+    <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top', splitter:false" id="zhglQueryContentPane">
+        <form action="" method="post">
+            <div class="queryInlineBox">
+                <label class="inputName" for="zhgl_companyname">旅行社</label>
+                <input id="zhgl_companyname" type="text">
+            </div>
+            <div class="queryInlineBox">
+                <label class="inputName" for="zhgl_gsd">归属地</label>
+                <select name="zhglQb" id="zhgl_gsd">
+                </select>
+            </div>
+            <div class="btnInlineBox">
+                <button class="btn" id="zhgl_btnQuery" type="submit">查询</button>
+            </div>
+            <div class="btnInlineBox">
+                <button class="btn" id="zhgl_btnAdd" type="submit">添加</button>
+            </div>
+        </form>
+    </div>
+    <div id="zhglTabel"></div>
+</div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="zhgl_dialog" id="zhgl_dialog" title="">
+    <form action="" method="post">
+        <input type="hidden" id="zhgl_id">
+        <div class="inputItemBox">
+            <label class="inputName" for="zhgl_company">旅行社</label>
+            <input id="zhgl_company" type="text">
+        </div>
+        <!--<div class="inputItemBox">
+            <label class="inputName" for="zhgl_city">归属地</label>
+            <select name="zhglQb" id="zhgl_city">
+            </select>
+        </div>-->
+        <div class="inputItemBox">
+            <label class="inputName" for="zhgl_city">出发城市</label>
+            <input id="zhgl_city" type="text">
+        </div>
+        <div class="inputItemBox">
+            <label class="inputName" for="zhgl_fzr">负责人</label>
+            <input id="zhgl_fzr" type="text">
+        </div>
+        <div class="inputItemBox">
+            <label class="inputName" for="zhgl_jltel">经理电话</label>
+            <input id="zhgl_jltel" type="text">
+        </div>
+        <div class="inputItemBox">
+            <label class="inputName" for="zhgl_kftel">客服电话</label>
+            <input id="zhgl_kftel" type="text">
+        </div>
+        <div class="inputItemBox">
+            <label class="inputName" for="zhgl_cz">传真号码</label>
+            <input id="zhgl_cz" type="text" maxlength="13">
+        </div>
+        <div class="inputItemBox">
+            <label class="inputName" for="zhgl_zfb">支付宝账号</label>
+            <input id="zhgl_zfb" type="text">
+        </div>
+        <div class="inputItemBox">
+            <label class="inputName" for="zhgl_skrname">收款人姓名</label>
+            <input id="zhgl_skrname" type="text">
+        </div>
+        <div class="btnItemBox">
+            <input type="hidden" id="zhglIsAdmin">
+            <button class="btn" type="submit" id="zhgl_confirm">确认</button>
+            <button class="btn" type="button" id="zhgl_del">取消</button>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    require(['app/html/glxt/zhgl', "dojo/domReady!"],
+        function (ZHGL) {
+            new ZHGL();
+        });
+</script>
+</body>
+</html>

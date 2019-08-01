@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户表-编辑</title>
+    <style>
+        #yhbEditorPanel .dgrid-header .dgrid-cell {
+            padding: 6px 0;
+        }
+        #yhbEditorPanel .dgrid-scroller .dgrid-cell {
+            height: auto;
+            padding: 5px 6px;
+        }
+        .btcss{
+			font-weight:bold;
+			text-align: center;
+			font-size:16px;
+	  	}
+	  	.tdcss1{text-align: center;width:90px;font-size:14px;}
+	  	#qxlbtable{
+	  		line-height: 20px;
+		  	border-collapse:collapse;
+/* 		  	border-collapse:separate; */
+		  }
+		#qxlbtable, th,td { table-layout:fixed; border: 2px solid #6bb3ff;}
+    </style>
+</head>
+<body>
+<form action="" id="yhbEditorForm">
+	<div id="yhbEditorPanel">
+	    <div class="iFPanel" style="padding-left: 20px; padding-right: 10px;">
+	        <div class="iFW50 clearfix">
+	            <div class="iFSubItem">
+	                <div class="iFInlineItem">
+	                    <label class="iFLabel">用户名</label>
+	                    <div class="iFInput" style="width: 160px;">
+	                        <input type="text" name="USER_NAME" id="yhb_username">
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="iFSubItem">
+	                <div class="iFInlineItem" id="yhb-ywqk">
+	                    <label class="iFLabel">业务区块</label>
+	                    <div class="iFComboBox" id="gs-comboBox" style="width: 160px;">
+	                        <input type="text" readonly data-value="" id="yhb-ywqk-input">
+	                        <a href="javascript:void(0);"></a>
+	                        <ul class="iFList" id="yhb-ywqk-list">
+	                        </ul>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="iFSubItem">
+	                <div class="iFInlineItem">
+	                    <label class="iFLabel">密码</label>
+	                    <div class="iFInput" style="width: 160px;">
+	                        <input type="password" name="USER_PWD" id="yhb_password">
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="iFSubItem">
+	                <div class="iFInlineItem">
+	                    <label class="iFLabel">姓名</label>
+	                    <div class="iFInput" style="width: 160px;">
+	                        <input type="text" name="REAL_NAME" id="yhb_name">
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="iFSubItem">
+	                <div class="iFInlineItem" id="yhb-gs">
+	                    <label class="iFLabel">公司</label>
+	                    <div class="iFComboBox" id="cllx-comboBox" style="width: 160px;">
+	                        <input type="text" readonly id="yhb-gs-input" data-value="">
+	                        <a href="javascript:void(0);"></a>
+	                        <ul class="iFList" id="yhb-gs-list">
+	                        </ul>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="iFSubItem">
+	                <div class="iFInlineItem" id="yhb-fgs">
+	                    <label class="iFLabel">分公司</label>
+	                    <div class="iFComboBox" id="fgs-comboBox" style="width: 160px;">
+	                        <input type="text" readonly id="yhb-fgs-input" data-value="">
+	                        <a href="javascript:void(0);"></a>
+	                        <ul class="iFList" id="yhb-fgs-list">
+	                        </ul>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="iFSubItem">
+	                <div class="iFInlineItem">
+	                    <label class="iFLabel">电话</label>
+	                    <div class="iFInput" style="width: 160px;">
+	                        <input type="text" name="USER_TEL" id="yhb_tel">
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="iFSubItem">
+	                <div class="iFInlineItem" id="yhb-yhzqx">
+	                    <label class="iFLabel">用户组权限</label>
+	                    <div class="iFComboBox" id="qx-comboBox" style="width: 160px;">
+	                        <input type="text" readonly data-value="" id="yhb-yhzqx-input">
+	                        <a href="javascript:void(0);"></a>
+	                        <ul class="iFList" id="yhb-yhzqx-list">
+	                        </ul>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	        <div class="iFInputItem">
+	            <label class="iFLabel">地址</label>
+	            <div class="iFInput" style="width: calc(100% - 104px)">
+	                <input type="text" name="ADDRESS" id="yhb_address">
+	            </div>
+	        </div>
+	        <div class="iFInputItem">
+	            <label class="iFLabel">备注</label>
+	            <div class="iFInput"  style="width: calc(100% - 104px)">
+	                <input type="text" name="NOTE" id="yhb_note">
+	            </div>
+	        </div>
+	    </div>
+	    <div class="iFBtnItem" style="margin: 0 20px; border-bottom: 1px solid #8ad8ff">
+	        <a href="javascript:void(0);" class="iFBtn iFBtnAdd yhb-iFBtnCommit">提交</a>
+	        <a href="javascript:void(0);" class="iFBtn iFBtnCancel yhb-iFBtnClose">关闭</a>
+	    </div>
+	    <div class="iFBtnItem "style="margin-top: 20px">
+	        <div class="iFW50 clearfix" style="padding: 0 46px ">
+	            <div class="iFSubItem">
+	                <div id="yhbtree" class="ztree"></div>
+	            </div>
+	            <div class="iFSubItem">
+	              <div id="qxTable" style="line-height: 14px;">
+	              	<table id="qxlbtable">
+		              	<thead>
+		              		<tr class='btcss'>
+		              		<td style="width:340px">已获取权限</td>
+		              		<td style="width:40px">操作</td></tr>
+		              	</thead>
+		              	<tbody id="qxlb">
+		              	</tbody>
+	              	</table>
+	              </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</form>
+</body>
+</html>

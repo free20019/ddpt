@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TreeLayout</title>
+    <link rel="stylesheet" href="app/main.css"/>
+
+    <script type="text/javascript" src="app/config2.js"></script>
+    <script type="text/javascript" src="http://115.236.61.148:9085/jslib/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="http://115.236.61.148:9085/jslib/echarts-all.js"></script>
+    <script type="text/javascript" src="http://115.236.61.148:9085/jslib/myDojo/dojo/dojo.js"></script>
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=d0face2397384365119fbf558c48c10a"></script>
+    <script type="text/javascript" src= "resources/script/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="app/main.js"></script>
+    <style type="text/css">
+        a {
+            text-decoration: none;
+        }
+        #indexContainer {
+            width: 100%; height: 100%; margin: 0; padding: 0;
+        }
+        #indexContainer > #headerContainer_splitter {
+            height: 0;
+        }
+        #indexContainer > #leftContentPane_splitter {
+            width: 0;
+        }
+        #headerContainer {
+            padding: 1px;
+        }
+        #leftContentPane {
+            overflow: hidden;
+            padding: 0;
+            background: #f4f6fb;
+        }
+        #headerUl {
+            height: 50px;
+            overflow: hidden;
+            background: #0f89f5;
+        }
+        #headerUl li {
+            list-style: none;
+            display: inline-block;
+        }
+        #headerUl .ycxs {
+            display: inline-block;
+            /*width: 61px;*/
+            width: 190px;
+            height: 50px;
+            box-shadow: 2px 0 6px #0663ef;
+            background: url('resources/images/icon/icon_ycxs2.png') 12px 50% no-repeat;
+        }
+        #headerUl .ycxs.smll {
+            width: 50px;
+        }
+        #headerUl .ycxs:hover {
+            background-color: #00abff;
+        }
+        #headerUl .logo {
+            width: 75px;
+            height: 50px;
+            background: url('resources/images/qxsy/10.png') center no-repeat;
+        }
+        #headerUl .logo.no {
+            /*display: none;*/
+        }
+        #headerUl .logoTitle {
+            position: relative;
+            top: -15px;
+            height: 50px;
+            line-height: 50px;
+            font-family: 'Microsoft YaHei';
+            font-size: 32px;
+            color: #fff;
+        }
+        #nevRoot {
+            width: 190px;
+        }
+        #nevRoot.smll {
+            width: 50px;
+        }
+        .nevTitle {
+            display: block;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            border-top: 1px solid #e8e8e8;
+            border-bottom: 1px solid #ffffff;
+        }
+        .rightBox {
+            height: 50px;
+            float: right;
+        }
+        #headerUl .download, #headerUl .mobile, #headerUl .quit, #headerUl .doubt {
+            width: 48px;
+            height: 48px;
+            margin-right: 10px;
+            display: inline-block;
+        }
+        #headerUl .download {
+            background: url('resources/images/icon/icon_download.png') 50% 50%/80% 80% no-repeat;
+        }
+        #headerUl .mobile {
+            background: url('resources/images/icon/icon_mobile.png') 50% 50%/80% 80% no-repeat;
+        }
+        #headerUl .quit {
+            background: url('resources/images/icon/icon_quit.png') 50% 50%/80% 80% no-repeat;
+        }
+        #headerUl .doubt {
+            background: url('resources/images/icon/icon_doubt.png') 50% 50%/80% 80% no-repeat;
+        }
+        .nevTitle .icon_ssjk, .nevTitle .icon_lsgj, .nevTitle .icon_tjfx, .nevTitle .icon_gpxs, .nevTitle .icon_bbfx, .nevTitle .icon_qygl {
+            display: inline-block;
+            width: 23px;
+            height: 23px;
+            margin-top: 12px;
+            margin-bottom: 11px;;
+            margin-left: 12px;
+            vertical-align: middle;
+        }
+        .nevTitle .icon_ssjk {
+            background: url('resources/images/icon/icon_ssjk2.png');
+        }
+        .nevTitle .icon_lsgj {
+            background: url('resources/images/icon/icon_lsgj2.png');
+        }
+        .nevTitle .icon_tjfx {
+            background: url('resources/images/icon/icon_tjfx2.png');
+        }
+        .nevTitle .icon_gpxs {
+            background: url('resources/images/icon/icon_gpxs2.png');
+        }
+        .nevTitle .icon_bbfx {
+            background: url('resources/images/icon/icon_bbfx2.png');
+        }
+        .nevTitle .icon_qygl {
+            background: url('resources/images/icon/icon_qygl2.png');
+        }
+        .nevTitle span {
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: 'Microsoft YaHei';
+            text-align: center;
+            text-indent: 10px;
+            vertical-align: middle;
+            color: #444444;
+        }
+        .nevTitle:hover, .nevTitle.selected, .nevTitle[data-checked] {
+            /*background: #00abff;*/
+            background: #dbdbdb;
+        }
+        .nevTitle:hover .icon_ssjk, .nevTitle.selected .icon_ssjk, .nevTitle[data-checked] .icon_ssjk {
+            /*background: url('resources/images/icon/icon_ssjk_h.png');*/
+        }
+        .nevTitle:hover .icon_lsgj, .nevTitle.selected .icon_lsgj, .nevTitle[data-checked] .icon_lsgj {
+            /*background: url('resources/images/icon/icon_lsgj_h.png');*/
+        }
+        .nevTitle:hover .icon_tjfx, .nevTitle.selected .icon_tjfx, .nevTitle[data-checked] .icon_tjfx {
+            /*background: url('resources/images/icon/icon_tjfx_h.png');*/
+        }
+        .nevTitle:hover .icon_gpxs, .nevTitle.selected .icon_gpxs, .nevTitle[data-checked] .icon_gpxs {
+            /*background: url('resources/images/icon/icon_gpxs_h.png');*/
+        }
+        .nevTitle:hover .icon_bbfx, .nevTitle.selected .icon_bbfx, .nevTitle[data-checked] .icon_bbfx {
+            /*background: url('resources/images/icon/icon_bbfx_h.png');*/
+        }
+        .nevTitle:hover .icon_qygl, .nevTitle.selected .icon_qygl, .nevTitle[data-checked] .icon_qygl {
+            /*background: url('resources/images/icon/icon_qygl_h.png');*/
+        }
+        .nevTitle:hover span, .nevTitle.selected span, .nevTitle[data-checked] span {
+            color: #444444;
+        }
+        #nevRoot.smll .nevTitle {
+            /*padding: 6px 0;*/
+        }
+        #nevRoot.smll .nevTitle:after {
+            display: none;
+        }
+        #nevRoot.smll .nevTitle  {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #nevRoot.smll .nevItem  {
+            display: none;
+        }
+        #nevRoot.smll .nevTitle span {
+            display: none;
+        }
+        .nevItem {
+            box-shadow: inset 0 3px 6px -4px #666;
+            background: #f1f1f1;
+        }
+        .nevItem > li a {
+            display: block;
+            height: 30px;
+            line-height: 30px;
+        }
+        .nevItem > li a.on {
+            background: #ffffff;
+        }
+        .nevItem > li a.on[show] {
+            position: relative;
+            border-bottom: 1px solid #cccccc;
+            z-index: 1;
+        }
+        .nevItem > li a:hover {
+            background: #00abff;
+        }
+        .nevItem > li a span {
+            padding-left: 28px;
+            color: #4e8bac;
+        }
+        .nevItem > li a:hover span {
+            color: #ffffff;
+        }
+        .nevItem .nevItem {
+            box-shadow: inset 0 -1px 3px -2px #666;
+            border-bottom: 1px solid #cccccc;
+        }
+        .nevItem .nevItem > li a {
+            padding-left: 20px;
+        }
+        .nevTitle {
+            cursor: pointer;
+        }
+        .nevTitle[show]:after, #leftChildPanel a[show]:after, .nevItem a[show]:after {
+            content: '▾';
+            position: absolute;
+            right: 10px;
+        }
+        .nevTitle[show]:after {
+            line-height: 51px;
+            color: #444444;
+        }
+        .nevItem a[show]:after {
+            line-height: 30px;
+            color: #444444;
+        }
+        #leftChildPanel .on[show]:after {
+            content: '▴';
+        }
+        .nevTitle.selected[show]:after, .nevTitle[show][data-checked]:after {
+            content: '▴';
+            /*color: #ffffff;*/
+        }
+        .nevTitle:hover:after, .nevItem a[show]:hover:after {
+            /*color: #ffffff;*/
+        }
+
+
+        #indexHref {
+            margin: 0;
+            padding: 0;
+        }
+        #leftChildPanel {
+            position: absolute;
+            top: 52px;
+            left: 52px;
+            width: 260px;
+            height: 91.6%;
+            height: calc(100% - 55px);
+            padding: 0;
+            border: 1px solid #eeeeee;
+            box-shadow: 1px 1px 6px #666;
+            background: #e7e7e7;
+        }
+        #leftChildPanel dt {
+            height: 50px;
+            line-height: 50px;
+            border-bottom: 1px solid #ddd;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            color: #333333;
+            background: #f4f4f4;
+        }
+        #leftChildPanel dd {
+            text-indent: 20px;
+        }
+        #leftChildPanel dd a {
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            color: #333;
+        }
+        #leftChildPanel dd li a {
+            height: 25px;
+            line-height: 25px;
+            padding-left: 16px;
+            font-size: 14px;
+        }
+        #leftChildPanel dd > a.on {
+            background: #f4f4f4;
+        }
+        #leftChildPanel dd a:hover {
+            background: #f4f4f4;
+        }
+    </style>
+</head>
+<body class="claro">
+<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="gutters:true, liveSplitters:false" id="indexContainer">
+    <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top', splitter:false" class="headerContentPane" id="headerContainer">
+        <ul id="headerUl">
+            <li id="nevControl" class="ycxs"></li>
+            <li class="logo"></li>
+            <li class="logoTitle">远诚国旅后台管理</li>
+            <li class="rightBox">
+                <a href="" class="download"></a>
+                <a href="" class="mobile"></a>
+                <a href="" class="quit"></a>
+                <a href="" class="doubt"></a>
+            </li>
+        </ul>
+    </div>
+    <div  data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'left', splitter:false" id="leftContentPane">
+        <ul id="nevRoot"></ul>
+    </div>
+    <div data-dojo-type="dojox/layout/ContentPane" data-dojo-props="region:'center', splitter:false" id="indexHref" href="app/html/tabInfo.html"></div><!-- end ContentPane -->
+</div><!-- end BorderContainer -->
+<div data-dojo-type="dijit/layout/ContentPane" id="leftChildPanel"></div>
+
+<script type="text/javascript">
+    $('#leftChildPanel').hide();
+    require([ "app/TreeLayout2","dojo/domReady!"],function(TreeLayout){
+        new TreeLayout('nevRoot', menu, {m2: menuLevel2, m3: menuLevel3}, {
+            controlId: 'nevControl',
+            submenuPanelId: 'leftChildPanel'
+        }).init();
+    });
+</script>
+</body>
+</html>

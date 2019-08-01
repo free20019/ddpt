@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>客户通讯表</title>
+    <style>
+        #khb2Tabel {
+            height: calc(100% - 50px);
+        }
+        #khb2Tabels {
+            height: 100%;
+        }
+        #khb2Dialog .dijitDialogPaneContent {
+            padding: 0;
+        }
+        #khb2DialogPanel {
+            width: 300px;
+            height: 460px;
+        }
+    </style>
+</head>
+<body>
+<div class="">
+	<div class="iFInlineItem">
+		<label class="iFLabel">关键字</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="findkhb2_khm">
+		</div>
+	</div>
+    <div class="iFInlineItem" style="line-height: 30px;">
+    	<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="khb2Find">查询</a>
+        <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="khb2Add">添加</a>
+        <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="khb2Upd">修改</a>
+        <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="khb2Del">删除</a>
+        <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="khb2Dc">导出</a>
+    </div>
+</div>
+<div id="khb2Tabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="khb2Dialog" id="khb2Dialog">
+    <div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="khb2DialogPanel" id="khb2DialogPanel"></div>
+</div>
+<script type="text/javascript">
+    require(['app/html/czchtgl/khb2', "dojo/domReady!"], function (KHB2) {
+        new KHB2();
+    });
+</script>
+</body>
+</html>

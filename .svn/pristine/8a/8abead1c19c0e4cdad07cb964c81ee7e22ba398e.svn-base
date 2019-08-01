@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户管理</title>
+    <style>
+        #dzglTabel {
+            height: 100%;
+            box-sizing: border-box;
+        }
+        #dzgl_dialog table tr{
+            display: block;
+            margin: 5px;
+        }
+        #dzgl_dialog table tr:last-child{
+            text-align: right;
+        }
+        #dzgl_dialog table tr th{
+            width: 150px;
+        }
+        #dzgl_dialog .inputItemBox {
+            margin: 10px 0;
+        }
+        #dzgl_dialog .inputName {
+            display: inline-block;
+            width: 7em;
+        }
+        #dzgl_dialog .inputItemBox > input[type=text],
+        #dzgl_dialog .inputItemBox > input[type=password] {
+            display: inline-block;
+            width: 16em;
+        }
+        #dzgl_dialog .inputItemBox {
+            margin: 10px 0;
+        }
+        #dzgl_dialog .inputItemBox .inputName {
+            /*width: em;*/
+        }
+    </style>
+</head>
+<body>
+<div data-dojo-type="dojox/layout/ContentPane" id="dzglCenterContainer">
+    <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top', splitter:false" id="dzglQueryContentPane">
+        <form action="" method="post">
+            <div class="queryInlineBox">
+                <label class="inputName" for="dzgl_ddxsQb">定制形式</label>
+                <select name="ddxsQb" id="dzgl_ddxsQb">
+                    <option value="0">全部</option>
+                    <option value="0">个人定制</option>
+                    <option value="1">公司定制</option>
+                </select>
+            </div>
+            <div class="queryInlineBox">
+                <label class="inputName" for="dzgl_cfd">出发地</label>
+                <input id="dzgl_cfd" type="text">
+            </div>
+            <div class="queryInlineBox">
+                <label class="inputName" for="dzgl_gsd">归属地</label>
+                <select name="gsd" id="dzgl_gsd"></select>
+            </div>
+            <div class="queryInlineBox">
+                <label class="inputName" for="dzgl_cfsj">出发时间</label>
+                <input id="dzgl_cfsj" type="text" onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss' })">
+            </div>
+            <div class="btnInlineBox">
+                <button class="btn" id="dzgl_btnQuery" type="submit">查询</button>
+            </div>
+            <div class="btnInlineBox">
+                <button class="btn" id="dzgl_btnAdd" type="submit">添加</button>
+            </div>
+        </form>
+    </div>
+    <div id="dzglTabel"></div>
+</div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="dzgl_dialog" id="dzgl_dialog" title="">
+    <form action="" method="post">
+        <input type="hidden" id="user_id">
+        <div class="inputItemBox">
+            <label class="inputName">定制类型</label>
+           <select name="ddxsQb" id="dzgl_dzlx">
+                    <option value="0">个人定制</option>
+                    <option value="1">公司定制</option>
+                </select>
+        </div>
+        <div class="inputItemBox">
+            <label class="inputName" for="dzgl_cfcs">出发城市</label>
+            <input id="dzgl_cfcs" type="text">
+        </div>
+        <div class="inputItemBox">
+            <label class="inputName" for="dzgl_mdcs">目的城市</label>
+            <input id="dzgl_mdcs" type="text">
+        </div>
+        <div class="inputItemBox">
+            <label class="inputName" for="dzgl_cfrq">出发日期</label>
+            <input id="dzgl_cfrq" type="text" onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss' })">
+        </div>
+        <div class="inputItemBox">
+            <label class="inputName" for="dzgl_lyts">旅游天数</label>
+            <input id="dzgl_lyts" type="text">
+        </div>
+        <div class="inputItemBox">
+            <label class="inputName" for="dzgl_etrs">儿童人数</label>
+            <input id="dzgl_etrs" type="text">
+        </div>
+        <div class="inputItemBox">
+            <label class="inputName" for="dzgl_crrs">成人人数</label>
+            <input id="dzgl_crrs" type="text">
+        </div>
+        <div class="inputItemBox">
+            <label class="inputName" for="dzgl_rjxf">人均消费</label>
+            <input id="dzgl_rjxf" type="text">
+        </div>
+        <div class="inputItemBox">
+            <label class="inputName" for="dzgl_xdgkxm">下单顾客姓名</label>
+            <input id="dzgl_xdgkxm" type="text">
+        </div>
+        <div class="inputItemBox">
+            <label class="inputName" for="dzgl_xdgksjh">下单顾客手机号</label>
+            <input id="dzgl_xdgksjh" type="text" maxlength="11">
+        </div>
+        <div class="btnItemBox">
+            <input type="hidden" id="dzglIsAdmin">
+            <button class="btn" type="submit" id="dzgl_confirm">确认</button>
+            <button class="btn" type="button" id="dzgl_xx">取消</button>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    require(['app/html/glxt/dzgl', "dojo/domReady!"],
+        function (DZGL) {
+            new DZGL();
+        });
+</script>
+</body>
+</html>

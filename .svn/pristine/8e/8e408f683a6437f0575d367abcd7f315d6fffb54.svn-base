@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象生成</title>
+    <style>
+        #xxfs-dxscEditorPanel .dgrid-header .dgrid-cell {
+            padding: 6px 0;
+        }
+        #xxfs-dxscEditorPanel .dgrid-scroller .dgrid-cell {
+            height: auto;
+            padding: 5px 6px;
+        }
+        #xxfs-dxscEditorPanel .qz li{
+            text-indent: 20px;
+            line-height: 30px;
+            border-bottom: 1px dashed rgba(150, 242, 255, 0.45);
+        }
+        #xxfs-dxscEditorPanel .iFComboBox input{
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="xxfs-dxscEditorPanel">
+    <div class="iFInputItem">
+        <div class="iFInlineItem">
+            <label class="iFLabel">对象类型</label>
+            <div class="iFInput" style="width: 100px;">
+                <input type="text">
+            </div>
+        </div>
+        <div class="iFInlineItem">
+            <label class="iFLabel">公司</label>
+            <div class="iFComboBox" id="gs-comboBox" style="width: 120px;">
+                <input type="text" readonly name="" data-value="" value="请选所在公司">
+                <a href="javascript:void(0);"></a>
+                <ul class="iFList">
+                    <li data-value="" style="height: 1.5em;">杭州出租车有限公司</li>
+                    <li data-value="" style="height: 1.5em;">杭州出租车有限公司</li>
+                    <li data-value="" style="height: 1.5em;">杭州出租车有限公司</li>
+                </ul>
+            </div>
+        </div>
+        <div class="iFInlineItem">
+            <label class="iFLabel">车牌</label>
+            <div class="iFComboBox" id="cp-comboBox" style="width: 120px;">
+                <input type="text" readonly name="" data-value="" value="请选择车牌">
+                <a href="javascript:void(0);"></a>
+                <ul class="iFList">
+                    <li data-value="" style="height: 1.5em;">浙A12345</li>
+                    <li data-value="" style="height: 1.5em;">浙A12345</li>
+                    <li data-value="" style="height: 1.5em;">浙A12345</li>
+                </ul>
+            </div>
+        </div>
+        <div class="iFInlineItem" style="line-height: 30px;">
+            <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clbAdd">添加</a>
+        </div>
+
+        <div class="iFInputItem">
+            <div class="iFInput" style="width: calc(100% - 20px);margin-left: 10px;height: 200px">
+                <ul class="qz">
+                    <li>杭州出租车有限公司</li>
+                    <li>杭州出租车有限公司</li>
+                    <li>杭州出租车有限公司</li>
+                    <li>杭州出租车有限公司</li>
+                    <li>杭州出租车有限公司</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="iFBtnItem">
+        <a href="javascript:void(0);" class="iFBtn iFBtnAdd">确认</a>
+        <a href="javascript:void(0);" class="iFBtn iFBtnCancel">取消</a>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,203 @@
+define([ "dijit/Dialog", "dgrid/Editor", "dijit/form/Button",
+        "dijit/form/DateTextBox", "dijit/form/TimeTextBox",
+        "dijit/form/SimpleTextarea", "dijit/form/Select",
+        "dijit/form/FilteringSelect", "dgrid/OnDemandGrid",
+        "dijit/form/TextBox", "app/Pagination", "dgrid/Selection",
+        "dgrid/Keyboard", "dgrid/extensions/ColumnResizer",
+        "dojo/store/Memory","cbtree/model/TreeStoreModel",
+        "dstore/Memory","dijit/form/NumberTextBox",
+        "dgrid/extensions/DijitRegistry", "dijit/registry", "dojo/dom-style",
+        'dstore/Trackable', 'dgrid/Selector',
+        "dojo/_base/declare", "dojo/dom-construct", "dojo/on","dijit/tree/ObjectStoreModel", "cbtree/Tree",
+        "cbtree/models/ForestStoreModel", "dojo/data/ItemFileWriteStore", "dojo/query", "app/util" ],
+    function(Dialog, Editor, Button, DateTextBox, TimeTextBox,
+             SimpleTextarea, Select, FilteringSelect, Grid, TextBox,
+             Pagination, Selection, Keyboard, ColumnResizer,
+             Memory2,TreeStoreModel,
+             Memory,NumberTextBox, DijitRegistry, registry, domStyle,
+             Trackable, Selector,
+             declare, dc, on,ObjectStoreModel, Tree,
+             ForestStoreModel, ItemFileWriteStore, query, util) {
+        var CustomGrid = declare([Grid, Selection, DijitRegistry, Editor, ColumnResizer, Selector]);
+		var khbGrid = null, store = null;
+		var khb_data;
+		var fxkfsr={};
+		var columns = {
+			checkbox: {label: '选择',selector: 'checkbox'},
+            dojoId: {label: '序号'},
+            ID_NUMBER: {label: '身份证号'},
+            NAME: {label: '姓名'},
+            MOBILE_PHONE: {label: '电话号码'},
+            COMPANY_NAME: {label: '公司'},
+            COMPANY_LICENSE_NUMBER: {label: '经营许可证号'},
+            SERVER_CARD_NUM: {label: '服务证号'},
+            PLATE_NUMBER: {label: '车号'},
+            VALID_PERIOD_END: {label: '资格证有效期止',formatter : util.formatYYYYMMDDHHMISS},
+            ASSESS_SCORE: {label: '分值'},
+            STATUS_NAME: {label: '证照状态'},
+        };
+		var xhrArgsTabel = {
+			url : basePath + "xhchtgl/findjsy",
+			postData : 'postData={"page":1,"pageSize":30}',
+			handleAs : "json",
+			Origin : self.location.origin,
+			preventCache : true,
+			withCredentials : true,
+			load : function(data) {
+				layer.closeAll();
+				khb_data = data.datas;
+				if(data.count>0){
+					for (var i = 0; i < data.datas.length; i++) {
+						data.datas[i] = dojo.mixin({
+							dojoId : i + 1
+						}, data.datas[i]);
+					}
+				}else{
+					dijit.byId('qd_dialog').show().then(function() {
+						$("#czjg").html('查询不到该信息！');
+					});
+				}
+				store = new Memory({
+					data : {
+						identifier : 'dojoId',
+						label : 'dojoId',
+						items : data.datas
+					}
+				});
+				khbGrid.totalCount = data.count;
+				khbGrid.set('collection', store);
+				khbGrid.pagination.refresh(data.datas.length);
+				khbGrid.on('dgrid-select', function (event) {
+					fxkfsr=khbGrid.selection;
+				});
+				khbGrid.on('dgrid-deselect', function (event) {
+					fxkfsr=khbGrid.selection;
+				});
+			},
+			error : function(error) {
+				console.log(error);
+			}
+		};
+		var pageii = null;	
+		return declare( null,{
+			constructor:function(){
+				this.initToolBar();
+//				if (khbGrid) {
+//					khbGrid = null;
+//					dojo.empty('cllxbTabel')
+//				}
+				if (khbGrid) { khbGrid.destroy(); }//dojo.destroy('zdbTabel');
+                dojo.create("div", {id:'khbTabels', innerHTML:"" },'khbTabel');
+				khbGrid = new CustomGrid({
+//					collection: store,
+//					selectionMode: 'none', 
+//					allowSelectAll: true,
+					totalCount : 0,
+					pagination:null,
+					columns : columns
+				}, "khbTabels");
+				layer.load(1);
+				pageii = new Pagination(khbGrid,xhrArgsTabel,{"ID_NUMBER":$("#jsy_sfzh").val(),
+					"VEHI_NO":$(" .jsy-list").val(),"NAME":$("#jsy_name").val(),"PHONE":$("#phone").val(),"COMP_NAME":$(".gsm-list").val(),
+					"VEHICLE_ID":$("#jsy_fwzh").val(),"LICENSE_NO":$("#jsy_jyxk").val(),
+					"STATUS":$("#jsy_zzzt").val(),"AREA_NAME":$(".sqm-list").val()},30);
+				dc.place(pageii.first(),'khbTabels','after');
+//				this.get();
+			},
+			del: function (obj) {},
+			add:function () {},
+			update: function (json) {},
+			get: function () {},
+			initToolBar:function(){
+//				if (khbGrid) { khbGrid = null; dojo.empty('cllxbTabel') }
+//				khbGrid = new CustomGrid({ totalCount: 0, pagination: null,columns: columns}, 'cllxbTabel');
+				var _self = this;
+				query('#khbFind').on('click', function() {
+					layer.load(1);
+//					if (khbGrid) {
+//						khbGrid = null;
+//						dojo.empty('cllxbTabel')
+//					}
+					if (khbGrid) { khbGrid.destroy(); }//dojo.destroy('zdbTabel');
+	                dojo.create("div", {id:'khbTabels', innerHTML:"" },'khbTabel');
+					khbGrid = new CustomGrid({
+						totalCount : 0,
+						pagination:null,
+						columns : columns
+					}, "khbTabels");
+					$(".pagination").remove();
+					pageii = new Pagination(khbGrid,xhrArgsTabel,{"ID_NUMBER":$("#jsy_sfzh").val(),
+						"VEHI_NO":$(".jsy-list").val(),"NAME":$("#jsy_name").val(),"PHONE":$("#phone").val(),"COMP_NAME":$(".gsm-list").val(),
+						"VEHICLE_ID":$("#jsy_fwzh").val(),"LICENSE_NO":$("#jsy_jyxk").val(),
+						"STATUS":$("#jsy_zzzt").val(),"AREA_NAME":$(".sqm-list").val()},30);
+					dc.place(pageii.first(),'khbTabels','after');
+//					pageii.first();
+				});
+				query('#khbDet').on('click', function() {
+					var sz=[];
+		        	for(var id in fxkfsr){
+		        		if(fxkfsr[id]){
+		        			sz.push(id);
+		        		}
+		        	}
+		        	if(sz.length==0){
+		        		dijit.byId('qd_dialog').show().then(function() {
+							$("#czjg").html('请选择一个驾驶员后查看！');
+						});
+		        		return;
+		        	}
+		        	if(sz.length>1){
+		        		dijit.byId('qd_dialog').show().then(function() {
+							$("#czjg").html('每次只能查看一个！');
+						});
+		        		return;
+		        	}
+		        	khbDialogPanel.set('href', 'app/html/xhchtgl/editor/khbEditor.html');
+					khbDialog.show().then(function () {
+						khbDialog.set('title', '驾驶员信息');
+						$("#tc-name").val(khb_data[sz[0]-1].NAME);//姓名
+						$("#tc-sfz").val(khb_data[sz[0]-1].ID_NUMBER);//身份证号
+						$("#tc-jl").val(khb_data[sz[0]-1].DRIVER_AGE);//驾龄
+                        $("#tc-szds").val(khb_data[sz[0]-1].AREA_NAME);//所在地市
+                        $("#tc-icid").val(khb_data[sz[0]-1].IC_NO);//IC卡号
+                        $("#tc-sgqy").val(khb_data[sz[0]-1].COMPANY_NAME);//上岗企业               
+                        $("#tc-dhhm").val(khb_data[sz[0]-1].MOBILE_PHONE);//电话号码 
+                        
+                        $("#tc-cp").val(khb_data[sz[0]-1].PLATE_NUMBER);//车牌号码
+                        $("#tc-zgzh").val(khb_data[sz[0]-1].SERVER_CARD_NUM);//资格证号
+                        $("#tc-zjbh").val(khb_data[sz[0]-1].SERIAL_NUMBER);//证件编号
+                        $("#tc-zjstart").val(util.formatYYYYMMDD(khb_data[sz[0]-1].VALID_PERIOD_START));//有效期起
+                        $("#tc-zjend").val(util.formatYYYYMMDD(khb_data[sz[0]-1].VALID_PERIOD_END));//有效期止
+                        $("#tc-bhz").val(khb_data[sz[0]-1].REPLACEMENT_NUMBER);//补换证次数
+                        $("#tc-jyxk").val(khb_data[sz[0]-1].COMPANY_LICENSE_NUMBER);//经营许可证号
+                        $("#tc-sgstart").val(util.formatYYYYMMDD(khb_data[sz[0]-1].IC_VD_S));//上岗有效期起
+                        $("#tc-sgend").val(util.formatYYYYMMDD(khb_data[sz[0]-1].IC_VD_E));//上岗有效期止
+                        $("#tc-fwjd").val(khb_data[sz[0]-1].SERVER_CARD_NUM);//服务监督卡号
+                        $("#tc-fwjdstart").val(util.formatYYYYMMDD(khb_data[sz[0]-1].SERVER_DATE_BEGIN));//服务监督卡有效期起
+                        $("#tc-fwjdend").val(util.formatYYYYMMDD(khb_data[sz[0]-1].SERVER_DATE_END));//服务监督卡有效期止
+                        $("#tc-cphm").val(khb_data[sz[0]-1].TRAIN_NUMBER);//培训次数
+                        query('.khb-iFBtnCommit').on('click', function() {   
+     
+								dojo.xhrPost(xhrArgs2);
+                        });
+                        query('.clb-iFBtnClose').on('click', function() {
+                        	khbDialog.hide();
+                        });
+                    })
+				});
+				query('#khbDc').on('click', function() {
+					var postData = {"ID_NUMBER":$("#jsy_sfzh").val(),
+									"VEHI_NO":$(".jsy-list").val(),
+									"NAME":$("#jsy_name").val(),
+									"PHONE":$("#phone").val(),
+									"COMP_NAME":$(".gsm-list").val(),
+									"VEHICLE_ID":$("#jsy_fwzh").val(),
+									"LICENSE_NO":$("#jsy_jyxk").val(),
+									"STATUS":$("#jsy_zzzt").val(),
+									"AREA_NAME":$(".sqm-list").val()};
+					url = "backExcel/findjsyexcle?postData="
+						+ encodeURI(encodeURI(JSON.stringify(postData))), window.open(url)
+				});
+			}
+		})
+	});

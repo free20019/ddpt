@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>客户信息查询</title>
+	<style>
+		#khxxcxTabel {
+			height: calc(100% - 80px);
+		}
+		
+			.field-dojoId{
+			width: 80px;
+			white-space: nowrap;
+			}
+			.field-CI_NAME{
+			width: 120px;
+			white-space: nowrap;
+			}
+			.field-CI_TEL{
+			width: 120px;
+			white-space: nowrap;
+			}
+			.field-ADDRESS{
+			width: 180px;
+			white-space: nowrap;
+			}
+			.field-ADDRES_REF{
+			width: 180px;
+			white-space: nowrap;
+			}
+			.field-COMPL_NUM{
+			width: 100px;
+			white-space: nowrap;
+			}
+			.field-DISP_NUM{
+			width: 100px;
+			white-space: nowrap;
+			}
+			.field-SUCCESS_NUM{
+			width: 100px;
+			white-space: nowrap;
+			}
+			.field-CI_GRADE{
+			width: 100px;
+			white-space: nowrap;
+			}
+			.field-REC_TIME{
+			width: 180px;
+			white-space: nowrap;
+			}
+			.field-NOTE{
+			width: 280px;
+			white-space: nowrap;
+			}
+	</style>
+</head>
+<body>
+<div class="">
+	<div class="iFInputItem">
+		<div class="iFInlineItem">
+			<label class="iFLabel">开始时间</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text"  id="khxx_stime"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">结束时间</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text"  id="khxx_etime"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">查询关键字</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="khxx_cxgjz">
+			</div>
+		</div>
+		<div class="iFInlineItem" style="line-height: 30px;">
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="khxxcxbtn">查询</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="khxxcxdaochubtn">导出</a>
+		</div>
+	</div>
+</div>
+<div id="khxxcxTabel"></div>
+<div style="padding: 10px;">查询结果：共<span id="khxxts">0</span>条记录</div>
+<script type="text/javascript">
+	require(['app/html/zxcxk/khxxcx', "dojo/domReady!"], function (KHXXCX) {
+		new KHXXCX();
+	});
+</script>
+</body>
+</html>

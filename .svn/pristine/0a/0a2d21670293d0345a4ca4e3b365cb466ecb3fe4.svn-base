@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>出租数据查询-统计2</title>
+	<style>
+		#statistics2Panel {
+			width: calc(100% - 20px);
+			height: calc(100% - 155px);
+			padding: 10px;
+			border: 1px solid #1e8cff;
+		}
+		.panel-btmDashed {
+			border-bottom: 1px dashed #000000;
+		}
+		.s2css{
+			height: calc(100% - 80px);
+			overflow: auto;
+		}
+		.s2zt{
+			color: #6bb2ff;
+			padding: 10px;
+		}
+		.rtjtable th,td{
+			white-space: nowrap;
+			color: black;
+		}
+	</style>
+</head>
+<body>
+<div class="topQueryPanel clearfix"  id="s2Panel">
+	<div class="queryPanel">
+		<div class="iFInlineItem" id="statistics2-rqBox">
+			<label class="iFLabel">日期</label>
+			<div class="iFInput" style="width: 100px">
+				<input type="text" id="statistics2-date">
+			</div>
+		</div>
+		<div class="iFInlineItem" id="statistics2-quyu">
+		<label class="iFLabel">区域</label>
+		<div class="iFComboBox" id="statistics2-quyu-comboBox" style="width: 100px;">
+			<input type="text" value="主城区" data-value="1" >
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+				<li data-value="0" >全部</li>
+				<li data-value="1" >主城区</li>
+				<li data-value="2" >余杭区</li>
+				<li data-value="3" >萧山区</li>
+				<li data-value="4" >临安区</li>
+				<li data-value="5" >富阳区</li>
+				<li data-value="6" >淳安区</li>
+				<li data-value="7" >建德市</li>
+			</ul>
+		</div>
+	</div>
+	
+<!-- 	<div class="queryPanel"> -->
+<!-- 		<div class="iFInlineItem" style="line-height: 35px;"> -->
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="statistics2-query">查询</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="statistics2-daochu">导出</a>
+		</div>
+<!-- 			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="statistics2-ryyqktj">日营运情况统计</a> -->
+<!-- 			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="statistics2-tzcltj">特征车辆统计</a> -->
+<!-- 			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="statistics2-zwgftj">早晚高峰统计</a> -->
+<!-- 			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="statistics2-cgtj">常规统计</a> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+	<div class="queryPanel">
+		<div class="iFInlineItem" style="float: left; width: calc(50% - 20px); padding: 5px 10px;">周转次数 = 日总营运次数/营运车辆数</div>
+		<div class="iFInlineItem" style="float: left; width: calc(50% - 20px); padding: 5px 10px;">平均营运时长 = 营运时长/车辆数</div>
+		<div class="iFInlineItem" style="float: left; width: calc(50% - 20px); padding: 5px 10px;">平均营收 = 日总营收金额/营运车辆数</div>
+		<div class="iFInlineItem" style="float: left; width: calc(50% - 20px); padding: 5px 10px;">平均行驶速度 = 日载客行驶里程/营运时长</div>
+	</div>
+</div>
+<div id="ryytjdiv" class="s2css">
+<div class="s2zt">营运统计:</div>
+<table class="iFTable rtjtable" style="text-align: center" >
+		<thead>
+		<tr>
+			<th></th>
+			<th>区域</th>
+			<th>总营运次数(次)</th>
+			<th>车辆总数(辆)</th>
+			<th>营运车辆数(辆)</th>
+			<th>总行驶里程(公里)</th>
+			<th>载客行驶里程(公里)</th>
+			<th>空驶里程(公里)</th>
+			<th>总营收金额(元)</th>
+			<th>等候时间(分钟)</th>
+			<th>营运时长(小时)</th>
+			<th>周转次数(次/辆)</th>
+			<th>平均营收(元/辆)</th>
+			<th>平均行驶速度(公里/小时)</th>
+			<th>平均营运时长(小时/辆)</th>
+			<th>平均等候时间(分/辆)</th>
+			<th>上路率</th>
+		</tr>
+		</thead>
+		
+			<tr id="trdata1">
+				<th>全天</th>
+				<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			</tr>
+			<tr id="trdata2">
+				<th>早高峰</th>
+				<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			</tr>
+			<tr id="trdata3">
+				<th>晚高峰</th>
+				<td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			</tr>
+		
+	</table>
+	<br/><br/>
+<!-- <div class="s2zt">早高峰营运统计:</div> -->
+<!-- <table class="iFTable rtjtable" style="text-align: center" > -->
+<!-- 		<thead> -->
+<!-- 		<tr> -->
+<!-- 			<th>参与营运车辆数</th> -->
+<!-- 			<th>总营运次数</th> -->
+<!-- 			<th>总行驶里程</th> -->
+<!-- 			<th>载客行驶里程</th> -->
+<!-- 			<th>上路率</th> -->
+<!-- 			<th>等候时间</th> -->
+<!-- 			<th>营收情况</th> -->
+<!-- 		</tr> -->
+<!-- 		</thead> -->
+<!-- 		<tbody id="s2data2"> -->
+<!-- 		</tbody> -->
+<!-- 	</table>	 -->
+<!-- 	<br/><br/> -->
+<!-- <div class="s2zt">晚高峰营运统计:</div> -->
+<!-- <table class="iFTable rtjtable" style="text-align: center" > -->
+<!-- 		<thead> -->
+<!-- 		<tr> -->
+<!-- 			<th>参与营运车辆数</th> -->
+<!-- 			<th>总营运次数</th> -->
+<!-- 			<th>总行驶里程</th> -->
+<!-- 			<th>载客行驶里程</th> -->
+<!-- 			<th>上路率</th> -->
+<!-- 			<th>等候时间</th> -->
+<!-- 			<th>营收情况</th> -->
+<!-- 		</tr> -->
+<!-- 		</thead> -->
+<!-- 		<tbody id="s2data3"> -->
+<!-- 		</tbody> -->
+<!-- 	</table>	 -->
+</div>
+<!-- <div id="ryytjdiv" class="s2css"></div> -->
+<!-- <div class="s2zt">早高峰营运统计:</div> -->
+<!-- <div id="zgftjdiv" class="s2css"></div> -->
+<!-- <div class="s2zt">晚高峰营运统计:</div> -->
+<!-- <div id="wgftjdiv" class="s2css"></div> -->
+
+<script type="text/javascript">
+	require(['app/html/zhywbb/czsjcx/statistics2', "dojo/domReady!"], function (STATISTICS2) {
+		new STATISTICS2();
+	});
+</script>
+</body>
+</html>

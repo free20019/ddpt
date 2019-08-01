@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>小货车调度</title>
+	<style type="text/css">
+		#xhcddContainer {
+			padding: 0;
+		}
+		#xhcddContainerCenter {
+			padding: 0;
+		}
+		#xhcddContainer-tabBox_tablist {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+<div id="xhcddContainer" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="persist:true,gutters:true, liveSplitters:true">
+	<div id="xhcddContainerCenter" data-dojo-type="dojox/layout/ContentPane" data-dojo-props="splitter:false, region:'center'">
+		<div id="xhcddContainer-tabBox"></div>
+	</div>
+</div>
+<script>
+	require(['dijit/layout/TabContainer', 'dojox/layout/ContentPane', 'dojo/query', 'dojo/domReady!'],
+		function (TabContainer, ContentPane, query){
+			var _self = this;
+			tc = new TabContainer({style: 'height: 100%; width: 100%; margin: 0; padding: 0;'}, 'xhcddContainer-tabBox');
+			var cp = new ContentPane({title: '新调度', href: './app/html/xhcdd/xhcdd.html', style: {padding: '0'}, closable: true});
+			cp.onShow = function(){ tc.resize(); };
+			tc.addChild(cp);
+			tc.startup();
+
+			_self.menu = {
+				'xhcdd': {href: 'app/html/xhcdd/xhcdd.html', closable: true}
+			};
+
+			query('#topContentPane li').on('click', function () {
+				var menu = _self.menu[$(this).data('skip')],
+					title = $(this).find('span').text();
+				$(this).addClass('selected').siblings('.selected').removeClass('selected');
+				var index = getTabIndex(title);
+				if(index === -1){
+					var newJson = {title: title, style: {padding: '0'}};
+					var cp = new ContentPane($.extend({}, newJson, menu));
+					tc.addChild(cp);
+					tc.selectChild(cp);
+				} else {
+					tc.selectChild(tc.getChildren()[index]);
+				}
+			});
+		});
+</script>
+</body>
+</html>

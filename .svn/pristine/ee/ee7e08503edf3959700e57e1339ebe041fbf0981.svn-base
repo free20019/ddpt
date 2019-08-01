@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>小货车管理</title>
+	<style>
+		#cldEditorPanel .iFPanel {
+			padding: 10px;
+		}
+		#cldEditorPanel .iFComboBox {
+			width: calc(100% - 6em);
+		}
+		#cldEditorPanel .iFSubItem {
+			width: calc(33% - 60px);
+			padding-right: 60px;
+			margin-top: 0px;
+		}
+		#cldEditorPanel .iFTextArea {
+			width: calc(100% - 60px);
+			padding-right: 60px;
+		}
+	</style>
+</head>
+<body>
+<form id="clbEditorForm">
+	<div id="cldEditorPanel">
+		<div class="iFTabularPanel" style="margin-bottom: 10px;">
+			<div class="iFTitle">
+				<label>业户基本信息</label>
+			</div>
+			<div class="iFContent">
+				<div class="iFPanel" style="padding-left: 20px; padding-right: 10px;">
+					<div class="iFW33 clearfix">
+<!-- 						<div class="iFSubItem"> -->
+<!-- 							<div class="iFInputItem" id="yh-tc"> -->
+<!-- 								<label class="iFLabel">业户名称</label> -->
+<!-- 								<div class="iFComboBox"> -->
+<!-- 									<input type="text" data-value="" id="tc-yh"> -->
+<!-- 									<a href="javascript:void(0);"></a> -->
+<!-- 									<ul class="iFList" id="tc-yh-ul-list"> -->
+<!-- 									</ul> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+					<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">业户名称</label>
+								<div class="iFInput">
+									<input  type="text" id="tc-yh">
+								</div>
+							</div>
+					</div>
+					<!-- 	<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">经营许可证有效期止</label>
+								<div class="iFInput">
+									<input type="text" name="LICENSE_NUMBER_END" id="tc-jyxksj" onfocus="WdatePicker({dateFmt: STATEDATE})">
+								</div>
+							</div>
+						</div> -->
+<!-- 						<div class="iFSubItem"> -->
+<!-- 							<div class="iFInputItem" id="jyfw-tc"> -->
+<!-- 								<label class="iFLabel">业户经营范围</label> -->
+<!-- 								<div class="iFComboBox"> -->
+<!-- 									<input type="text" data-value="" id="tc-jyfw"> -->
+<!-- 									<a href="javascript:void(0);"></a> -->
+<!-- 									<ul class="iFList" id="tc-jyfw-ul-list"> -->
+<!-- 									</ul> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">行政区划</label>
+								<div class="iFInput">
+									<input  type="text" id="tc-xzqh">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">业户经营范围</label>
+								<div class="iFInput">
+									<input  type="text" id="tc-jyfw">
+								</div>
+							</div>
+						</div>
+
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">经营许可证号</label>
+								<div class="iFInput">
+									<input  type="text" name="LICENSE_NUMBER" id="tc-jyxk">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">证照是否过期</label>
+								<div class="iFInput">
+									<input  type="text" id="tc-isgq">
+								</div>
+							</div>
+						</div>
+<!-- 						<div class="iFSubItem"> -->
+<!-- 							<div class="iFInputItem"> -->
+<!-- 								<label class="iFLabel">行驶证初次登记日期</label> -->
+<!-- 								<div class="iFInput"> -->
+<!-- 									<input type="text"  id="tc-ccdjrq"> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+				</div>
+			</div>
+		</div>
+	</div>
+		<div class="iFTabularPanel">
+			<div class="iFTitle">
+				<label>车辆基本信息</label>
+			</div>
+			<div class="iFContent">
+				<div class="iFPanel" style="padding-left: 20px; padding-right: 10px;">
+					<div class="iFW33 clearfix">
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">车牌号码</label>
+								<div class="iFInput">
+									<input type="text" name="PLATE_NUMBER" id="tc-cphm">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">车牌颜色</label>
+								<div class="iFInput">
+									<input type="text" name="PLATE_COLOR" id="tc-cpys">
+								</div>
+							</div>
+						</div>
+<!-- 						<div class="iFSubItem"> -->
+<!-- 							<div class="iFInputItem" id="cllx-tc"> -->
+<!-- 								<label class="iFLabel">车辆类型</label> -->
+<!-- 								<div class="iFComboBox"> -->
+<!-- 									<input type="text" data-value="" id="tc-cllx"> -->
+<!-- 									<a href="javascript:void(0);"></a> -->
+<!-- 									<ul class="iFList" id="tc-cllx-ul-list"> -->
+<!-- 									</ul> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">车辆类型</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-cllx">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">核定载客</label>
+								<div class="iFInput">
+									<input type="text" name="SEAT" id="tc-hdzk">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">厂牌</label>
+								<div class="iFInput">
+									<input type="text" name="BRAND" id="tc-cp">
+								</div>
+							</div>
+						</div>
+<!-- 						<div class="iFSubItem"> -->
+<!-- 							<div class="iFInputItem" id="xh-tc"> -->
+<!-- 								<label class="iFLabel">型号</label> -->
+<!-- 								<div class="iFComboBox"> -->
+<!-- 									<input type="text" data-value="" id="tc-xh"> -->
+<!-- 									<a href="javascript:void(0);"></a> -->
+<!-- 									<ul class="iFList" id="tc-xh-ul-list"> -->
+<!-- 									</ul> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">型号</label>
+								<div class="iFInput">
+									<input type="text" id="tc-xh">
+								</div>
+							</div>
+						</div>
+							<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">车长(mm)</label>
+								<div class="iFInput">
+									<input type="text" name="LENGTH" id="tc-length">
+								</div>
+							</div>	
+						</div>
+							<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">车宽(mm)</label>
+								<div class="iFInput">
+									<input type="text" name="WIDTH" id="tc-width">
+								</div>
+							</div>
+						</div>
+							<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">车高(mm)</label>
+								<div class="iFInput">
+									<input type="text" name="HEIGHT" id="tc-height">
+								</div>
+							</div>
+						</div>
+							<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">车辆颜色</label>
+								<div class="iFInput">
+									<input type="text" name="COLOR" id="tc-ys">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">车辆档案号</label>
+								<div class="iFInput">
+									<input type="text" name="FILE_NUMBER" id="tc-dah">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">总质量(KG)</label>
+								<div class="iFInput">
+									<input type="text" name="TOTAL_MASS" id="tc-zzl">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">排放标准</label>
+								<div class="iFInput">
+									<input type="text" name="EMISSION_STANDARD" id="tc-pfbz">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">出厂日期</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-ccrq">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">发动机功率（KW）</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-fdjgl">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">轴距</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-zj">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">车轴数</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-czs">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">创建时间</label>
+								<div class="iFInput">
+									<input type="text" id="tc-cjsj" onfocus="WdatePicker({dateFmt: STATEDATE})">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">更新时间</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-gxsj" onfocus="WdatePicker({dateFmt: STATEDATE})">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">初领日期</label>
+								<div class="iFInput">
+									<input type="text" id="tc-clsj" onfocus="WdatePicker({dateFmt: STATEDATE})">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">购车日期</label>
+								<div class="iFInput">
+									<input type="text" id="tc-gcsj" onfocus="WdatePicker({dateFmt: STATEDATE})">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">车主</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-sscz">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">身份证号</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-sfzh">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem iFTextArea">
+							<div class="iFInputItem">
+								<label class="iFLabel">车辆备注</label>
+								<div class="iFInput">
+									<textarea name="REMARK" id="tc-bz"></textarea>
+								</div>
+							</div>
+						</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+		<div class="iFTabularPanel">
+			<div class="iFTitle">
+				<label>技术信息</label>
+			</div>
+			<div class="iFContent">
+				<div class="iFPanel" style="padding-left: 20px; padding-right: 10px;">
+					<div class="iFW33 clearfix">
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">发动机号</label>
+								<div class="iFInput">
+									<input type="text" name="ENGINE_NUMBER" id="tc-fdjh">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">技术等级</label>
+								<div class="iFInput">
+									<input type="text" name="TECH_LEVEL" id="tc-jsdj">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">技术等级评定有效期起</label>
+								<div class="iFInput">
+									<input type="text" name="TECH_ENDTIME" id="tc-jsdjsjq" onfocus="WdatePicker({dateFmt: STATEDATE})">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">技术等级评定有效期止</label>
+								<div class="iFInput">
+									<input type="text" name="TECH_ENDTIME" id="tc-jsdjsj" onfocus="WdatePicker({dateFmt: STATEDATE})">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">车辆识别代码/车架号</label>
+								<div class="iFInput">
+									<input type="text" name="CHASSIS_NUMBER" id="tc-cjh">
+								</div>
+							</div>
+						</div>
+<!-- 						<div class="iFSubItem"> -->
+<!-- 							<div class="iFInputItem" id="rllx-tc"> -->
+<!-- 								<label class="iFLabel">燃料类型</label> -->
+<!-- 								<div class="iFComboBox"> -->
+<!-- 									<input type="text" data-value="" id="tc-rllx"> -->
+<!-- 									<a href="javascript:void(0);"></a> -->
+<!-- 									<ul class="iFList" id="tc-rllx-ul-list"> -->
+<!-- 									</ul> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">燃料类型</label>
+								<div class="iFInput">
+									<input type="text" id="tc-rllx">
+								</div>
+							</div>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="iFTabularPanel">
+			<div class="iFTitle">
+				<label>道路运输证信息</label>
+			</div>
+			<div class="iFContent">
+				<div class="iFPanel" style="padding-left: 20px; padding-right: 10px;">
+					<div class="iFW33 clearfix">
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">道路运输证号</label>
+								<div class="iFInput">
+									<input type="text" name="LICENSE_NUMBER" id="tc-dlyszh">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">道路运输证核发机关</label>
+								<div class="iFInput">
+									<input type="text" name="LICENSE_NUMBER" id="tc-dlyshfjg">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">有效开始时间</label>
+								<div class="iFInput">
+									<input type="text" name="LICENSE_VALID_PERIOD_FROM" id="tc-dlkssj" onfocus="WdatePicker({dateFmt: STATEDATE})">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">有效截止时间</label>
+								<div class="iFInput">
+									<input type="text" name="LICENSE_VALID_PERIOD_END" id="tc-dljssj" onfocus="WdatePicker({dateFmt: STATEDATE})">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">年审有效期起</label>
+								<div class="iFInput">
+									<input type="text" name="ANNUAL_REVIEW_VALID_PERIOD_S" id="tc-nssj" onfocus="WdatePicker({dateFmt: STATEDATE})">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">年审有效期止</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-jssj" onfocus="WdatePicker({dateFmt: STATEDATE})">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">初次发证时间</label>
+								<div class="iFInput">
+									<input type="text" name="LICENSE_ISSUE_DATE" id="tc-fzsj" onfocus="WdatePicker({dateFmt: STATEDATE})">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem iFTextArea">
+							<div class="iFInputItem">
+								<label class="iFLabel">道路运输证备注</label>
+								<div class="iFInput">
+									<textarea name="LICENSE_MEMO" id="tc-dlysbz"></textarea>
+								</div>
+							</div>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		<div class="iFBtnItem">
+<!-- 			<a href="javascript:void(0);" class="iFBtn clb-iFBtnCommit">提交</a>
+ -->			<a href="javascript:void(0);" class="iFBtn clb-iFBtnClose">关闭</a>
+		</div>
+	</div>
+</form>
+</body>
+</html>

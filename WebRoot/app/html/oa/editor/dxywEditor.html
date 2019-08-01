@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>短信业务-编辑</title>
+	<style>
+		#dxywEditorPanel {
+			margin-right: 30px;
+		}
+		#dxywEditorPanel .iFInputItem > .iFLabel {
+			width: 8em;
+		}
+		#dxywEditorPanel .iFInputItem > .iFInput {
+			width: calc(100% - 9em);
+		}
+	</style>
+</head>
+<body>
+<form action="" id="dxyw-form">
+	<div class="iFFormPanel" id="dxywEditorPanel">
+		<div class="iFInputItem">
+			<label class="iFLabel">业务单号</label>
+			<div class="iFInput">
+				<input type="text" name="GET_NO" id="dxyw-ywdh-e">
+			</div>
+		</div>
+		<div class="iFInputItem">
+			<label class="iFLabel">通知客户时间</label>
+			<div class="iFInput">
+				<input type="text" id="dxywEditor-tzkhsj" name="REC_TIME" onfocus="WdatePicker({dateFmt: STATEDATETIME})">
+			</div>
+		</div>
+		<div class="iFInputItem">
+			<label class="iFLabel">状态</label>
+			<div class="iFComboBox" id="car-comboBox" style="width: 160px;">
+				<input type="text" readonly name="STATUS" id="dxyw-zt-e">
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+					<li data-value="1">确认派单</li>
+					<li data-value="2">取消叫车</li>
+					<li data-value="3">申请派车</li>
+					<li data-value="4">短信下发</li>
+				</ul>
+			</div>
+		</div>
+		<div class="iFInputItem">
+			<label class="iFLabel">派发车牌号</label>
+			<div class="iFInput">
+				<input type="text" id="dxyw-pfcph-e" name="VEHI_ID">
+			</div>
+		</div>
+		<div class="iFInputItem">
+			<label class="iFLabel">手机号码</label>
+			<div class="iFInput">
+				<input type="text" id="dxyw-sjhm-e">
+			</div>
+		</div>
+		<div class="iFInputItem">
+			<label class="iFLabel">抢单时间</label>
+			<div class="iFInput">
+				<input type="text" id="dxywEditor-qdsj">
+			</div>
+		</div>
+		<div class="iFInputItem">
+			<label class="iFLabel">调度员工单号</label>
+			<div class="iFInput">
+				<input type="text" id="dxyw-ddygh-e">
+			</div>
+		</div>
+		<div class="iFInputItem iFTextArea">
+			<label class="iFLabel">内容</label>
+			<div class="iFInput">
+				<textarea id="dxyw-nr-e" name="CONTENT"></textarea>
+			</div>
+		</div>
+		<div class="iFInputItem iFTextArea">
+			<label class="iFLabel">备注</label>
+			<div class="iFInput">
+				<textarea id="dxyw-bz-e" name="NOTE"></textarea>
+			</div>
+		</div>
+		<div class="iFBtnItem">
+			<a href="javascript:void(0);" class="iFBtn iFBtnCommit">提交</a>
+			<a href="javascript:void(0);" class="iFBtn iFBtnClose">关闭</a>
+		</div>
+	</div>
+</form>
+</body>
+</html>

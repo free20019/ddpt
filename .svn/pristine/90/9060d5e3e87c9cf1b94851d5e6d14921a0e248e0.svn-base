@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>短信业务-编辑</title>
+	<style>
+		#lkxxEditorPanel {
+			margin-right: 30px;
+		}
+		#lkxxEditorPanel .iFInputItem > .iFLabel {
+			width: 5em;
+		}
+		#lkxxEditorPanel .iFInputItem > .iFInput {
+			width: calc(100% - 6em);
+		}
+	</style>
+</head>
+<body>
+<form action="" id="lkxx-form">
+	<div class="iFFormPanel" id="lkxxEditorPanel">
+		<div class="iFInputItem">
+			<label class="iFLabel">调度员工号</label>
+			<div class="iFInput">
+				<input type="text" id="lkxx-ddygh">
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">车牌号码</label>
+					<div class="iFInput">
+						<input type="text" name="VEHI_NO" id="lkxx-cphm">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">所属公司</label>
+					<div class="iFComboBox" id="car-comboBox" style="width: calc(100% - 6em);">
+						<input type="text" id="lkxx-gs-input" name="TAXICOMP">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList" id="lkxx-gs-ul">
+							<!--<li data-value="0">一运</li> -->
+							<!--<li data-value="1">泸杭</li> -->
+							<!--<li data-value="2">三科</li> -->
+							<!--<li data-value="3">四方客运</li> -->
+							<!--<li data-value="4">旅客</li> -->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="iFInputItem">
+			<label class="iFLabel">时间</label>
+			<div class="iFInlineItem" style="width: calc(100% - 9em);">
+				<div class="iFComboBox" id="lkxx-bc" style="width: calc(40% - 10px);">
+					<input type="text" readonly id="lkxx-bc-input" name="BC" value="上午班">
+					<a href="javascript:void(0);"></a>
+					<ul class="iFList">
+						<li>上午班</li>
+						<li>下午班</li>
+						<li>晚班</li>
+					</ul>
+				</div>
+				<div class="iFInput" style="width: 40%;">
+					<input type="text" id="lkxx-sj-input" name="DATETIME" onfocus="WdatePicker({dateFmt: STATEDATE})">
+				</div>
+			</div>
+		</div>
+		<div class="iFInputItem iFTextArea">
+			<label class="iFLabel">内容</label>
+			<div class="iFInput">
+				<textarea name="NOTE" id="lkxx-nr"></textarea>
+			</div>
+		</div>
+		<div class="iFBtnItem">
+			<a href="javascript:void(0);" class="iFBtn iFBtnCommit">提交</a>
+			<a href="javascript:void(0);" class="iFBtn iFBtnClose">关闭</a>
+		</div>
+	</div>
+</form>
+</body>
+</html>

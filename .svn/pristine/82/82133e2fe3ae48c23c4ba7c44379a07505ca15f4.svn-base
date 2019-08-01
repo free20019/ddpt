@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>公司车辆统计</title>
+	<style>
+		#gscltjTabel {
+			height: calc(100% - 50px);
+		}
+	</style>
+</head>
+<body>
+<div class="" id="gscltjPanel">
+	<div class="iFInlineItem" id="gscltj-qukuaiBox">
+		<label class="iFLabel">区块</label>
+		<div class="iFComboBox" id="gscltj_qukuai-comboBox" style="width: 160px;">
+			<input type="text" readonly id="gscltj-qk">
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList" id="gscltj-qk-ul">
+			</ul>
+		</div>
+	</div>
+	<div class="iFInlineItem" id="gscltj-gongsiBox">
+		<label class="iFLabel">公司</label>
+		<div class="iFComboBox" id="gscltj_gongsi-comboBox" style="width: 160px;">
+			<input type="text" id="gscltj-gs">
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList" id="gscltj-gs-ul">
+			</ul>
+		</div>
+	</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="gscltjQuery">查询</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="gscltjexcel">导出Excel</a>
+		<span id="gscltj-clzs"></span>
+	</div>
+</div>
+<div id="gscltjTabel"></div>
+<script type="text/javascript">
+	findcomp("").then(function(data){
+		xlktyff("gscltj-gs-ul",data.datas);
+		comboboxDFun('#gscltj_gongsi-comboBox')
+	});
+	findqk().then(function(data){
+		xlktyff("gscltj-qk-ul",data.datas);
+		comboboxDFun('#gscltj_qukuai-comboBox')
+	});
+	$("#gscltj-gongsiBox").find('input').on('keyup',function(){
+		var cpmhs=$("#gscltj-gongsiBox").find('input').val();
+		if(cpmhs==""){
+			findcomp_tj("").then(function(data2){
+				console.log(data2)
+				var data2 = data2.datas;
+				$("#gscltj-gongsiBox").find('.iFList').html("");
+				for (var i = 0; i < data2.length; i++) {
+					var cphms="<li data-value='"+data2[i].id+"'>"+data2[i].name+"</li>";
+					$("#gscltj-gongsiBox").find('.iFList').append(cphms);
+				}
+				$('#gscltj-gongsiBox').find('.iFList').on('click', function () {
+					if (event.stopPropagation){event.stopPropagation();}else if (window.event) {window.event.cancelBubble = true;}
+				}).find('li').off('click').on('click', function () {
+					$(this).addClass('selected').siblings('.selected').removeClass('selected');
+					$("#gscltj-gongsiBox").find('input').data('value', $(this).data('value')).val($(this).text()).end().removeClass('selected');
+				});
+			});
+		}else{
+			findcomp_tj(cpmhs).then(function(data2){
+				console.log(data2)
+				var data2 = data2.datas;
+				$("#gscltj-gongsiBox").find('.iFList').html("");
+				for (var i = 0; i < data2.length; i++) {
+					var cphms="<li data-value='"+data2[i].id+"'>"+data2[i].name+"</li>";
+					$("#gscltj-gongsiBox").find('.iFList').append(cphms);
+				}
+				$('#gscltj-gongsiBox').find('.iFList').on('click', function () {
+					if (event.stopPropagation){event.stopPropagation();}else if (window.event) {window.event.cancelBubble = true;}
+				}).find('li').off('click').on('click', function () {
+					$(this).addClass('selected').siblings('.selected').removeClass('selected');
+					$("#gscltj-gongsiBox").find('input').data('value', $(this).data('value')).val($(this).text()).end().removeClass('selected');
+				});
+			});
+		}
+	});
+// 	$("#gscltj-gs").keyup(function(){
+// 		$("#gscltj-gs-ul").empty();
+// 		if($("#gscltj-gs").val()==''){
+// 			findcomp_tj("").then(function(data){
+// 				xlktyff("gscltj-gs-ui",data.datas);
+// 			});
+// 		}else{
+// 			findcomp_tj($("#gscltj-gs").val()).then(function(data){
+// 				xlktyff("gscltj-gs-ui",data.datas);
+// 			});
+// 		}
+// 	})
+	require(['app/html/czbb/cljc/gscltj', "dojo/domReady!"], function (GSCLTJ) {
+		new GSCLTJ();
+	});
+</script>
+</body>
+</html>

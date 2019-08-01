@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自行车运行热点分析</title>
+	<style>
+		#lxt-contentPane {  height: 100%;  margin: 0;  padding: 0;  }
+		#lxt-mapBox {  width: 100%;  height: 100%;  }
+
+		#lxt-mapShowPanel {
+			position: absolute;
+			top: 40px;
+			left: 20px;
+			padding: 10px;
+			background: #ffffff;
+		    overflow:scroll;
+		    height : 85%;
+		}
+		#lxt-mapShowList {
+			margin-top: 10px;
+			margin-left: 20px;
+		}
+		#lxt-mapShowList .iconItem {
+			position: relative;
+			line-height: 20px;
+			font-size: 14px;
+			color: #333333;
+			cursor: pointer;
+		}
+		#lxt-mapShowList .iconItem:hover {
+			color: red;
+		}
+		#lxt-mapShowList .iconItem:before {
+			content: '';
+			display: inline-block;
+			width: 12px;
+			height: 12px;
+			margin-right: 10px;
+			border-radius: 50%;
+			vertical-align: middle;
+		}
+		#lxt-mapShowList .iconItem:before {  background: #6e7074;  }
+		#lxt-mapShowList .iconItem.action {
+			color : #c43530;
+		}
+		#lxt-mapShowList .iconItem.action:before, #lxt-mapShowList .iconItem:hover:before {  background: #c43530;  }
+		/*#lxt-mapShowList .iconItem:nth-child(1):before {  background: #c43530;  }*/
+		/*#lxt-mapShowList .iconItem:nth-child(2):before {  background: #304454;  }*/
+		/*#lxt-mapShowList .iconItem:nth-child(3):before {  background: #60a1a9;  }*/
+		/*#lxt-mapShowList .iconItem:nth-child(4):before {  background: #d58364;  }*/
+		/*#lxt-mapShowList .iconItem:nth-child(5):before {  background: #92c5ae;  }*/
+		/*#lxt-mapShowList .iconItem:nth-child(6):before {  background: #749f83;  }*/
+		/*#lxt-mapShowList .iconItem:nth-child(7):before {  background: #cb8722;  }*/
+		/*#lxt-mapShowList .iconItem:nth-child(8):before {  background: #bda39b;  }*/
+		/*#lxt-mapShowList .iconItem:nth-child(9):before {  background: #6e7074;  }*/
+		/*#lxt-mapShowList .iconItem:nth-child(10):before {  background: #536470;  }*/
+ 		/*#lxt-mapShowList .iconItem:nth-child(11):before {  background: #701518;  } */
+ 		/*#lxt-mapShowList .iconItem:nth-child(12):before {  background: #4c3c70;  } */
+		#lxt-mapShowList .fontcolor1 {color:red}
+		#lxt-mapShowList .fontcolor2 {color:black}
+		.inputDateBox {
+			width: 90px;
+		}
+		#lxt-mapBox table{
+		  border-collapse:collapse;
+	  	}
+		
+		#lxt-mapBox table, td, th{
+		  border:1px solid black;
+		}
+		#lxt-mapBox td{
+			width : 80px;
+			height : 40px;
+			text-align:center;
+			vertical-align:middle;
+		}
+		.cardTitle {
+			position: relative;
+			display: inline-block;
+			width: 160px;
+			line-height: 21px;
+			margin-top: 10px;
+			border-top: 2px solid #d94042;
+			border-bottom: 2px solid #d94042;
+			font-size: 14px;
+			text-align: center;
+			color: #d94042;
+		}
+		.cardTitle[hot]:before {
+			content: attr(hot);
+			position: absolute;
+			left: 0;
+			display: inline-block;
+			width: 25px;
+			height: 21px;
+			line-height: 21px;
+			text-align: center;
+			color: #ffffff;
+			background: #d94042;
+		}
+		.cardTitle:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 15px;
+			height: 15px;
+			/*border: 12px solid transparent;*/
+			/*border-right-color: #d94042;*/
+			box-shadow: -1px -1px 0 1px #d94042;
+			-webkit-transform: rotate(-45deg) translate(3px, 7px);
+			-moz-transform: rotate(-45deg) translate(3px, 7px);
+			-ms-transform: rotate(-45deg) translate(3px, 7px);
+			-o-transform: rotate(-45deg) translate(3px, 7px);
+			transform: rotate(-45deg) translate(3px, 7px);
+		}
+	</style>
+</head>
+<body>
+
+<div id="lxt-contentPane">
+	<div id="lxt-mapBox">
+		<table id="lxt-table">
+		</table>
+	</div>
+	<div id="lxt-mapShowPanel">
+		<div class="inputBox">
+			<input type="text" class="textBox inputDateBox" id="lxt-date">
+			<button class="btn" id="lxt-btnDate">查询</button>
+		</div>
+		<ul id="lxt-mapShowList">
+<!--  			<li class="iconItem">直达1</li> -->
+<!--  			<li class="iconItem">直达2</li> -->
+<!--  			<li class="iconItem">直达3</li> -->
+<!--  			<li class="iconItem">直达4</li> -->
+<!--  			<li class="iconItem">直达5</li> -->
+<!--  			<li class="iconItem">直达6</li> -->
+<!--  			<li class="iconItem">直达7</li> -->
+<!--  			<li class="iconItem">直达8</li> -->
+<!--  			<li class="iconItem">直达9</li> -->
+<!--  			<li class="iconItem">直达10</li> -->
+		</ul>
+	</div>
+</div>
+<script>
+	require(['app/html/czchtgl/cljk', 'dojo/domReady!'],function(CLJK){
+		new CLJK();
+	});
+</script>
+</body>
+</html>

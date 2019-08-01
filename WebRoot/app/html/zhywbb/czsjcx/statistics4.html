@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>出租数据查询-统计1</title>
+	<style>
+		#statistics4Table {
+			width: 100%;
+			height: calc(100% - 143px);
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body>
+<div class="topQueryPanel clearfix">
+	<div class="queryPanel">
+		<div class="iFInlineItem" id="statistics4-startTimeBox">
+			<label class="iFLabel">开始时间</label>
+			<div class="iFInput" style="width: 160px">
+				<input type="text" id="statistics4-startTime">
+			</div>
+		</div>
+		<div class="iFInlineItem" id="statistics4-gsBox">
+			<label class="iFLabel">公司</label>
+			<div class="iFInput" style="width: 160px">
+				<input type="text">
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">终端子类型</label>
+			<div class="iFComboBox" id="zdzlx-comboBox" style="width: 160px;">
+				<input type="text" readonly data-value="0" value="全部状态">
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+					<li data-value="0" style="height: 1.5em;">通用移动4G</li>
+					<li data-value="1" style="height: 1.5em;">飞田移动4G</li>
+					<li data-value="2" style="height: 1.5em;">华强移动4G</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="queryPanel">
+		<div class="iFInlineItem" id="statistics4-endTimeBox">
+			<label class="iFLabel">开始时间</label>
+			<div class="iFInput" style="width: 160px">
+				<input type="text" id="statistics4-endTime">
+			</div>
+		</div>
+		<div class="iFInlineItem" id="statistics4-clBox">
+			<label class="iFLabel">车辆</label>
+			<div class="iFInput" style="width: 90px">
+				<input type="text">
+			</div>
+		</div>
+	</div>
+	<div class="queryPanel">
+		<div class="iFInlineItem" style="line-height: 35px;">
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="statistics4-tjgs">统计公司</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="statistics4-gspj">公司平均</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="statistics4-tjcl">统计车辆</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="statistics4-tjate">统计ATE/F</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="statistics4-2050tj">20-50统计</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="statistics4-tj">统计</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="statistics4-dc">导出</a>
+		</div>
+	</div>
+	<div class="queryPanel">
+		<p>总条数：<span></span></p>
+	</div>
+</div>
+<div id="statistics4Table" style="display: none;"></div>
+<script type="text/javascript">
+	require(['app/html/zhywbb/czsjcx/statistics4', "dojo/domReady!"], function (STATISTICS4) {
+		new STATISTICS4();
+	});
+</script>
+</body>
+</html>

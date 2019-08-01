@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>标签页</title>
+	<style type="text/css">
+		#mainContainer {
+			padding: 0;
+		}
+		#mainContainerLeft_splitter {
+			width: 0;
+		}
+		#mainContainerLeft {
+			width: 150px;
+			padding: 0;
+			border: none;
+			background: #008AC3;
+		}
+		#mainContainerCenter {
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+<div id="mainContainer" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="persist:true,gutters:true, liveSplitters:true">
+	<div id="mainContainerLeft" data-dojo-type="dojox/layout/ContentPane" data-dojo-props="splitter:false,region:'left'" href="./app/html/zscxkContainer_left.html"></div>
+	<div id="mainContainerCenter" data-dojo-type="dojox/layout/ContentPane" data-dojo-props="splitter:false, region:'center'">
+		<div id="mainContainer-tabBox"></div>
+	</div>
+</div>
+<script>
+	require(['dijit/layout/TabContainer', 'dojox/layout/ContentPane', 'dojo/domReady!'],
+		function (TabContainer, ContentPane){
+			tc = new TabContainer({style: 'height: 100%; width: 100%; margin: 0; padding: 0;'}, 'mainContainer-tabBox');
+			/*var cp = new ContentPane({title: '车辆查询', href: './app/html/zxcxk/clcx.html', style: {padding: '6px'}, closable: true});
+			cp.onShow = function(){ tc.resize(); };
+			tc.addChild(cp);*/
+			tc.startup();
+		});
+
+</script>
+</body>
+</html>

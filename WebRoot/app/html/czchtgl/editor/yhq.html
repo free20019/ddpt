@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定位表-编辑</title>
+    <style>
+    	.yhq {
+    		width: 9em;
+    	}
+    	.newinput{
+   		    width: calc(100% - 10em);
+    	}
+    </style>
+</head>
+<body>
+<form action="" id="yhqEditorForm">
+	<div class="iFInputItem">
+	    <label class="iFLabel yhq">优惠券数量</label>
+	    <div class="iFInput" style="width: calc(100% - 10em);" tabindex="1">
+	        <input type="text" id="yhq_num" name="YHQ_NUM">
+	    </div>
+	</div>
+	<div class="iFInputItem">
+	    <label class="iFLabel yhq">生成日期</label>
+	    <div class="iFInput" style="width: calc(100% - 10em);">
+	        <input type="text" id="yhq_db" readonly="readonly" name="YHQ_DB" readonly="readonly">
+	    </div>
+	</div>
+	<div class="iFInputItem">
+	    <label class="iFLabel yhq">开始时间</label>
+	    <div class="iFInput" style="width: calc(100% - 10em);">
+	        <input type="text" id="yhq_st" name="YHQ_ST" onfocus="WdatePicker({dateFmt: STATEDATETIME})">
+	    </div>
+	</div>
+	<div class="iFInputItem">
+	    <label class="iFLabel yhq">结束时间</label>
+	    <div class="iFInput" style="width: calc(100% - 10em);">
+	        <input type="text" id="yhq_et" name="YHQ_ET" onfocus="WdatePicker({dateFmt: STATEDATETIME})">
+	    </div>
+	</div>
+	<div class="iFBtnItem">
+	    <a href="javascript:void(0);" class="iFBtn yhq-iFBtnCommit">提交</a>
+	    <a href="javascript:void(0);" class="iFBtn yhq-iFBtnClose">关闭</a>
+	</div>
+</form>
+</body>
+</html>

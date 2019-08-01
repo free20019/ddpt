@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>群组管理</title>
+	<style>
+		#qzglTabel {
+			height: calc(100% - 70px);
+		}
+		#qzglTabel .field-checkbox{width: 60px;white-space: nowrap;}
+		#qzglTabel .field-dojoId{width: 60px;white-space: nowrap;}
+		#qzglTabel .field-TEAMNAME{width: 100px;white-space: nowrap;}
+		#qzDialogPanel{width:300px;height: 320px}
+		
+	</style>
+</head>
+<body>
+<div class="">
+	<div class="iFInputItem">
+		<div class="iFInlineItem">
+			<label class="iFLabel">查询关键字</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="qzgl_cxgjz">
+			</div>
+		</div>
+		<div class="iFInlineItem" style="line-height: 30px;">
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="qzglbtn">查询</a>
+			<span class="w10px"></span>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="qzglAdd">添加</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="qzglUpd">修改</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="qzglDel">删除</a>
+		</div>
+	</div>
+</div>
+<div id="qzglTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="qzDialog" id="qzDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="qzDialogPanel" id="qzDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	require(['app/html/dxgl/qzgl', "dojo/domReady!"], function (QZGL) {
+		new QZGL();
+	});
+</script>
+</body>
+</html>

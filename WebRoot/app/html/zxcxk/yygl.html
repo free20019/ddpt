@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>预约管理</title>
+	<style>
+		#yyglTabel {
+			height: calc(100% - 80px);
+		}
+		#yyglTabel  th{
+			white-space: nowrap;
+		}
+		
+		#yyglTabel  td{
+			white-space: nowrap;
+		}
+		.field-dojoId-{width: 60px}
+		.field-YC_TIME{width: 180px}
+			.field-DISP_ID{width: 90px}
+			.field-CUST_NAME{width: 110px}
+			.field-CUST_TEL{width: 110px}
+			.field-ADDRESS{width: 160px}
+			.field-DISP_USER{width: 80px}
+			.field-VEHI_NO{width: 110px}
+			.field-DISP_STATE{width: 80px}
+			.field-DISP_TIME{width: 160px}
+			.field-DISP_TYPE{width: 80px}
+			.field-NOTE{width: 160px}
+			.field-DEST_ADDRESS{width: 160px}
+			.field-GSMC{width: 160px}
+			.field-ZDLX{width: 100px}
+			.field-ISCOMPL{width: 80px}
+			.field-DISP_TIME{width: 160px}
+			.field-AUTOOUTPHONE{width: 80px}
+			.field-OUTPHONE{width: 110px}
+			.field-CALL_STATE{width: 80px}
+		
+	</style>
+</head>
+<body>
+<div class="">
+	<div class="iFInputItem">
+		<div class="iFInlineItem">
+			<label class="iFLabel">开始时间</label>
+			<div class="iFInput" style="width: 120px;">
+				<input type="text" id="yystime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})">
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">结束时间</label>
+			<div class="iFInput" style="width: 120px;">
+				<input type="text" id="yyetime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})">
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">关键字</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="yycxgjz">
+			</div>
+		</div>
+		<div class="iFInlineItem" style="line-height: 30px;">
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="yycxbtn">预约查询</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="yyqxbtn">取消预约</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="yycxdaochubtn">导出</a>
+		</div>
+	</div>
+</div>
+<div id="yyglTabel"></div>
+<div style="padding: 10px;">查询结果：共<span id="yyts">0</span>条记录</div>
+<script type="text/javascript">
+	require(['app/html/zxcxk/yygl', "dojo/domReady!"], function (YYGL) {
+		new YYGL();
+	});
+</script>
+</body>
+</html>

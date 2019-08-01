@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>车辆上线率统计</title>
+	<style>
+		#clsxltjTabel {
+			height: calc(100% - 50px);
+		}
+	</style>
+</head>
+<body>
+<div class="" id="clsxltjPanel">
+	<div class="iFInlineItem" id="clsxltj-gongsiBox">
+		<label class="iFLabel">公司</label>
+		<div class="iFComboBox" id="clsxltj_gongsi-comboBox" style="width: 160px;">
+			<input type="text" id="clsxltj-comp">
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList" id="clsxltj-list-ul">
+			</ul>
+		</div>
+	</div>
+	<div class="iFInlineItem" id="clsxltj-qsrqBox">
+		<label class="iFLabel">起始日期</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="clsxltj-startTime">
+		</div>
+	</div>
+	<div class="iFInlineItem" id="clsxltj-jsrqBox">
+		<label class="iFLabel">结束日期</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="clsxltj-endTime">
+		</div>
+	</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clsxltjQuery">查询</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clsxltjexcel">导出Excel</a>
+	</div>
+</div>
+<div id="clsxltjTabel"></div>
+<!--<div data-dojo-type="dijit/Dialog" data-dojo-id="clsxltjDialog" id="clsxltjDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="clsxltjDialogPanel" id="clsxltjDialogPanel"></div>
+</div>-->
+<script type="text/javascript">
+findcomp("").then(function(data){
+	xlktyff("clsxltj-list-ul",data.datas);
+//		comboboxDFun('#fgs-comboBoxPanel');
+});
+$("#clsxltj-gongsiBox").find('input').on('keyup',function(){
+	var cpmhs=$("#clsxltj-gongsiBox").find('input').val();
+	if(cpmhs==""){
+		findcomp_tj("").then(function(data2){
+			console.log(data2)
+			var data2 = data2.datas;
+			$("#clsxltj-gongsiBox").find('.iFList').html("");
+			for (var i = 0; i < data2.length; i++) {
+				var cphms="<li data-value='"+data2[i].id+"'>"+data2[i].name+"</li>";
+				$("#clsxltj-gongsiBox").find('.iFList').append(cphms);
+			}
+			$('#clsxltj-gongsiBox').find('.iFList').on('click', function () {
+				if (event.stopPropagation){event.stopPropagation();}else if (window.event) {window.event.cancelBubble = true;}
+			}).find('li').off('click').on('click', function () {
+				$(this).addClass('selected').siblings('.selected').removeClass('selected');
+				$("#clsxltj-gongsiBox").find('input').data('value', $(this).data('value')).val($(this).text()).end().removeClass('selected');
+			});
+		});
+	}else{
+		findcomp_tj(cpmhs).then(function(data2){
+			console.log(data2)
+			var data2 = data2.datas;
+			$("#clsxltj-gongsiBox").find('.iFList').html("");
+			for (var i = 0; i < data2.length; i++) {
+				var cphms="<li data-value='"+data2[i].id+"'>"+data2[i].name+"</li>";
+				$("#clsxltj-gongsiBox").find('.iFList').append(cphms);
+			}
+			$('#clsxltj-gongsiBox').find('.iFList').on('click', function () {
+				if (event.stopPropagation){event.stopPropagation();}else if (window.event) {window.event.cancelBubble = true;}
+			}).find('li').off('click').on('click', function () {
+				$(this).addClass('selected').siblings('.selected').removeClass('selected');
+				$("#clsxltj-gongsiBox").find('input').data('value', $(this).data('value')).val($(this).text()).end().removeClass('selected');
+			});
+		});
+	}
+});
+// $("#clsxltj-comp").keyup(function(){
+// 	$("#clsxltj-list-ul").empty();
+// 	if($("#clsxltj-comp").val()==''){
+// 		findcomp_tj("").then(function(data){
+// 			xlktyff("clsxltj-list-ul",data.datas);
+// 		});
+// 	}else{
+// 		findcomp_tj($("#clsxltj-comp").val()).then(function(data){
+// 			xlktyff("clsxltj-list-ul",data.datas);
+// 		});
+// 	}
+// })
+	require(['app/html/czbb/cljc/clsxltj', "dojo/domReady!"], function (CLSXLTJ) {
+		new CLSXLTJ();
+	});
+</script>
+</body>
+</html>

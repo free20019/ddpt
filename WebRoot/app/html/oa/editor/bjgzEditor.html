@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>翻译记录-编辑</title>
+	<style>
+		#bjgzEditorPanel {
+			margin-right: 30px;
+		}
+		#bjgzEditorPanel .iFInputItem > .iFLabel {
+			width: 6em;
+		}
+		#bjgzEditorPanel .iFInputItem > .iFInput {
+			width: calc(100% - 7em);
+		}
+	</style>
+</head>
+<body>
+<form action="" id="bjgz-form">
+	<div class="iFFormPanel" id="bjgzEditorPanel">
+		<div class="clearfix">
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">车牌号码</label>
+					<div class="iFInput">
+						<input type="text" id="bjgz-cphm" name="VEHI_NO">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">记录人</label>
+					<div class="iFInput">
+						<input type="text" id="bjgz-jlr">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">状态</label>
+					<div class="iFComboBox" id="fwlb-comboBox" style="width: calc(100% - 7em);">
+						<input type="text" readonly data-value="0" value="未修好" id="bjgz-zt" name="TYPE">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+							<li data-value="0">未修好</li>
+							<li data-value="1">已修好</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">记录时间</label>
+					<div class="iFInput">
+						<input type="text" readonly onfocus="WdatePicker({dateFmt: STATEDATETIME})" id="bjgz-jlsj" name="DATETIME">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="iFInputItem iFTextArea">
+			<label class="iFLabel">内容</label>
+			<div class="iFInput">
+				<textarea id="bjgz-nr" name="CONTENT"></textarea>
+			</div>
+		</div>
+		<div class="iFBtnItem">
+			<a href="javascript:void(0);" class="iFBtn iFBtnCommit">提交</a>
+			<a href="javascript:void(0);" class="iFBtn iFBtnClose">关闭</a>
+		</div>
+	</div>
+</form>
+</body>
+</html>

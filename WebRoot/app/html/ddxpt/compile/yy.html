@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>预约--选择用车时间</title>
+    <style>
+        #model>ul{
+            display: flex;
+            height: 30px;
+            line-height: 30px;
+            font-size: 1.4em;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #026896;
+            color: #026896;
+            font-weight: bold;
+        }
+        #model>ul>li{
+            padding: 3px 10px 3px 10px;
+            border: 1px solid #026896;
+            border-bottom: none;
+            cursor: pointer;
+        }
+        #model>ul>li:last-child{border-left: none}
+        #model .content{
+            margin-top: 20px;
+            height: 200px;
+            padding: 10px;
+            border: 1px solid #026896;
+        }
+        #model .content table{
+            width: 100%;
+            color: #026896;
+        }
+        #model .content table input{outline: none}
+        #model .content table tr{
+            width: 25%;
+            line-height: 22px;
+        }
+        #bottom{
+            margin-top: 20px;
+            text-align: center;
+        }
+        #bottom>a{
+            display: inline-block;
+            text-decoration: none;
+            background-color: #FEBE22;
+            border: 1px solid #FF9934;
+            border-radius: 2px;
+            color: #010067;
+            padding: 5px 15px;
+        }
+        #bottom>a:last-child{margin-left: 50px}
+        #time{
+            color: #026896;
+            margin-top: 15px;
+        }
+        #time label{font-size: 1.3em}
+        #time>input{
+            outline: none;
+            height: 20px;
+            border: 1px solid #026896;
+        }
+        #model>ul>li.selected{
+            border-top: 5px solid #FEBE22;
+        }
+        .hide{
+            display: none;
+        }
+        .gdmb>ul{color: #026896}
+        .gdmb>ul>li:first-child{margin-top: 15px}
+        .gdmb>ul>li{
+            margin-bottom: 20px;
+            padding-left: 25px;
+        }
+        .gdmb>ul>li>input{
+            width: 200px;
+            height: 20px;
+            outline: none;
+            border: 1px solid #026896;
+        }
+    </style>
+</head>
+<body>
+<div id="model">
+    <ul>
+        <li class="selected" id="sdxz">手动选择</li>
+        <li id="gdmb">固定模板</li>
+    </ul>
+    <div class="content">
+        <div class="sdxz">
+            <table>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                    <td>
+                        <input type="checkbox">
+                        <span>2017-09-11</span>
+                    </td>
+                </tr>
+            </table>
+            <div id="time">
+                <label for="ycsj">用车时间:</label>
+                <input type="text" id="ycsj">
+            </div>
+        </div>
+        <div class="gdmb hide">
+            <ul>
+                <li>
+                    <label for="qsrq">起始日期:</label>
+                    <input type="text" id="qsrq">
+                </li>
+                <li>
+                    <label for="yc">用车时间:</label>
+                    <input type="text" id="yc">
+                </li>
+                <li>
+                    <label for="jgts">间隔天数:</label>
+                    <input type="text" id="jgts">
+                </li>
+                <li>
+                    <label for="jssj">结束时间:</label>
+                    <input type="text" id="jssj">
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="bottom">
+        <a href="javascript:void(0);" class="btn" id="confirm">确定</a>
+        <a href="javascript:void(0);" class="btn" id="cancel">取消</a>
+    </div>
+</div>
+<script>
+    $('#model li').click(function () {
+        $(this).siblings('.selected').removeClass('selected');
+        $(this).addClass('selected')
+    })
+    $('#sdxz').click(function () {
+        $('.sdxz').removeClass('hide');
+        $('.gdmb').addClass('hide');
+    });
+    $('#gdmb').click(function () {
+        $('.gdmb').removeClass('hide');
+        $('.sdxz').addClass('hide');
+    });
+</script>
+</body>
+</html>
