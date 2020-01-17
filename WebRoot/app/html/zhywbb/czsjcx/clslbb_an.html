@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>出租数据查询-统计1</title>
+	<style>
+		#clnbTable {
+			width: 100%;
+			height: 250px;
+			margin-top: 10px;
+		}
+		#clnbEcharts{
+			width: 100%;
+			height:calc(100% - 330px);
+			margin-top: 10px;
+		}
+
+		#clnbTable .dgrid-cell {
+				width: 60px;
+		}
+
+		#clnbTable .field-AREA_NAME {
+				width: 120px;
+		}
+		#clnbTable .field-NF {
+				width: 80px;
+		}
+	</style>
+</head>
+<body>
+<div class="topQueryPanel clearfix"  id="s3Panel">
+	<div class="queryPanel">
+		<div class="iFInlineItem" id="clnb-rqBox">
+			<label class="iFLabel">日期</label>
+			<div class="iFInput" style="width: 90px">
+				<input type="text" id="clnb-date">
+			</div>
+		</div>
+	<div class="iFInlineItem" id="clnb-quyu">
+		<label class="iFLabel">重点区域</label>
+		<div class="iFComboBox" id="clnb-quyu-comboBox" style="width: 150px;">
+			<input type="text" value="" data-value="" >
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+			</ul>
+		</div>
+	</div>
+		<div class="iFInlineItem" style="line-height: 35px;">
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clnb-cx">查询</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clnb-dc">导出</a>
+		</div>
+	</div>
+</div>
+<div id="clnbTable" ></div>
+<div id="clnbEcharts" ></div>
+<script type="text/javascript">
+	require(['app/html/zhywbb/czsjcx/clslbb_an', "dojo/domReady!"], function (CLAN) {
+		new CLAN();
+	});
+</script>
+</body>
+</html>

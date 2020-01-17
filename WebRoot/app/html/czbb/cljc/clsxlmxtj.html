@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>车辆上线率统计</title>
+	<style>
+		#clsxlmxtjTabel {
+			height: calc(100% - 50px);
+		}
+	</style>
+</head>
+<body>
+<div class="" id="clsxlmxtjPanel">
+	<div class="iFComboBox" id="clsxlmxtj-quyu-comboBox" style="width: 100px;">
+		<input type="text" value="主城区" data-value="1" id="clsxlmxtj-quyu">
+		<a href="javascript:void(0);"></a>
+		<ul class="iFList">
+			<li data-value="0" >全部</li>
+			<li data-value="1" >主城区</li>
+			<li data-value="2" >余杭区</li>
+			<li data-value="3" >萧山区</li>
+			<li data-value="4" >临安区</li>
+			<li data-value="5" >富阳区</li>
+			<li data-value="6" >淳安区</li>
+			<li data-value="7" >建德市</li>
+		</ul>
+	</div>
+	<div class="iFInlineItem" id="clsxlmxtj-gongsiBox">
+		<label class="iFLabel">公司</label>
+		<div class="iFComboBox" id="clsxlmxtj_gongsi-comboBox" style="width: 160px;">
+			<input type="text" id="clsxlmxtj-comp">
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList" id="clsxlmxtj-list-ul">
+			</ul>
+		</div>
+	</div>
+	<div class="iFInlineItem" id="clsxlmxtj-qsrqBox">
+		<label class="iFLabel">起始日期</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="clsxlmxtj-startTime">
+		</div>
+	</div>
+	<div class="iFInlineItem" id="clsxlmxtj-jsrqBox">
+		<label class="iFLabel">结束日期</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="clsxlmxtj-endTime">
+		</div>
+	</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clsxlmxtjQuery">查询</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clsxlmxtjexcel">导出Excel</a>
+	</div>
+</div>
+<div id="clsxlmxtjTabel"></div>
+<!--<div data-dojo-type="dijit/Dialog" data-dojo-id="clsxlmxtjDialog" id="clsxlmxtjDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="clsxlmxtjDialogPanel" id="clsxlmxtjDialogPanel"></div>
+</div>-->
+<script type="text/javascript">
+	require(['app/html/czbb/cljc/clsxlmxtj', "dojo/domReady!"], function (CLSXLMXTJ) {
+		new CLSXLMXTJ();
+	});
+</script>
+</body>
+</html>
