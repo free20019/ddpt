@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=10" />
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>新调度</title>
+	<style>
+		#xdd-borderContainer {
+			padding: 0;
+		}
+		
+		.cljkp{
+			height: 20%;
+			cursor: pointer;
+		}
+		
+
+		#xdd-centerContentPane {  padding: 0;  }
+		#xddConent-borderContainer {  padding: 0;  }
+		#xddConent-leftContentPane {  width: 400px;  padding: 0; background-color: #F3F8FC }
+		#xddConent-centerContentPane {  padding: 0;  left: 400px}
+		#xddConent-bottomContentPane {
+			height: 500px;
+			padding: 0;
+		}
+		#xdd-rightContentPane {
+			width: 260px;
+			padding: 0;
+		}
+
+		#xddMap {
+			width: 100%;
+			height: 100%;
+		}
+
+		#xddConent-tabContainer {
+			height: calc(100% - 37px);
+		}
+		#xddConent-tabContainer .dijitTabContainerTop-tabs .dijitTab {
+			min-width: 90px;
+			margin-right: 0;
+			padding: 10px 12px;
+			/* border-bottom: 2px solid #d6d6d6; */
+			-moz-border-radius: 0;
+			border-radius: 0;
+			background-color: #f3f3f3;
+			background-image: -webkit-linear-gradient(top, #ffffff 0px, #ffffff 40%, #f3f3f3 100%);
+			background-image: -moz-linear-gradient(top, #ffffff 0px, #ffffff 40%, #f3f3f3 100%);
+			background-image: -o-linear-gradient(top, #ffffff 0px, #ffffff 40%, #f3f3f3 100%);
+			background-image: linear-gradient(top, #ffffff 0px, #ffffff 40%, #f3f3f3 100%);
+		}
+		#xddConent-tabContainer .dijitTabContainerTop-tabs .dijitTabChecked {
+			padding: 10px 12px;
+			/* border-bottom: 2px solid #fb4554; */
+			background-color: #ffffff;
+			background-image: -webkit-linear-gradient(top, #ffffff 0px, #ffffff 50%, #ffffff 100%);
+			background-image: -moz-linear-gradient(top, #ffffff 0px, #ffffff 50%, #ffffff 100%);
+			background-image: -o-linear-gradient(top, #ffffff 0px, #ffffff 50%, #ffffff 100%);
+			background-image: linear-gradient(top, #ffffff 0px, #ffffff 50%, #ffffff 100%);
+		}
+		#xddConent-tabContainer .dijitTabContainerTop-tabs .dijitTabChecked .tabLabel {
+			color: #000066;
+		}
+		#xddConent-tabContainer .dijitTabContainerTop-tabs .dijitTabChecked:after {
+			content: '';
+			position: absolute;
+			top: 0;  left: 0;  right: 0;
+			height: 4px;
+			background: #1e8cff;
+		}
+
+		#xddConent-tabContainer .dijitTabPane {
+			padding: 0;
+		}
+		#xddConent-zzddTable,
+		#xddConent-pcqrTable,
+		#xddConent-rwcjkTable,
+		#xddConent-qtywTable,
+		#xddConent-ddwcTable,
+        #xddConent-fjclTable{
+			width: calc(100% - 2px);
+			height: calc(100% - 2px);
+		}
+		
+		#xddConent-zzddTable td div,
+		#xddConent-pcqrTable td div,
+		#xddConent-rwcjkTable td div,
+		#xddConent-qtywTable td div,
+		#xddConent-ddwcTable td div,
+        #xddConent-fjclTable td div{
+			    height: 20px;
+   				line-height: 20px;
+		}
+		
+		#xddConent-zzddTable .dgrid-cell,
+		#xddConent-pcqrTable .dgrid-cell,
+		#xddConent-rwcjkTable .dgrid-cell,
+		#xddConent-qtywTable .dgrid-cell,
+		#xddConent-ddwcTable .dgrid-cell,
+        #xddConent-fjclTable .dgrid-cell{
+			    height: 20px;
+			    padding:3px;
+		}
+		#xddConent-leftContentPane .iFInput input{height: 17px}
+		#xddConent-leftContentPane .iFLabel{color: #010067}
+		#xddConent-leftContentPane .panel-titleBpx > .title{
+			margin-bottom: 5px;
+			border-bottom: 1px solid #fff;
+		}
+		#xddConent-leftContentPane .panel-btnBox .bottom{
+			background-color: #fff;
+			border-color: #1E8CFF;
+			font-weight: bold;
+		}
+		#yyDialogPanel{
+			width: 550px;
+			height: 350px;
+		}
+		#dhwbDialogPanel{
+			width: 280px;
+			height: 32px;
+		}
+		#cdmcDialogPanel{
+			width: 280px;
+			height: 32px;
+		}
+		#xddDialogPanel{
+			width: 900px;
+			height: 400px;
+		}
+		#xxfsDialogPanel{
+			width: 500px;
+			height: 600px;
+		}
+
+		#xddConent-leftContentPane .iFLabel{width: 4.5em}
+
+
+		#xddConent-leftContentPane .panel-titleBpx > .content{margin: 0}
+		/*#xddConent-leftContentPane .panel-titleBpx > .content:not(:last-child){
+			border-bottom: 1px solid #d2d2d2;
+		}*/
+		.btn-bottom{
+			background-color: #fff;
+			border: 1px solid #8ad8ff;
+			border-radius: 5px;
+			color: #010066;
+			/*margin-left: 30px;*/
+			width: 70px;
+			height: 20px;
+			line-height: 20px;
+			display: inline-block;
+			text-decoration: none;
+/* 			margin-left: 40px; */
+			text-align: center;
+			font-weight: bold;
+			/*padding: 5px 14px 5px;*/
+		}
+		#xddConent-tabContainer .dijitTabPaneWrapper, #xddConent-tabContainer .dijitTabContainerTop-tabs, #xddConent-tabContainer .dijitTabContainerBottom-tabs, #xddConent-tabContainer .dijitTabContainerLeft-tabs, #xddConent-tabContainer .dijitTabContainerRight-tabs {
+			border-color: #2992FF;
+		}
+		#xddConent-tabContainer .dijitTabContainerTop-tabs .dijitTab {
+			overflow: hidden;
+			min-width: 90px;
+			line-height: 15px;
+			margin-bottom: -2px;
+			padding: 5px 12px 5px;
+			-moz-border-radius: 6px 6px 0 0;
+			border-radius: 6px 6px 0 0;
+			border: 1px solid #2992FF;
+			background-color: #F3F8FC;
+		}
+		#xddConent-tabContainer .dijitTabContainerTop-tabs .dijitTabChecked:before {
+			content: '';
+			position: absolute;
+			top: 0;  left: 0;  right: 0;
+			height: 6px;
+			background: #1E8CFF;
+		}
+		#xddConent-tabContainer .dijitTab{color: #010066}
+		#xddConent-tabContainer .dijitTabContainerTop-tabs{
+			padding-top: 2px;
+			background: #f2f8fb;
+			/*border-top: 3px solid #bde1f4;*/
+		}
+		#xddConent-centerContentPane{position: relative}
+		.callPoliceRollBar {
+			position: absolute;
+			top: 10px;
+			left: 50%;
+		}
+		.callPoliceRoll-wrap {
+			position: relative;
+			display: block;
+			overflow: hidden;
+			width: 450px;
+			height: 30px;
+			margin-left: -225px;
+			border: 1px solid #008ac9;
+			border-radius: 20px;
+			font-size: 14px;
+			text-align: left;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			color: #ff0000;
+			background: #fff;
+		}
+		.callPoliceRoll-wrap:before {
+			content: '';
+			display: inline-block;
+			position: absolute;
+			top: 50%;
+			left: 13px;
+			width: 23px;
+			height: 23px;
+			margin-top: -12px;
+			background: url(./resources/images/baojingqi.png);
+		}
+		.callPoliceRoll-wrap > p {
+			display: block;
+			height: 30px;
+			line-height: 30px;
+			margin-left: 43px;
+		}
+
+	/*	#btn_find{
+			position: absolute;
+			top: 4px;
+			right: 37px;
+		}*/
+		#xdd-rightContentPane .panel-titleBpx > .content{margin-bottom: 0}
+		#xdd-rightContentPane .zyxx{
+			min-height: 80px;
+			border: 1px solid #11C876;
+			margin: 0 8px;
+		}
+		#xdd-rightContentPane .title span{
+			display: inline-block;
+			padding: 2px;
+			border-right:1px solid transparent ;
+			border-left: 1px solid transparent ;
+			cursor: pointer;
+		}
+		#xdd-rightContentPane .title span.click{
+			display: inline-block;
+			padding: 2px;
+			background-color: #fff;
+			border-right:1px solid #11C876 ;
+			border-left: 1px solid #11C876 ;
+			border-top: 4px solid #11C876;
+		}
+		#xdd-rightContentPane .iFInputItem .iFComboBox{border-color: #11C876}
+		#xdd-rightContentPane .iFComboBox .iFList li.selected,
+		#xdd-rightContentPane .iFComboBox .iFList li:hover{background: #11C876;color: #fff;}
+		#xdd-rightContentPane .iFComboBox .iFList{border-color: #11C876}
+		#xdd-rightContentPane .iFComboBox a{background: #11C876;color: #fff}
+		#xdd-rightContentPane .iFComboBox .iFList li,
+		#xdd-rightContentPane .iFComboBox input[type=text]{color: #11C876 }
+		.hide{ display: none; }
+		#xddConent-tabContainer .dijitTabPaneWrapper{
+			height: 100px;
+		}
+		.none{display: none}
+		#xddConent-bottomTopContentPane{border-top: 3px solid #bde1f4; }
+		#bjxx li{line-height: 25px; margin-left: 5px;position: relative;}
+		#bjxx li:hover a {color: #ffffff;}
+		#bjxx li a {text-decoration: none;color: black}
+		#bjxx li .bjxx-red{color: red}
+/* 		#bjxx li .bjxx-red{color: red} */
+		#bjxx li:hover a:before{
+			position: absolute;
+			top: 50%;
+			right: 4px;
+			height: 20px;
+			line-height: 20px;
+			margin-top: -10px;
+			padding-left: 6px;
+			padding-right: 6px;
+			border-radius: 4px;
+			border: 1px solid rgba(255, 255, 255, 0.6);
+			font-weight: bold;
+			background: rgba(255, 255, 255, 0.40);
+		}
+		#bjxx li:hover .bjxx-red:before{
+			content: '紧急报警';
+			color: #dc3545;
+		}
+		
+		#bjxx li:hover .bjxx-black:before{
+			content: '越界报警';
+			color: #ffc107;
+		}
+
+		#xddConent-leftContentPane .iFInlineItem {  margin-bottom: 0;  }
+		#ddfw-comboBox .iFList, #ddqy-comboBox .iFList, #ywlx-comboBox .iFList, #cx-comboBox .iFList {  top: auto;  bottom: 100%;  }
+		.field-QTYWXH{width: 60px;}
+		.field-RWCXH{width: 60px;}
+		.field-JL{width: 100px;}
+		.field-ZZDDXH{width: 60px;}
+		.field-PCQRXH{width: 60px;}
+		.field-DDWCXH{width: 60px;}
+		.field-DISP_ID{width: 120px;}
+		.field-YEWU_TYPE{width: 80px;}
+		.field-CUST_NAME{width: 90px;}
+		.field-CUST_TEL{width:100px;}
+		.field-YHQ{width:100px;}
+		.field-ADDRESS{width: 160px;}
+		.field-SZQY{width: 100px;}
+		.field-DISP_STATE{width: 80px;}
+		.field-HBLX{width: 100px;}
+		.field-VEHI_NO{width: 100px;}
+		.field-VEHI_NUM{width: 100px;}
+		.field-DISP_TIME{width: 160px;}
+		.field-DEST_ADDRESS{width: 160px;}
+		.field-OUTPHONE{width: 100px;}
+		.field-DISP_USER{width: 80px;}
+
+
+		.field-CI_ID{width: 100px;}
+		.field-CI_NAME{width: 80px;}
+		.field-CI_TEL{width: 130px;}
+		.field-ADDRES_REF{width: 120px;}
+		.field-ADDRESS{width: 180px;}
+		.field-COMPL_NUM{width: 80px;}
+		.field-DISP_NUM{width: 80px;}
+		.field-INSERT_TIME{width: 180px;}
+		.field-NOTE{width: 150px;}
+		#ldhmTable .dgrid-selected {
+		    background: #51c6e8 none!important;
+		    color: black;
+		}
+		.field-VEHI_SIM{width: 110px;}
+		.field-COMP_NAME{width: 150px;}
+		.field-SPEED{width: 90px;}
+		.field-PX{width: 110px;}
+		.field-PY{width: 110px;}
+		.field-ANGLE{width: 80px;}
+		.field-DB_TIME{width: 150px;}
+		.field-STIME{width: 150px;}
+        .toolBar {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 10px #bbb;
+            background: #ffffff;
+        }
+         .toolBar2 {
+            position: absolute;
+            top: 50px;
+            right: 10px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 10px #bbb;
+            background: #ffffff;
+        }
+        .toolBar .toolItem {
+            position: relative;
+            float: left;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .toolBar .toolItem:after {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: 0;
+            height: 60%;
+            border-right: 1px solid #eee;
+        }
+
+
+
+		.markerContentStyle{position:relative;filter: Alpha(Opacity=0)}
+		.markerContentStyle span{
+		    white-space: nowrap;
+		    display: block;
+		    text-align: left;
+		    color: #064F98;
+		    width: auto;
+/* 		    border: 1px solid #3399CC; */
+		    FONT-FAMILY: 微软雅黑;
+		    position: absolute;
+		    font-weight: bold;
+		    white-space: nowrap webkit-border-radius:5px;
+		    border-radius: 5px;
+		    }
+		     .info {
+            border: solid 1px silver;
+        }
+        div.info-top {
+            position: relative;
+            background: none repeat scroll 0 0 #F9F9F9;
+            border-bottom: 1px solid #CCC;
+            border-radius: 5px 5px 0 0;
+        }
+        div.info-top div {
+            display: inline-block;
+            color: #333333;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 31px;
+            padding: 0 10px;
+        }
+        div.info-top img {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            transition-duration: 0.25s;
+        }
+        div.info-top img:hover {
+            box-shadow: 0px 0px 5px #000;
+        }
+        div.info-middle {
+            font-size: 12px;
+            padding: 6px;
+            line-height: 20px;
+        }
+        div.info-middle a {
+        	text-decoration:none;
+        }
+        div.info-bottom {
+            height: 0px;
+            width: 100%;
+            clear: both;
+            text-align: center;
+        }
+        div.info-bottom img {
+            position: relative;
+            z-index: 104;
+        }
+/*         span { */
+/*             margin-left: 5px; */
+/*             font-size: 11px; */
+/*         } */
+        .info-middle img {
+            float: left;
+            margin-right: 6px;
+        }
+		.cljkul {
+			height: 100%;
+			overflow: auto;
+		}
+		#bjxx {
+			height: 100%;
+			overflow: auto;
+		}
+		.cljkul li {
+			text-indent: 10px;
+		}
+		.cljkul li:hover, #bjxx li:hover {
+			color: #ffffff;
+			background: #0bc573;
+		}
+        .icon-love{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            margin-left: -15px;
+            width: 12px;
+            height: 12px;
+            display: inline-block;
+            background-image: url(resources/images/love.png);
+        }
+		#xddldlx{
+			margin-left: 20px;
+    font-size: 13px;
+    color: #0c0067;
+		}
+
+    </style>
+    
+</head>
+<body>
+<div id="xdd-borderContainer" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="persist:true, gutters:false, liveSplitters:true">
+<!-- 	<div id="xdd-topContentPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top', splitter:false"> -->
+<!-- 		<a href="javascript:void(0);"><i class="icon icon-zm"></i><span>置忙</span></a> -->
+<!-- 		<a href="javascript:void(0);" class="selected"><i class="icon icon-zx"></i><span>置闲</span></a> -->
+<!-- 		<a href="javascript:void(0);"><i class="icon icon-jj"></i><span>接机</span></a> -->
+<!-- 		<a href="javascript:void(0);"><i class="icon icon-gj"></i><span>挂机</span></a> -->
+<!-- 		<a href="javascript:void(0);"><i class="icon icon-wb"></i><span>外拨</span></a> -->
+<!-- 		<a href="javascript:void(0);"><i class="icon icon-hjbc"></i><span>呼叫保持</span></a> -->
+<!-- 		<a href="javascript:void(0);"><i class="icon icon-hf"></i><span>恢复</span></a> -->
+<!-- 		<a href="javascript:void(0);"><i class="icon icon-hjzy"></i><span>呼叫转移</span></a> -->
+<!-- 		<a href="javascript:void(0);"><i class="icon icon-hy"></i><span>会议</span></a> -->
+<!-- 		<a href="javascript:void(0);"><i class="icon icon-hywc"></i><span>会议完成</span></a> -->
+<!-- 		<a href="javascript:void(0);"><i class="icon icon-qxhy"></i><span>取消会议</span></a> -->
+<!-- 	</div> -->
+	<div id="xdd-centerContentPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center', splitter:false">
+		<div id="xddConent-borderContainer" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="persist:true, gutters:false, liveSplitters:true">
+			<div id="xddConent-leftContentPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'left', splitter:false">
+				<div class="panel-titleBpx">
+					<h3 class="title">来电显示<span id="xddldlx"></span></h3>
+					<div class="content">
+						<div class="iFInputItem">
+							<div class="iFInlineItem" >
+								<label class="iFLabel iFTitleName">来电号码</label>
+								<div class="iFComboBox" style="width: 120px" id="xddldhm-combobox">
+<!-- 									<select id="xddldhm" style="width: 110px;padding-left: 3px;height: 21px;"> -->
+<!-- 									<option>111</option> -->
+<!-- 									<option>222</option> -->
+<!-- 									</select> -->
+							<input type="text" style="font-size: 12px" id="xddldhm" name="xddinput">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+								</ul>
+								</div>
+							</div>
+							<div class="iFInlineItem" style="white-space: nowrap; margin-left: 10px">
+								<a href="javascript:void(0);" class="iFBtn iFColorOrange " id="ldhm_xz">选择</a>
+								<label class="iFLabel iFTitleName" style="margin-left: 10px;">客户等级</label>
+								<span id="xddkhdj">A</span>
+							</div>
+						</div>
+						<div class="iFInputItem">
+							<div class="iFInlineItem">
+								<label class="iFLabel iFTitleName">回拨</label>
+								<div class="iFInput" style="width: 120px">
+									<input type="text" id="xddhbdh" name="xddinput">
+								</div>
+							</div>
+							<div class="iFRadio" style="margin-left: 30px;">
+								<input type="checkbox" id="xdd_zdcheck" name="zd" checked>
+								<label for="xdd_zdcheck" style="margin-right: 20px">自动</label>
+								<input type="checkbox" id="xdd_yycheck" name="zd" >
+								<label for="xdd_yycheck">预约</label>
+							</div>
+						</div>
+						<div class="iFInputItem" style="white-space: nowrap;">
+							<div class="iFInlineItem">
+								<label class="iFLabel iFTitleName">上次约车</label>
+								<span id="xddscycsj"></span>
+							</div>
+						</div>
+						<div class="iFInputItem" style="white-space: nowrap;">
+							<div class="iFInlineItem">
+								<label class="iFLabel iFTitleName" style="width: auto;">约车/成功/空放</label>
+								<span id="xddcstj">0/0/0</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel-titleBpx" id="xdd_zd_yy">
+					<h3 class="title">详细信息</h3>
+					<div class="content" id="xdd_zdxx">
+						<div class="iFInputItem">
+							<label class="iFLabel iFTitleName">乘客姓名</label>
+							<div class="iFInput" style="width: calc(50% - 8.8em)">
+								<input type="text" id="xddckxm" name="xddinput">
+							</div>
+							<label class="iFLabel iFTitleName" style="display: none" id="xddyyjcsjlabel">用车时间</label>
+							<div class="iFInput" style="width: calc(50% - 38px);display: none" id="xddyyjcsjdiv">
+								<input type="text" id="xddyyjcsj" onfocus="WdatePicker({onpicked:function(){ycsj.focus();}, dateFmt: 'yyyy-MM-dd  HH:mm:ss'})">
+							</div>
+						</div>
+						<div class="iFInputItem">
+							<label class="iFLabel iFTitleName">详细地点</label>
+							<div class="iFInput" style="width: calc(100% - 145px)">
+								<input type="text" id="xddxxdz" name="xddinput">
+							</div>
+							<div class="iFInput" style="width:60px">
+								<input type="text" id="xddszqy" >
+							</div>
+<!-- 							<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="xxdd_xz" style="margin-left: 2px">选择</a> -->
+						</div>
+						<!--<div class="iFInputItem">
+							<label class="iFLabel iFTitleName">参考地点</label>
+							<div class="iFInput">
+								<input type="text">
+							</div>
+						</div>-->
+
+<!-- 						<div class="iFInputItem"> -->
+<!-- 							<label class="iFLabel iFTitleName">目标地点</label> -->
+<!-- 							<div class="iFInput"> -->
+<!-- 								<input type="text"> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						<div class="iFInputItem"> -->
+<!-- 							<label class="iFLabel iFTitleName">附加信息</label> -->
+<!-- 							<div class="iFInput"> -->
+<!-- 								<input type="text"> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="content none" id="xdd_yyxx"> -->
+<!-- 						<div class="iFInputItem"> -->
+<!-- 							<label class="iFLabel iFTitleName">乘客姓名</label> -->
+<!-- 							<div class="iFInput" style="width: calc(50% - 8.8em)"> -->
+<!-- 								<input type="text"> -->
+<!-- 							</div> -->
+<!-- 							<label class="iFLabel iFTitleName">用车时间</label> -->
+<!-- 							<div class="iFInput" style="width: calc(50% - 35px)"> -->
+<!-- 								<input type="text" onfocus="var jsrq=$dp.$('ycsj');WdatePicker({onpicked:function(){ycsj.focus();}, dateFmt: 'yyyy-MM-dd  HH:mm:ss'})"> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						<div class="iFInputItem"> -->
+<!-- 							<label class="iFLabel iFTitleName">详细地点</label> -->
+<!-- 							<div class="iFInput" style="width: calc(100% - 123px)"> -->
+<!-- 								<input type="text"> -->
+<!-- 							</div> -->
+<!-- 							<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="xxdd_xz yy" style="margin-left: 2px">选择</a> -->
+<!-- 						</div> -->
+						<div class="iFInputItem">
+							<label class="iFLabel iFTitleName">目标地点</label>
+							<div class="iFInput">
+								<input type="text" id="xddmddd" name="xddinput">
+							</div>
+						</div>
+						<div class="iFInputItem">
+							<label class="iFLabel iFTitleName">附加信息</label>
+							<div class="iFInput">
+								<input type="text" id="xddfjxx" name="xddinput">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel-titleBpx">
+					<h3 class="title">补充信息</h3>
+					<div class="content">
+						<div class="iFInputItem">
+							
+							<label class="iFLabel iFTitleName">调度区域</label>
+							<!--<div class="iFInput" style="width: calc(50% - 6.4em)">
+								<input type="text">
+							</div>-->
+							<div class="iFComboBox" id="ddqy-comboBox" style="width:calc(50% - 6.4em);">
+								<input type="text" readonly style="font-size: 12px" id="xddddqy" value="出租车">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+								</ul>
+							</div>
+							<label class="iFLabel iFTitleName">调度范围</label>
+							<div class="iFComboBox" id="ddfw-comboBox" style="width:calc(50% - 5.8em);">
+								<input type="text" readonly style="font-size: 12px" value="1km" id="xddddfw">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="" style="height: 1.5em;">0.5km</li>
+									<li data-value="" style="height: 1.5em;">1km</li>
+									<li data-value="" style="height: 1.5em;">2km</li>
+									<li data-value="" style="height: 1.5em;">3km</li>
+									<li data-value="" style="height: 1.5em;">4km</li>
+								</ul>
+							</div>
+						</div>
+						
+					</div>
+					<div class="content" id="xhcdddiv" style="display: none">
+						<div class="iFInputItem">
+							
+							<label class="iFLabel iFTitleName">调度类型</label>
+							<div class="iFComboBox" id="ywlx-comboBox" style="width:calc(50% - 6.4em);">
+								<input type="text" readonly style="font-size: 12px" id="xhcddywlx" value="普通约车">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="" style="height: 1.5em;">普通约车</li>
+									<li data-value="" style="height: 1.5em;">回程</li>
+									<li data-value="" style="height: 1.5em;">长途</li>
+								</ul>
+							</div>
+							<label class="iFLabel iFTitleName">车辆类型</label>
+							<div class="iFComboBox" id="cx-comboBox" style="width:calc(50% - 5.8em);">
+								<input type="text" readonly style="font-size: 12px" value="所有" id="xhcddcx">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="" style="height: 1.5em;">所有</li>
+									<li data-value="" style="height: 1.5em;">厢式</li>
+									<li data-value="" style="height: 1.5em;">小厢式</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+                    <div class="content" id="axdddiv" style="display: none">
+                        <div class="iFInputItem">
+
+                            <div class="iFRadio" style="margin-left: 0px;">
+                                <input type="checkbox" id="yhqcheck">
+                                <label for="yhqcheck" style="margin-right: 5px">优惠券</label>
+                            </div>
+                            <div class="iFComboBox" id="yhq-comboBox" style="width:calc(50% - 6.4em);">
+                                <input type="text" disabled="disabled" style="font-size: 12px" id="axddyhq">
+                                <a href="javascript:void(0);"></a>
+                                <ul class="iFList"></ul>
+                            </div>
+
+							<label class="iFLabel iFTitleName" style="display: none;" id="rgaxddyc1">指派车辆</label>
+							<div class="iFInput" style="width: calc(50% - 5.7em);display: none;" id="rgaxddyc2">
+								<input type="text" id="rgddzpcl" name="rgddzpcl">
+							</div>
+
+						</div>
+                    </div>
+
+				</div>
+				<div class="panel-btnBox" id="rgaxddbtn" style="text-align: center;display: none;">
+					<a href="javascript:void(0);" class="btn-bottom" id="rgaxdd">爱心调度</a>
+					<a href="javascript:void(0);" class="btn-bottom" style="margin-left: 20px;" id="rgaxddqx">取消</a>
+				</div>
+				<div class="panel-btnBox" id="zcddbtn" style="text-align: center;">
+					<a href="javascript:void(0);" class="btn-bottom" id="xddbtn">调度</a>
+					<a href="javascript:void(0);" class="btn-bottom" style="margin-left: 20px;" id="xddclearbtn">清空</a>
+ 					<a href="javascript:void(0);" class="btn-bottom" style="margin-left: 20px;" id="xddhmdbtn">黑名单</a>
+ 					<a href="javascript:void(0);" class="btn-bottom" style="margin-left: 20px;" id="xddscbtn">生成</a>
+				</div>
+			</div>
+			<div id="xddConent-centerContentPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center', splitter:false">
+				<div id="xddMap"></div>
+                <ul class="toolBar clearfix">
+                    <li class="toolItem" id="mapfd"><i class="iconfont"></i>放大</li>
+                    <li class="toolItem" id="mapsx"><i class="iconfont"></i>缩小</li>
+                    <li class="toolItem" id="mapcj"><i class="iconfont"></i>测距</li>
+                    <li class="toolItem" id="cltj" style="margin-top: 1px;">车辆总数：<font id="clzs">0</font> 在线数：<font id="clzxs">0</font> 空车：<font id="clkcs">0</font> 重车：<font id="clzcs">0</font> 离线数：<font id="cllxs">0</font></li>
+<!--                     <li class="toolItem" id="maplx"><i class="iconfont"></i>路线</li> -->
+                </ul>
+                
+<!--                 <ul class="toolBar2 clearfix" id="xdd-lxdialog" style="display: none"> -->
+<!-- 					<li class="toolItem" id="lxqd" style="margin: 3px;">起点： -->
+<!-- 					<div class="iFInput" style="width: 120px"> -->
+<!-- 						<input type="text" id="lxqdtext"> -->
+<!-- 					</div> -->
+<!-- 					</li> -->
+<!-- 					<li class="toolItem" id="lxzd" style="margin: 3px;">终点： -->
+<!-- 					<div class="iFInput" style="width: 120px"> -->
+<!-- 						<input type="text" id="lxzdtext"> -->
+<!-- 					</div> -->
+<!-- 					</li> -->
+<!--                 </ul> -->
+			</div>
+			<div id="xddConent-bottomContentPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'bottom', splitter:true">
+				<div id="xddConent-bottomTopContentPane" style="padding: 0 8px">
+					<div class="panel-titleBpx" style="position: relative">
+						<h3 class="title"  style="display: inline-block; width: 70px;">业务查询</h3>
+						<div class="iFInlineItem" >
+							<label class="iFLabel iFTitleName">车牌号码</label>
+							<div class="iFInput" style="width: 100px">
+								<input type="text" id="xddywcp">
+							</div>
+						</div>
+						<div class="iFInlineItem" >
+							<label class="iFLabel iFTitleName">业务编号</label>
+							<div class="iFInput" style="width: 100px">
+								<input type="text" id="xddywbh">
+							</div>
+						</div>
+						<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="btn_find"><i class="iconfont">&#xe625;</i>查询/刷新</a>
+						<!--<a href="javascript:void(0)" class="layui-btn layui-btn-normal layui-btn-small" id="xdd-dxfs">123</a>-->
+<!-- 						<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="xdd_dxfs"><span>信息发送</span></a> -->
+<!-- 						<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="xdd_ywbh"><span>业务编号</span></a> -->
+					</div>
+				</div>
+				<!--<div id="xddConent-bottomCenterTopContentPane"  data-dojo-props="region:'center', splitter:true">-->
+					<div data-dojo-type="dijit/layout/TabContainer" id="xddConent-tabContainer">
+						<div data-dojo-type="dijit/layout/ContentPane" title="正在调度(0)" id="zzddtitle">
+							<div id="xddConent-zzddTable"></div>
+						</div>
+						<div data-dojo-type="dijit/layout/ContentPane" title="派车确认(0)" id="pcqrtitle">
+							<div id="xddConent-pcqrTable"></div>
+						</div>
+						<div data-dojo-type="dijit/layout/ContentPane" title="任务车监控(0)" id="rwcjktitle">
+							<div id="xddConent-rwcjkTable"></div>
+						</div>
+						<div data-dojo-type="dijit/layout/ContentPane" title="调度完成(0)" id="ddwctitle">
+							<div id="xddConent-ddwcTable"></div>
+						</div>
+						<div data-dojo-type="dijit/layout/ContentPane" title="其他业务(0)" id="qtywtitle">
+							<div id="xddConent-qtywTable"></div>
+						</div>
+						<div data-dojo-type="dijit/layout/ContentPane" title="附近车辆(0)" id="fjcltitle">
+							<div id="xddConent-fjclTable"></div>
+						</div>
+					</div>
+				<!--</div>-->
+			</div>
+		</div>
+	</div>
+	<div id="xdd-rightContentPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'right', splitter:false">
+		<div class="panel-titleBpx iFColorGreen">
+			<h3 class="title">车辆监控</h3>
+			<div class="content">
+				<div class="iFInputItem">
+					<div class="iFComboBox" id="car-comboBox" style="display: inline-block; width: calc(100% - 88px)">
+						<input type="text" id="cljktext">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+						</ul>
+					</div>
+					<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="cljkbtn"><i class="iconfont">&#xe625;</i>查询</a>
+				</div>
+				<div style="height: 80px;border: 1px solid #0bc573;"  id="cljkdiv">
+ 					<ul class="cljkul">
+ 					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="panel-titleBpx iFColorGreen" >
+			<h3 class="title">地物查找</h3>
+			<div class="content">
+				<div class="iFInputItem">
+				<div class="iFInput" style="border-color: #11C876;">
+				<input type="text" id="wz-comboBox">
+				</div>
+					<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="dddwbtn"><i class="iconfont">&#xe625;</i>定位</a>
+				</div>
+			</div>
+		</div>
+		<div class="panel-titleBpx iFColorGreen">
+			<h3 class="title">报警信息</h3>
+			<div class="content" style="height: 160px;">
+				<ul id="bjxx">
+				</ul>
+			</div>
+		</div>
+		<div class="panel-titleBpx iFColorGreen" style="height: calc(100% - 425px);overflow: auto;">
+			<h3 class="title" id="zyxx-qdxx">
+				<span class="click selected" id="qdxx">抢单信息</span>
+				<span id="jkxx">监控信息</span>
+			</h3>
+			<div class="content zyxx" style="height: calc(100% - 60px);overflow: auto;">
+				<div class="qdxx">
+<!-- 				<p>11111</p><p>22222</p> -->
+				</div>
+				<div class="jkxx hide">
+<!-- 				<p>监控信息监控信息监控信息监控信息监控信息</p> -->
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<div data-dojo-type="dijit/Dialog" data-dojo-id="xddDialog" id="xddDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="xddDialogPanel" id="xddDialogPanel"></div>
+</div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="xxfsDialog" id="xxfsDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="xxfsDialogPanel" id="xxfsDialogPanel"></div>
+</div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="yyDialog" id="yyDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="yyDialogPanel" id="yyDialogPanel"></div>
+</div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="dhwbDialog" id="dhwbDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="dhwbDialogPanel" id="dhwbDialogPanel"></div>
+</div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="hccpDialog" id="hccpDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="hccpDialogPanel" id="hccpDialogPanel"></div>
+</div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="cdmcDialog" id="cdmcDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="cdmcDialogPanel" id="cdmcDialogPanel"></div>
+</div>
+<script src="app/mqttws31.js"></script>
+<script src="app/amapui.js"></script>
+<script src="app/maindd.js"></script>
+<script type="text/javascript">
+	var xddjsobj;
+    require(['app/html/ddxpt/xdd', "dojo/domReady!"], function (XDD) {
+        xddjsobj = new XDD();
+    });
+</script>
+
+</body>
+</html>

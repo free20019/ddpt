@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>异常数据查询</title>
+	<style>
+		#ycsjcxTabel {
+			height: calc(100% - 100px);
+		}
+		.field-dojoId{width: 80px;white-space: nowrap;}
+		.field-QY{width: 110px;white-space: nowrap;}
+		.field-FGS{width: 150px;white-space: nowrap;}
+		.field-JIAOYITYPE{width: 110px;white-space: nowrap;}
+		.field-SIM{width: 110px;white-space: nowrap;}
+		.field-YINGYUN{width: 110px;white-space: nowrap;}
+		.field-CPHM{width: 100px;white-space: nowrap;}
+		.field-SHANGCHE{width: 180px;white-space: nowrap;}
+		.field-XIACHE{width: 180px;white-space: nowrap;}
+		.field-JICHENG{width: 80px;white-space: nowrap;}
+		.field-DENGHOU{width: 110px;white-space: nowrap;}
+		.field-JINE{width: 80px;white-space: nowrap;}
+		.field-KONGSHI{width: 80px;white-space: nowrap;}
+		.field-ZHONGXINTIME{width: 180px;white-space: nowrap;}
+		.field-YUANE{width: 100px;white-space: nowrap;}
+		.field-CITY{width: 100px;white-space: nowrap;}
+		.field-XIAOFEI{width: 100px;white-space: nowrap;}
+		.field-KAHAO{width: 100px;white-space: nowrap;}
+		.field-BAOLIU{width: 100px;white-space: nowrap;}
+		.field-ZHONGDUANNO{width: 100px;white-space: nowrap;}
+		.field-JIAOYI{width: 100px;white-space: nowrap;}
+		.field-KATYPE{width: 100px;white-space: nowrap;}
+		.field-QIANBAO{width: 100px;white-space: nowrap;}
+		.field-QIYONG{width: 100px;white-space: nowrap;}
+		.field-JIAKUAN{width: 100px;white-space: nowrap;}
+		.field-TAC{width: 100px;white-space: nowrap;}
+		.field-POS{width: 100px;white-space: nowrap;}
+		.field-QIYE{width: 100px;white-space: nowrap;}
+	</style>
+</head>
+<body>
+<div class="" id="ycsjcxPanel">
+	<div class="iFInlineItem">
+		<label class="iFLabel">起始时间</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="ycsjcx-startTime">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">结束时间</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="ycsjcx-endTime">
+		</div>
+	</div>
+	
+	<div class="iFInlineItem" id="ycsjcx-quyu">
+		<label class="iFLabel">区域</label>
+		<div class="iFComboBox" id="ycsjcx-quyu-comboBox" style="width: 160px;">
+			<input type="text" value="主城区" data-value="1" >
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+				<li data-value="0" >全部</li>
+				<li data-value="1" >主城区</li>
+				<li data-value="2" >余杭区</li>
+				<li data-value="3" >萧山区</li>
+				<li data-value="4" >临安区</li>
+				<li data-value="5" >富阳区</li>
+				<li data-value="6" >淳安区</li>
+				<li data-value="7" >建德市</li>
+			</ul>
+		</div>
+	</div>
+	<div class="iFInlineItem" id="ycsjcx-company">
+		<label class="iFLabel">公司</label>
+		<div class="iFComboBox" id="ycsjcx-company-comboBox" style="width: 160px;">
+			<input type="text" readonly>
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+			</ul>
+		</div>
+	</div>
+	
+	<div class="iFInlineItem" id="ycsjcx-cphm">
+		<label class="iFLabel">车牌号码</label>
+		<div class="iFComboBox" id="ycsjcx-cphm-comboBox" style="width: 160px;">
+			<input type="text" >
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+			</ul>
+		</div>
+	</div>
+	<div class="iFInlineItem" style="margin-left: 10px;">
+		<input type="checkbox" class="iFCheckBox" id="ycsjcx-cxtj1" name="ycsjcxchk" value="1" checked>
+		<label for="clxjjy-cxtj1" style="margin-right: 10px;color: #ff0000">上车时间&lt;下车时间</label>
+		<input type="checkbox" class="iFCheckBox" id="ycsjcx-cxtj2" name="ycsjcxchk" value="2" checked>
+		<label for="clxjjy-cxtj2" style="margin-right: 10px;color:#03f7a8">实载里程&lt;时差*120km／h</label>
+		<input type="checkbox" class="iFCheckBox" id="ycsjcx-cxtj3" name="ycsjcxchk" value="3" checked>
+		<label for="clxjjy-cxtj3" style="margin-right: 10px;color:#a09eff">时差&lt;12h</label>
+		<input type="checkbox" class="iFCheckBox" id="ycsjcx-cxtj4" name="ycsjcxchk" value="4" checked>
+		<label for="clxjjy-cxtj4" style="margin-right: 10px;color:#c7c7c7">无英文</label>
+	</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="ycsjcxQuery">查询</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="ycsjcxDaochu">导出Excel</a>
+	</div>
+</div>
+<div id="ycsjcxTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="ycsjcxDialog" id="ycsjcxDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="ycsjcxDialogPanel" id="ycsjcxDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	require(['app/html/zhywbb/cxgl/ycsjcx', "dojo/domReady!"], function (ycsjcx) {
+		new ycsjcx();
+	});
+</script>
+</body>
+</html>

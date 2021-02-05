@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>在线时间统计</title>
+	<style>
+		#bjcltjTabel {
+			height: calc(100% - 50px);
+		}
+	</style>
+</head>
+<body>
+<div class="" id="bjcltjPanel">
+	<div class="iFInlineItem" id="bjcltj-gongsiBox">
+		<label class="iFLabel">公司</label>
+		<div class="iFComboBox" id="bjcltj_gongsi-comboBox" style="width: 160px;">
+			<input type="text" id="bjcltj-comp">
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList" id="bjcltj-comp-ui">
+			</ul>
+		</div>
+	</div>
+	<div class="iFInlineItem" id="bjcltj-qsrqBox">
+		<label class="iFLabel">起始日期</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="bjcltj-startTime">
+		</div>
+	</div>
+	<div class="iFInlineItem" id="bjcltj-jsrqBox">
+		<label class="iFLabel">结束日期</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="bjcltj-endTime">
+		</div>
+	</div>
+	<div class="iFInlineItem" id="bjcltj-cphmBox">
+		<label class="iFLabel">车牌号</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="bjcltj-vhic">
+		</div>
+	</div>
+	<div class="iFInlineItem" id="bjcltj-simkBox">
+		<label class="iFLabel">SIM卡号</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="bjcltj-sim">
+		</div>
+	</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="bjcltjQuery">查询</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="bjcltjexcel">导出Excel</a>
+		<span id="bjcltj-clzs"></span>
+	</div>
+</div>
+<div id="bjcltjTabel"></div>
+<!--<div data-dojo-type="dijit/Dialog" data-dojo-id="bjcltjDialog" id="bjcltjDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="bjcltjDialogPanel" id="bjcltjDialogPanel"></div>
+</div>-->
+<script type="text/javascript">
+findcomp("").then(function(data){
+	xlktyff("bjcltj-comp-ui",data.datas);
+//		comboboxDFun('#fgs-comboBoxPanel');
+});
+$("#bjcltj-gongsiBox").find('input').on('keyup',function(){
+	var cpmhs=$("#bjcltj-gongsiBox").find('input').val();
+	if(cpmhs==""){
+		findcomp_tj("").then(function(data2){
+			console.log(data2)
+			var data2 = data2.datas;
+			$("#bjcltj-gongsiBox").find('.iFList').html("");
+			for (var i = 0; i < data2.length; i++) {
+				var cphms="<li data-value='"+data2[i].id+"'>"+data2[i].name+"</li>";
+				$("#bjcltj-gongsiBox").find('.iFList').append(cphms);
+			}
+			$('#bjcltj-gongsiBox').find('.iFList').on('click', function () {
+				if (event.stopPropagation){event.stopPropagation();}else if (window.event) {window.event.cancelBubble = true;}
+			}).find('li').off('click').on('click', function () {
+				$(this).addClass('selected').siblings('.selected').removeClass('selected');
+				$("#bjcltj-gongsiBox").find('input').data('value', $(this).data('value')).val($(this).text()).end().removeClass('selected');
+			});
+		});
+	}else{
+		findcomp_tj(cpmhs).then(function(data2){
+			console.log(data2)
+			var data2 = data2.datas;
+			$("#bjcltj-gongsiBox").find('.iFList').html("");
+			for (var i = 0; i < data2.length; i++) {
+				var cphms="<li data-value='"+data2[i].id+"'>"+data2[i].name+"</li>";
+				$("#bjcltj-gongsiBox").find('.iFList').append(cphms);
+			}
+			$('#bjcltj-gongsiBox').find('.iFList').on('click', function () {
+				if (event.stopPropagation){event.stopPropagation();}else if (window.event) {window.event.cancelBubble = true;}
+			}).find('li').off('click').on('click', function () {
+				$(this).addClass('selected').siblings('.selected').removeClass('selected');
+				$("#bjcltj-gongsiBox").find('input').data('value', $(this).data('value')).val($(this).text()).end().removeClass('selected');
+			});
+		});
+	}
+});
+// $("#bjcltj-comp").keyup(function(){
+// 	$("#bjcltj-comp-ui").empty();
+// 	if($("#bjcltj-comp").val()==''){
+// 		findcomp_tj("").then(function(data){
+// 			xlktyff("bjcltj-comp-ui",data.datas);
+// 		});
+// 	}else{
+// 		findcomp_tj($("#bjcltj-comp").val()).then(function(data){
+// 			xlktyff("bjcltj-comp-ui",data.datas);
+// 		});
+// 	}
+// })
+	require(['app/html/czbb/cljc/bjcltj', "dojo/domReady!"], function (BJCLTJ) {
+		new BJCLTJ();
+	});
+</script>
+</body>
+</html>

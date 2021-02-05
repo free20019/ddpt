@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>车辆组-编辑</title>
+    <style>
+        #yhbEditorPanel .dgrid-header .dgrid-cell {
+            padding: 6px 0;
+        }
+        #yhbEditorPanel .dgrid-scroller .dgrid-cell {
+            height: auto;
+            padding: 5px 6px;
+        }
+        .btcss{
+			font-weight:bold;
+			text-align: center;
+			font-size:16px;
+	  	}
+	  	.tdcss1{text-align: center;width:90px;font-size:14px;}
+	  	#qxlbtable{
+	  		line-height: 20px;
+		  	border-collapse:collapse;
+/* 		  	border-collapse:separate; */
+		  }
+		#qxlbtable, th,td { table-layout:fixed; border: 2px solid #6bb3ff;}
+		#yhbEditorPanel .dxkjList{
+            width: 100%;
+            background-color: #fff;
+            overflow: auto;
+            overflow-x: hidden;
+            border-top: 1px solid #e0e0e0;
+        }
+
+
+        #yhbEditorPanel .dxkjList li {
+            /*height: 25px;*/
+            line-height: 25px;
+            font-size: 14px;
+            padding-left: 10px;
+            cursor: pointer;
+        }
+        #yhbEditorPanel .dxkjList li:hover {
+            color: #ffffff;
+            background: #007bff;
+        }
+        #yhbEditorPanel .dxkjList li:hover a{
+            color: #ffffff;
+        }
+        #yhbEditorPanel .dxkjList li a{
+            text-decoration: none;
+            color: black;
+        }
+        .iFInlineItem{
+            margin: 10px 0;
+        }
+        #yhbEditorPanel {
+        	width: 500px;
+        }
+        #yhbEditorPanel .btn-bottom-leg{
+            margin-top: 17px;
+            background-color: #fff;
+            border: 1px solid #a5a9ab;
+            border-radius: 5px;
+            color: #181819;
+            width: 40px;
+            height: 20px;
+            line-height: 20px;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+        }
+        #yhbEditorPanel .btn-bottom-leg:hover {
+            color: #212529;
+            background-color: #e2e6ea;
+            /*border-color: #dae0e5;*/
+        }
+        #syclList li[selected]{
+            background-color: #2e6784;
+            color: #ffffff;
+        }
+
+        #fclxxcl li[selected]{
+              background-color: #a6cef7;
+            color: #ffffff;
+          }
+    </style>
+</head>
+<body>
+<form action="" id="">
+	<div id="yhbEditorPanel">
+	    <div class="iFPanel" style="padding-left: 20px; padding-right: 10px;">
+	        <div class="iFInputItem">
+	            <label class="iFLabel">车辆组名称</label>
+	            <div class="iFInput"  style="width: calc(100% - 104px)">
+	                <input type="text" name="NOTE" id="axcz_name">
+	            </div>
+	        </div>
+	    </div>
+	    <div class="center-legend" style="margin-top: 20px;">
+	        <div style="padding: 5px;width:40%;float: left;">
+	            <fieldset style="border: 2px solid #e0e0e0;border-radius: .5em;">
+	                <legend style="margin-left: 30px;font-size: 14px">所有车辆</legend>
+	                <div class="iFInlineItem" id="yhbEditorPanel-cp">
+	                    <label class=" iFTitleName" style="font-size: 14px">车牌</label>
+	                    <div class="iFComboBox" id="ywbh-car-comboBox" style="width: 110px;">
+	                        <input type="text" id="ywbh-cp">
+	                    </div>
+	                </div>
+	                
+	                <ul id="syclList" class="dxkjList" style="height: 240px;">
+	                </ul>
+	            </fieldset>
+	        </div>
+	        <div style="padding: 5px;width: 10%;float: left;margin-top: 20%;">
+	            <a href="javascript:void(0);" id="ywbh-add" class="btn-bottom-leg">&gt;</a>
+	            <a href="javascript:void(0);" id="ywbh-del" class="btn-bottom-leg">&lt;</a>
+	        </div>
+	        <div style="padding: 5px;width: 40%;float: left;">
+	            <fieldset style="border: 2px solid #e0e0e0;border-radius: .5em;">
+	                <legend style="margin-left: 30px;font-size: 14px">组内车辆</legend>
+	                <ul id="fclxxcl" class="dxkjList" style="height: 285px; border: none;" ></ul>
+	            </fieldset>
+	        </div>
+	    </div>
+	    <div class="iFBtnItem" style="margin: 0 20px;">
+	        <a href="javascript:void(0);" class="iFBtn iFBtnAdd axcz-iFBtnCommit">提交</a>
+	        <a href="javascript:void(0);" class="iFBtn iFBtnCancel axcz-iFBtnClose">关闭</a>
+	    </div>
+	</div>
+</form>
+</body>
+</html>

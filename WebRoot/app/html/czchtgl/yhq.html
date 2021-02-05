@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定位表</title>
+    <style>
+        #yhqTabel {
+            height: calc(100% - 60px);
+        }
+        #yhqTabels {
+            height: 100%;
+        }
+        #yhqDialog .dijitDialogPaneContent {
+            padding: 0;
+        }
+        #yhqDialogPanel {
+            width: 400px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="">
+	<div class="iFInlineItem">
+		<label class="iFLabel" style="width:7em">生成起始时间</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="findyhq_stime" onfocus="WdatePicker({dateFmt: STATEDATETIME})">
+		</div>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="findyhq_etime" onfocus="WdatePicker({dateFmt: STATEDATETIME})">
+		</div>
+		<label class="iFLabel">关键字</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="findyhq_dd">
+		</div>
+	</div>
+    <div class="iFInlineItem" style="line-height: 30px;">
+    	<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="yhqFind">查询</a>
+        <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="yhqAdd">添加</a>
+        <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="yhqSy">使用</a>
+        <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="yhqWsy">未使用</a>
+        <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="yhqDel">删除</a>
+        <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="yhqDc">导出</a>
+    </div>
+</div>
+<div id="yhqTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="yhqDialog" id="yhqDialog">
+    <div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="yhqDialogPanel" id="yhqDialogPanel"></div>
+</div>
+<script type="text/javascript">
+    require(['app/html/czchtgl/yhq', "dojo/domReady!"], function (YHQ) {
+        new YHQ();
+    });
+</script>
+</body>
+</html>

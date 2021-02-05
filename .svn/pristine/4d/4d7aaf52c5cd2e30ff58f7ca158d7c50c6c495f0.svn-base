@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>业务查询</title>
+	<style>
+		#ywcxTabel {
+			height: calc(100% - 180px);
+		}
+		#ywcxTabel td,th{
+			white-space: nowrap;
+		}
+		
+	/* 	.field-DISP_TIME,.field-FINISH_TIME{
+			white-space:nowrap;
+			width: 180px;
+		}
+ */
+ 			.field-dojoId-{width: 60px}
+			.field-DISP_ID{width: 90px}
+			.field-CUST_NAME{width: 110px}
+			.field-DDQY{width: 110px}
+			.field-YHQ{width: 110px}
+			.field-CUST_TEL{width: 110px}
+			.field-SZQY{width: 100px}
+			.field-ADDRESS{width: 160px}
+			.field-DISP_USER{width: 80px}
+			.field-VEHI_NO{width: 110px}
+			.field-DISP_STATE{width: 80px}
+			.field-DISP_TIME{width: 160px}
+			.field-DB_TIME{width: 160px}
+			.field-DISP_TYPE{width: 80px}
+			.field-NOTE{width: 160px}
+			.field-DEST_ADDRESS{width: 160px}
+			.field-GSMC{width: 160px}
+			.field-ZDLX{width: 100px}
+			.field-YCMS{width: 100px}
+			.field-SJDH{width: 100px}
+			.field-ISCOMPL{width: 80px}
+			.field-DISP_TIME{width: 160px}
+			.field-AUTOOUTPHONE{width: 80px}
+			.field-OUTPHONE{width: 110px}
+			.field-CALL_STATE{width: 80px}
+			.field-QXDDLX{width: 110px}
+			.field-QXDDYY{width: 110px}
+			.field-CK_MYD{width: 110px}
+			.field-CK_PJ{width: 110px}
+			.field-SJ_MYD{width: 110px}
+			.field-SJ_PJ{width: 110px}
+
+ 
+	</style>
+</head>
+<body>
+<div class="" id="ywcxPanel">
+	<div class="iFInputItem">
+		<div class="iFInlineItem">
+			<label class="iFLabel">业务编号</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="ywbh">
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">派车车号</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="pcch">
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">终端类型</label>
+			<div class="iFComboBox" id="ywcx-zdlx-comboBox" style="width: 160px;">
+				<input type="text" value="">
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+					<li data-value="" style="height: 1.5em;"></li>
+				</ul>
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">客户电话</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="khdh">
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">调度状态</label>
+			<div class="iFComboBox" id="ddzt-comboBox" style="width: 160px;">
+				<input type="text" readonly>
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+					<li data-value="" style="height: 1.5em;"></li>
+					<li data-value="0">已下单</li>
+					<li data-value="1">派车确认</li>
+					<li data-value="2">调度完成</li>
+					<li data-value="3">调度超时</li>
+					<li data-value="4">调度取消</li>
+					<li data-value="5">未接到客人</li>
+					<li data-value="6">接错客人</li>
+					<li data-value="7">客人投诉</li>
+					<li data-value="8">不去接客人</li>
+					<li data-value="9">未调度</li>
+				</ul>
+			</div>
+		</div>
+		<!--<div class="iFInlineItem">-->
+			<!--<label class="iFLabel">约车类型</label>-->
+			<!--<div class="iFComboBox" id="yclx-comboBox" style="width: 160px;">-->
+				<!--<input type="text" readonly value="">-->
+				<!--<a href="javascript:void(0);"></a>-->
+				<!--<ul class="iFList">-->
+					<!--<li data-value="" style="height: 1.5em;"></li>-->
+					<!--<li data-value="0">电话约车</li>-->
+					<!--<li data-value="1">短信约车</li>-->
+					<!--<li data-value="2">平板扬招</li>-->
+					<!--<li data-value="3">网络约车</li>-->
+					<!--<li data-value="4">驻点扬招</li>-->
+					<!--<li data-value="5">自助约车</li>-->
+				<!--</ul>-->
+			<!--</div>-->
+		<!--</div>-->
+		<div class="iFInlineItem">
+			<label class="iFLabel">用户姓名</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="khxm">
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">所属公司</label>
+			<div class="iFComboBox" id="ssgs-comboBox" style="width: 160px;">
+				<input type="text" >
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+					<li data-value="" style="height: 1.5em;"></li>
+				</ul>
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">车辆类型</label>
+			<div class="iFComboBox" id="cllx-comboBox" style="width: 160px;">
+				<input type="text" readonly>
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+					<li data-value="" style="height: 1.5em;"></li>
+					<li data-value="1">无障碍</li>
+					<li data-value="2">电动车</li>
+				</ul>
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">详细地址</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="xxdz">
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">调度员工号</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="ddygh">
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">查询关键字</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="cxgjz">
+			</div>
+		</div>
+		<!--<div class="iFInlineItem">-->
+			<!--<label class="iFLabel">外呼状态</label>-->
+			<!--<div class="iFComboBox" id="whzt-comboBox" style="width: 160px;">-->
+				<!--<input type="text" readonly id="whzttj" data-value="-1">-->
+				<!--<a href="javascript:void(0);"></a>-->
+				<!--<ul class="iFList">-->
+					<!--<li data-value="-1" style="height: 1.5em;"></li>-->
+					<!--<li data-value="0">通知成功</li>-->
+					<!--<li data-value="3">外拨失败</li>-->
+					<!--<li data-value="5">确认收到</li>-->
+					<!--<li data-value="255">未外呼</li>-->
+				<!--</ul>-->
+			<!--</div>-->
+		<!--</div>-->
+		<!--<div class="iFInlineItem">-->
+			<!--<label class="iFLabel">调度类型</label>-->
+			<!--<div class="iFComboBox" id="ddlx-comboBox" style="width: 160px;">-->
+				<!--<input type="text" readonly data-value="1" value="出租车">-->
+				<!--<a href="javascript:void(0);"></a>-->
+				<!--<ul class="iFList">-->
+					<!--<li data-value="1">出租车</li>-->
+					<!--<li data-value="2">小货车</li>-->
+					<!--<li data-value="3">爱心出租</li>-->
+				<!--</ul>-->
+			<!--</div>-->
+		<!--</div>-->
+		<!--<div class="iFInlineItem">-->
+			<!--<label class="iFLabel">监控员工号</label>-->
+			<!--<div class="iFInput" style="width: 160px;">-->
+				<!--<input type="text" id="jkygh">-->
+			<!--</div>-->
+		<!--</div>-->
+		<div class="iFInlineItem">
+			<label class="iFLabel">调度区域</label>
+			<div class="iFComboBox" id="ddqy-comboBox" style="width: 160px;">
+				<input type="text" readonly>
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+					<li data-value="" style="height: 1.5em;"></li>
+					<li data-value="上城区">上城区</li>
+					<li data-value="下城区">下城区</li>
+					<li data-value="江干区">江干区</li>
+					<li data-value="拱墅区">拱墅区</li>
+					<li data-value="西湖区">西湖区</li>
+					<li data-value="滨江区">滨江区</li>
+					<li data-value="萧山区">萧山区</li>
+					<li data-value="余杭区">余杭区</li>
+					<li data-value="富阳区">富阳区</li>
+					<li data-value="临安区">临安区</li>
+					<li data-value="桐庐县">桐庐县</li>
+					<li data-value="淳安县">淳安县</li>
+					<li data-value="建德市">建德市</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="iFInlineItem">
+			<label class="iFLabel">用车时间</label>
+			<div class="iFInput" style="width: 150px;">
+				<input type="text" id="stime"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+			</div>
+			<label>到</label>
+			<div class="iFInput" style="width: 150px;">
+				<input type="text" id="etime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">用车模式</label>
+			<div class="iFComboBox" id="ycms-comboBox" style="width: 160px;">
+				<input type="text" readonly  id="ycms">
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+					<li data-value="" style="height: 1.5em;"></li>
+					<li data-value="结对用车">结对用车</li>
+					<li data-value="即时用车">即时用车</li>
+				</ul>
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">生成时间</label>
+			<div class="iFInput" style="width: 150px;">
+				<input type="text" id="scstime"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+			</div>
+			<label>到</label>
+			<div class="iFInput" style="width: 150px;">
+				<input type="text" id="scetime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+			</div>
+		</div>
+		<div class="iFInlineItem" style="line-height: 30px;">
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="ywcxbtn">查询</a>
+<!-- 			<a href="javascript:void(0);" class="iFBtn iFColorOrange" >刷新</a> -->
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="ywcxdaochubtn">导出</a>
+		</div>
+	</div>
+</div>
+<div id="ywcxTabel"></div>
+<div style="padding: 10px;">查询结果：共<span id="ywts">0</span>条记录</div>
+<script type="text/javascript">
+	require(['app/html/zxcxk/axywcx', "dojo/domReady!"], function (AXYWCX) {
+		new AXYWCX();
+	});
+</script>
+</body>
+</html>

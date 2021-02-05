@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>短信业务-编辑</title>
+	<style>
+		#txzyEditorPanel {
+			margin-right: 30px;
+		}
+		#txzyEditorPanel .iFInputItem > .iFLabel {
+			width: 5em;
+		}
+		#txzyEditorPanel .iFInputItem > .iFInput {
+			width: calc(100% - 6em);
+		}
+	</style>
+</head>
+<body>
+<form id="txzy-form">
+	<div class="iFFormPanel" id="txzyEditorPanel">
+		<div class="iFInputItem">
+			<label class="iFLabel">标题</label>
+			<div class="iFInput">
+				<input type="text" name ="ORE_TITLE" id="txzy-bt">
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">记录人</label>
+					<div class="iFInput">
+						<input type="text" id="txzy-jlr">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">时间</label>
+					<div class="iFInput">
+						<input type="text" name="ORE_TIME" id="txzyEditor-shijian" onfocus="WdatePicker({dateFmt: STATEDATETIME})">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="iFInputItem iFTextArea">
+			<label class="iFLabel">内容</label>
+			<div class="iFInput">
+				<textarea name="ORE_CONTENT" id="txzy-nr"></textarea>
+			</div>
+		</div>
+		<div class="iFBtnItem">
+			<a href="javascript:void(0);" class="iFBtn iFBtnCommit">提交</a>
+			<a href="javascript:void(0);" class="iFBtn iFBtnClose">关闭</a>
+		</div>
+	</div>
+</form>
+</body>
+</html>

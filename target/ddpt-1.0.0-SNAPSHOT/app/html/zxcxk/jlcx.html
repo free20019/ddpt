@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>距离查询</title>
+	<style>
+		#jlcxTabel {
+			height: calc(100% - 80px);
+		}
+		#jlcxDialogPanel {
+			width: 400px;
+			height: 240px;
+		}
+		#jlcxDialog .dijitDialogPaneContent {
+			padding: 0;
+		}
+		.field-FEE{
+			white-space:nowrap;
+			width: 110px;
+		}
+		.field-CITY{
+			white-space:nowrap;
+			width: 110px;
+		}
+		.field-DISTANCE{
+			white-space:nowrap;
+			width: 110px;
+		}
+		.field-BZ{
+			white-space:nowrap;
+			width: 380px;
+		}
+	</style>
+</head>
+<body>
+<div class="">
+	<div class="iFInputItem">
+		<div class="iFInlineItem">
+			<label class="iFLabel">查询关键字</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="jlcxgjz">
+			</div>
+		</div>
+		<div class="iFInlineItem" style="line-height: 30px;">
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="jlcxbtn">查询</a>
+			<span class="w10px"></span>
+<!-- 			<a href="javascript:void(0);" class="iFBtn iFColorOrange">刷新</a> -->
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="jlcxAdd">添加</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="jlcxUpd">修改</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="jlcxDel">删除</a>
+		</div>
+	</div>
+</div>
+<div id="jlcxTabel"></div>
+<div style="padding: 10px;">查询结果：共<span id="jlts">0</span>条记录</div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="jlcxDialog" id="jlcxDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="jlcxDialogPanel" id="jlcxDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	require(['app/html/zxcxk/jlcx', "dojo/domReady!"], function (JLCX) {
+		new JLCX();
+	});
+</script>
+</body>
+</html>

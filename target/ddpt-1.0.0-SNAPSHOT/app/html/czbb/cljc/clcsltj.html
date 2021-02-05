@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>车辆传输率统计</title>
+	<style>
+		#clcsltjTabel {
+			height: calc(100% - 50px);
+		}
+	</style>
+</head>
+<body>
+<div class="" id="clcsltjPanel">
+	<div class="iFComboBox" id="clcsltj-quyu-comboBox" style="width: 100px;">
+			<input type="text" value="主城区" data-value="1" id="clcsltj-quyu">
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+				<li data-value="0" >全部</li>
+				<li data-value="1" >主城区</li>
+				<li data-value="2" >余杭区</li>
+				<li data-value="3" >萧山区</li>
+				<li data-value="4" >临安区</li>
+				<li data-value="5" >富阳区</li>
+				<li data-value="6" >淳安区</li>
+				<li data-value="7" >建德市</li>
+			</ul>
+		</div>
+	<div class="iFInlineItem" id="clcsltj-gongsiBox">
+		<label class="iFLabel">公司</label>
+		<div class="iFComboBox" id="clcsltj_gongsi-comboBox" style="width: 160px;">
+			<input type="text" id="clcsltj-comp">
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList" id="clcsltj-list-ul">
+			</ul>
+		</div>
+	</div>
+	<div class="iFInlineItem" id="clcsltj-qsrqBox">
+		<label class="iFLabel">起始日期</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="clcsltj-startTime">
+		</div>
+	</div>
+	<div class="iFInlineItem" id="clcsltj-jsrqBox">
+		<label class="iFLabel">结束日期</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="clcsltj-endTime">
+		</div>
+	</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clcsltjQuery">查询</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clcsltjexcel">导出Excel</a>
+	</div>
+</div>
+<div id="clcsltjTabel"></div>
+<!--<div data-dojo-type="dijit/Dialog" data-dojo-id="clcsltjDialog" id="clcsltjDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="clcsltjDialogPanel" id="clcsltjDialogPanel"></div>
+</div>-->
+<script type="text/javascript">
+$("#clcsltj-startTime").val(setformatday(new Date(new Date().getTime() - 1000*60*60*24)));
+$("#clcsltj-endTime").val(setformatday(new Date(new Date().getTime() - 1000*60*60*24)));
+findcomp("").then(function(data){
+	xlktyff("clcsltj-list-ul",data.datas);
+//		comboboxDFun('#fgs-comboBoxPanel');
+});
+$("#clcsltj-gongsiBox").find('input').on('keyup',function(){
+	var cpmhs=$("#clcsltj-gongsiBox").find('input').val();
+	if(cpmhs==""){
+		findcomp_tj("").then(function(data2){
+			console.log(data2)
+			var data2 = data2.datas;
+			$("#clcsltj-gongsiBox").find('.iFList').html("");
+			for (var i = 0; i < data2.length; i++) {
+				var cphms="<li data-value='"+data2[i].id+"'>"+data2[i].name+"</li>";
+				$("#clcsltj-gongsiBox").find('.iFList').append(cphms);
+			}
+			$('#clcsltj-gongsiBox').find('.iFList').on('click', function () {
+				if (event.stopPropagation){event.stopPropagation();}else if (window.event) {window.event.cancelBubble = true;}
+			}).find('li').off('click').on('click', function () {
+				$(this).addClass('selected').siblings('.selected').removeClass('selected');
+				$("#clcsltj-gongsiBox").find('input').data('value', $(this).data('value')).val($(this).text()).end().removeClass('selected');
+			});
+		});
+	}else{
+		findcomp_tj(cpmhs).then(function(data2){
+			console.log(data2)
+			var data2 = data2.datas;
+			$("#clcsltj-gongsiBox").find('.iFList').html("");
+			for (var i = 0; i < data2.length; i++) {
+				var cphms="<li data-value='"+data2[i].id+"'>"+data2[i].name+"</li>";
+				$("#clcsltj-gongsiBox").find('.iFList').append(cphms);
+			}
+			$('#clcsltj-gongsiBox').find('.iFList').on('click', function () {
+				if (event.stopPropagation){event.stopPropagation();}else if (window.event) {window.event.cancelBubble = true;}
+			}).find('li').off('click').on('click', function () {
+				$(this).addClass('selected').siblings('.selected').removeClass('selected');
+				$("#clcsltj-gongsiBox").find('input').data('value', $(this).data('value')).val($(this).text()).end().removeClass('selected');
+			});
+		});
+	}
+});
+// $("#clcsltj-comp").keyup(function(){
+// 	$("#clcsltj-list-ul").empty();
+// 	if($("#clcsltj-comp").val()==''){
+// 		findcomp_tj("").then(function(data){
+// 			xlktyff("clcsltj-list-ul",data.datas);
+// 		});
+// 	}else{
+// 		findcomp_tj($("#clcsltj-comp").val()).then(function(data){
+// 			xlktyff("clcsltj-list-ul",data.datas);
+// 		});
+// 	}
+// })
+	require(['app/html/czbb/cljc/clcsltj', "dojo/domReady!"], function (CLCSLTJ) {
+		new CLCSLTJ();
+	});
+</script>
+</body>
+</html>

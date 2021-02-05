@@ -1,0 +1,618 @@
+package helper;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.ss.util.CellUtil;
+import org.apache.poi.xssf.streaming.SXSSFSheet;
+import org.apache.poi.xssf.streaming.SXSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+public class ExcelUtil {
+	 public static Workbook createWorkBook(List<Map<String, Object>> list,
+			 String []keys,String columnNames[],String gzb) {
+	        // 创建excel工作簿
+	        Workbook wb = new SXSSFWorkbook(1000);
+	        // 创建第一个sheet（页），并命名
+	        Sheet sheet = wb.createSheet(gzb);
+	        // 手动设置列宽。第一个参数表示要为第几列设；，第二个参数表示列的宽度，n为列高的像素数。
+	        for(int i=0;i<keys.length;i++){
+	            sheet.setColumnWidth((int) i, (int) (35.7 * 150));
+	        }
+
+	        // 创建第一行
+	        Row row = sheet.createRow((int) 0);
+
+	        // 创建两种单元格格式
+	        CellStyle cs = wb.createCellStyle();
+	        CellStyle cs2 = wb.createCellStyle();
+
+	        // 创建两种字体
+	        Font f = wb.createFont();
+	        Font f2 = wb.createFont();
+
+	        // 创建第一种字体样式（用于列名）
+	        f.setFontHeightInPoints((short) 10);
+	        f.setColor(IndexedColors.BLACK.getIndex());
+	        f.setBoldweight(Font.BOLDWEIGHT_BOLD);
+
+	        // 创建第二种字体样式（用于值）
+	        f2.setFontHeightInPoints((short) 10);
+	        f2.setColor(IndexedColors.BLACK.getIndex());
+
+//	        Font f3=wb.createFont();
+//	        f3.setFontHeightInPoints((int) 10);
+//	        f3.setColor(IndexedColors.RED.getIndex());
+
+	        // 设置第一种单元格的样式（用于列名）
+	        cs.setFont(f);
+	        cs.setBorderLeft(CellStyle.BORDER_THIN);
+	        cs.setBorderRight(CellStyle.BORDER_THIN);
+	        cs.setBorderTop(CellStyle.BORDER_THIN);
+	        cs.setBorderBottom(CellStyle.BORDER_THIN);
+	        cs.setAlignment(CellStyle.ALIGN_CENTER);
+
+	        // 设置第二种单元格的样式（用于值）
+	        cs2.setFont(f2);
+	        cs2.setBorderLeft(CellStyle.BORDER_THIN);
+	        cs2.setBorderRight(CellStyle.BORDER_THIN);
+	        cs2.setBorderTop(CellStyle.BORDER_THIN);
+	        cs2.setBorderBottom(CellStyle.BORDER_THIN);
+	        cs2.setAlignment(CellStyle.ALIGN_CENTER);
+	        //设置列名
+	        for(int i=0;i<columnNames.length;i++){
+	            Cell cell = row.createCell(i);
+	            cell.setCellValue(columnNames[i]);
+	            cell.setCellStyle(cs);
+	        }
+	        //设置每行每列的值
+	        int rowss=1;
+	        for (int i = 0; i < list.size(); i++) {
+	            // Row 行,Cell 方格 , Row 和 Cell 都是从0开始计数的
+	            // 创建一行，在页sheet上
+	            Row row1 = sheet.createRow((int) rowss+i);
+	            // 在row行上创建一个方格
+	            for(int j=0;j<keys.length;j++){
+	                Cell cell = row1.createCell(j);
+	                cell.setCellValue(list.get(i).get(keys[j]) == null?" ": list.get(i).get(keys[j]).toString());
+	                cell.setCellStyle(cs2);
+	            }
+	        }
+	        list.clear();
+	        return wb;
+	    }
+	 public static Workbook createWorkBookx(List<Map<String, Object>> jg,
+			 List<Map<String, Object>> qd,List<Map<String, Object>> zd,
+			 String []keys,String columnNames[],String gzb,String gzb1,String gzb2) {
+	        // 创建excel工作簿
+	        Workbook wb = new HSSFWorkbook();
+	        // 创建第一个sheet（页），并命名
+	        Sheet sheet = wb.createSheet(gzb);
+	        // 手动设置列宽。第一个参数表示要为第几列设；，第二个参数表示列的宽度，n为列高的像素数。
+	        for(int i=0;i<keys.length;i++){
+	            sheet.setColumnWidth((int) i, (int) (35.7 * 150));
+	        }
+
+	        // 创建第一行
+	        Row row = sheet.createRow((int) 0);
+
+	        // 创建两种单元格格式
+	        CellStyle cs = wb.createCellStyle();
+	        CellStyle cs2 = wb.createCellStyle();
+
+	        // 创建两种字体
+	        Font f = wb.createFont();
+	        Font f2 = wb.createFont();
+
+	        // 创建第一种字体样式（用于列名）
+	        f.setFontHeightInPoints((short) 10);
+	        f.setColor(IndexedColors.BLACK.getIndex());
+	        f.setBoldweight(Font.BOLDWEIGHT_BOLD);
+
+	        // 创建第二种字体样式（用于值）
+	        f2.setFontHeightInPoints((short) 10);
+	        f2.setColor(IndexedColors.BLACK.getIndex());
+
+//	        Font f3=wb.createFont();
+//	        f3.setFontHeightInPoints((int) 10);
+//	        f3.setColor(IndexedColors.RED.getIndex());
+
+	        // 设置第一种单元格的样式（用于列名）
+	        cs.setFont(f);
+	        cs.setBorderLeft(CellStyle.BORDER_THIN);
+	        cs.setBorderRight(CellStyle.BORDER_THIN);
+	        cs.setBorderTop(CellStyle.BORDER_THIN);
+	        cs.setBorderBottom(CellStyle.BORDER_THIN);
+	        cs.setAlignment(CellStyle.ALIGN_CENTER);
+
+	        // 设置第二种单元格的样式（用于值）
+	        cs2.setFont(f2);
+	        cs2.setBorderLeft(CellStyle.BORDER_THIN);
+	        cs2.setBorderRight(CellStyle.BORDER_THIN);
+	        cs2.setBorderTop(CellStyle.BORDER_THIN);
+	        cs2.setBorderBottom(CellStyle.BORDER_THIN);
+	        cs2.setAlignment(CellStyle.ALIGN_CENTER);
+	        //设置列名
+	        for(int i=0;i<columnNames.length;i++){
+	            Cell cell = row.createCell(i);
+	            cell.setCellValue(columnNames[i]);
+	            cell.setCellStyle(cs);
+	        }
+	        //设置每行每列的值
+	        int rowss=1;
+	        for (int i = 0; i < jg.size(); i++) {
+	            // Row 行,Cell 方格 , Row 和 Cell 都是从0开始计数的
+	            // 创建一行，在页sheet上
+	            Row row1 = sheet.createRow((int) rowss+i);
+	            // 在row行上创建一个方格
+	            for(int j=0;j<keys.length;j++){
+	                Cell cell = row1.createCell(j);
+	                cell.setCellValue(jg.get(i).get(keys[j]) == null?" ": jg.get(i).get(keys[j]).toString());
+	                cell.setCellStyle(cs2);
+	            }
+	        }
+	        
+	        
+	        
+	        // 创建第二个sheet（页），并命名
+	        Sheet sheet1 = wb.createSheet(gzb1);
+	        // 手动设置列宽。第一个参数表示要为第几列设；，第二个参数表示列的宽度，n为列高的像素数。
+	        for(int i=0;i<keys.length;i++){
+	        	sheet1.setColumnWidth((int) i, (int) (35.7 * 150));
+	        }
+
+	        // 创建第一行
+	        Row row1 = sheet1.createRow((int) 0);
+
+	        // 创建两种单元格格式
+	        CellStyle csx = wb.createCellStyle();
+	        CellStyle cs2x = wb.createCellStyle();
+
+	        // 创建两种字体
+	        Font fx = wb.createFont();
+	        Font f2x = wb.createFont();
+
+	        // 创建第一种字体样式（用于列名）
+	        fx.setFontHeightInPoints((short) 10);
+	        fx.setColor(IndexedColors.BLACK.getIndex());
+	        fx.setBoldweight(Font.BOLDWEIGHT_BOLD);
+
+	        // 创建第二种字体样式（用于值）
+	        f2x.setFontHeightInPoints((short) 10);
+	        f2x.setColor(IndexedColors.BLACK.getIndex());
+
+//	        Font f3=wb.createFont();
+//	        f3.setFontHeightInPoints((int) 10);
+//	        f3.setColor(IndexedColors.RED.getIndex());
+
+	        // 设置第一种单元格的样式（用于列名）
+	        csx.setFont(f);
+	        csx.setBorderLeft(CellStyle.BORDER_THIN);
+	        csx.setBorderRight(CellStyle.BORDER_THIN);
+	        csx.setBorderTop(CellStyle.BORDER_THIN);
+	        csx.setBorderBottom(CellStyle.BORDER_THIN);
+	        csx.setAlignment(CellStyle.ALIGN_CENTER);
+
+	        // 设置第二种单元格的样式（用于值）
+	        cs2x.setFont(f2);
+	        cs2x.setBorderLeft(CellStyle.BORDER_THIN);
+	        cs2x.setBorderRight(CellStyle.BORDER_THIN);
+	        cs2x.setBorderTop(CellStyle.BORDER_THIN);
+	        cs2x.setBorderBottom(CellStyle.BORDER_THIN);
+	        cs2x.setAlignment(CellStyle.ALIGN_CENTER);
+	        //设置列名
+	        for(int i=0;i<columnNames.length;i++){
+	            Cell cell = row1.createCell(i);
+	            cell.setCellValue(columnNames[i]);
+	            cell.setCellStyle(cs);
+	        }
+	        //设置每行每列的值
+	        int rowssx=1;
+	        for (int i = 0; i < qd.size(); i++) {
+	            // Row 行,Cell 方格 , Row 和 Cell 都是从0开始计数的
+	            // 创建一行，在页sheet上
+	            Row row1x = sheet1.createRow((int) rowssx+i);
+	            // 在row行上创建一个方格
+	            for(int j=0;j<keys.length;j++){
+	                Cell cell = row1x.createCell(j);
+	                cell.setCellValue(qd.get(i).get(keys[j]) == null?" ": qd.get(i).get(keys[j]).toString());
+	                cell.setCellStyle(cs2);
+	            }
+	        }
+	        
+	        
+	        
+	     // 创建第三个sheet（页），并命名
+	        Sheet sheet11 = wb.createSheet(gzb2);
+	        // 手动设置列宽。第一个参数表示要为第几列设；，第二个参数表示列的宽度，n为列高的像素数。
+	        for(int i=0;i<keys.length;i++){
+	        	sheet11.setColumnWidth((int) i, (int) (35.7 * 150));
+	        }
+
+	        // 创建第一行
+	        Row row11 = sheet11.createRow((int) 0);
+
+	        // 创建两种单元格格式
+	        CellStyle csx1 = wb.createCellStyle();
+	        CellStyle cs2x1 = wb.createCellStyle();
+
+	        // 创建两种字体
+	        Font fx1 = wb.createFont();
+	        Font f2x1 = wb.createFont();
+
+	        // 创建第一种字体样式（用于列名）
+	        fx1.setFontHeightInPoints((short) 10);
+	        fx1.setColor(IndexedColors.BLACK.getIndex());
+	        fx1.setBoldweight(Font.BOLDWEIGHT_BOLD);
+
+	        // 创建第二种字体样式（用于值）
+	        f2x1.setFontHeightInPoints((short) 10);
+	        f2x1.setColor(IndexedColors.BLACK.getIndex());
+
+//	        Font f3=wb.createFont();
+//	        f3.setFontHeightInPoints((int) 10);
+//	        f3.setColor(IndexedColors.RED.getIndex());
+
+	        // 设置第一种单元格的样式（用于列名）
+	        csx1.setFont(f);
+	        csx1.setBorderLeft(CellStyle.BORDER_THIN);
+	        csx1.setBorderRight(CellStyle.BORDER_THIN);
+	        csx1.setBorderTop(CellStyle.BORDER_THIN);
+	        csx1.setBorderBottom(CellStyle.BORDER_THIN);
+	        csx1.setAlignment(CellStyle.ALIGN_CENTER);
+
+	        // 设置第二种单元格的样式（用于值）
+	        cs2x1.setFont(f2);
+	        cs2x1.setBorderLeft(CellStyle.BORDER_THIN);
+	        cs2x1.setBorderRight(CellStyle.BORDER_THIN);
+	        cs2x1.setBorderTop(CellStyle.BORDER_THIN);
+	        cs2x1.setBorderBottom(CellStyle.BORDER_THIN);
+	        cs2x1.setAlignment(CellStyle.ALIGN_CENTER);
+	        //设置列名
+	        for(int i=0;i<columnNames.length;i++){
+	            Cell cell = row11.createCell(i);
+	            cell.setCellValue(columnNames[i]);
+	            cell.setCellStyle(cs);
+	        }
+	        //设置每行每列的值
+	        int rowssx1=1;
+	        for (int i = 0; i < zd.size(); i++) {
+	            // Row 行,Cell 方格 , Row 和 Cell 都是从0开始计数的
+	            // 创建一行，在页sheet上
+	            Row row1x = sheet11.createRow((int) rowssx1+i);
+	            // 在row行上创建一个方格
+	            for(int j=0;j<keys.length;j++){
+	                Cell cell = row1x.createCell(j);
+	                cell.setCellValue(zd.get(i).get(keys[j]) == null?" ": zd.get(i).get(keys[j]).toString());
+	                cell.setCellStyle(cs2);
+	            }
+	        }
+	        return wb;
+	    }
+	 public static Workbook createWorkBookx(List<Map<String, Object>> list,
+			 String []keys,String columnNames[],String gzb) throws IOException {
+	        // 创建excel工作簿
+		 	int rowaccess=100;
+	        Workbook wb = new SXSSFWorkbook(rowaccess);
+	        // 创建第一个sheet（页），并命名
+	        if (list != null  && list.size() > 0) {
+		        // 创建两种单元格格式
+		        CellStyle cs = wb.createCellStyle();
+		        CellStyle cs2 = wb.createCellStyle();
+
+		        // 创建两种字体
+		        Font f = wb.createFont();
+		        Font f2 = wb.createFont();
+
+		        // 创建第一种字体样式（用于列名）
+		        f.setFontHeightInPoints((short) 10);
+		        f.setColor(IndexedColors.BLACK.getIndex());
+		        f.setBoldweight(Font.BOLDWEIGHT_BOLD);
+
+		        // 创建第二种字体样式（用于值）
+		        f2.setFontHeightInPoints((short) 10);
+		        f2.setColor(IndexedColors.BLACK.getIndex());
+
+		        // 设置第一种单元格的样式（用于列名）
+		        cs.setFont(f);
+		        cs.setBorderLeft(CellStyle.BORDER_THIN);
+		        cs.setBorderRight(CellStyle.BORDER_THIN);
+		        cs.setBorderTop(CellStyle.BORDER_THIN);
+		        cs.setBorderBottom(CellStyle.BORDER_THIN);
+		        cs.setAlignment(CellStyle.ALIGN_CENTER);
+
+		        // 设置第二种单元格的样式（用于值）
+		        cs2.setFont(f2);
+		        cs2.setBorderLeft(CellStyle.BORDER_THIN);
+		        cs2.setBorderRight(CellStyle.BORDER_THIN);
+		        cs2.setBorderTop(CellStyle.BORDER_THIN);
+		        cs2.setBorderBottom(CellStyle.BORDER_THIN);
+		        cs2.setAlignment(CellStyle.ALIGN_CENTER);
+	            int totle=list.size();
+	            int mus=10000;//设置每页显示50000笔数据
+	            int avg=totle/mus;
+	            int index=0;
+	            for(int i = 0; i < avg+1; i++){
+	            	Sheet sh  = wb.createSheet("Sheet"+(i+1));
+	            	
+	            	// 手动设置列宽。第一个参数表示要为第几列设；，第二个参数表示列的宽度，n为列高的像素数。
+	    	        for(int k=0;k<keys.length;k++){
+	    	        	sh.setColumnWidth((int) k, (int) (35.7 * 150));
+	    	        }
+	            	// 创建第一行
+	            	Row xRow0 = sh.createRow(0);
+	            	//set Sheet页头部
+	            	for(int j=0;j<columnNames.length;j++){
+	    	            Cell cell = xRow0.createCell(j);
+	    	            cell.setCellValue(columnNames[j]);
+	    	            cell.setCellStyle(cs);
+	    	        }
+                    int num=i*mus;
+                    
+                    for(int m=num;m<(num+mus);m++){
+	                    if(index==totle){
+	                    	list.clear();
+	                    	break;
+	                    }
+	                    Row xRow = sh.createRow(m + 1-mus*i);
+	                    for(int j=0;j<keys.length;j++){
+	                    	Cell cell = xRow.createCell(j);
+	    	                cell.setCellValue(list.get(m).get(keys[j]) == null?" ": list.get(m).get(keys[j]).toString());
+	    	                cell.setCellStyle(cs2);
+	    	            }
+	                        index++;
+	                        //每当行数达到设置的值就刷新数据到硬盘,以清理内存
+	                        if(m%rowaccess==0){
+	                        	((SXSSFSheet)sh).flushRows();
+	                        }
+                    }
+	            }
+	        }
+	        return wb;
+	    }
+	 public static void Excel2007AboveOperate(List<Map<String, Object>> list,
+			 String []keys,String columnNames[],String gzb,String filepath) throws IOException {
+	        XSSFWorkbook workbook1 = new XSSFWorkbook();
+	        SXSSFWorkbook sxssfWorkbook = new SXSSFWorkbook(workbook1, 1);
+	        Sheet first = sxssfWorkbook.getSheetAt(0);
+	        for (int i = 0; i < list.size(); i++) {
+	            Row row = first.createRow(i);
+	            for (int j = 0; j < columnNames.length; j++) {
+	                if(i == 0) {
+	                    // 首行
+	                    row.createCell(j).setCellValue(columnNames[j]);
+	                } else {
+                        CellUtil.createCell(row, j, list.get(i-1).get(keys[j]) == null?" ": list.get(i-1).get(keys[j]).toString());
+	                }
+	            }
+	        }
+	        FileOutputStream out = new FileOutputStream(filepath);
+	        sxssfWorkbook.write(out);
+	        out.close();
+	    }
+	 public static Workbook createWorkBookxod(List<Map<String, Object>> tj,List<Map<String, Object>> mx,
+			 String []keys,String columnNames[],String []keysmx,String columnNamesmx[],String gzb) throws IOException {
+	        // 创建excel工作簿
+	        Workbook wb = new SXSSFWorkbook(1000);
+	        // 创建第一个sheet（页），并命名
+	        Sheet sheet = wb.createSheet(gzb);
+	        // 手动设置列宽。第一个参数表示要为第几列设；，第二个参数表示列的宽度，n为列高的像素数。
+	        for(int i=0;i<keysmx.length;i++){
+	            sheet.setColumnWidth((int) i, (int) (35.7 * 150));
+	        }
+
+
+	        // 创建两种单元格格式
+	        CellStyle cs = wb.createCellStyle();
+	        CellStyle cs2 = wb.createCellStyle();
+
+	        // 创建两种字体
+	        Font f = wb.createFont();
+	        Font f2 = wb.createFont();
+
+	        // 创建第一种字体样式（用于列名）
+	        f.setFontHeightInPoints((short) 10);
+	        f.setColor(IndexedColors.BLACK.getIndex());
+	        f.setBoldweight(Font.BOLDWEIGHT_BOLD);
+
+	        // 创建第二种字体样式（用于值）
+	        f2.setFontHeightInPoints((short) 10);
+	        f2.setColor(IndexedColors.BLACK.getIndex());
+
+//	        Font f3=wb.createFont();
+//	        f3.setFontHeightInPoints((int) 10);
+//	        f3.setColor(IndexedColors.RED.getIndex());
+
+	        // 设置第一种单元格的样式（用于列名）
+	        cs.setFont(f);
+	        cs.setBorderLeft(CellStyle.BORDER_THIN);
+	        cs.setBorderRight(CellStyle.BORDER_THIN);
+	        cs.setBorderTop(CellStyle.BORDER_THIN);
+	        cs.setBorderBottom(CellStyle.BORDER_THIN);
+	        cs.setAlignment(CellStyle.ALIGN_CENTER);
+
+	        // 设置第二种单元格的样式（用于值）
+	        cs2.setFont(f2);
+	        cs2.setBorderLeft(CellStyle.BORDER_THIN);
+	        cs2.setBorderRight(CellStyle.BORDER_THIN);
+	        cs2.setBorderTop(CellStyle.BORDER_THIN);
+	        cs2.setBorderBottom(CellStyle.BORDER_THIN);
+	        cs2.setAlignment(CellStyle.ALIGN_CENTER);
+	        
+	     // 创建第一行
+	        Row rows = sheet.createRow((int) 0);
+	        //设置列名
+	        for(int i=0;i<columnNames.length;i++){
+	            Cell cell = rows.createCell(i);
+	            cell.setCellValue(columnNames[i]);
+	            cell.setCellStyle(cs);
+	        }
+	        //设置每行每列的值
+	        int rowsss=1;
+	        for (int i = 0; i < tj.size(); i++) {
+	            // Row 行,Cell 方格 , Row 和 Cell 都是从0开始计数的
+	            // 创建一行，在页sheet上
+	            Row row1 = sheet.createRow((int) rowsss+i);
+	            // 在row行上创建一个方格
+	            for(int j=0;j<keys.length;j++){
+	                Cell cell = row1.createCell(j);
+	                cell.setCellValue(tj.get(i).get(keys[j]) == null?" ": tj.get(i).get(keys[j]).toString());
+	                cell.setCellStyle(cs2);
+	            }
+	        }
+
+	        // 创建第四行
+	        Row row = sheet.createRow((int) 4);
+	        //设置列名
+	        for(int i=0;i<columnNamesmx.length;i++){
+	            Cell cell = row.createCell(i);
+	            cell.setCellValue(columnNamesmx[i]);
+	            cell.setCellStyle(cs);
+	        }
+	        //设置每行每列的值
+	        int rowss=5;
+	        for (int i = 0; i < mx.size(); i++) {
+	            // Row 行,Cell 方格 , Row 和 Cell 都是从0开始计数的
+	            // 创建一行，在页sheet上
+	            Row row1 = sheet.createRow((int) rowss+i);
+	            // 在row行上创建一个方格
+	            for(int j=0;j<keysmx.length;j++){
+	                Cell cell = row1.createCell(j);
+	                cell.setCellValue(mx.get(i).get(keysmx[j]) == null?" ": mx.get(i).get(keysmx[j]).toString());
+	                cell.setCellStyle(cs2);
+	            }
+	        }
+	        mx.clear();
+	        return wb;
+	    }
+	public static Workbook createWorkBookCustomer(
+			List<Map<String, Object>> list, String[] keys,
+			String[] columnNames, String[] titles, String gzb) throws IOException {
+		 // 创建excel工作簿
+	 	int rowaccess=100;
+        Workbook wb = new SXSSFWorkbook(rowaccess);
+        // 创建第一个sheet（页），并命名
+        if (list != null  && list.size() > 0) {
+	        // 创建两种单元格格式
+	        CellStyle cs = wb.createCellStyle();
+	        CellStyle cs2 = wb.createCellStyle();
+
+	        // 创建两种字体
+	        Font f = wb.createFont();
+	        Font f2 = wb.createFont();
+
+	        // 创建第一种字体样式（用于列名）
+	        f.setFontHeightInPoints((short) 10);
+	        f.setColor(IndexedColors.BLACK.getIndex());
+	        f.setBoldweight(Font.BOLDWEIGHT_BOLD);
+
+	        // 创建第二种字体样式（用于值）
+	        f2.setFontHeightInPoints((short) 10);
+	        f2.setColor(IndexedColors.BLACK.getIndex());
+
+	        // 设置第一种单元格的样式（用于列名）
+	        cs.setFont(f);
+	        cs.setBorderLeft(CellStyle.BORDER_THIN);
+	        cs.setBorderRight(CellStyle.BORDER_THIN);
+	        cs.setBorderTop(CellStyle.BORDER_THIN);
+	        cs.setBorderBottom(CellStyle.BORDER_THIN);
+	        cs.setAlignment(CellStyle.ALIGN_CENTER);
+
+	        // 设置第二种单元格的样式（用于值）
+	        cs2.setFont(f2);
+	        cs2.setBorderLeft(CellStyle.BORDER_THIN);
+	        cs2.setBorderRight(CellStyle.BORDER_THIN);
+	        cs2.setBorderTop(CellStyle.BORDER_THIN);
+	        cs2.setBorderBottom(CellStyle.BORDER_THIN);
+	        cs2.setAlignment(CellStyle.ALIGN_CENTER);
+            int totle=list.size();
+            int mus=10000;//设置每页显示50000笔数据
+            int avg=totle/mus;
+            int index=0;
+            for(int i = 0; i < avg+1; i++){
+            	Sheet sh  = wb.createSheet("Sheet"+(i+1));
+            	
+            	// 手动设置列宽。第一个参数表示要为第几列设；，第二个参数表示列的宽度，n为列高的像素数。
+    	        for(int k=0;k<keys.length;k++){
+    	        	sh.setColumnWidth((int) k, (int) (35.7 * 150));
+    	        }
+            	// 创建第一行
+    	        Row xRow0 = sh.createRow(0);
+            	for(int j=0;j<columnNames.length;j++){
+            		xRow0.createCell(j).setCellStyle(cs);
+            	}
+            	//set Sheet页头部
+        		Cell cell0 = xRow0.createCell(0);
+        		sh.addMergedRegion(new CellRangeAddress(0, 1, 0, 0));
+        		cell0.setCellValue(columnNames[0]);
+        		cell0.setCellStyle(cs);
+        		for(int j=columnNames.length-2;j<columnNames.length;j++){
+            		Cell cell = xRow0.createCell(j);
+            		sh.addMergedRegion(new CellRangeAddress(0, 1, j, j));
+            		cell.setCellValue(columnNames[j]);
+            		cell.setCellStyle(cs);
+    	        }	
+        		for(int j=0;j<titles.length;j++){
+            		Cell cell = null;
+            		if(j<3){        
+            			cell = xRow0.createCell(j*3+1);
+            			sh.addMergedRegion(new CellRangeAddress(0, 0, j*3+1, j*3+3));
+            		}else if(j==3){
+            			cell = xRow0.createCell(j*3+1);
+            			sh.addMergedRegion(new CellRangeAddress(0, 0, j*3+1, j*3+2));
+            		}else if(j==4){
+            			cell = xRow0.createCell(j*3);
+            			sh.addMergedRegion(new CellRangeAddress(0, 0, j*3, j*3));
+            		}
+            		cell.setCellValue(titles[j]);
+            		cell.setCellStyle(cs);
+            	}
+            	//创建第二行
+            	Row xRow1 = sh.createRow(1);
+            	for(int j=0;j<columnNames.length;j++){
+            		xRow1.createCell(j).setCellStyle(cs);
+            	}
+            	//set Sheet页头部
+            	for(int j=1;j<columnNames.length-2;j++){
+    	            Cell cell = xRow1.createCell(j);
+    	            cell.setCellValue(columnNames[j]);
+    	            cell.setCellStyle(cs);
+    	        }
+                int num=i*mus;
+                
+                for(int m=num;m<(num+mus);m++){
+                    if(index==totle){
+                    	list.clear();
+                    	break;
+                    }
+                    Row xRow = sh.createRow(m + 2-mus*i);
+                    for(int j=0;j<keys.length;j++){
+                    	Cell cell = xRow.createCell(j);
+    	                cell.setCellValue(list.get(m).get(keys[j]) == null?" ": list.get(m).get(keys[j]).toString());
+    	                cell.setCellStyle(cs2);
+    	            }
+                        index++;
+                        //每当行数达到设置的值就刷新数据到硬盘,以清理内存
+                        if(m%rowaccess==0){
+                        	((SXSSFSheet)sh).flushRows();
+                        }
+                }
+            }
+        }
+        return wb;
+	}
+}

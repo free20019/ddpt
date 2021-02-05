@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>失误查找</title>
+    <style>
+        #swcz-borderContainer { padding: 0; }
+        #swcz-centerContentPane {  padding: 0;  }
+        #swczMap { width: 100%; height: 100%; }
+        #swcz-borderContainer .iFInputItem{
+            text-align: center;
+            margin: 10px 0;
+        }
+        #AMapToolBox {
+            width: 400px;
+            /*height: calc(100% - 70px);*/
+            /*min-height: 500px;*/
+            position: absolute;
+            top: 35px;
+            right: 50px;
+            bottom: 35px;
+            box-shadow: 2px 2px 4px #aaa;
+            background: #ffffff;
+/*             overflow: auto; */
+        }
+        .clearMap {
+            padding: 5px 10px;
+            position: absolute;
+            top: 20px;
+            left: -72px;
+            border: none;
+            border-radius: 50px 0 0 50px/50px 0 0 50px;
+            outline: none;
+            background: #c6e9ff;
+        }
+		.ztt-sb1 {
+            padding: 5px 10px;
+            position: absolute;
+            top: -5px;
+            left: 370px;
+            border: none;
+            border-radius: 50px 0 0 50px/50px 0 0 50px;
+            outline: none;
+            width: 20px;
+            height: 20px;
+        }
+        .one1, .zhong1, .two1 {
+            width: 90px;
+            width: calc(100% - 20px);
+            htight: 85px;
+            min-height: 85px;
+            position: relative;
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+           /* padding-bottom: 10px;*/
+            border: 1px solid #1e8cff;
+            font-size: 12px;
+        }
+        .one1 > .dt, .zhong1 > .dt, .two1 > .dt {
+            padding-left: .3em;
+            padding-right: .3em;
+            position: absolute;
+            top: -.5em;
+            left: 1em;
+            background: #ffffff;
+        }
+        /*@media only screen and (min-width: 700px)*/
+            .dd {
+                float: left;
+                width: 100%;
+            }
+            .dd {
+                position: relative;
+                display: block;
+                margin: 0;
+                padding: 0;
+                max-width: 600px;
+                list-style: none;
+                font-size: 13px;
+                line-height: 20px;
+            }
+
+        .one1 > .dd label, .zhong1 > .dd label, .two1 > .dd label {
+            width: 80px;
+            margin-top: 15px;
+            margin-left: 4px;
+            text-indent: 25px;
+            display: inline-block;
+        }
+        .dwqdfw, .dwzjdfw, .dwzdfw {
+            border-radius: 5px;
+            border: 1px solid #FF9934;
+            width: 110px;
+            height: 42px;
+            position: absolute;
+            top: 17px;
+            left: 250px;
+            display: block;
+            background: #FEBE22 linear-gradient(180deg, #fed308, #fecb20, #ffc637);
+            background-image: linear-gradient(rgb(254, 211, 8), rgb(254, 203, 32), rgb(255, 198, 55));
+            background-position-x: initial;
+            background-position-y: initial;
+            background-size: initial;
+            background-repeat-x: initial;
+            background-repeat-y: initial;
+            background-attachment: initial;
+            background-origin: initial;
+            background-clip: initial;
+            background-color: rgb(254, 190, 34);
+            outline: none;
+        }
+        .hide{ display: none; }
+        #swcz-borderContainer .panel-titleBpx > .content {
+            margin: 7px;
+            border: 1px solid #1e8cff;
+            padding: 0;
+        }
+        #swcz-borderContainer .fwxz{
+            min-height: 80px;
+            border: 1px solid #1e8cff;
+            margin: 0 8px;
+        }
+        #AMapToolBox .panel-titleBpx .title span{
+            display: inline-block;
+            padding: 2px;
+            border-right:1px solid transparent ;
+            border-left: 1px solid transparent ;
+            cursor: pointer;
+            text-indent: 0;
+        }
+        #AMapToolBox .panel-titleBpx .title span.click{
+            display: inline-block;
+            padding: 2px;
+            background-color: #fff;
+            border-right:2px solid #1e8cff ;
+            border-left: 2px solid #1e8cff ;
+            border-top: 2px solid #1e8cff;
+
+        }
+        #qd_stime, #qd_etime, #zj_stime, #zj_etime, #zd_stime, #zd_etime{width: 140px;height: 18px;border: 1px solid #1e8cff;outline: none}
+        #AMapToolBox .iFTable th{border: 0}
+        .tb_tbody {
+        	    height: 100%;
+    			overflow: auto;
+        }
+        #ztt-dsb {
+			position: absolute;
+			left: 10px;
+			bottom: 10px;
+			right: 10px;
+			height : 300px;
+			width : 63%;
+			background-color: white;
+			z-index: 1111;
+			box-shadow: 0 0 5px white;
+		}
+		#ztt-jsgdsb,#ztt-jsgdsb1 {
+			position: relative;
+			width :100%;
+			height:100%;
+		}
+		.ztt-sb {
+			position : relative;
+			left : 98%;
+			width:20px;
+		    top: -498px;
+			height:20px;
+			z-index : 23;
+		}
+		 .icon-end {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: url(resources/images/cz/icon-end.png);
+    }
+    .icon-play {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: url(resources/images/cz/icon-play.png);
+    }
+    .icon-timeOut {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: url(resources/images/cz/icon-timeOut.png);
+    }
+    .icon-smallVolumn {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: url(resources/images/cz/icon-smallVolumn.png);
+    }
+    .icon-loudVolume {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: url(resources/images/cz/icon-loudVolume.png);
+    }
+    #box{position: relative; width: 500px;float:left;left: 18px;}
+	 #bg{height: 17px; margin-top: 5px; border: 1px solid #131313; border-radius: 5px; overflow: hidden;    background-color: #e0e8ef;}
+	 #bgcolor{background: #4CAF50; width: 0; height: 17px; border-radius: 5px;}
+	 #bt{width: 34px; height: 30px; background: url(resources/images/car24.png) no-repeat center center; border-radius: 17px; overflow: hidden; position: absolute; left: 0px; margin-left: -12px; top: 0px; cursor: pointer;}
+ 
+    </style>
+</head>
+<body>
+<div id="swcz-borderContainer" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="persist:true, gutters:false, liveSplitters:true">
+    <div id="swcz-centerContentPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center', splitter:false">
+        <div id="swczMap"></div>
+        <div id="ztt-dsb" style='display: none;'>
+			<div id="tb" style="height:500px;">
+				<label>开始时间</label>
+		        <input type="text" id="qd_stime-tj" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="width:140px">
+		        <label>结束时间</label>
+		        <input type="text" id="qd_etime-tj" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="width:140px">
+		        <div class="iFInlineItem" id="swcz-comboBoxPanel-tj">
+					<label class="iFLabel">车牌号码</label>
+					<div class="iFComboBox" id="swcz-comboBox-tj" style="width: 120px;">
+						<input type="text" data-value="0" value="" id="cwcz-cphm-tj">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList" id="swcz-ul-tj">
+						</ul>
+					</div>
+				</div>
+		        <a href="javascript:void(0);" class="iFBtn iFColorOrange tclsgj"><i class="iconfont">&#xe625;</i>查询</a>
+		        <a href="javascript:void(0);" class="iFBtn iFColorOrange tclsgjDc"><i class="iconfont">&#xe625;</i>导出</a><br>
+		        <a title="重头开始" href="javascript:void(0);" class="icon-end carPlay_end" id="bfbtn"></a>
+                <a title="暂停/继续" href="javascript:void(0);" class="icon-play carPlay_play" id="ztbtn"></a>
+                <a title="暂停/继续" href="javascript:void(0);" class="icon-timeOut carPlay_timeOut" id="jxbtn" style="display: none;"></a>
+                <a title="加速" href="javascript:void(0);" class="icon-loudVolume carPlay_loudVolume" id="jiasbtn"></a>
+                <a title="减速" href="javascript:void(0);" class="icon-smallVolumn carPlay_smallVolumn" id="jiansbtn"></a>
+                <div id="lsgj_clgjBox">
+		            <div id="box">
+					  <div id="bg">
+					   <div id="bgcolor"></div>
+					  </div>
+					  <div id="bt"></div>
+					 </div>
+		            <div style="padding-top: 7px;margin-left: 535px;"><font id="text">0%</font>当前里程:<font id="dqlc">0</font>时间:<font id="dqsj"></font></div>
+		        </div>
+		        <div style="width:100%;height:55%; overflow:scroll;" id="histabledata">
+			        <table  class="iFTable"  style="text-align: center" id="lishidata">
+	                    <thead>
+	                    <tr>
+	                        <th>车牌号码</th>
+	                        <th>经纬度</th>
+	                        <th>时间</th>
+	                        <th>速度</th>
+	                        <th>状态</th>
+	                    </tr>
+	                    </thead>
+	                    <tbody id="lsgj-tbody"></tbody>
+	                </table>
+		        </div>
+			</div>
+			<div id="ztt-jsgdsb">
+				<img class="ztt-sb" src="resources/images/gb.png">
+			</div>
+		</div>
+        <div id="AMapToolBox">
+            <button type="button" class="clearMap" style="display: none;">清理地图</button>
+			<img class="ztt-sb1" src="resources/images/gb.png">
+            <div class="one1">
+                <div class="dt">起点范围</div>
+                <div class="dd">
+                    <label>开始时间</label>
+                    <input type="text" id="qd_stime" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="width:140px"><br>
+                    <label>结束时间</label>
+                    <input type="text" id="qd_etime" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="width:140px">
+                    <button type="button" class="dwqdfw">定位起点</button>
+                </div>
+            </div>
+            <div class="zhong1 clear">
+                <div class="dt">中间点范围</div>
+                <div class="dd">
+                    <label>开始时间</label>
+                    <input type="text" id="zj_stime" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="width:140px"><br>
+                    <label>结束时间</label>
+                    <input type="text" id="zj_etime" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="width:140px">
+                    <button type="button" class="dwzjdfw">定位中间</button>
+                </div>
+            </div>
+            <div class="two1 clear">
+                <div class="dt">终点范围</div>
+                <div class="dd">
+                    <label>开始时间</label>
+                    <input type="text" id="zd_stime" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="width:140px"><br>
+                    <label>结束时间</label>
+                    <input type="text" id="zd_etime" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" style="width:140px">
+                    <button type="button" class="dwzdfw">定位终点</button>
+                </div>
+            </div>
+            <div class="iFInputItem">
+                <a href="javascript:void(0);" class="iFBtn iFColorOrange findswcz"><i class="iconfont">&#xe625;</i>查询</a>
+                <a href="javascript:void(0);" class="iFBtn iFColorOrange swczexcle"><i class="iconfont">&#xe625;</i>导出</a>
+                <a href="javascript:void(0);" class="iFBtn iFColorOrange findgj"><i class="iconfont">&#xe625;</i>轨迹</a>
+            </div>
+            <div class="panel-titleBpx iFColorGreen" style="height: calc(100% - 398px);">
+                <h3 class="title" id="right-xx" style="color: #333;">
+                    <span id="qdfw">起点范围</span>
+                    <span id="zdfw">终点范围</span>
+                    <span class="click selected" id="clxx">车辆信息</span>
+                </h3>
+                <div class="content fwxz" style="height: calc(100%);margin-top: -3px">
+                    <div class="qdfw tb_tbody">
+                        <table  class="iFTable"  style="text-align: center">
+                            <thead>
+                            <tr>
+                                <th>车牌号码</th>
+                                <th>经纬度</th>
+                                <th>时间</th>
+                                 <th>轨迹</th>
+                            </tr>
+                            </thead>
+                            <tbody id="qd-tbody"></tbody>
+                        </table>
+                    </div>
+                    <div class="zdfw hide tb_tbody">
+                        <table  class="iFTable"  style="text-align: center">
+                            <thead>
+                            <tr>
+                                <th>车牌号码</th>
+                                <th>经纬度</th>
+                                <th>时间</th>
+                                <th>轨迹</th>
+                            </tr>
+                            </thead>
+                            <tbody id="zd-tbody"></tbody>
+                        </table>
+                    </div>
+                    <div class="clxx hide tb_tbody">
+                        <table  class="iFTable"  style="text-align: center">
+                            <thead>
+                            <tr>
+                                <th>车牌号码</th>
+                                <th>经纬度</th>
+                                <th>时间</th>
+                                <th>轨迹/回放</th>
+                            </tr>
+                            </thead>
+                            <tbody id="jg-tbody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="swczDialog" id="swczDialog" style="height:800px;width:800px;">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="swczDialogPanel" id="swczDialogPanel"></div>
+</div>
+<script type="text/javascript">
+var markerlist = [],lineArr = [];
+var lsgjdata = null;
+var mkleng = 0;
+var gjd = [];
+	var qd_jwd="",zj_jwd="",zd_jwd="";
+	var mydate = new Date();
+	var smydate = new Date(mydate.getTime() - 1000 * 60 * 60*1);
+	$("#qd_stime").val(setformatnewlc(smydate));
+	$("#qd_etime").val(setformatnewlc(mydate));
+	$("#zj_stime").val(setformatnewlc(smydate));
+	$("#zj_etime").val(setformatnewlc(mydate));
+	$("#zd_stime").val(setformatnewlc(smydate));
+	$("#zd_etime").val(setformatnewlc(mydate));
+	$("#qd_stime-tj").val(setformatnewlc(smydate));
+	$("#qd_etime-tj").val(setformatnewlc(mydate));
+	function setformatnewlc(obj){
+		var y=(obj.getFullYear()).toString();
+		var m=(obj.getMonth()+1).toString();
+		if(m.length==1){
+			m="0"+m;
+		}
+		var d=obj.getDate().toString();
+		if(d.length==1){
+			d="0"+d;
+		}
+		var h = obj.getHours().toString();
+		if(h.length==1){
+			h="0"+h;
+		}
+		var mi = obj.getMinutes().toString();
+		if(mi.length==1){
+			mi="0"+mi;
+		}
+		var s = obj.getSeconds().toString();
+		if(s.length==1){
+			s="0"+s;
+		}
+		var time=y+"-"+m+"-"+d+" "+h+":"+mi+":"+s; 
+		return time;
+	}
+	var fxudmouseTool=null;
+	var polygonfk = null;
+	var polygonfks = [null,null,null];
+	var udpolygonOption = {
+	    strokeColor:"",
+	    strokeOpacity:0,
+	    strokeWeight:1
+	};
+	var isStart = false, isEnd = false, isMiddle = false;
+	var map = null, mouseTool = null;
+    var map = new AMap.Map('swczMap', {
+        resizeEnable: true,
+        zoom:13/*,
+         center: [116.397428, 39.90923]*/
+    });
+    $('#AMapToolBox .panel-titleBpx .title span').on('click',function () {
+        $(this).siblings('.click').removeClass('click');
+        $(this).addClass('click');
+    });
+    $('#right-xx span').click(function () {
+        $(this).siblings('.selected').removeClass('selected');
+        $(this).addClass('selected');
+    });
+    $('#qdfw').click(function () {
+        $('.qdfw').removeClass('hide');
+        $('.zdfw').addClass('hide');
+        $('.clxx').addClass('hide');
+    });
+    $('#zdfw').click(function () {
+        $('.zdfw').removeClass('hide');
+        $('.qdfw').addClass('hide');
+        $('.clxx').addClass('hide');
+    });
+    $('#clxx').click(function () {
+        $('.clxx').removeClass('hide');
+        $('.qdfw').addClass('hide');
+        $('.zdfw').addClass('hide');
+    });
+    $('.clearMap').hide().click(function() {
+        if(polygonfk!=null) {map.clearMap();}
+        qd_jwd="";zj_jwd="";zd_jwd="";
+        isStart = false; isEnd = false; isMiddle = false; polygonfks = [null,null,null];
+        $(this).hide();
+    });
+    $('.dwqdfw').click(function() {
+        if (!isStart) {
+    		isStart = arawAreaFun(map, isStart, 1);
+        }
+    });
+    $('.dwzjdfw').click(function() {
+        if (!isMiddle){
+       		isMiddle = arawAreaFun(map, isMiddle, 3);
+        }
+    });
+    $('.dwzdfw').click(function(){
+        if (!isEnd){
+       		isEnd = arawAreaFun(map, isEnd, 2);
+        }
+    });
+    $('.tabFanweiTitle li').click(function() {
+        $('.tabFanweiTitle li').removeAttr('data-checked');
+        $(this).attr('data-checked', '');
+        $('[id$=Panel]').css({'display':'none'});
+        var dataId = $(this).attr('data-id');
+        $('#' + dataId).css({'display':'block'});
+    });
+function arawAreaFun(mapObj, isArea, num) {
+    if(isArea) return false;
+    mapObj.plugin(["AMap.MouseTool"],function(){
+        fxudmouseTool = new AMap.MouseTool(mapObj);
+        fxudmouseTool.polygon(udpolygonOption);   //使用鼠标工具绘制多边形
+        AMap.event.addListener(fxudmouseTool, "draw", function(e){
+            var drawObj = e.obj;
+            var pointsCount = e.obj.getPath().length;
+            var a =  e.obj.getPath();
+            var zbs = "";
+            var polygonArr1 = [];//多边形覆盖物节点坐标数组
+            for(var i=0;i<pointsCount;i++){
+                polygonArr1.push([a[i].lng,a[i].lat]);
+            }
+            polygonfk = fanwei(polygonArr1, num);
+            polygonfk.setMap(mapObj);
+            if (num == 1) polygonfks[0] = polygonfk;
+            else polygonfks[1] = polygonfk;
+            fxudmouseTool.close(true);
+            fxudmouseTool=null;
+            $('.clearMap').show();
+        });
+    });
+    return true
+}
+function fanwei(polygonArr1, num) {
+    if (1 == num) {
+    	qd_jwd="";
+    	for(var i =0;i<polygonArr1.length;i++){
+    		qd_jwd+=polygonArr1[i]+";";
+    	}
+        return new AMap.Polygon({
+            path: polygonArr1,//设置多边形边界路径
+            strokeColor: "#1791fc", //线颜色
+            strokeOpacity: 1, //线透明度
+            strokeWeight: 2,    //线宽
+            fillColor: "#1791fc", //填充色
+            fillOpacity:.5//填充透明度
+        });
+    }
+    if (2 == num) {
+    	zd_jwd="";
+    	for(var i =0;i<polygonArr1.length;i++){
+    		zd_jwd+=polygonArr1[i]+";";
+    	}
+        return new AMap.Polygon({
+            path: polygonArr1,//设置多边形边界路径
+            strokeColor: "#ff91fc", //线颜色
+            strokeOpacity: 1, //线透明度
+            strokeWeight: 2,    //线宽
+            fillColor: "#1791fc", //填充色
+            fillOpacity:.5//填充透明度
+        });
+    }
+    zj_jwd="";
+    for(var i =0;i<polygonArr1.length;i++){
+		zj_jwd+=polygonArr1[i]+";";
+	}
+    return new AMap.Polygon({
+        path: polygonArr1,//设置多边形边界路径
+        strokeColor: "#ffff00", //线颜色
+        strokeOpacity: 1, //线透明度
+        strokeWeight: 2,    //线宽
+        fillColor: "#1791fc", //填充色
+        fillOpacity:.5//填充透明度
+    });
+}
+(function($){
+	  var $box = $('#box');
+	  var $bg = $('#bg');
+	  var $bgcolor = $('#bgcolor');
+	  var $btn = $('#bt');
+	  var $text = $('#text');
+	  var statu = false;
+	  var ox = 0;
+	  var lx = 0;
+	  var left = 0;
+	  var bgleft = 0;
+	   $btn.mousedown(function(e){
+	    lx = $btn.offset().left;
+	    ox = e.pageX - left;
+	    statu = true;
+	   });
+	   $(document).mouseup(function(){
+	    statu = false;
+	   });
+	   $box.mousemove(function(e){
+		   if(lsgjdata==null||lsgjdata.length==0){
+				return;
+			}
+		   
+	    if(statu){
+	     left = e.pageX - ox;
+	     if(left < 0){
+	      left = 0;
+	     }
+	     if(left > 500){
+	      left = 500;
+	     }
+	     $btn.css('left',left);
+	     $bgcolor.width(left);
+	     $text.html(parseInt(left*100/500) + '%');
+	     getds(parseInt(left*100/500));
+	    }
+	   });
+
+	   $bg.click(function(e){
+		   if(lsgjdata==null||lsgjdata.length==0){
+				return;
+			}
+	    if(!statu){
+	     bgleft = $bg.offset().left;
+	     left = e.pageX - bgleft;
+	     if(left < 0){
+	      left = 0;
+	     }
+	     if(left > 500){
+	      left = 500;
+	     }
+	     $btn.css('left',left);
+	     $bgcolor.stop().animate({width:left},500);
+	     $text.html(parseInt(left*100/500) + '%');
+	     getds(parseInt(left*100/500));
+	    }
+	   });
+	 })(jQuery);
+$(".findswcz").click(function(){
+	layer.load(2);
+	$("#swcz_cx").attr('disabled',"true");
+	$.ajax({
+		 type: "POST",
+	        url:"back/swcz",
+	        data:{
+				"qd_stime" : $("#qd_stime").val(),
+				"qd_etime" : $("#qd_etime").val(),
+				"zj_stime" : $("#zj_stime").val(),
+				"zj_etime" : $("#zj_etime").val(),
+				"zd_stime" : $("#zd_stime").val(),
+				"zd_etime" : $("#zd_etime").val(),
+				"qd_jwd" : qd_jwd,
+				"zd_jwd" : zd_jwd,
+				"zj_jwd" : zj_jwd
+	        },
+	        dataType: 'json',
+			timeout : 3600000,
+		success:function(json){
+			$('#qd-tbody').empty();
+            $('#zd-tbody').empty();
+            $('#jg-tbody').empty();
+            if(json.jg.length>0||json.qd.length>0||json.zd.length>0){
+    			var qd = json.qd;
+    			var zd = json.zd;
+    			var zj = json.jg;
+    			var html = "";
+    			var html1="";
+    			var html2="";
+    			for(var i =0;i<qd.length;i++){
+    				html+="<tr><td style='width:20%'>"+qd[i].vehi_no+"</td><td style='width:25%'>"
+    				+qd[i].px+"</td><td style='width:25%'>"+qd[i].stime+"</td><td style='width:30%' vhic='"+qd[i].vehi_no+"'><img class='gjck' title='轨迹' vhic='"+qd[i].vehi_no+"'src='resources/images/gj.png'><img title='轨迹回放' class='cxgj' vhic='"+qd[i].vehi_no+"'src='resources/images/hf.png'></td></tr>";
+    			}
+    			for(var i =0;i<zd.length;i++){
+    				html1+="<tr><td style='width:20%'>"+zd[i].vehi_no+"</td><td style='width:25%'>"
+    				+zd[i].px+"</td><td style='width:25%'>"+zd[i].stime+"</td><td style='width:30%' vhic='"+zd[i].vehi_no+"'><img class='gjck' title='轨迹' vhic='"+zd[i].vehi_no+"'src='resources/images/gj.png'><img title='轨迹回放' class='cxgj' vhic='"+zd[i].vehi_no+"'src='resources/images/hf.png'></td></tr>";
+    			}
+    			for(var i =0;i<zj.length;i++){
+    				html2+="<tr><td style='width:20%'>"+zj[i].vehi_no+"</td><td style='width:25%'>"
+    				+zj[i].px+"</td><td style='width:25%'>"+zj[i].stime+"</td><td style='width:30%' vhic='"+zj[i].vehi_no+"'><img class='gjck' title='轨迹' vhic='"+zj[i].vehi_no+"'src='resources/images/gj.png'><img title='轨迹回放' class='cxgj' vhic='"+zj[i].vehi_no+"'src='resources/images/hf.png'></td></tr>";
+    			}
+    			$('#qd-tbody').append(html);
+                $('#jg-tbody').append(html2);
+                $('#zd-tbody').append(html1);
+                $(".cxgj").click(function(){
+                	var vhic = $(this).attr("vhic");
+					swczDialogPanel.set('href', 'app/html/oa/editor/swcz.html');
+					 var base = $(this).parents('dd').data('base');
+                    swczDialog.show().then(function () {
+                    	swczDialog.set('title', '修改');
+                    	$("#swcz-kssj").val($("#qd_stime").val());
+                    	$("#swcz-jssj").val($("#zd_etime").val());
+                    	$("#cwcz-cphm").val(vhic);
+                   	 	var gjmap = new AMap.Map('swczgj-map', {
+                   	        resizeEnable: true,
+                   	        zoom:13/*,
+                   	         center: [116.397428, 39.90923]*/
+                   	    });
+                   	 $("#swczQuery").click(function(){
+                   		layer.load(2);
+	                   		$.ajax({
+	                   			 type: "POST",
+	                   		        url:"OA/lsgj",
+	                   		        data:{
+	                   					"stime" : $("#swcz-kssj").val(),
+	                   					"etime" : $("#swcz-jssj").val(),
+	                   					"vhic" : $("#cwcz-cphm").val()
+	                   		        },
+	                   		        dataType: 'json',
+	                   				timeout : 3600000,
+	                   			success:function(json){
+	                   				layer.closeAll('loading');
+	                   				gjmap.clearMap();
+	                   				console.log(json);
+	                   				if(json.data.length==0){
+	            						alert("当前时段没有历史轨迹");
+	            					}else{
+	            						var data = json.data;
+	            						for (var i = 0; i < data.length; i++) {
+	            							if(i==0){
+	            								addmkshisstart(data[i]);
+	            							}else if(i==data.length-1){
+	            								addmkshisend(data[i]);
+	            							}else{
+	            								if(data[i-1].PX!=data[i].PX){
+	            									addmkshis(data[i]);
+	            								};
+	            							}
+	            							completeEventHandler(data);
+	            						};
+	            					};
+	                   			},
+	                   			error:function(){
+	                   				layer.closeAll('loading');
+	                   			}
+	                   		});
+	                   	});
+                   	$("#swcz-comboBox").find('input').on('keyup',function(){
+    					var cpmhs=$("#swcz-comboBox").find('input').val();
+    					if(cpmhs.length>2){
+                			findvhictj(cpmhs).then(function(data){
+                				xlktyff("swcz-ul",data.datas);
+                				comboboxDFun('#swcz-comboBoxPanel');
+                			});
+                		};
+    				});
+                   //添加起点
+                   	function addmkshisstart(obj){
+                   		require(["dijit/layout/TabContainer", "dijit/Dialog","dijit/layout/ContentPane", "app/util","dojo/on","dojo/domReady!"]
+                   		, function(TabContainer,Dialog, ContentPane,util,on){
+                   		var markerContent = document.createElement("div");
+                   	    markerContent.className = "markerContentStyle";
+                   	    //点标记中的图标
+                   	    var markerImg= document.createElement("img");
+                   		markerImg.className="markerlnglat";
+                   		markerImg.src="resources/images/start.png";
+                   		markerContent.appendChild(markerImg);
+                   	  var txt = "<b style='color:#3399FF'>"+obj.VEHICLE_NUM+"(起点)</b><br/><br/><b>[GPS时间]</b>："+util.formatYYYYMMDDHHMISS(obj.SPEED_TIME);
+                   		var marker1 = new AMap.Marker({
+                   		    map:gjmap,
+                   		    position:new AMap.LngLat(obj.PX,obj.PY),
+                   		    zIndex:102,
+                   		    offset:new AMap.Pixel(-24,-28), //相对于基点的偏移位置
+                   		    draggable:false,  //是否可拖动
+                   		    content:markerContent //自定义点标记覆盖物内容
+                   		});
+                   		marker1.setMap(gjmap);  //在地图上添加点
+
+                   		//添加文本标记
+                   		var info = [];
+                   		info.push(txt);
+
+                   		var inforWindow = new AMap.InfoWindow({
+                   		  offset:new AMap.Pixel(0,0),
+                   		  content:info.join("<br>")
+                   		});
+                   		  AMap.event.addListener(marker1,"click",function(e){
+                   			  inforWindow.open(gjmap,marker1.getPosition());
+                   			});
+                   		});
+                   	}
+                   	//添加终点
+                   	function addmkshisend(obj){
+                   		require(["dijit/layout/TabContainer", "dijit/Dialog","dijit/layout/ContentPane", "app/util","dojo/on","dojo/domReady!"]
+                   		, function(TabContainer,Dialog, ContentPane,util,on){
+                   		var markerContent = document.createElement("div");
+                   	    markerContent.className = "markerContentStyle";
+                   	    //点标记中的图标
+                   	    var markerImg= document.createElement("img");
+                   		markerImg.className="markerlnglat";
+                   		markerImg.src="resources/images/end.png";
+                   		markerImg.id="img"+obj.MESSAGE_ID;
+                   		markerContent.appendChild(markerImg);
+                   	  var txt = "<b style='color:#3399FF'>"+obj.VEHICLE_NUM+"(起点)</b><br/><br/><b>[GPS时间]</b>："+util.formatYYYYMMDDHHMISS(obj.SPEED_TIME);
+                   		var marker1 = new AMap.Marker({
+                   		    map:gjmap,
+                   		    position:new AMap.LngLat(obj.PX,obj.PY),
+                   		    zIndex:102,
+                   		    offset:new AMap.Pixel(-24,-28), //相对于基点的偏移位置
+                   		    draggable:false,  //是否可拖动
+                   		    content:markerContent   //自定义点标记覆盖物内容
+                   		});
+                   		marker1.setMap(gjmap);  //在地图上添加点
+                   		var info = [];
+                   		info.push(txt);
+
+                   		var inforWindow = new AMap.InfoWindow({
+                   		  offset:new AMap.Pixel(0,0),
+                   		  content:info.join("<br>")
+                   		});
+                   		  AMap.event.addListener(marker1,"click",function(e){
+                   			  inforWindow.open(gjmap,marker1.getPosition());
+                   			});
+
+                   		});
+                   	}
+
+
+                   	//添加所有点
+                   	function addmkshis(obj){
+                   		require(["dijit/layout/TabContainer", "dijit/Dialog","dijit/layout/ContentPane", "app/util","dojo/on","dojo/domReady!"]
+                   		, function(TabContainer,Dialog, ContentPane,util,on){
+                   		var markerContent = document.createElement("div");
+                   	    markerContent.className = "markerContentStyle";
+                   	    var markerImg= document.createElement("img");
+                   		markerImg.className="markerlnglat";
+                   		markerImg.src="resources/images/fx.jpg";
+                   		markerImg.id="img"+obj.MESSAGE_ID;
+                   		markerContent.appendChild(markerImg);
+                   	  var txt = "<b style='color:#3399FF'>"+obj.VEHICLE_NUM+"</b><br/><br/><b>[GPS时间]</b>："+util.formatYYYYMMDDHHMISS(obj.SPEED_TIME);
+	              	  var marker1;
+	              	  if(obj.STATE == '1'){
+		          	  		marker1 = new AMap.Marker({
+			          		    map:gjmap,
+			          		    position:new AMap.LngLat(obj.PX,obj.PY),
+			          		    offset:new AMap.Pixel(-14,-7), //相对于基点的偏移位置
+			          		    draggable:false,  //是否可拖动
+			          		    icon:"resources/images/fx2.png",
+			          		    angle:obj.DIRECTION-90
+		          			});
+	            	  }else{
+		            		marker1 = new AMap.Marker({
+			          		    map:gjmap,
+			          		    position:new AMap.LngLat(obj.PX,obj.PY),
+			          		    offset:new AMap.Pixel(-14,-7), //相对于基点的偏移位置
+			          		    draggable:false,  //是否可拖动
+			          		    icon:"resources/images/fx.jpg",
+			          		    angle:obj.DIRECTION-90
+		          			});
+	            	  }
+	              		marker1.setMap(gjmap);  //在地图上添加点
+	
+	              		var info = [];
+	              		info.push(txt);
+	
+	              		var inforWindow = new AMap.InfoWindow({
+	              		  offset:new AMap.Pixel(0,0),
+	              		  content:info.join("<br>")
+	              		});
+	              		  AMap.event.addListener(marker1,"click",function(e){
+	              			  inforWindow.open(gjmap,marker1.getPosition());
+	              			});
+	
+	              		});
+                   	}
+
+                   	function completeEventHandler(vehigps){
+                   	    lineArr = new Array();
+                   	    for (var i = 0; i <vehigps.length; i++){
+                   	    	var lngX=vehigps[i].PX;
+                   	    	var lngY=vehigps[i].PY;
+                   	    	if(i>0){
+                   		    	var longi0 = vehigps[i-1].PX;
+                   		    	var lati0 = vehigps[i-1].PY;
+                   		    	if(lngX!=longi0||lngY!=lati0){
+                   	        		lineArr.push(new AMap.LngLat(lngX,lngY));
+                   			    }else{
+                   			    	lineArr.push(new AMap.LngLat(lngX,lngY));
+                   				}
+                   		    }else{
+                   		    	lineArr.push(new AMap.LngLat(lngX,lngY));
+                   			}
+                   	    }
+                   	    polyline = new AMap.Polyline({
+                   	        map:gjmap,
+                   	        path:lineArr,
+                   	        strokeColor:"#00A",//线颜色
+                   	        strokeOpacity:1,//线透明度
+                   	        strokeWeight:3,//线宽
+                   	        strokeStyle:"dashed"//线样式
+                   	    });
+                   	    gjmap.setFitView();
+                   	  }
+                    });         
+                })
+                
+                $(".gjck").click(function(){
+                	var vhic = $(this).attr("vhic");
+              		layer.load(2);
+               		$.ajax({
+               			 type: "POST",
+               		        url:"OA/lsgj",
+               		        data:{
+               					"stime" : $("#qd_stime").val(),
+               					"etime" : $("#zd_etime").val(),
+               					"vhic" : vhic
+               		        },
+               		        dataType: 'json',
+               				timeout : 3600000,
+               			success:function(json){
+               				layer.closeAll('loading');
+               				console.log(gjd)
+               				map.remove(gjd)
+               				gjd = [];
+               				console.log(json)
+               				if(json.data.length==0){
+        						alert("当前时段没有历史轨迹");
+        					}else{
+        						var data = json.data;
+        						for (var i = 0; i < data.length; i++) {
+        							if(i==0){
+        								addmkshisstart1(data[i]);
+        							}else if(i==data.length-1){
+        								addmkshisend1(data[i]);
+        							}else{
+        								if(data[i-1].PX!=data[i].PX){
+        									addmkshis1(data[i]);
+        								};
+        							}
+        							completeEventHandler1(data);
+        						};
+        					};
+               			},
+               			error:function(){
+               				layer.closeAll('loading');
+               			}
+               		});
+                })
+                
+                
+                $('#swcz_cx').removeAttr("disabled");
+                layer.closeAll('loading');
+            }else{
+            	$('#swcz_cx').removeAttr("disabled");
+            	layer.closeAll('loading');
+            	alert("该时间内起点与终点区域内没有符合条件的车辆");
+            }
+		},
+		error:function(){
+			layer.closeAll('loading');
+		}		
+	});
+})
+$(".swczexcle").click(function(){
+// 	var postData = {
+// 			"qd_stime" : $("#qd_stime").val(),
+// 			"qd_etime" : $("#qd_etime").val(),
+// 			"zj_stime" : $("#zj_stime").val(),
+// 			"zj_etime" : $("#zj_etime").val(),
+// 			"zd_stime" : $("#zd_stime").val(),
+// 			"zd_etime" : $("#zd_etime").val(),
+// 			"qd_jwd" : qd_jwd,
+// 			"zd_jwd" : zd_jwd,
+// 			"zj_jwd" : zj_jwd
+// 		};
+		url = "back/swczexcle?qd_stime="+$('#qd_stime').val()+
+							"&qd_etime="+$('#qd_etime').val()+
+							"&zj_stime="+$('#zj_stime').val()+
+							"&zj_etime="+$('#zj_etime').val()+
+							"&zd_stime="+$('#zd_stime').val()+
+							"&zd_etime="+$('#zd_etime').val()+
+							"&qd_jwd="+qd_jwd+
+							"&zd_jwd="+zd_jwd+
+							"&zj_jwd="+zj_jwd
+		, window.open(url);
+// 		url = "back/swczexcle?postData="
+// 			+ encodeURI(encodeURI(JSON.stringify(postData))); window.location.href(url);
+})
+$('.findgj').click(function(){
+	$("#ztt-dsb").show();
+})
+$("#swcz-comboBox-tj").find('input').on('keyup',function(){
+	var cpmhs=$("#swcz-comboBox-tj").find('input').val();
+	if(cpmhs.length>2){
+		findvhictj(cpmhs).then(function(data){
+			$('#swcz-ul-tj').empty();
+			xlktyff("swcz-ul-tj",data.datas);
+			comboboxDFun('#swcz-comboBoxPanel-tj');
+		});
+	};
+});
+$('.tclsgjDc').click(function(){
+	url = "OA/lsgjexcle?stime="+$('#qd_stime-tj').val()+"&etime="+$('#qd_etime-tj').val()+"&vhic="+$('#cwcz-cphm-tj').val()
+		, window.open(url);
+});
+$(".tclsgj").click(function(){
+	require(["dijit/layout/TabContainer", "dijit/Dialog","dijit/layout/ContentPane", "app/util","dojo/on","dojo/domReady!"]
+		, function(TabContainer,Dialog, ContentPane,util,on){
+		if($("#cwcz-cphm-tj").val().length<6){
+			layer.msg('车牌号码不存在,请重新输入!');
+			return;
+		}
+		layer.load(2);
+		$.ajax({
+			 type: "POST",
+		        url:"OA/lsgj",
+		        data:{
+					"stime" : $("#qd_stime-tj").val(),
+					"etime" : $("#qd_etime-tj").val(),
+					"vhic" : $("#cwcz-cphm-tj").val()
+		        },
+		        dataType: 'json',
+				timeout : 3600000,
+			success:function(json){
+				layer.closeAll('loading');
+				$('#lsgj-tbody').empty()
+				console.log(gjd)
+				map.remove(gjd)
+				gjd = [];
+				console.log(json)
+				if(json.data.length==0){
+				alert("当前时段没有历史轨迹");
+			}else{
+				markerlist = new Array();
+				lineArr = new Array();
+				var data = json.data;
+				lsgjdata = json.data;
+				mkleng= json.data.length;
+				console.log(data)
+				$('#lsgj-tbody').html("");
+				for (var i = 0; i < data.length; i++) {
+					$('#lsgj-tbody').append('<tr id="trhis'+i+'" class="addmakerdw" mar="'+data[i].SPEED_TIME+'"><td>'+data[i].VEHICLE_NUM+'</td><td>'+data[i].PX+','+data[i].PY+'</td><td>'+util.formatYYYYMMDDHHMISS(data[i].SPEED_TIME)+'</td><td>'+data[i].SPEED+'</td><td>'+(data[i].STATE=='1'?'重车':'空车')+'</td><tr>');
+					if(i==0){
+						addmkshisstart1(data[i],i);
+					}else if(i==data.length-1){
+						addmkshisend1(data[i],i);
+					}else{
+						addmks1(data[i],i);
+					}
+					var lngX=data[i].PX;
+			    	var lngY=data[i].PY;
+			    	var amapxy = new AMap.LngLat(lngX,lngY);
+			        lineArr.push(amapxy);
+				};
+				completeEventHandler1(lineArr);
+				markerMovingControl = new MarkerMovingControl(map, markerhistory, lineArr,1000);
+			    $("#bfbtn").click(function(){
+			    	startAnimation();
+			    });
+			    $("#ztbtn").click(function(){
+			    	pauseAnimation();
+			    });
+			    $("#jxbtn").click(function(){
+			    	pauseAnimation();
+			    });
+			    $("#jiasbtn").click(function(){
+			    	quick();
+			    });
+			    $("#jiansbtn").click(function(){
+			    	slow();
+			    });
+				$('.addmakerdw').click(function(){
+			  		console.log($(this).attr('mar'))
+			  		var vehi = $(this).attr('mar');
+//			 		map.setZoomAndCenter(18, [px, py]);
+			 		var mar = map.getAllOverlays();
+			 		for(var i=0; i<mar.length;i++){
+			 			if(mar[i].hasOwnProperty('vehicle') && mar[i].vehicle.SPEED_TIME==vehi){
+			 				AMap.event.trigger(mar[i],'click');
+			 			}
+			 		}
+			  	})
+			};
+			},
+			error:function(){
+				layer.closeAll('loading');
+			}
+		});
+	});
+})
+  	$('#ztt-jsgdsb').click(function(){
+  		$('#ztt-dsb').hide();
+  	})
+  	$('.ztt-sb1').on('click',function(){
+  		$('#AMapToolBox').hide();
+  	})
+  	function addmkshisstart1(obj,o1){
+	require(["dijit/layout/TabContainer", "dijit/Dialog","dijit/layout/ContentPane", "app/util","dojo/on","dojo/domReady!"]
+		, function(TabContainer,Dialog, ContentPane,util,on){
+        	var markerContent = document.createElement("div");
+            markerContent.className = "markerContentStyle";
+            //点标记中的图标
+            var markerImg= document.createElement("img");
+        	markerImg.className="markerlnglat";
+        	markerImg.src="resources/images/start.png";
+        	markerImg.id="img"+obj.messageid
+        	markerContent.appendChild(markerImg);
+	  		var txt = "<b style='color:#3399FF'>"+obj.VEHICLE_NUM+"(起点)</b><br/><b>[经纬度]</b>："+obj.PX+","+obj.PY+"<br/><b>[GPS时间]</b>："+util.formatYYYYMMDDHHMISS(obj.SPEED_TIME)+"<br/><b>[速度]</b>："+obj.SPEED+"<br/><b>[状态]</b>："+(obj.STATE=='1'?'重车':'空车');
+        	var marker1 = new AMap.Marker({
+        	    map:map,
+        	    position:new AMap.LngLat(obj.PX,obj.PY),   
+        	    zIndex:102,  
+        	    offset:new AMap.Pixel(-24,-28), //相对于基点的偏移位置
+        	    draggable:false,  //是否可拖动
+        	    content:markerContent   //自定义点标记覆盖物内容
+        	});
+        	//$("#img"+obj.messageid).rotate(obj.direction-90);
+        	marker1.setMap(map);  //在地图上添加点
+
+        	//添加文本标记
+        	var info = [];                 
+        	info.push(txt);                 
+        	               
+        	var inforWindow = new AMap.InfoWindow({                 
+        	  offset:new AMap.Pixel(0,0),                 
+        	  content:info.join("<br>")                 
+        	});                 
+			});
+        }
+function addmkshisend1(obj,o1){
+	require(["dijit/layout/TabContainer", "dijit/Dialog","dijit/layout/ContentPane", "app/util","dojo/on","dojo/domReady!"]
+	, function(TabContainer,Dialog, ContentPane,util,on){
+	var markerContent = document.createElement("div");
+    markerContent.className = "markerContentStyle";
+    //点标记中的图标
+    var markerImg= document.createElement("img");
+	markerImg.className="markerlnglat";
+	markerImg.src="resources/images/end.png";   
+	markerImg.id="img"+obj.messageid
+	markerContent.appendChild(markerImg);
+  var txt = "<b style='color:#3399FF'>"+obj.vehinum+"(终点)</b><br/><br/><b>[GPS时间]</b>："+obj.speedtime
+  				  +"<br/><b>[车辆状态]</b>："+obj.carstate
+				  +"<br/><b>[GPS速度]</b>："+obj.speed
+				  +"<br/><b>[行驶方向]</b>："+dlwz(obj.direction)
+				  +"<br/><b>[经纬度]</b>："+obj.longi+","+obj.lati
+				  +"<br/><b>[位置描述]</b>：<font id='mkadd"+o1+"'></font>";
+	var marker1 = new AMap.Marker({
+	    map:map,
+	    position:new AMap.LngLat(obj.PX,obj.PY),     
+	    zIndex:102,  
+	    offset:new AMap.Pixel(-24,-28), //相对于基点的偏移位置
+	    draggable:false,  //是否可拖动
+	    content:markerContent   //自定义点标记覆盖物内容
+	});
+	marker1.setMap(map);  //在地图上添加点
+	var info = [];                 
+	info.push(txt);                 
+	               
+	var inforWindow = new AMap.InfoWindow({                 
+	  offset:new AMap.Pixel(0,0),                 
+	  content:info.join("<br>")                 
+	});                 
+	});
+}
+function addmks1(obj,o1){
+	require(["dijit/layout/TabContainer", "dijit/Dialog","dijit/layout/ContentPane", "app/util","dojo/on","dojo/domReady!"]
+	, function(TabContainer,Dialog, ContentPane,util,on){
+	var markerContent = document.createElement("div");
+    markerContent.className = "markerContentStyle";
+    //点标记中的图标
+    var markerImg= document.createElement("img");
+	markerImg.className="markerlnglat";
+	markerImg.src="resources/images/fx2.png";   
+	markerImg.id="hismk"+obj.messageid
+	markerContent.appendChild(markerImg);
+  var txt = "<b style='color:#3399FF'>"+obj.vehinum+"</b><br/><br/><b>[GPS时间]</b>："+obj.speedtime
+				  +"<br/><b>[GPS速度]</b>："+obj.speed
+				  +"<br/><b>[行驶方向]</b>："+dlwz(obj.direction)
+				  +"<br/><b>[经纬度]</b>："+obj.longi+","+obj.lati
+				  +"<br/><b>[当前位置]</b>：<font id='mkadd"+o1+"'></font>";
+	var marker1 = new AMap.Marker({
+	    map:map,
+	    position:new AMap.LngLat(obj.PX,obj.PY),     
+	    offset:new AMap.Pixel(-6,-6), //相对于基点的偏移位置
+	    draggable:false,  //是否可拖动
+	    icon:"resources/images/fx2.png",
+	    angle:obj.direction-90
+	});
+	var info = [];                 
+	info.push(txt);                 
+	var inforWindow = new AMap.InfoWindow({                 
+	  offset:new AMap.Pixel(0,0),                 
+	  content:info.join("<br>")                 
+	});                 
+
+	//添加角度		
+	markerlist.push(marker1);
+	});
+}
+function completeEventHandler1(lineArr){ 
+	markerhistory = new AMap.Marker({
+        map:map,
+        //draggable:true, //是否可拖动
+        position:lineArr[0],//基点位置
+        icon:"resources/images/car.png", //marker图标，直接传递地址url
+        zIndex:101,  
+        offset:new AMap.Pixel(-26,-13), //相对于基点的位置
+        autoRotation:true
+    });
+    //绘制轨迹
+    polyline = new AMap.Polyline({
+        map:map,
+        path:lineArr,
+        strokeColor:"#000",//线颜色
+        strokeOpacity:1,//线透明度
+        strokeWeight:3,//线宽
+        strokeStyle:"solid"//线样式
+    });
+    map.setFitView();
+  }
+//操作小车移动
+var MarkerMovingControl = function(map, marker, path,speed) {
+    this._map = map;
+    this._speed = speed;
+    this._marker = marker;
+    this._path = path;
+    this._currentIndex = 0;
+    marker.setMap(map);
+    marker.setPosition(path[0]);
+}
+
+MarkerMovingControl.prototype.step = function(){
+    var nextIndex = this._currentIndex + 1;
+    
+    if(this._currentIndex>0){
+	    var ind = this._currentIndex-1;
+    	$("#trhis"+ind).css('color','#000000');
+    	var gd = $("#histabledata").scrollTop()+$("#trhis"+this._currentIndex).height();
+    	$("#histabledata").scrollTop(gd);
+	}else{
+		$("#trhis0").css('color','red');
+		$("#histabledata").scrollTop(0);
+	}
+    $("#trhis"+this._currentIndex).css('color','red');
+    $("#dqlc").html($("#lchis"+this._currentIndex).html());
+    $("#dqsj").html($("#sjhis"+this._currentIndex).html());
+    
+    getbfb(nextIndex,this._path.length);
+
+    
+    if (nextIndex < this._path.length) {
+        if (!this._listenToMoveend) {
+            this._listenToMoveend = AMap.event.addListener(this._marker, 'moveend', function(){
+                this._currentIndex++;
+                AMap.event.trigger(this, 'stepend');
+            }, this);
+        }
+        // console.log(nextIndex);
+         if(this._path[nextIndex].lng == this._path[this._currentIndex].lng && this._path[nextIndex].lat == this._path[this._currentIndex].lat ) {
+                    this._currentIndex++;
+                    this.step();
+                    return;
+                }else{
+                    this._marker.moveTo(this._path[nextIndex], this._speed);
+                }
+    }
+};
+
+/**
+* 移动marker，会从当前位置开始向前移动
+*/
+MarkerMovingControl.prototype.move = function() {
+if (!this._listenToStepend) {
+  this._listenToStepend = AMap.event.addListener(this, 'stepend', function() {
+      this.step();
+  }, this);
+}
+this.step();
+};
+/**
+* 停止移动marker，由于控件会记录当前位置，所以相当于暂停
+*/
+MarkerMovingControl.prototype.stop = function() {
+this._marker.stopMove();
+};
+
+/**
+* 重新开始，会把marker移动到路径的起点然后开始移动
+*/
+MarkerMovingControl.prototype.restart = function() {
+	getbfb(0,500);
+	 for(var i=1;i<lsgjdata.length;i++){
+			$("#trhis"+i).css('color','#000000');
+		  }
+	this._speed=1000;
+this.stop();
+this._marker.setPosition(this._path[0]);
+this._currentIndex = 0;
+this.move();
+};
+/**
+* 加速
+*/
+MarkerMovingControl.prototype.jiasu = function() {
+this._speed += 200;
+this.move();
+};
+/**
+* 减速
+*/
+MarkerMovingControl.prototype.jiansu = function() {
+	this._speed -= 200;
+	if(this._speed<=0){
+		alert("已到最小速度！");
+		return;
+	}
+	this.move();
+};
+
+/**
+* 拖拽或点击后的车辆位置
+*/
+MarkerMovingControl.prototype.jingdu = function(ind) {
+	this.stop();
+	this._currentIndex = ind;
+};
+
+//编写事件响应函数
+function startAnimation() {
+   markerMovingControl.restart();
+}
+
+function quick(){
+	markerMovingControl.jiasu();
+}
+function slow(){
+	markerMovingControl.jiansu();
+}
+var ztoryd=0;
+function pauseAnimation() {
+	if(ztoryd==0){
+		$("#ztbtn").css("display","none");
+		$("#jxbtn").css("display","");
+		markerMovingControl.stop();
+		ztoryd=1;
+	}else if(ztoryd==1){
+		$("#ztbtn").css("display","");
+		$("#jxbtn").css("display","none");
+		 markerMovingControl.move();
+		ztoryd=0;
+	}
+}
+function getbfb(os,oe){
+	var a = os/oe;
+	  $('#bt').css('left',a*500);
+	  $('#bgcolor').width(a*500);
+	  $('#text').html(parseInt(a*100) + '%');
+}
+function getds(obj){
+	var a = lsgjdata.length-1;
+	var ind = Math.round(a*(obj/100));
+	
+	if($("#zgsid").val()!="45001"){
+		if(ind>0){
+			var gd = 0;
+			for(var i=0;i<ind;i++){
+				$("#trhis"+i).css('color','#000000');
+				gd+=$("#trhis"+i).height();
+			}
+			for(var j=ind+1;j<lsgjdata.length;j++){
+				$("#trhis"+j).css('color','#000000');
+			}
+	    	$("#histabledata").scrollTop(gd);
+		}else{
+			$("#trhis0").css('color','red');
+			
+			$("#histabledata").scrollTop(0);
+			$("#trhis"+(mkleng-1)).css('color','#000000');
+		}
+	    $("#trhis"+ind).css('color','red');
+	}
+    $("#dqlc").html($("#lchis"+ind).html());
+    $("#dqsj").html($("#sjhis"+ind).html());
+    
+	markerMovingControl.jingdu(ind);
+	markerhistory.setPosition(new AMap.LngLat(lsgjdata[ind].PX,lsgjdata[ind].PY)) ;
+	markerhistory.setAngle(lsgjdata[ind].DIRECTION-90);
+	$("#zanting").html("<img src='img/cz/jixu.png'>");
+	ztoryd=1;
+}
+</script>
+</body>
+</html>

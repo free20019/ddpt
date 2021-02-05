@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>报警监控席</title>
+	<style>
+		#bjjkx-borderContainer {
+			padding: 0;
+		}
+		#bjjkx-topContentPane {
+			/*height: 61px;*/
+			padding: 0;
+			background: #008AC3;
+		}
+		#bjjkx-topContentPane a {
+			float: left;
+			width: calc(100% / 11);
+			padding-bottom: 8px;
+			text-align: center;
+			text-decoration: none;
+			color: #ffffff;
+		}
+		#bjjkx-topContentPane a:hover {
+			color: #000066;
+			background: #ecf8fb;
+			background-image: linear-gradient(#ecf8fb, #e9e9eb);
+		}
+		#bjjkx-topContentPane a {  position: relative;  }
+		#bjjkx-topContentPane .icon {
+			position: absolute;
+			top: 50%;  left: 10px;
+			width: 20px;
+			height: 20px;
+			margin-top: -10px;
+			background: center / 100% no-repeat;
+		}
+		#bjjkx-topContentPane .icon-qt{background-image: url(./resources/images/bjjkx/icon-qt.png);}
+		#bjjkx-topContentPane .icon-qy{background-image: url(./resources/images/bjjkx/icon-qy.png);}
+		#bjjkx-topContentPane .icon-fd{background-image: url(./resources/images/bjjkx/icon-fd.png);}
+		#bjjkx-topContentPane .icon-sx{background-image: url(./resources/images/bjjkx/icon-sx.png);}
+		#bjjkx-topContentPane .icon-cj{background-image: url(./resources/images/bjjkx/icon-cj.png);}
+		#bjjkx-topContentPane .icon-jjbj{background-image: url(./resources/images/bjjkx/icon-jjbj.png);}
+		#bjjkx-topContentPane .icon-kcctj{background-image: url(./resources/images/bjjkx/icon-kcctj.png);}
+		#bjjkx-topContentPane .icon-dcxxc{background-image: url(./resources/images/bjjkx/icon-dcxxc.png);}
+		#bjjkx-topContentPane .icon-zl{background-image: url(./resources/images/bjjkx/icon-zl.png);}
+		#bjjkx-topContentPane a:hover .icon-qt {  background-image: url(./resources/images/bjjkx/icon-qt-h.png);  }
+		#bjjkx-topContentPane a:hover .icon-qy {  background-image: url(./resources/images/bjjkx/icon-qy-h.png);  }
+		#bjjkx-topContentPane a:hover .icon-fd {  background-image: url(./resources/images/bjjkx/icon-fd-h.png);  }
+		#bjjkx-topContentPane a:hover .icon-sx {  background-image: url(./resources/images/bjjkx/icon-sx-h.png);  }
+		#bjjkx-topContentPane a:hover .icon-cj {  background-image: url(./resources/images/bjjkx/icon-cj-h.png);  }
+		#bjjkx-topContentPane a:hover .icon-jjbj {  background-image: url(./resources/images/bjjkx/icon-jjbj-h.png);  }
+		#bjjkx-topContentPane a:hover .icon-kcctj {  background-image: url(./resources/images/bjjkx/icon-kcctj-h.png);  }
+		#bjjkx-topContentPane a:hover .icon-dcxxc {  background-image: url(./resources/images/bjjkx/icon-dcxxc-h.png);  }
+		#bjjkx-topContentPane a:hover .icon-zl {  background-image: url(./resources/images/bjjkx/icon-zl-h.png);  }
+		#bjjkx-topContentPane span {display: block;text-align: left;text-indent: 3.3em;margin-top: 10px;}
+		#bjjkx-centerContentPane {  padding: 0;  }
+		#bjjkxConent-borderContainer {  padding: 0; position: relative; }
+		#bjjkxConent-centerContentPane {  padding: 0;  }
+		#bjjkxConent-bottomContentPane {
+			width: 50%;
+			height: 200px;
+			padding: 0;
+		}
+		#bjjkx-rightContentPane {
+			width: 220px;
+			padding: 0;
+		}
+		.panel-titleBpx > .title {
+			line-height: 30px;
+			font-size: 14px;
+			text-indent: .5em;
+			color: #1e8cff;
+			background: #eef9ff;
+		}
+		.panel-titleBpx > .content {
+			margin-bottom: 10px;
+			padding: 5px;
+		}
+		.iFColorGreen > .title {
+			color: #1e8c5e;
+		}
+		.iFInputItem {
+			margin-bottom: 0px;
+		}
+		#bjjkxMap {
+			width: 100%;
+			height: 100%;
+		}
+
+		#bjjkxConent-tabContainer .dijitTabContainerTop-tabs,
+		#bjjkxConent-tabContainer2 .dijitTabContainerTop-tabs{
+			min-width: 90px;
+			margin-right: 0;
+			padding: 10px 12px;
+			/* border-bottom: 2px solid #d6d6d6; */
+			-moz-border-radius: 0;
+			border-radius: 0;
+			background-color: #f3f3f3;
+			background-image: -webkit-linear-gradient(top, #ffffff 0px, #ffffff 40%, #f3f3f3 100%);
+			background-image: -moz-linear-gradient(top, #ffffff 0px, #ffffff 40%, #f3f3f3 100%);
+			background-image: -o-linear-gradient(top, #ffffff 0px, #ffffff 40%, #f3f3f3 100%);
+			background-image: linear-gradient(top, #ffffff 0px, #ffffff 40%, #f3f3f3 100%);
+		}
+		#bjjkxConent-tabContainer .dijitTabContainerTop-tabs,
+		#bjjkxConent-tabContainer2 .dijitTabContainerTop-tabs{
+			padding: 10px 12px;
+			/* border-bottom: 2px solid #fb4554; */
+			background-color: #ffffff;
+			background-image: -webkit-linear-gradient(top, #ffffff 0px, #ffffff 50%, #ffffff 100%);
+			background-image: -moz-linear-gradient(top, #ffffff 0px, #ffffff 50%, #ffffff 100%);
+			background-image: -o-linear-gradient(top, #ffffff 0px, #ffffff 50%, #ffffff 100%);
+			background-image: linear-gradient(top, #ffffff 0px, #ffffff 50%, #ffffff 100%);
+		}
+		#bjjkxConent-tabContainer .dijitTabContainerTop-tabs .dijitTabChecked .tabLabel,
+		#bjjkxConent-tabContainer2 .dijitTabContainerTop-tabs .dijitTabChecked .tabLabel{
+			color: #333333;
+		}
+		#bjjkxConent-tabContainer .dijitTabContainerTop-tabs .dijitTabChecked:after,
+		#bjjkxConent-tabContainer2 .dijitTabContainerTop-tabs .dijitTabChecked:after{
+			content: '';
+			position: absolute;
+			top: 0;  left: 0;  right: 0;
+			height: 4px;
+			background: #1e8cff;
+		}
+
+		#bjjkxConent-zzddTable {
+			width: calc(100% - 2px);
+			height: calc(100% - 2px);
+		}
+		/*车辆报警*/
+		#bjjkx-queryInfoBox{
+			position: absolute;
+			top: 35px;  left: 100px;
+			width: 250px;
+			/*border-top: 5px solid #fb4554;*/
+			-webkit-box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, .4);
+			-moz-box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, .4);
+			box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, .4);
+			background: #ffffff;
+			z-index: 999;
+		}
+		#bjjkx-bjjkqyBox {
+			position: absolute;
+			top: 35px;  left: 100px;
+			width: 425px;
+			/*border-top: 5px solid #fb4554;*/
+			-webkit-box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, .4);
+			-moz-box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, .4);
+			box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, .4);
+			background: #ffffff;
+			z-index: 999;
+		}
+		#bjjkx-queryInfoBox {
+			height: 220px;
+		}
+		#bjjkx-bjjkqyBox {
+			height: 310px;
+			overflow: auto;
+		}
+		#bjjkx-queryInfoBox .iFTablePanel, #bjjkx-bjjkqyBox .iFTablePanel {
+			height: calc(100% - 143px);
+		}
+		#bjjkx-queryInfoBox .iFScrollBar, #bjjkx-bjjkqyBox .iFScrollBar {
+			/*height: calc(100% - 36px);*/
+			height: 120px;
+			overflow-y: auto;
+			border: 1px solid #008ac3;
+			color: #010066;
+		}
+		#bjjkx-queryInfoBox .iFScrollBar li, #bjjkx-bjjkqyBox .iFScrollBar li{
+			padding-left: 10px;
+			margin-bottom: 6px;
+		}
+		#bjjkx-queryInfoBox h2, #bjjkx-bjjkqyBox h2{
+			margin: 0;
+			/*padding: 10px 0;*/
+			border: 1px solid #008AC3;
+			border-bottom: none;
+			text-align: center;
+			color: #010066;
+		}
+		#bjjkx-queryInfoBox > h2, #bjjkx-bjjkqyBox > h2 {
+			background-color: #008AC3;
+			height: 30px;
+			line-height: 30px;
+			color:  #ffb74d;
+		}
+		#query_left{
+			width: 160px;
+			float: left;
+		}
+		#query_right{
+			position: absolute;
+			top: 40px;
+			right: 10px;
+		}
+		#query_right .iFBtn{
+			display: block;
+			margin-top: 40px;
+		}
+		#bjjkxDialogPanel{
+			width: 600px;
+			height: 500px;
+		}
+		#areaDialogPanel{
+			width: 500px;
+			height: 350px;
+		}
+		#leftPanel{
+			width: 48%;
+			height: 90%;
+			float: left;
+		}
+		#rightPanel{
+			width: 48%;
+			height: 90%;
+			float: right;
+		}
+		#bjjkxConent-tabContainer_tablist_rightBtn .claro .dijitTabContainerTop-tabs .dijitTabChecked,
+		#bjjkxConent-tabContainer2 .dijitTabContainerTop-tabs{
+			padding:0;
+		}
+		#bjjkxConent-tabContainer .dijitTabContainerTop-tabs{padding: 0 12px;}
+		#bjjkxConent-bottomContentPane .dijitTabPaneWrapper, #bjjkxConent-bottomContentPane .dijitTabContainerTop-tabs, #bjjkxConent-bottomContentPane .dijitTabContainerBottom-tabs, #bjjkxConent-bottomContentPane .dijitTabContainerLeft-tabs, #bjjkxConent-bottomContentPane .dijitTabContainerRight-tabs {
+			border-color: #2992FF;
+		}
+		#bjjkxConent-bottomContentPane .dijitTabContainerTop-tabs .dijitTab {
+			overflow: hidden;
+			min-width: 90px;
+			line-height: 15px;
+			margin-bottom: -2px;
+			padding: 5px 12px 5px;
+			-moz-border-radius: 6px 6px 0 0;
+			border-radius: 6px 6px 0 0;
+			border: 1px solid #2992FF;
+			background-color: #F3F8FC;
+		}
+		#bjjkxConent-bottomContentPane .dijitTabContainerTop-tabs .dijitTabChecked:before {
+			content: '';
+			position: absolute;
+			top: 0;  left: 0;  right: 0;
+			height: 6px;
+			background: #1E8CFF;
+		}
+		#tb_bjq{
+			cursor: pointer;
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			width: 33px;
+			height: 33px;
+			border-radius: 5px;
+			z-index: 999;
+			background: #0062a7;
+		}
+		#tb_bjq .icon-bjq{
+			display: inline-block;
+			margin: 5px;
+			width: 23px;
+			height: 23px;
+			background: url(./resources/images/baojingqi.png);
+		}
+		#bjjkxConent-tabContainer2{height: 200px}
+		#dijit_layout_ContentPane_3{height: 160px}
+		#bjjkxConent-tabContainer2_tablist .dijitTabPaneWrapper .dijitTabContainerTop-container .dijitAlignCenter{height: 170px}
+		.icon_search{
+			width: 19px;
+			height: 13px;
+			display: inline-block;
+			background: url(./resources/images/search.png);;
+		}
+		.icon_add{
+			width: 14px;
+			height: 14px;
+			display: inline-block;
+			background: url(./resources/images/icon-add.png);;
+		}
+		#bjjkx-rightContentPane .iFBtn.iFColorOrange{
+			padding: 2px 12px;
+		}
+		#bjjkx-rightContentPane .iFComboBox,#bjjkx-rightContentPane .iFComboBox .iFList{border-color: #11C876;}
+		#bjjkx-rightContentPane .iFComboBox a{background: #11C876;color: #fff}
+		#bjjkx-rightContentPane .iFComboBox .iFList li,
+		#bjjkx-rightContentPane .iFComboBox input[type=text]{color: #11C876 }
+		#bjjkx-rightContentPane .iFComboBox .iFList li.selected,
+		#bjjkx-rightContentPane .iFComboBox .iFList li:hover{background: #11C876;color: #fff;}
+		#dijit_layout_ContentPane_3 .iFComboBox a{
+			text-align: center;
+			color: #010066;
+		}
+		#dijit_layout_ContentPane_3 .iFComboBox a:before{content: normal}
+		#bjjkxConent-bottomContentPane,
+		#bjjkxConent-tabContainer .dijitTabContainerTop-tabs,
+		#bjjkxConent-tabContainer2_tablist .dijitTabContainerTop-tabs
+		{ background: #eef9ff;color:#010066 }
+		#bjjkxConent-tabContainer .dijitTabContainerTop-tabs .dijitTabChecked .tabLabel,
+		#bjjkxConent-bottomContentPane .dijitTabContainerTop-tabs .dijitTab{color:#010066}
+		#dijit_layout_ContentPane_0,#dijit_layout_ContentPane_1,#dijit_layout_ContentPane_2{width: 410px;padding: 0;}
+		.tbl tbody tr{
+			height: 25px;
+			line-height: 25px;
+		}
+		.tbl thead th,.tbl tbody td{
+			padding-left: 10px;
+			overflow:hidden;
+			white-space:nowrap;
+		}
+		.tbl tbody tr:nth-child(even){background: #eef9ff}
+		#dijit_layout_ContentPane_3 .iFInput,#dijit_layout_ContentPane_3 .iFComboBox{border-color: #1e8cff}
+		#dijit_layout_ContentPane_3 .iFLabel{width: auto}
+		#dijit_layout_ContentPane_3 .iFBtn.iFColorOrange{padding: 2px 10px}
+		#bjjkx-queryInfoBox .headLine, #bjjkx-bjjkqyBox .headLine{position: relative}
+		#ck-close, #bjjkqy-close {
+			cursor: pointer;
+			position: absolute;
+			top: 2px;
+			right: 10px;
+			width: 22px;
+			height: 22px;
+			display: inline-block;
+			background: url(./resources/images/bjjkx/icon-close.png);
+		}
+		.tabelListPanel {
+			margin: 2px;
+			border: 1px solid #3aa5d1;
+		}
+		.tabelListPanel li {
+			border-bottom: 1px solid #3aa5d1;
+		}
+		.tabelListPanel li:last-child {
+			border-bottom: none;
+		}
+		.tabelListPanel .titleName, .tabelListPanel .infoConent {
+			padding-top: 3px;
+			padding-bottom: 3px;
+		}
+		.tabelListPanel .titleName span {
+			display: inline-block;
+			line-height: 24px;
+			text-align: center;
+		}
+		.tabelListPanel .infoConent span {
+			display: inline-block;
+			line-height: 18px;
+			text-align: center;
+		}
+		.tabelListPanel .li-quyu {
+			width: 129px;
+			border-right: 1px solid #3aa5d1;
+		}
+		.tabelListPanel .li-chls {
+			width: 49px;
+			border-right: 1px solid #3aa5d1;
+		}
+		.tabelListPanel .li-ybjs {
+			width: 109px;
+			border-right: 1px solid #3aa5d1;
+		}
+		.tabelListPanel .li-cz {
+			width: 109px;
+			border-right: 1px solid #3aa5d1;
+		}
+		.toolBar {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 10px #bbb;
+            background: #ffffff;
+        }
+        .toolBar2 {
+            position: absolute;
+            top: 50px;
+            right: 10px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 10px #bbb;
+            background: #ffffff;
+        }
+        .toolItem {
+            position: relative;
+/*             float: left; */
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .toolItem:after {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: 0;
+            height: 60%;
+            border-right: 1px solid #eee;
+        }
+
+
+
+		.markerContentStyle{position:relative;filter: Alpha(Opacity=0)}
+		.markerContentStyle span{
+		    white-space: nowrap;
+		    display: block;
+		    text-align: left;
+		    color: #064F98;
+		    width: auto;
+/* 		    border: 1px solid #3399CC; */
+		    FONT-FAMILY: 微软雅黑;
+		    position: absolute;
+		    font-weight: bold;
+		    white-space: nowrap webkit-border-radius:5px;
+		    border-radius: 5px;
+		    }
+		     .info {
+            border: solid 1px silver;
+        }
+        div.info-top {
+            position: relative;
+            background: none repeat scroll 0 0 #F9F9F9;
+            border-bottom: 1px solid #CCC;
+            border-radius: 5px 5px 0 0;
+        }
+        div.info-top div {
+            display: inline-block;
+            color: #333333;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 31px;
+            padding: 0 10px;
+        }
+        div.info-top img {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            transition-duration: 0.25s;
+        }
+        div.info-top img:hover {
+            box-shadow: 0px 0px 5px #000;
+        }
+        div.info-middle {
+            font-size: 12px;
+            padding: 6px;
+            line-height: 20px;
+        }
+        div.info-middle a {
+        	text-decoration:none;
+        }
+        div.info-bottom {
+            height: 0px;
+            width: 100%;
+            clear: both;
+            text-align: center;
+        }
+        div.info-bottom img {
+            position: relative;
+            z-index: 104;
+        }
+        .info-middle img {
+            float: left;
+            margin-right: 6px;
+        }
+        .amap-overlay-text-container{
+	        font-size: 15px;
+        }
+        #bjcdmcDialogPanel{
+			width: 280px;
+			height: 32px;
+		}
+    #bjxxfsDialogPanel{
+			width: 500px;
+			height: 600px;
+		}
+		#bjjkx-zyxx a{
+		text-decoration:none;
+		}
+		#bjjkx-dxx a{
+		text-decoration:none;
+		}
+		#bjjkx-jjbj a{
+		text-decoration:none;
+		}
+		#bjjkx-bjcl li[selected]{
+            background-color: #2e6784;
+            color: #ffffff;
+        }
+        #bjjkx-bjcl li:hover{
+        	cursor:pointer;
+        	background-color: #2e6784;
+        }
+        .amap-ui-poi-picker-sugg-list{
+        	height: 200px;
+        	overflow: auto;
+        }
+        
+        .field-checkbox{width: 60px;white-space: nowrap;}
+		.field-AD_ID{width: 70px;white-space: nowrap;}
+		.field-AD_CAR_NO{width: 100px;white-space: nowrap;}
+		.field-AD_ALERTTYPE{width:100px;white-space: nowrap;}
+		.field-AD_RESULT{width: 100px;white-space: nowrap;}
+		.field-AD_DBTIME{width: 160px;white-space: nowrap;}
+	</style>
+</head>
+<body>
+<div id="bjjkx-borderContainer" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="persist:true, gutters:false, liveSplitters:true">
+	<div id="bjjkx-topContentPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top', splitter:false">
+		<a href="javascript:void(0);" id="all-pic"><i class="icon icon-qt"></i><span>全图</span></a>
+		<a href="javascript:void(0);" id="part"><i class="icon icon-qy"></i><span>区域</span></a>
+		<a href="javascript:void(0);"  class="selected"><i class="icon icon-fd"></i><span>放大</span></a>
+		<a href="javascript:void(0);"><i class="icon icon-sx"></i><span>缩小</span></a>
+		<a href="javascript:void(0);"><i class="icon icon-cj"></i><span>测距</span></a>
+		<a href="javascript:void(0);"><i class="icon icon-jjbj"></i><span>聚集报警</span></a>
+		<a href="javascript:void(0);"><i class="icon icon-kcctj"></i><span>车辆查询</span></a>
+		<a href="javascript:void(0);"><i class="icon icon-dcxxc"></i><span>导出下线车</span></a>
+		<a href="javascript:void(0);"><i class="icon icon-zl"></i><span>区域应急指令</span></a>
+	</div>
+	<div id="bjjkx-centerContentPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center', splitter:false">
+		<div id="bjjkxConent-borderContainer" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="persist:true, gutters:false, liveSplitters:true">
+			<div id="bjjkxConent-centerContentPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center', splitter:false">
+				<div id="bjjkxMap"></div>
+				<ul class="toolBar clearfix">
+					<li class="toolItem" id="cltj">车辆总数：<font id="clzs">0</font> 在线数：<font id="clzxs">0</font> 空车：<font id="clkcs">0</font> 重车：<font id="clzcs">0</font> 离线数：<font id="cllxs">0</font></li>
+                </ul>
+                <ul class="toolBar2 clearfix" id="bjjkx-clcxdialog" style="display: block">
+					<li class="toolItem" id="clcx">车牌号码：
+					<div class="iFComboBox" id="bjjkx-jkcl-comboBox" style="display: inline-block; width: 120px">
+						<input type="text" id="bjjkx-jkcltext">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList" style="height: 200px;overflow: auto;">
+						</ul>
+					</div>
+					<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="bjjkx-jkclcx">查询</a>
+					</li>
+					<li class="toolItem" id="dwcx">地物查找：
+					<div class="iFInput" style="width: 120px">
+					<input type="text" id="bjjkx-dwcxtext">
+					</div>
+					<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="bjjkx-dwcxdw">定位</a>
+					
+					</li>
+                </ul>
+				<div id="tb_bjq"><i class="icon-bjq"></i></div>
+				<div id="bjjkx-queryInfoBox">
+					<h2 class="headLine"><span>车辆报警</span><i id="ck-close"></i></h2>
+					<div id="query_left">
+						<div class="iFPanelBody iFTablePanel">
+							<h2 class="headLine iFTableHeader">车牌号码</h2>
+							<ul class="iFScrollBar" id="bjjkx-bjcl">
+							</ul>
+						</div>
+					</div>
+					<div id="query_right">
+						<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="bjjkx-qxbj">取消报警</a>
+						<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="close_window">报警处理</a>
+					</div>
+				</div>
+				<div id="bjjkx-bjjkqyBox" style="display: none;">
+					<h2 class="headLine"><span>报警区域监控</span><i id="bjjkqy-close"></i></h2>
+					<ul class="tabelListPanel" id="jjtabledata">
+						<li class="titleName">
+							<span class="li-quyu">区域</span>
+							<span class="li-chls">车辆数</span>
+							<span class="li-ybjs">预报警数</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="bjjkxConent-bottomContentPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'bottom', splitter:true">
+		<div data-dojo-type="dojox/layout/ContentPane" data-dojo-props="region:'left', splitter:false" id="leftPanel">
+			<div data-dojo-type="dijit/layout/TabContainer" id="bjjkxConent-tabContainer">
+				<div data-dojo-type="dijit/layout/ContentPane" title="重要信息">
+					<table width="100%" class="tbl">
+						<thead>
+						<tr style="height: 25px;line-height: 25px;font-size: 14px;margin-bottom: 5px;border-bottom: 1px solid #1e8cff">
+							<th>重要信息</th>
+						</tr>
+						</thead>
+						<tbody id="bjjkx-zyxx">
+						</tbody>
+					</table>
+				</div>
+				<div data-dojo-type="dijit/layout/ContentPane" title="短消息">
+					<table width="100%" class="tbl">
+						<thead>
+						<tr style="height: 25px;line-height: 25px;font-size: 14px;margin-bottom: 5px;border-bottom: 1px solid #1e8cff">
+							<th>短消息</th>
+						</tr>
+						</thead>
+						<tbody id="bjjkx-dxx">
+						</tbody>
+					</table>
+				</div>
+				<div data-dojo-type="dijit/layout/ContentPane" title="聚集报警">
+					<table width="100%" class="tbl">
+						<thead>
+						<tr style="height: 25px;line-height: 25px;font-size: 14px;margin-bottom: 5px;border-bottom: 1px solid #1e8cff">
+							<th>聚集报警</th>
+						</tr>
+						</thead>
+						<tbody id="bjjkx-jjbj">
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div data-dojo-type="dojox/layout/ContentPane" data-dojo-props="region:'right', splitter:false" id="rightPanel">
+			<div data-dojo-type="dijit/layout/TabContainer" id="bjjkxConent-tabContainer2">
+				<div data-dojo-type="dijit/layout/ContentPane" title="报警查询" class="bjcx">
+					<div class="iFInputItem">
+						<div class="iFInlineItem">
+							<label class="iFLabel">车牌号码:</label>
+							<div class="iFInput" style="width: 85px;">
+								<input type="text" id="bjcl_cphm">
+							</div>
+						</div>
+						<div class="iFInlineItem">
+							<label class="iFLabel">天数:</label>
+							<div class="iFComboBox" id="jfcx_cklx-comboBox" style="width: 85px;">
+								<input type="text" id="bjcl_ts">
+								<a href="javascript:void(0);">天</a>
+							</div>
+						</div>
+						<div class="iFInlineItem" style="line-height: 30px;">
+							<a href="javascript:void(0);" class="iFBtn iFColorOrange" style="line-height: 15px;" id="cl_Query">查找</a>
+						</div>
+						<div class="iFInlineItem" style="line-height: 30px;">
+							<a href="javascript:void(0);" class="iFBtn iFColorOrange" style="line-height: 15px;" id="cl_Add">处理</a>
+						</div>
+					</div>
+					<div id="bjjkxConent-bjcxTable" style="width:100%;height:calc(100% - 50px)"></div>
+					<div data-dojo-type="dijit/Dialog" data-dojo-id="bjjkxDialog" id="bjjkxDialog" title="dialog">
+						<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="bjjkxDialogPanel" id="bjjkxDialogPanel"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="bjxxfsDialog" id="bjxxfsDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="bjxxfsDialogPanel" id="bjxxfsDialogPanel"></div>
+</div>
+
+<div data-dojo-type="dijit/Dialog" data-dojo-id="bjcdmcDialog" id="bjcdmcDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="bjcdmcDialogPanel" id="bjcdmcDialogPanel"></div>
+</div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="areaDialog" id="areaDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="areaDialogPanel" id="areaDialogPanel"></div>
+</div>
+<script src="app/mqttws31.js"></script>
+<script src="app/amapui.js"></script>
+<script src="app/mainbj.js"></script>
+<script type="text/javascript">
+	var bjjkxjsobj=null;
+	require(['app/html/bjjkx/bjjkx', "dojo/domReady!"], function (bjjkx) {
+		bjjkxjsobj = new bjjkx();
+	});
+</script>
+</body>
+</html>

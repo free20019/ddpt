@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+    .wbo{
+    	    background-color: #ffe597;
+		    border: 1px solid #ffcc9d;
+		    height: 23px;
+		    line-height: 23px;
+    }
+    
+    </style>
+</head>
+<body>
+<div class="formItems" id="xxddqxPanel">
+<!--	<div class="iFInputItem" style="margin-bottom: 13px">-->
+<!--		<label class="iFTitleName" style="font-size: 14px;">取消类型</label>-->
+<!--		<div class="iFComboBox" id="qxddlx-comboBox" style="width:120px">-->
+<!--			<input type="text" readonly style="font-size: 12px" id="qxddlx" value="乘客原因">-->
+<!--			<a href="javascript:void(0);"></a>-->
+<!--			<ul class="iFList">-->
+<!--				<li data-value="" style="height: 1.5em;">司机原因</li>-->
+<!--				<li data-value="" style="height: 1.5em;">乘客原因</li>-->
+<!--			</ul>-->
+<!--		</div>-->
+<!--	</div>-->
+	<div class="iFInputItem" style="margin-bottom: 13px">
+		<label class="iFTitleName" style="font-size: 14px;">业务编号</label>
+			<span id="xxddqx-ywbh"></span>
+		<input type="hidden" id="xxddqx-yhid"/>
+	</div>
+	<div class="iFInputItem" style="margin-bottom: 13px;display: none;">
+		<label class="iFTitleName" style="font-size: 14px;">已付金额</label>
+		<div class="iFInput" style="width: 115px">
+			<input type="text" id="xxddqx-yfje" value="">
+		</div>
+	</div>
+	<div class="iFInputItem" style="margin-bottom: 20px">
+		<label class="iFTitleName" style="font-size: 14px;">取消原因</label>
+		<div class="iFInput" style="width: 80%;vertical-align: middle;">
+			<textarea type="text" id="xxddqx-qxyy"></textarea>
+		</div>
+	</div>
+	<div class="iFInputItem" style="text-align: right">
+		<a href="javascript:void(0);" class="btn-bottom wbo" id="xxqxddbtn" style="top: 133px">确定</a>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>新安装车辆统计</title>
+	<style>
+		#xazcltjTabel {
+			height: calc(100% - 50px);
+		}
+	</style>
+</head>
+<body>
+<div class="" id="xazcltjPanel">
+	<div class="iFInlineItem" id="xazcltj-qsrqBox">
+		<label class="iFLabel">起始日期</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="xazcltj-startTime">
+		</div>
+	</div>
+	<div class="iFInlineItem" id="xazcltj-jsrqBox">
+		<label class="iFLabel">结束日期</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="xazcltj-endTime">
+		</div>
+	</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="xazcltjQuery">查询</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="xazcltjexcel">导出Excel</a>
+		<span id="xazcltj-clzs"></span>
+	</div>
+</div>
+<div id="xazcltjTabel"></div>
+<!--<div data-dojo-type="dijit/Dialog" data-dojo-id="xazcltjDialog" id="xazcltjDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="xazcltjDialogPanel" id="xazcltjDialogPanel"></div>
+</div>-->
+<script type="text/javascript">
+	require(['app/html/czbb/cljc/xazcltj', "dojo/domReady!"], function (XAZCLTJ) {
+		new XAZCLTJ();
+	});
+</script>
+</body>
+</html>

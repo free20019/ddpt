@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>疑似模子车辆</title>
+	<style>
+		#ysmzclTabel {
+			height: calc(100% - 70px);
+		}
+		
+		.field-dojoId{width: 60px;white-space: nowrap;}
+		.field-QY{width: 80px;white-space: nowrap;}
+		.field-FGS{width: 200px;white-space: nowrap;}
+		.field-CP{width: 100px;white-space: nowrap;}
+		.field-JYCS{width: 120px;white-space: nowrap;}
+		.field-JYJE{width: 120px;white-space: nowrap;}
+		.field-JYJC{width: 120px;white-space: nowrap;}
+		.field-JYKS{width: 120px;white-space: nowrap;}
+		.field-JYDDSJ{width: 120px;white-space: nowrap;}
+		.field-JYYYSJ{width: 120px;white-space: nowrap;}
+	</style>
+</head>
+<body>
+<!-- <div id="title-div">
+	<div id="ysb_1">111111</div>
+	<div id="yst_1">222222</div>
+	<div id="ysj_1">333333</div>
+</div> -->
+<div class="" id="ysmzclPanel">
+	<div class="iFInlineItem">
+		<label class="iFLabel">起始时间</label>
+		<div class="iFInput" style="width: 120px;">
+			<input type="text" id="ysmzcl-startTime">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">结束时间</label>
+		<div class="iFInput" style="width: 120px;">
+			<input type="text" id="ysmzcl-endTime">
+		</div>
+	</div>
+		<div class="iFInlineItem" id="ysmzcl-cphm">
+			<label class="iFLabel">车牌号码</label>
+			<div class="iFComboBox" id="ysmzcl-cphm-comboBox" style="width: 120px;">
+				<input type="text" >
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+				</ul>
+			</div>
+		</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="ysmzclQuery">查询</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="ysmzclDaochu">导出Excel</a>
+	</div>
+</div>
+<div id="ysmzclTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="ysmzclDialog" id="ysmzclDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="ysmzclDialogPanel" id="ysmzclDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	require(['app/html/zhywbb/mzc/ysmzcl', "dojo/domReady!"], function (YSMZCL) {
+		new 	YSMZCL();
+	});
+</script>
+</body>
+</html>

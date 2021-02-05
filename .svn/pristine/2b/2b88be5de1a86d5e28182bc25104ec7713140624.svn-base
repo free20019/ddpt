@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="app/main.css"/>
+    <link rel="stylesheet" href="resources/style/iconfont.css"/>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            min-width: 1024px;
+            min-height: 700px;
+        }
+        body {
+            background: #0062a1 url("resources/images/ht_login/背景3.jpg") no-repeat center;
+            background-size: 100%,100%;
+        }
+        .content{
+            position:absolute;
+            top:35%;
+            left: 13%;
+        }
+        .input-item{
+            margin-top: 20px;
+        }
+        .input-item label{
+            display: inline-block;
+            width: 60px;
+            font-size: 18px;
+            color: #FFFFFF;
+        }
+        .input-item #username{
+            background: #FFFFFF url("resources/images/ht_login/user0.png")  no-repeat -8px 2px;
+            font-size: 18px;
+            text-indent: 33px;
+            height: 35px;
+            width: 260px;
+            border: 0;
+            outline: none;
+        }
+        .input-item #password{
+            background:  #FFFFFF  url("resources/images/ht_login/password0.png") no-repeat -8px 2px;
+            font-size: 18px;
+            text-indent: 33px;
+            height: 35px;
+            width: 260px;
+            border: 0;
+            outline: none;
+        }
+        .input-item #fjh{
+            background:  #FFFFFF  url("resources/images/ht_login/password0.png") no-repeat -8px 2px;
+            font-size: 18px;
+            text-indent: 33px;
+            height: 35px;
+            width: 260px;
+            border: 0;
+            outline: none;
+        }
+        .input-item #yzm{
+            /*background:  #FFFFFF  url("resources/images/ht_login/password0.png") no-repeat -8px 2px;*/
+            font-size: 18px;
+            text-indent: 33px;
+            height: 35px;
+            width: 260px;
+            border: 0;
+            outline: none;
+        }
+        .input-item #login{
+            display: inline-block;
+            width: 150px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: .5em;
+            background: #ffbe23;
+            color: #FFFFFF;
+            font-size: 20px;
+            text-decoration: none;
+            font-weight: bolder;
+        }
+        .input-item #login:hover{
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+<div class="head"></div>
+<div class="content">
+    <h3 style="text-align: center;font-size: 22px;color: #FFFFFF">用 户 登 录</h3>
+    <div class="input-item">
+        <label for="username">用户名</label>
+        <input type="text" id="username" onkeydown="KeyDown()">
+    </div>
+    <div class="input-item">
+        <label for="password">密&nbsp;&nbsp;&nbsp;码</label>
+        <input type="password" id="password" onkeydown="KeyDown()">
+    </div>
+    <div class="input-item">
+        <label for="fjh">分机号</label>
+        <input type="fjh" id="fjh" onkeydown="KeyDown()">
+    </div>
+     <div style="color: red;margin-top: 15px;" id="errormsg">
+    </div>
+<!--     <div class="input-item" style="position: relative;"> -->
+<!--         <label for="password">验证码</label> -->
+<!--         <input type="text" id="yzm" onkeydown="KeyDown()"> -->
+<!--         <i class="iconfont" style="position: absolute ;top: 10px;left: 70px;color: #f7b014;font-size: 19px">&#xe624;</i> -->
+<!--     </div> -->
+    <div class="input-item" style="text-align: center;margin-top: 8px;">
+        <a href="javascript:void(0)" id="login">登&nbsp;&nbsp;录</a>
+    </div>
+</div>
+</body>
+</html>
+
+<script src="app/jquery-3.2.1.min.js"></script>
+<!-- <script type="text/javascript" src = "app/config.js"></script> -->
+<script>
+    function KeyDown()
+    {
+        if (event.keyCode == 13)
+        {
+            event.returnValue=false;
+            event.cancel = true;
+            $("#login").click();
+        }
+    }
+     $("#login").on("click",function () {
+     	if($("#username").val()==""){
+     		$("#errormsg").html("请输入用户名！");
+     		return;
+     	}
+     	if($("#password").val()==""){
+     		$("#errormsg").html("请输入密码！");
+     		return;
+     	}
+     	if($("#fjh").val()==""){
+     		$("#errormsg").html("请输入分机号！");
+     		return;
+     	}
+	     $.ajax({
+	     url :  "login/login",
+	     type : 'post',
+	     data:{
+	     "username":$("#username").val(),
+	     "password":$("#password").val(),
+	     "fjh":$("#fjh").val()
+	     },
+	     dataType: 'json',
+	     success:function(data){
+// 	     console.info(data);
+	     if(data.msg==="0"){
+	     	location.href="menu.html";
+	     }else if(data.msg==="1"){
+	     	$("#errormsg").html("登录失败！用户名或密码错误！");
+	     }
+	     },
+	     error:function(data){
+	     }
+	     });
+     });
+//     $('#login').on('click',function () {
+//         location.href="menu.html";
+//     });
+</script>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加群组</title>
+    <style type="text/css">
+    .areabtn{
+            outline:none;
+            z-index: 200;
+            margin-top: 20px;
+            background-color: #fff;
+            border: 1px solid #a5a9ab;
+            border-radius: 5px;
+            color: #181819;
+            width: 40px;
+            height: 20px;
+            line-height: 20px;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+        }
+    #ryxx li{
+   	    padding: 2px;
+    	font-size: 13px;
+    }
+    </style>
+</head>
+<body>
+<div class="formItems" style="text-align: center;">
+    <div class="iFInlineItem">
+        <label class=" iFTitleName" style="font-size: 14px">群组名称</label>
+        <div class="iFInput">
+            <input type="text" id="qzname">
+        </div>
+    </div>
+    <div class="iFInlineItem">
+        <label class=" iFTitleName" style="font-size: 14px;vertical-align: middle">人员电话</label>
+        <div class="iFInput" id="ryxxdiv" style="vertical-align: middle;height: 230px;overflow: auto;width: 175px">
+            <ul id="ryxx">
+			</ul>
+        </div>
+    </div>
+    <div class="iFInlineItem">
+        <a href="javascript:void(0);" class="btn-bottom areabtn" id="qzglEditor-qued" style="top: 133px">确定</a>
+    	<a href="javascript:void(0);" class="btn-bottom areabtn" id="qzglEditor-qux" style="top: 133px">取消</a>
+    </div>    
+</div>
+</body>
+</html>

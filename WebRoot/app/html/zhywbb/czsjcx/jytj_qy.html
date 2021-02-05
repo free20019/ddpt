@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>出租数据查询-统计1</title>
+	<style>
+		#jjrqyTable {
+			width: 100%;
+			height: calc(100% - 143px);
+			margin-top: 10px;
+		}
+
+		.field-dojoId{width: 80px;white-space: nowrap;}
+		.field-JJR{width: 100px;white-space: nowrap;}
+		.field-YF{width: 100px;white-space: nowrap;}
+		.field-SJD{width: 150px;white-space: nowrap;}
+		.field-QY{width: 100px;white-space: nowrap;}
+		.field-AREA_NAME{width: 120px;white-space: nowrap;}
+		.field-RUN_TIMES{width: 120px;white-space: nowrap;}
+		.field-RUN_PROFIT{width: 120px;white-space: nowrap;}
+		.field-AVG_PROFIT{width: 120px;white-space: nowrap;}
+		.field-NO_LOAD_MILEAGE{width: 120px;white-space: nowrap;}
+		.field-AVG_TIMES{width: 120px;white-space: nowrap;}
+		.field-LOAD_MILEAGE{width: 120px;white-space: nowrap;}
+		.field-LOAD_TIME{width: 120px;white-space: nowrap;}
+	</style>
+</head>
+<body>
+<div class="topQueryPanel clearfix"  id="s3Panel">
+	<div class="queryPanel">
+		<!--<div class="iFInlineItem" id="jjr-rqBox">-->
+			<!--<label class="iFLabel">年份</label>-->
+			<!--<div class="iFInput" style="width: 90px">-->
+				<!--<input type="text" id="jjrqy-date">-->
+			<!--</div>-->
+		<!--</div>-->
+		<div class="iFInlineItem" id="jjrqy-jr">
+			<label class="iFLabel">节日</label>
+			<div class="iFComboBox" id="jjrqy-jr-comboBox" style="width: 100px;">
+				<input type="text" value="国庆节" data-value="6">
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+					<li data-value="0">元旦节</li>
+					<li data-value="1">春节</li>
+					<li data-value="2">清明节</li>
+					<li data-value="3">劳动节</li>
+					<li data-value="4">端午节</li>
+					<li data-value="5">中秋节</li>
+					<li data-value="6">国庆节</li>
+				</ul>
+			</div>
+		</div>
+	<div class="iFInlineItem" id="jjrqy-quyu">
+		<label class="iFLabel">重点区域</label>
+		<div class="iFComboBox" id="jjrqy-quyu-comboBox" style="width: 150px;">
+			<input type="text" value="" data-value="" >
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+			</ul>
+		</div>
+	</div>
+	</div>
+	<div class="queryPanel">
+		<div class="iFInlineItem" style="line-height: 35px;">
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="jjrqy-qt">全天</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="jjrqy-zgf">早高峰(07:00-09:00)</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="jjrqy-wgf">晚高峰(16:30-18:30)</a>
+			<!--<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="jjrqy-yj">17:00 - 5:00</a>-->
+			<!--<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="jjrqy-bt">5:00 - 17:00</a>-->
+			<!--<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="jjrqy-lc">23:00 - 5:00</a>-->
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="jjrqy-dc">导出</a>
+		</div>
+	</div>
+	<div class="queryPanel">
+		<div class="iFInlineItem" style="float: left; width: calc(50% - 20px); padding: 5px 10px;">周转次数 = 日总营运次数/营运车辆数</div>
+		<div class="iFInlineItem" style="float: left; width: calc(50% - 20px); padding: 5px 10px;">平均营运时长 = 营运时长/车辆数</div>
+		<div class="iFInlineItem" style="float: left; width: calc(50% - 20px); padding: 5px 10px;">平均营收 = 日总营收金额/营运车辆数</div>
+		<div class="iFInlineItem" style="float: left; width: calc(50% - 20px); padding: 5px 10px;">平均行驶速度 = 日载客行驶里程/营运时长</div>
+	</div>
+</div>
+<div id="jjrqyTable" ></div>
+<script type="text/javascript">
+	require(['app/html/zhywbb/czsjcx/jytj_qy', "dojo/domReady!"], function (JJRQY) {
+		new JJRQY();
+	});
+</script>
+</body>
+</html>

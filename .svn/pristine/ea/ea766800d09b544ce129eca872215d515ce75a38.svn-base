@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>车辆表</title>
+	<style>
+		#clbTabel {
+			height: calc(100% - 50px);
+		}
+		#clbTabels {
+		height: 100%;
+		}
+		#clbDialog .dijitDialogPaneContent {
+			padding: 0;
+		}
+		#clbDialogPanel {
+			width: 900px;
+			height: 400px;
+		}
+		#clbTabel .field-dojoId{width: 45px}
+		#clbTabel .field-VNT_NAME,#clbTabel .field-VEHI_NUM,#clbTabel .field-QRY_PWD
+		,#clbTabel .field-VS_NAME,#clbTabel .field-VIRWEB{width: 80px}
+		#clbTabel .field-BA_NAME,#clbTabel .field-COMP_NAME{width: 160px}
+		#clbTabel .field-VEHI_NO,#clbTabel .field-MT_NAME,#clbTabel .field-CT_NAME,#clbTabel .field-OWN_NAME,#clbTabel .field-OWN_TEL
+		,#clbTabel .field-HOME_TEL,#clbTabel .field-NIGHT_TEL,#clbTabel .field-VC_NAME,#clbTabel .field-NIGHT_TEL
+		,#clbTabel .field-VNC_NAME,#clbTabel .field-BASIS_COMP,#clbTabel .field-MDT_SUB_TYPE,#clbTabel .field-RLLX{width: 100px}
+		#clbTabel .field-MDT_NO,#clbTabel .field-SIM_NUM,#clbTabel .field-MTN_TIME,#clbTabel .field-RECONSTRUCT_DATE,
+		#clbTabel .field-UP_DATE,#clbTabel .field-VSIM_NUM{width: 120px}
+		#clbTabel .field-NOTE{width: 260px}
+	</style>
+</head>
+<body>
+<div class="" id="clbPanel">
+	<div class="iFInputItem">
+<!-- 		<div class="iFInlineItem"> -->
+<!-- 			<label class="iFLabel" style="width: 67px;">公司筛选</label> -->
+<!-- 			<div class="iFInput" style="width: 160px;"> -->
+<!-- 				<input type="text" id="clb-gssx"> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+		<div class="iFInlineItem" id="gs-comboBoxPanel">
+			<label class="iFLabel">公司</label>
+			<div class="iFComboBox" id="gs-comboBox" style="width: 200px;">
+				<input type="text" class="gs-list" data-value="" value="请选择公司">
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList" id="gs-list-ul">
+<!-- 					<li data-value="" style="height: 1.5em;">1234</li> -->
+				</ul>
+			</div>
+		</div>
+		<div class="iFInlineItem" id="fgs-comboBoxPanel">
+			<label class="iFLabel">分公司</label>
+			<div class="iFComboBox" id="fgs-comboBox" style="width: 200px;">
+				<input type="text" readonly class="fgs-list" data-value="" value="请选择分公司">
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList" id="fgs-list-ul">
+<!-- 					<li data-value="" style="height: 1.5em;">1234</li> -->
+				</ul>
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel" style="width: 160px;">车号或终端编号或SIM卡号</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="ch-f">
+			</div>
+		</div><br>
+		<div class="iFInlineItem" id="clb-qsrqBox">
+			<label class="iFLabel" style="width: 100px;">安装时间(起)</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="clb-startTime">
+			</div>
+		</div>
+		<div class="iFInlineItem" id="clb-jsrqBox">
+			<label class="iFLabel" style="width: 100px;">安装时间(止)</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="clb-endTime">
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel" style="width: 67px;">关键字</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="clb-gjz">
+			</div>
+		</div>
+		<div class="iFInlineItem" style="line-height: 30px;">
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clbQuery">查询</a>
+<!-- 			<a href="javascript:void(0);" class="iFBtn iFColorOrange">高级导出</a> -->
+<!-- 			<a href="javascript:void(0);" class="iFBtn iFColorOrange">省运管导出</a> -->
+			<span class="w10px"></span>
+<!-- 			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clbQueryInfo">查询</a> -->
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clbAdd">添加</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clbUpd">修改</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clbDel">删除</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clbDc">导出</a>
+		</div>
+	</div>
+</div>
+<div id="clbTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="clbDialog" id="clbDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="clbDialogPanel" id="clbDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	fingba().then(function(data){
+		xlktyff("gs-list-ul",data.datas);
+		comboboxDFun('#gs-comboBoxPanel');
+	});
+// 	$("#clb-gssx").change(function(){
+// 		$("#gs-list-ul").empty();
+// 		if($("#clb-gssx").val()==''){
+// 			fingba().then(function(data){
+// 				xlktyff("gs-list-ul",data.datas);
+// 				comboboxDFun('#gs-comboBoxPanel');
+// 			});
+// 		}else{
+// 			findbatj($("#clb-gssx").val()).then(function(data){
+// 				xlktyff("gs-list-ul",data.datas);
+// 				comboboxDFun('#gs-comboBoxPanel');
+// 			});
+// 		}
+// 	});
+	$(".gs-list").focus(function(){
+		$(".gs-list").val('');
+// 		fingba().then(function(data){
+// 			xlktyff("gs-list-ul",data.datas);
+// 			comboboxDFun('#gs-comboBoxPanel');
+// 		});
+	})
+
+	$(".gs-list").change(function(){
+		$("#fgs-list-ul").empty();
+		$("#gs-list-ul").empty();
+		console.log($(".gs-list").val());
+		if($(".gs-list").val()==''){
+			fingba().then(function(data){
+				xlktyff("gs-list-ul",data.datas);
+				comboboxDFun('#gs-comboBoxPanel');
+			});
+		}else{
+			findbatj($(".gs-list").val()).then(function(data){
+				xlktyff("gs-list-ul",data.datas);
+				comboboxDFun('#gs-comboBoxPanel');
+			});
+		}
+		$(".fgs-list").data('value','');
+		$(".fgs-list").val('请选择分公司');
+		findcomp($("#gs-comboBox input").data('value')).then(function(data){
+			xlktyff("fgs-list-ul",data.datas);
+			comboboxDFun('#fgs-comboBoxPanel');
+		});
+	})
+	require(['app/html/czchtgl/clb', "dojo/domReady!"], function (CLB) {
+		new CLB();
+	});
+</script>
+</body>
+</html>

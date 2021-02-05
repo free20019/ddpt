@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=10" />
+	<title>调度席平台--咨询查询</title>
+	<style>
+		#zxTabel {
+			height: calc(100% - 400px);
+		}
+		#zxPanel,#zxTabel,#zxList>h2{background-color: #F3F8FC}
+		#zxPanel{padding-top: 20px;color: #010066}
+		#zxTabel-header{color: #010066}
+		#zxList>h2{
+			margin: 0 !important;
+			padding: 10px 0;
+			color: #010066;
+			border-bottom: 1px solid #ddd;
+		}
+		#zx-ghBox input,#zx-ssbmBox input{background: none;height: 15px}
+		#zxPanel .iFInput input{height: 18px}
+		#zxPanel .top{
+			padding-bottom: 10px;
+			margin-bottom: 5px;
+			border-bottom: 1px solid #fff;
+		}
+		#zxPanel .iFInput{border-color: #89d9fe}
+		#zxPanel .iFInput textarea{
+			width: calc(100% - 10px) !important;
+			height: 130px !important;
+		}
+		#zx-ghBox .iFInput,#zx-ssbmBox .iFInput{
+			border: none;border-bottom: 1px solid #010066;!important;
+		}
+		#zxPanel .middle{
+			padding: 10px 0 10px 20px;
+			margin-bottom: 5px;
+			border-bottom: 1px solid #ddd;
+		}
+		#zxPanel .bottom{
+			padding: 8px 0;
+			border-bottom: 1px solid #fff;
+		}
+		#zx-fwnr0Box{position: relative;}
+		#zx-fwnr0Box .iFLabel{
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		#zx-fwnr0Box div{margin-left: 64px}
+		#zx-fwnr0Box .zx-create{
+			/*position: absolute;*/
+			/*top: 10px;*/
+			/*right: -95px;*/
+		}
+		#zx-fwnr0Box .zx-clear{
+			/*position: absolute;*/
+			/*bottom: 10px;*/
+			/*right: -95px;*/
+		}
+		#zxPanel .iFBtn.iFColorOrange{height: 8px;line-height: 8px}
+		#zxPanel .bottom .iFBtn.iFColorOrange{margin-left: 15px}
+		
+		.field-CS_ID{width: 100px;}
+		.field-CS_CLIENT{width: 100px;}
+		.field-CS_TELNUM{width: 130px;}
+		.field-CS_OBJECT{width: 100px;}
+		.field-CS_VEHIID{width: 100px;}
+		.field-COMPANY{width: 150px;}
+		.field-CS_TYPE{width: 100px;}
+		.field-CS_TSLX{width: 100px;}
+
+		.field-CS_STATE{width: 100px;}
+		.field-CS_DEALDATETIME{width: 180px;}
+		.field-CS_WORKERNUM{width: 100px;}
+		.field-CS_MEMO{width: 150px;}
+		
+		#zxDialogPanel{
+			width: 420px;
+			height: 280px;
+		}
+		#tsmbDialogPanel{
+			width: 350px;
+			height: 200px;
+		}
+	</style>
+</head>
+<body>
+<div class="" id="zxPanel">
+	<!--<div class="top">
+		<div class="iFInlineItem" id="zx-ghBox">
+			<label class="iFLabel">工号:</label>
+			<div class="iFInput" style="width: 120px;">
+				<input type="text">
+			</div>
+		</div>
+		<div class="iFInlineItem" id="zx-ssbmBox">
+			<label class="iFLabel">所属部门:</label>
+			<div class="iFInput" style="width: 120px;">
+				<input type="text">
+			</div>
+		</div>
+		<div class="iFInlineItem" id="zx-dbbzBox">
+			<label class="iFLabel">当班班长:</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text">
+			</div>
+		</div>
+	</div>-->
+	<div class="middle">
+		<div class="iFInlineItem" id="zx-ldhmBox">
+			<label class="iFLabel">来电号码:</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="zx-ldhm">
+			</div>
+		</div>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="zx-ldhmxz">选&nbsp;&nbsp;&nbsp;&nbsp;择</a>
+		<div class="iFInlineItem" id="zx-cldxBox" style="display: inline-block">
+			<label class="iFLabel">受理对象:</label>
+			<div class="iFComboBox"  style="display: inline-block; width: 160px">
+				<input type="text" id="zx-sldx" readonly>
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+							<li data-value="出租集团">出租集团</li>
+							<li data-value="公司">公司</li>
+							<li data-value="司机">司机</li>
+							<li data-value="乘客">乘客</li>
+							<li data-value="运管">运管</li>
+							<li data-value="其他">其他</li>
+						</ul>
+			</div>
+		</div>
+		<div class="iFInlineItem" id="zx-cllxBox" style="display: inline-block">
+			<label class="iFLabel">处理类型:</label>
+			<div class="iFComboBox"  style="display: inline-block; width: 160px">
+				<input type="text" id="zx-cllx" readonly>
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+						<li data-value="0">地址咨询查找</li>
+						<li data-value="1">测距里程费用</li>
+						<li data-value="2">定位导航指路</li>
+						<li data-value="3">公交铁路客运</li>
+						<li data-value="4">司机路况反馈</li>
+						<li data-value="5">司机建议投诉</li>
+						<li data-value="6">乘客投诉</li>
+						<li data-value="8">查找失物</li>
+						<li data-value="7">其他</li>
+						</ul>
+			</div>
+		</div>
+		<div class="iFInlineItem" id="zx-cllxBox2" style="display:none;">
+			<label class="iFLabel">处理类型:</label>
+			<div class="iFComboBox"  style="display: inline-block; width: 160px">
+				<input type="text" id="zx-cllx2" readonly>
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+						<li data-value="0">投诉登记</li>
+						<li data-value="1">失物登记</li>
+						<li data-value="2">业务咨询</li>
+						<li data-value="3">夜间移车</li>
+						<li data-value="4">事故处理</li>
+						<li data-value="5">应急事件</li>
+						<li data-value="6">表扬登记</li>
+						<li data-value="7">其他</li>
+						</ul>
+			</div>
+		</div>
+		<div class="iFInlineItem" id="zx-tslxBox2" style="display:none;">
+			<label class="iFLabel">投诉类型:</label>
+			<div class="iFComboBox"  style="display: inline-block; width: 160px">
+				<input type="text" id="zx-tslx2" readonly>
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+						<li data-value="0">绕道</li>
+						<li data-value="1">拒载</li>
+						<li data-value="2">服务质量</li>
+						<li data-value="3">收费问题</li>
+						<li data-value="4">中途抛客</li>
+						<li data-value="5">不按规定使用计价器</li>
+						<li data-value="6">其他</li>
+						</ul>
+			</div>
+		</div>
+		<div class="iFInlineItem" id="zx-clztBox">
+			<label class="iFLabel">处理状态:</label>
+			<div class="iFComboBox"  style="display: inline-block; width: 160px">
+				<input type="text" id="zx-clzt" readonly>
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+					<li data-value="已处理">已处理</li>
+					<li data-value="待处理">待处理</li>
+				</ul>
+			</div>
+		</div>
+
+
+<!-- 		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="zx-cllxglbtn">过&nbsp;&nbsp;&nbsp;&nbsp;滤</a> -->
+		<br>
+		<div class="iFInlineItem" id="zx-khxmBox">
+			<label class="iFLabel">客户姓名:</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="zx-khxm">
+			</div>
+		</div>
+		<div class="iFInlineItem" >
+			<label class="iFLabel">车牌号码:</label>
+			<div class="iFComboBox" id="zx-cphmBox" style="display: inline-block; width: 160px">
+				<input type="text" id="zx-cphm">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+						</ul>
+			</div>
+		</div>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="zx-cphmglbtn">过&nbsp;&nbsp;&nbsp;&nbsp;滤</a>
+		<div class="iFInlineItem" id="zx-ssgsBox">
+			<label class="iFLabel">所属公司:</label>
+			<div class="iFInput" style="width: 325px;">
+				<input type="text" id="zx-ssgs">
+			</div>
+		</div>
+		<br>
+		<div class="iFInlineItem" id="zx-fwnr0Box">
+			<label class="iFLabel">服务内容:</label>
+			<div style="width: 55%;margin-left: 64px;display: inline-block;">
+				<div class="iFInput" style="margin-left: 0px;width: 100%;">
+					<textarea type="text" cols="10" rows="10" id="zx-fwnr"></textarea>
+				</div>
+				<br/>
+				<br/>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange zx-create">生&nbsp;&nbsp;&nbsp;&nbsp;成</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange zx-clear">清&nbsp;&nbsp;&nbsp;&nbsp;空</a>
+			</div>
+
+<!--			<label class="iFLabel" style="vertical-align: top;top: 3px;left: 775px;">投诉模板:</label>-->
+			<div style="width: calc(40% - 100px);margin-left: auto;display: inline-block;">
+				<div class="iFInput" style="height:137px;overflow: auto;margin-left:auto;" id="zx-tsmbBox"></div>
+				<br/>
+				<br/>
+
+
+				<!--		<div class="iFInlineItem" >-->
+				<!--			<label class="iFLabel" style="vertical-align: top;">投诉模板:</label>-->
+				<a href="javascript:void(0);" class="iFBtn iFColorOrange zx-tjmb">添加模板</a>
+				<a href="javascript:void(0);" class="iFBtn iFColorOrange zx-scmb">删除模板</a>
+				<!--			</div>-->
+			</div>
+
+		</div>
+	</div>
+	<div class="bottom">
+		<div class="iFInlineItem">
+			<label class="iFLabel">起止时间:</label>
+			<div class="iFInput" style="width: 140px;">
+				<input type="text" id="cx-stime">
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel" style="width: 10px;">-</label>
+			<div class="iFInput" style="width: 140px;">
+				<input type="text" id="cx-etime">
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">受理对象:</label>
+			<div class="iFComboBox" style="display: inline-block; width: 100px">
+				<input type="text" id="cx-sldx">
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+					<li data-value="出租集团">出租集团</li>
+					<li data-value="公司">公司</li>
+					<li data-value="司机">司机</li>
+					<li data-value="乘客">乘客</li>
+					<li data-value="运管">运管</li>
+					<li data-value="其他">其他</li>
+				</ul>
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">处理状态:</label>
+			<div class="iFComboBox" style="display: inline-block; width: 100px">
+				<input type="text" id="cx-clzt">
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+					<li data-value="已处理">已处理</li>
+					<li data-value="待处理">待处理</li>
+				</ul>
+			</div>
+		</div>
+		<div class="iFInlineItem" id="zx-chBox">
+			<label class="iFLabel">车号:</label>
+			<div class="iFInput" style="width: 100px;">
+				<input type="text" id="cx-zxcphm">
+			</div>
+		</div>
+		<div class="iFInlineItem" id="zx-dhBox">
+			<label class="iFLabel">电话:</label>
+			<div class="iFInput" style="width: 120px;">
+				<input type="text" id="cx-zxdhhm">
+			</div>
+		</div>
+		<div class="iFInlineItem" id="zx-clghBox">
+			<label class="iFLabel">处理工号:</label>
+			<div class="iFInput" style="width: 100px;">
+				<input type="text" id="cx-zxclgh">
+			</div>
+		</div>
+		<div class="iFInlineItem" id="zx-fwnrBox">
+			<label class="iFLabel">服务内容:</label>
+			<div class="iFInput" style="width: 100px;">
+				<input type="text" id="cx-zxfwnr">
+			</div>
+		</div>
+		<div class="iFInlineItem" style="line-height: 30px;">
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="zxQuery">查&nbsp;&nbsp;&nbsp;&nbsp;询</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="zxDaochu">导出数据</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="zxSx">刷&nbsp;&nbsp;&nbsp;&nbsp;新</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="zxUpd">修&nbsp;&nbsp;&nbsp;&nbsp;改</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="zxDel">删&nbsp;&nbsp;&nbsp;&nbsp;除</a>
+		</div>
+	</div>
+
+</div>
+<div id="zxList">
+	<h2>所有工单列表</h2>
+</div>
+<div id="zxTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="zxDialog" id="zxDialog" title="咨询">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="zxDialogPanel" id="zxDialogPanel"></div>
+</div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="tsmbDialog" id="tsmbDialog" title="投诉模板">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="tsmbDialogPanel" id="tsmbDialogPanel"></div>
+</div>
+<script type="text/javascript">
+    require(['app/html/ddxpt/zx', "dojo/domReady!"], function (zx) {
+        new zx();
+    });
+</script>
+</body>
+</html>

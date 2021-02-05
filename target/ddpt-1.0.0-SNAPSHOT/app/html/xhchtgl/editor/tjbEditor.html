@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>小货车管理</title>
+	<style>
+		#cldEditorPanel .iFPanel {
+			padding: 10px;
+		}
+		#cldEditorPanel .iFComboBox {
+			width: calc(100% - 6em);
+		}
+		#cldEditorPanel .iFSubItem {
+			width: calc(33% - 60px);
+			padding-right: 60px;
+			margin-top: 0px;
+		}
+		#cldEditorPanel .iFTextArea {
+			width: calc(100% - 60px);
+			padding-right: 60px;
+		}
+	</style>
+</head>
+<body>
+<form id="clbEditorForm">
+	<div id="cldEditorPanel">
+		<div class="iFTabularPanel" style="margin-bottom: 10px;">
+			<div class="iFTitle">
+				<label>公司违章车辆统计</label>
+			</div>
+			<div class="iFContent">
+				<div class="iFPanel" style="padding-left: 20px; padding-right: 10px;">
+					<div class="iFW33 clearfix">					
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">公司名称</label>
+								<div class="iFInput">
+									<input  type="text"  id="tj-gsname">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">公司车辆违章总次数</label>
+								<div class="iFInput">
+									<input  type="text" id="tj-wzcs">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem iFTextArea">
+							<div class="iFInputItem">
+								<label class="iFLabel">公司所有车辆</label>
+								<div class="iFInput">
+									<textarea name="REMARK" id="tj-allcl"></textarea>
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem iFTextArea">
+							<div class="iFInputItem">
+								<label class="iFLabel">公司违章车辆</label>
+								<div class="iFInput">
+									<textarea name="REMARK" id="tj-gswzcl"></textarea>
+								</div>
+							</div>
+						</div>
+						
+				</div>
+			</div>
+		</div>
+	</div>
+		<div class="iFBtnItem">
+<!-- 			<a href="javascript:void(0);" class="iFBtn clb-iFBtnCommit">提交</a>
+ -->			<a href="javascript:void(0);" class="iFBtn tjb-iFBtnClose">关闭</a>
+		</div>
+	</div>
+</form>
+</body>
+</html>

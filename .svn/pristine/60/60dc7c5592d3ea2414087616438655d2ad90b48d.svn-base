@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定位表-编辑</title>
+    <style>
+    	.newold {
+    		width: 9em;
+    	}
+    	.newinput{
+   		    width: calc(100% - 10em);
+    	}
+    </style>
+</head>
+<body>
+<form action="" id="newoldEditorForm">
+	<div class="iFInputItem">
+	    <label class="iFLabel newold">新车牌</label>
+	    <div class="iFInput" style="width: calc(100% - 10em);" tabindex="1">
+	        <input type="text" id="newold-xcp" name="NEW_VHIC">
+	    </div>
+	</div>
+	<div class="iFSubItem">
+		<div class="iFInputItem" id="gs-xgs">
+			<label class="iFLabel newold">新车牌所属公司</label>
+			<div class="iFComboBox" style="width: calc(100% - 10em);" id="gs-xgs-div">
+				<input type="text" data-value="" id="tc-xgs" name="NEW_COMP_NAME">
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList" id="tc-xgs-ul-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="iFInputItem">
+	    <label class="iFLabel newold">旧车牌</label>
+	    <div class="iFInput" style="width: calc(100% - 10em);">
+	        <input type="text" id="newold-jcp" name="OLD_VHIC">
+	    </div>
+	</div>
+	<div class="iFSubItem">
+		<div class="" id="gs-jgs">
+			<label class="iFLabel newold">旧车牌所属公司</label>
+			<div class="iFComboBox" style="width: calc(100% - 10em);">
+				<input type="text" data-value="" id="tc-jgs" name="OLD_COMP_NAME">
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList" id="tc-jgs-ul-list">
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="iFInputItem">
+	    <label class="iFLabel newold">更换时间</label>
+	    <div class="iFInput" style="width: calc(100% - 10em);">
+	        <input type="text" id="newold-time" name="UP_TIME" onfocus="WdatePicker({dateFmt: STATEDATETIME})">
+	    </div>
+	</div>
+	<div class="iFBtnItem">
+	    <a href="javascript:void(0);" class="iFBtn newold-iFBtnCommit">提交</a>
+	    <a href="javascript:void(0);" class="iFBtn newold-iFBtnClose">关闭</a>
+	</div>
+</form>
+</body>
+</html>

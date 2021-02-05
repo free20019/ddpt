@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>车辆表-编辑</title>
+	<style>
+		#cldEditorPanel .iFPanel {
+			padding: 10px;
+		}
+		#cldEditorPanel .iFComboBox {
+			width: calc(100% - 6em);
+		}
+		#cldEditorPanel .iFSubItem {
+			width: calc(33% - 60px);
+			padding-right: 60px;
+		}
+		#cldEditorPanel .iFTextArea {
+			width: calc(100% - 60px);
+			padding-right: 60px;
+		}
+	</style>
+</head>
+<body>
+<form id="clbEditorForm">
+	<div id="cldEditorPanel">
+		<div class="iFTabularPanel" style="margin-bottom: 10px;">
+<!-- 			<div class="iFSubItem"> -->
+<!-- 				<div class="iFInputItem"> -->
+<!-- 					<label class="iFLabel">公司筛选</label> -->
+<!-- 					<div class="iFInput"> -->
+<!-- 						<input type="text" id="tc-clsx"> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+			<div class="iFTitle">
+				<label>车辆信息</label>
+			</div>
+			<div class="iFContent">
+				<div class="iFPanel" style="padding-left: 20px; padding-right: 10px;">
+					<div class="iFW33 clearfix">
+						<div class="iFSubItem">
+							<div class="iFInputItem" id="gs-tc">
+								<label class="iFLabel">公司</label>
+								<div class="iFComboBox">
+									<input type="text" data-value="" id="tc-gs">
+									<a href="javascript:void(0);"></a>
+									<ul class="iFList" id="tc-gs-ul-list">
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem" id="fgs-tc">
+								<label class="iFLabel">分公司</label>
+								<div class="iFComboBox">
+									<input type="text" readonly data-value="" id="tc-fgs">
+									<a href="javascript:void(0);"></a>
+									<ul class="iFList" id="tc-fgs-ul-list">
+									</ul>
+								</div>
+							</div>
+						</div>
+<!-- 						<div class="iFSubItem"> -->
+<!-- 							<div class="iFInputItem"> -->
+<!-- 								<label class="iFLabel">车辆编号</label> -->
+<!-- 								<div class="iFInput"> -->
+<!-- 									<input type="text" name="VEHI_NUM" id="tc-clbh"> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">SIM卡号</label>
+								<div class="iFInput">
+									<input type="text" name="SIM_NUM" id="tc-simk">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">车牌号码</label>
+								<div class="iFInput">
+									<input type="text" name="VEHI_NO" id="tc-cphm">
+								</div>
+							</div>
+						</div>
+<!-- 						<div class="iFSubItem"> -->
+<!-- 							<div class="iFInputItem"> -->
+<!-- 								<label class="iFLabel">原SIM卡号</label> -->
+<!-- 								<div class="iFInput"> -->
+<!-- 									<input type="text" name="OLD_SIM_NUM" id="tc-ysim"> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">车主姓名</label>
+								<div class="iFInput">
+									<input type="text" name="OWN_NAME" id="tc-czxm">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem" id="tc-cx">
+								<label class="iFLabel">车辆类型</label>
+								<div class="iFComboBox" id="clbEditor-clxx_cllx">
+									<input type="text" data-value="" id="tc-cllx">
+									<a href="javascript:void(0);"></a>
+									<ul class="iFList" id="tc-cx-ul-list">
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">车主电话</label>
+								<div class="iFInput">
+									<input type="text" name="OWN_TEL" id="tc-czdh">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">白班电话</label>
+								<div class="iFInput">
+									<input type="text" name="HOME_TEL" id="tc-bbdh">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">晚班电话</label>
+								<div class="iFInput">
+									<input type="text" name="NIGHT_TEL" id="tc-wbdh">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem" id="tc-clys">
+								<label class="iFLabel">车辆颜色</label>
+								<div class="iFComboBox" id="clbEditor-clxx_clys">
+									<input type="text" readonly data-value="" name="" id="tc-clys-input">
+									<a href="javascript:void(0);"></a>
+									<ul class="iFList" id="ys-ul-list">
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">初装时间</label>
+								<div class="iFInput">
+									<input type="text" onfocus="WdatePicker({dateFmt: STATEDATE})" name="MTN_TIME" id="tc-czsj">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem" id="tc-cplx">
+								<label class="iFLabel">车牌类型</label>
+								<div class="iFComboBox" id="clbEditor-clxx_cplx">
+									<input type="text" readonly data-value="" name="" id="tc-cplx-input">
+									<a href="javascript:void(0);"></a>
+									<ul class="iFList" id="cp-ul-list">
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">查询密码</label>
+								<div class="iFInput">
+									<input type="text" name="QRY_PWD" id="tc-cxmm">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">车辆子公司</label>
+								<div class="iFInput">
+									<input type="text" name="BASIS_COMP" id="tc-clzgs">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem" id="tc-jjqlx">
+								<label class="iFLabel">计价器类型</label>
+								<div class="iFComboBox" id="clbEditor-clxx_jjqlx">
+									<input type="text" readonly data-value=""  name="OIL_TYPE" id="tc-jjqlx-input">
+									<a href="javascript:void(0);"></a>
+									<ul class="iFList">
+										<li data-value="良标">良标</li>
+										<li data-value="大众">大众</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem" id="tc-clzt">
+								<label class="iFLabel">车辆状态</label>
+								<div class="iFComboBox" id="clbEditor-clxx_clzt">
+									<input type="text" readonly data-value="" name="" id="tc-clzt-input">
+									<a href="javascript:void(0);"></a>
+									<ul class="iFList" id="clzt-ul-list">
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem" id="tc-fwzt">
+								<label class="iFLabel">服务状态</label>
+								<div class="iFComboBox" id="clbEditor-clxx_fwzt">
+									<input type="text" readonly data-value="" name="" id="tc-fwzt-input">
+									<a href="javascript:void(0);"></a>
+									<ul class="iFList">
+										<li data-value="0">服务</li>
+										<li data-value="1">不服务</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">虚拟网</label>
+								<div class="iFInput">
+									<input type="text" name="VSIM_NUM" id="tc-xnw">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">最后修改人</label>
+								<div class="iFInput">
+									<input type="text" name="LAST_UPDATE" id="tc-zhxgr">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">改造时间</label>
+								<div class="iFInput">
+									<input type="text" name="RECONSTRUCT_DATE" id="tc-gzsj" onfocus="WdatePicker({dateFmt: STATEDATE})">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">升级时间</label>
+								<div class="iFInput">
+									<input type="text" name="UP_DATE" id="tc-sjsj" onfocus="WdatePicker({dateFmt: STATEDATE})">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem" id="tc-cpys">
+								<label class="iFLabel">车牌颜色</label>
+								<div class="iFComboBox" id="clbEditor-clxx_cpys">
+									<input type="text" readonly data-value="" name="" id="tc-cpys-input">
+									<a href="javascript:void(0);"></a>
+									<ul class="iFList" id="cpys-ul-list">
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem" id="tc-yjcl">
+								<label class="iFLabel">应急车辆</label>
+								<div class="iFComboBox" id="clbEditor-clxx_yjcl">
+									<input type="text" readonly data-value="" name="DR_NO" id="tc-yjcl-input">
+									<a href="javascript:void(0);"></a>
+									<ul class="iFList">
+										<li data-value="备用">备用</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">交接班时间</label>
+								<div class="iFInput">
+									<input type="text" name="CHANGE_BUI_TIME" id="tc-jjbsj" onfocus="WdatePicker({dateFmt: STATEDATE})">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">交接班地址</label>
+								<div class="iFInput">
+									<input type="text" name="CHANGE_BUI_ADDR" id="tc-jjbdz">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem" id="tc-rllx">
+								<label class="iFLabel">燃料类型</label>
+								<div class="iFComboBox" id="clbEditor-clxx_rllx">
+									<input type="text" readonly data-value="" name="TC-RLLX" id="tc-rllx-input">
+									<a href="javascript:void(0);"></a>
+									<ul class="iFList">
+										<li data-value="汽油">汽油</li>
+										<li data-value="非插电式混合动力">非插电式混合动力</li>
+										<li data-value="双燃料">双燃料</li>
+										<li data-value="纯电动">纯电动</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="iFInputItem iFTextArea">
+						<label class="iFLabel">备注</label>
+						<div class="iFInput">
+							<textarea name="CL_NOTE1" id="tc-cl-bz"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="iFTabularPanel">
+			<div class="iFTitle">
+				<label>终端信息</label>
+			</div>
+			<div class="iFContent">
+				<div class="iFPanel" style="padding-left: 20px; padding-right: 10px;">
+					<div class="iFW33 clearfix">
+						<div class="iFSubItem">
+							<div class="iFInputItem" id="tc-zdlxmc">
+								<label class="iFLabel" style="margin-left: -8px; margin-right: 8px; white-space: nowrap;">终端类型名称</label>
+								<div class="iFComboBox" id="clbEditor-zdxx_gs">
+									<input type="text" readonly data-value="" name="" value="请选择" id="tc-zdlxmc-input">
+									<a href="javascript:void(0);"></a>
+									<ul class="iFList" id="zdlxmc-ul-list">
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">终端编号</label>
+								<div class="iFInput">
+									<input type="text" name="MDT_NO" id="tc-zdbh">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem" id="tc-ddlx">
+								<label class="iFLabel">调度类型</label>
+								<div class="iFComboBox" id="clbEditor-zdxx_ddlx">
+									<input type="text" readonly data-value="1" value="新" name="" id="tc-ddlx-input">
+									<a href="javascript:void(0);"></a>
+									<ul class="iFList">
+										<li data-value="1">新</li>
+										<li data-value="0">老</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">报告IP</label>
+								<div class="iFInput">
+									<input type="text" readonly value="192.168.0.72" name="REPORT_IP" id="tc-bgip">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem" id="tc-thlx">
+								<label class="iFLabel">通话功能</label>
+								<div class="iFComboBox" id="clbEditor-zdxx_thgn">
+									<input type="text" readonly data-value="无" value="无" name="TALK_FUNC" id="tc-thgn">
+									<a href="javascript:void(0);"></a>
+									<ul class="iFList">
+										<li data-value="无">无</li>
+										<li data-value="有">有</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">安装人员</label>
+								<div class="iFInput">
+									<input type="text" name="INST_MAN" id="tc-azry">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem" id="tc-txlx">
+								<label class="iFLabel">通信类型名</label>
+								<div class="iFComboBox" id="clbEditor-zdxx_txlxm">
+									<input type="text" readonly data-value="" value="请选择" id="tc-txlxm">
+									<a href="javascript:void(0);"></a>
+									<ul class="iFList" id="txlx-ul-list">
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem" id="tc-zdzt">
+								<label class="iFLabel">终端状态</label>
+								<div class="iFComboBox" id="clbEditor-zdxx_zdzt">
+									<input type="text" readonly data-value="" value="" id="tc-zdzt-input"> 
+									<a href="javascript:void(0);"></a>
+									<ul class="iFList" id="ul-list-zdzt">
+<!-- 										<li data-value="未用">未用</li> -->
+<!-- 										<li data-value="停用">停用</li> -->
+<!-- 										<li data-value="在用">在用</li> -->
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem" id="tc-zdxh">
+								<label class="iFLabel">终端型号</label>
+								<div class="iFComboBox" id="clbEditor-zdxx_zdxh">
+									<input type="text" readonly data-value="" value="请选择" id="tc-zdxh-input">
+									<a href="javascript:void(0);"></a>
+									<ul class="iFList" id="zdxh-ul-list">
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem" id="tc-bbgl">
+								<label class="iFLabel">警报过滤</label>
+								<div class="iFComboBox" id="clbEditor-zdxx_bjgl">
+									<input type="text" readonly data-value="0" value="否" id="tc-jbgl">
+									<a href="javascript:void(0);"></a>
+									<ul class="iFList">
+										<li data-value="0">否</li>
+										<li data-value="1">是</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">接收端口</label>
+								<div class="iFInput">
+									<input type="text" value="7888" readonly name="RCV_PORT" id="tc-jsdk">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">GPS端口</label>
+								<div class="iFInput">
+									<input type="text" readonly value="7887" name="GPS_PORT" id="tc-gpsdk">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">发送端口</label>
+								<div class="iFInput">
+									<input type="text" readonly value="7889" name="SEND_PORT" id="tc-fsdk">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel" style="white-space: nowrap;">终端设备ID</label>
+								<div class="iFInput">
+									<input type="text" name="MDT_MID" id="tc-zdsbid">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="iFInputItem iFTextArea">
+						<label class="iFLabel">备注</label>
+						<div class="iFInput">
+							<textarea name="ZZ_NOTE1" id="tc-mdt-bz"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="iFBtnItem">
+			<a href="javascript:void(0);" class="iFBtn clb-iFBtnCommit">提交</a>
+			<a href="javascript:void(0);" class="iFBtn clb-iFBtnClose">关闭</a>
+		</div>
+	</div>
+</form>
+</body>
+</html>

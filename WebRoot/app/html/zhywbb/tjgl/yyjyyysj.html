@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>营运交易营运时间统计</title>
+	<style>
+		#yyjyyysjTabel {
+			height: calc(100% - 50px);
+		}
+	</style>
+</head>
+<body>
+<div class="" id="yyjyyysjPanel">
+	<div class="iFInlineItem">
+		<label class="iFLabel">起始时间</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="yyjyyysj-startTime">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">结束时间</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="yyjyyysj-endTime">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">数据状态</label>
+		<div class="iFComboBox" id="car-comboBox" style="width: 160px;">
+			<input type="text" readonly data-value="0" value="全部状态">
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+				<li data-value="0" style="height: 1.5em;">全部状态</li>
+				<li data-value="1" style="height: 1.5em;">正常状态</li>
+				<li data-value="2" style="height: 1.5em;">紧急状态</li>
+				<li data-value="3" style="height: 1.5em;">采集状态</li>
+			</ul>
+		</div>
+	</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="yyjyyysjQuery">查询</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange">导出Excel</a>
+	</div>
+</div>
+<div id="yyjyyysjTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="yyjyyysjDialog" id="yyjyyysjDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="yyjyyysjDialogPanel" id="yyjyyysjDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	require(['app/html/zhywbb/tjgl/yyjyyysj', "dojo/domReady!"], function (YYJYYYSJ) {
+		new YYJYYYSJ();
+	});
+</script>
+</body>
+</html>

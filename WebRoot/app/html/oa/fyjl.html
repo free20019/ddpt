@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>翻译记录</title>
+	<style>
+		#fyjlTabel {
+			height: calc(100% - 50px);
+		}
+		#fyjlDialog .dijitDialogPaneContent {
+			padding: 0;
+		}
+		#fyjlDialogPanel {
+			width: 600px;
+			height: 350px;
+		}
+	</style>
+</head>
+<body>
+<div class="" id="fyjlPanel" style="margin-bottom: 10px;">
+		<div class="iFInlineItem">
+		<label class="iFLabel">日期</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="fyjl-date" onfocus="WdatePicker({dateFmt: STATEDATE})">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">查询内容</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="fyjl-gjz">
+		</div>
+	</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="fyjlQuery">查询</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="fyjl-add">添加</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="fyjl-dcsj">导出数据</a>
+	</div>
+</div>
+<dl class="iFTitlePanel" id="fyjl-infoPanel">
+	<dt class="iFTitle">
+		<div class="iFInlineItem">
+			<input type="checkbox" class="iFCheckBox" id="fyjl-allSelect">
+			<label for="fyjl-allSelect">全选</label>
+		</div>
+		<div class="iFBtn iFBtnDelect" id="fyjl-AllDelete">删除</div>
+	</dt>
+<!-- 	<dd class="iFItem iFContent"> -->
+<!-- 		<div class="iFTabularPanel"> -->
+<!-- 			<div class="iFTitle"> -->
+<!-- 				<input type="checkbox" class="iFCheckBox iFCheckboxItem"> -->
+<!-- 				<label>记录编号</label> -->
+<!-- 				<span>[132234]</span> -->
+<!-- 			</div> -->
+<!-- 			<div class="iFContent" data-numId="1"> -->
+<!-- 				<div class="iFWAuto iFItem clearfix"> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 25%"> -->
+<!-- 						<label class="iFLabel iFTitleName">时间</label> -->
+<!-- 						<div class="iFText">2017-09-01 09:20:00</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 20%"> -->
+<!-- 						<label class="iFLabel iFTitleName">接待工号</label> -->
+<!-- 						<div class="iFText">528(马蕾)</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 20%"> -->
+<!-- 						<label class="iFLabel iFTitleName">语种</label> -->
+<!-- 						<div class="iFText">英语</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFBtnBox" style="width: 35%; line-height: 30px; text-align: center;"> -->
+<!-- 						<a href="javascript:void(0);" class="iFBtn iFBtnMin iFBtnEditor fyjlEditor">编辑</a> -->
+<!-- 						<a href="javascript:void(0);" class="iFBtn iFBtnMin iFBtnDelect fyjlDelete">删除</a> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="iFWAuto iFItem clearfix"> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 25%"> -->
+<!-- 						<label class="iFLabel iFTitleName">服务对象</label> -->
+<!-- 						<div class="iFText">司机</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 20%"> -->
+<!-- 						<label class="iFLabel iFTitleName">服务类别</label> -->
+<!-- 						<div class="iFText">翻译乘客取向</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 20%"> -->
+<!-- 						<label class="iFLabel iFTitleName">处理结果</label> -->
+<!-- 						<div class="iFText">处理完成</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="iFWAuto iFItem clearfix"> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 25%"> -->
+<!-- 						<label class="iFLabel iFTitleName">服务反馈</label> -->
+<!-- 						<div class="iFText">满意</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 20%"> -->
+<!-- 						<label class="iFLabel iFTitleName">车牌号码</label> -->
+<!-- 						<div class="iFText"></div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 20%"> -->
+<!-- 						<label class="iFLabel iFTitleName">司机电话</label> -->
+<!-- 						<div class="iFText"></div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="iFItem iFTextAreaItem"> -->
+<!-- 					<label class="iFLabel iFTitleName">服务内容</label> -->
+<!-- 					<div class="iFTextArea" style="padding-left: 5em;">乘客去火车东站</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="iFItem iFTextAreaItem"> -->
+<!-- 					<label class="iFLabel iFTitleName">内容</label> -->
+<!-- 					<div class="iFTextArea"></div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</dd> -->
+</dl>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="fyjlDialog" id="fyjlDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="fyjlDialogPanel" id="fyjlDialogPanel"></div>
+</div>
+<script type="text/javascript">
+$("#fyjl-date").val(setformatday(new Date));
+	require(['app/html/oa/fyjl', "dojo/domReady!"], function (fyjl) {
+		new fyjl();
+	});
+</script>
+</body>
+</html>

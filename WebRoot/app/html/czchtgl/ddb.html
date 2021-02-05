@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>调度表</title>
+	<style>
+		#ddbTabel {
+			height: calc(100% - 90px);
+		}
+		#ddbTabels {
+			height: 100%;
+		}
+		#ddbDialog .dijitDialogPaneContent {
+			padding: 0;
+		}
+		#ddbDialogPanel {
+			width: 800px;
+			height: 350px;
+		}
+		.ddbTabel th,.ddbTabel td {text-align: center;}
+		.ddbTabel .field-checkbox {width: 32px;}
+		.ddbTabel .field-dojoId {width: 30px;}
+		.ddbTabel .field-CI_ID {width: 100px;}
+		.ddbTabel .field-CUST_NAME {width: 80px;}
+		.ddbTabel .field-DISP_TYPE {width: 100px;}
+		.ddbTabel .field-CUST_TEL {width: 100px;}
+		.ddbTabel .field-ADDRESS_REF {width: 160px;}
+		.ddbTabel .field-ADDRESS {width: 160px;}
+		.ddbTabel .field-VEHI_NUM {width: 60px;}
+		.ddbTabel .field-DEST_ADDRESS {width: 100px;}
+		.ddbTabel .field-VEHI_NO {width: 80px;}
+		.ddbTabel .field-SIM_NUM {width: 120px;}
+		.ddbTabel .field-COMP_NAME {width: 120px;}
+		.ddbTabel .field-DISP_STATE {width: 80px;}
+		.ddbTabel .field-DISP_USER {width: 80px;}
+		.ddbTabel .field-DISP_TIME {width: 120px;}
+		.ddbTabel .field-NOTE {width: 100px;}
+	</style>
+</head>
+<body>
+<div class="">
+	<div class="iFInlineItem">
+		<label class="iFLabel">开始时间</label>
+		<div class="iFInput">
+			<input type="text" id="ddb-kssj" readonly onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">结束时间</label>
+		<div class="iFInput">
+			<input type="text" id="ddb-jssj" readonly onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">客户姓名</label>
+		<div class="iFInput">
+			<input type="text" id="ddb-khmc">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">客户电话</label>
+		<div class="iFInput">
+			<input type="text" id="ddb-khdh">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">参考地址</label>
+		<div class="iFInput">
+			<input type="text" id="ddb-ckdz">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">详细地址</label>
+		<div class="iFInput">
+			<input type="text" id="ddb-xxmc">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">调度类型</label>
+		<div class="iFComboBox" id="car-comboBox" style="width: 160px;">
+			<input type="text" readonly data-value="0" value="请选择" id="ddb-ddlx">
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+				<li data-value="电话约车">电话约车</li>
+				<li data-value="短信约车">短信约车</li>
+				<li data-value="QQ约车">QQ约车</li>
+				<li data-value="扬招约车">扬招约车</li>
+				<li data-value="网络约车">网络约车</li>
+				<li data-value="自助约车">自助约车</li>
+			</ul>
+		</div>
+	</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="ddbFind">查询</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="ddbUpd">修改</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="ddbDel">删除</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="ddbDc">导出</a>
+	</div>
+</div>
+<div id="ddbTabel" class="ddbTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="ddbDialog" id="ddbDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="ddbDialogPanel" id="ddbDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	$('.iFComboBox').click(function(){
+		var thisOne = this;
+		if ($(this).hasClass('selected')) {
+			$(this).removeClass('selected');
+		} else {
+			$(this).addClass('selected');
+			$(this).find('.iFList').on('click', function () {
+				event.stopPropagation();
+			}).find('li').off('click').on('click', function () {
+				$(this).addClass('selected').siblings('.selected').removeClass('selected');
+				$(thisOne).find('input').data('value', $(this).data('value')).val($(this).text()).end().removeClass('selected');
+				$(thisOne).find('input').trigger('change');
+			});
+		}
+	});
+	$("#ddb-kssj").val(setformat2(new Date()));
+	$("#ddb-jssj").val(setformat1(new Date()));
+	require(['app/html/czchtgl/ddb', "dojo/domReady!"], function (DDB) {
+		new DDB();
+	});
+</script>
+</body>
+</html>

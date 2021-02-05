@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>车辆查询</title>
+	<style>
+		#clcxTabel {
+			height: calc(100% - 100px);
+		}
+		#clcxTabel .field-dojoId{width: 80px;white-space: nowrap;}
+		#clcxTabel .field-OWNER_NAME{width: 90px;white-space: nowrap;}
+		#clcxTabel .field-COMP_NAME{width: 150px;white-space: nowrap;}
+		#clcxTabel .field-VEHI_NO{width: 110px;white-space: nowrap;}
+		#clcxTabel .field-VEHI_SIM{width: 110px;white-space: nowrap;}
+		#clcxTabel .field-OWN_NAME{width: 100px;white-space: nowrap;}
+		#clcxTabel .field-OWN_TEL{width: 100px;white-space: nowrap;}
+		#clcxTabel .field-HOME_TEL{width: 150px;white-space: nowrap;}
+		#clcxTabel .field-NIGHT_TEL{width: 150px;white-space: nowrap;}
+		#clcxTabel .field-MDT_NO{width: 110px;white-space: nowrap;}
+		#clcxTabel .field-VEHI_NUM{width: 90px;white-space: nowrap;}
+		#clcxTabel .field-MT_NAME{width: 80px;white-space: nowrap;}
+		#clcxTabel .field-MDT_SUB_TYPE{width: 100px;white-space: nowrap;}
+		#clcxTabel .field-VT_NAME{width: 80px;white-space: nowrap;}
+		#clcxTabel .field-VSIM_NUM{width: 100px;white-space: nowrap;}
+		#clcxTabel .field-DISP_TYPE{width: 60px;white-space: nowrap;}
+		#clcxTabel .field-QRY_PWD{width: 80px;white-space: nowrap;}
+		#clcxTabel .field-INST_TIME{width: 160px;white-space: nowrap;}
+		#clcxTabel .field-INST_MAN{width: 60px;white-space: nowrap;}
+		#clcxTabel .field-INST_POSITION{width: 60px;white-space: nowrap;}
+		#clcxTabel .field-LCD_INST_POSITION{width: 60px;white-space: nowrap;}
+		#clcxTabel .field-ELEC_TYPE{width: 60px;white-space: nowrap;}
+		#clcxTabel .field-TALK_FUNC{width: 60px;white-space: nowrap;}
+		#clcxTabel .field-SIM_TIME{width: 160px;white-space: nowrap;}
+		#clcxTabel .field-NOTE{width: 150px;white-space: nowrap;}
+		#clcxTabel .field-DISP_NUM{width: 80px;white-space: nowrap;}
+		#clcxTabel .field-COMPL_NUM{width: 80px;white-space: nowrap;}
+		#clcxTabel .field-INTEGRAL{width: 80px;white-space: nowrap;}
+		#clcxTabel .field-INTEGRALYANGZHAO{width: 80px;white-space: nowrap;}
+	</style>
+</head>
+<body>
+<div class="" id="clcxPanel">
+	<div class="iFInputItem">
+		<div class="iFInlineItem">
+			<label class="iFLabel">业务区块</label>
+			<div class="iFComboBox" id="clcx-car-comboBox" style="width: 160px;">
+				<input type="text" readonly>
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+					<li data-value="" style="height: 1.5em;"></li>
+				</ul>
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">终端类型</label>
+			<div class="iFComboBox" id="clcx-zdlx-comboBox" style="width: 160px;">
+				<input type="text" readonly >
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+				<li data-value="" style="height: 1.5em;"></li>
+				</ul>
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">车型</label>
+			<div class="iFComboBox" id="clcx-cx-comboBox" style="width: 160px;">
+				<input type="text" readonly>
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+				<li data-value="" style="height: 1.5em;"></li>
+				</ul>
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">公司</label>
+			<div class="iFComboBox" id="clcx-gs-comboBox" style="width: 160px;">
+				<input type="text" readonly>
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+					<li data-value="" style="height: 1.5em;"></li>
+				</ul>
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">SIM卡号</label>
+			<div class="iFComboBox" id="clcx-simkh-comboBox" style="width: 160px;">
+				<input type="text">
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+				</ul>
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">关键字</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="clcx-clgjz">
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">车牌号码</label>
+			<div class="iFComboBox" id="clcx-cphm-comboBox" style="width: 160px;">
+				<input type="text">
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+				</ul>
+			</div>
+		</div>
+<!-- 		<div class="iFInlineItem"> -->
+<!-- 			<label class="iFLabel">虚拟卡号</label> -->
+<!-- 			<div class="iFComboBox" id="clcx-xnkh-comboBox" style="width: 160px;"> -->
+<!-- 				<input type="text"> -->
+<!-- 				<a href="javascript:void(0);"></a> -->
+<!-- 				<ul class="iFList"> -->
+<!-- 				</ul> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+		<div class="iFInlineItem" style="line-height: 30px;margin-left: 62px;">
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clcxbtn">查询</a>
+<!-- 			<a href="javascript:void(0);" class="iFBtn iFColorOrange" disabled>积分清空</a> -->
+			<span class="w10px"></span>
+<!-- 			<a href="javascript:void(0);" class="iFBtn iFColorOrange">刷新</a> -->
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clcxdcbtn">导出</a>
+		</div>
+	</div>
+</div>
+<div id="clcxTabel"></div>
+<div style="padding: 10px;">查询结果：共<span id="clts">0</span>条记录</div>
+<script type="text/javascript">
+	require(['app/html/zxcxk/clcx', "dojo/domReady!"], function (CLCX) {
+		new CLCX();
+	});
+</script>
+</body>
+</html>

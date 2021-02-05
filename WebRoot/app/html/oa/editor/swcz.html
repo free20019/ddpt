@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>翻译记录-编辑</title>
+	<style>
+		#swczEditorPanel {
+			margin-right: 30px;
+		}
+		#swczEditorPanel .iFInputItem > .iFLabel {
+			width: 6em;
+		}
+		#swczEditorPanel .iFInputItem > .iFInput {
+			width: calc(100% - 7em);
+		}
+	</style>
+</head>
+<body>
+	<div class="iFFormPanel" id="swczEditorPanel">
+		<label class="iFLabel">开始时间</label>
+		<div class="iFInput">
+			<input type="text" id="swcz-kssj" onclick="WdatePicker({dateFmt: STATEDATETIME})">
+		</div>
+		<label class="iFLabel">结束时间</label>
+		<div class="iFInput">
+			<input type="text" id="swcz-jssj" onclick="WdatePicker({dateFmt: STATEDATETIME})">
+		</div>
+		<div class="iFInlineItem" id="swcz-comboBoxPanel">
+			<label class="iFLabel">车牌号码</label>
+			<div class="iFComboBox" id="swcz-comboBox" style="width: 120px;">
+				<input type="text" data-value="0" value="" id="cwcz-cphm">
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList" id="swcz-ul">
+				</ul>
+			</div>
+		</div>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="swczQuery">查询</a>
+	</div>
+	<div id="swczgj-map" style="height:562px;width:770px;"></div>
+</body>
+</html>

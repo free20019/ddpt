@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>订单查询</title>
+	<style>
+		#ddcxQueryContentPane label.inputName {
+			text-align: right;
+			width: 6.8em;
+		}
+		#ddcxTabel {
+			height: 100%;
+			/*height: calc(100% - 30px);*/
+			box-sizing: border-box;
+		}
+		#ddcxTabel .dgrid-cell {
+			white-space: nowrap;
+			/*word-wrap: break-word;*/
+		}
+		#ddcx_detail .dijitDialogPaneContent {
+			max-height: 400px;
+			overflow: auto;
+		}
+		.field-T_ADDTIME,.field-CORPS_MAN,.field-DDBH_ID,.field-C_SETOUTCITY,.field-C_INTENTCITY{
+			width: 120px;
+		}
+		#ddcx-cfddQb{
+			width: 150px;
+		}
+		.panel-table {
+			width: 830px;
+		}
+		.panel-table,.panel-table th, .panel-table tr td { border:1px solid #ffc539; }
+		.panel-table th {
+			width: 7em;
+		}
+		.panel-table th, .panel-table td{
+			padding: .3em;
+			vertical-align: middle;
+		}
+		.panel-table tr:nth-of-type(even) {
+			background: #f4f7fc;
+		}
+		.panel-table td input{
+			border: none;
+			outline: none;
+			background: transparent;
+		}
+		#ddcx-ddksrqQb,#ddcx-ddjsrqQb{
+			width:150px;
+		}
+		#ddcx-cfddQb{
+			width: 100px;
+		}
+	</style>
+</head>
+<body>
+<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="liveSplitters:false" id="ddcxCenterContainer">
+	<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top', splitter:false" id="ddcxQueryContentPane">
+		<form action="" method="post">
+			<div class="queryInlineBox">
+				<label class="inputName" for="ddcx-ddztQb">订单状态</label>
+				<select name="ddztQb" id="ddcx-ddztQb">
+					<option value="0">全部</option>
+					<option value="1">待支付</option>
+					<option value="2">已支付</option>
+					<option value="3">取消订单</option>
+				</select>
+			</div>
+			<div class="queryInlineBox">
+				<label class="inputName" for="ddcx-ddbhQb">订单编号</label>
+				<input id="ddcx-ddbhQb" type="text">
+			</div>
+			<div class="queryInlineBox">
+				<label class="inputName" for="ddcx-ddksrqQb">订单创建日期</label>
+				<input id="ddcx-ddksrqQb" type="text" onfocus="var ddcxDdjsrqQb=$dp.$('ddcx-ddjsrqQb');WdatePicker({onpicked:function(){ddcxDdjsrqQb.focus();}, dateFmt: 'yyyy-MM-dd HH:mm:ss', maxDate: new Date()})">
+			</div>
+			<div class="queryInlineBox">
+				<label class="inputName" for="ddcx-ddjsrqQb">订单结束日期</label>
+				<input id="ddcx-ddjsrqQb" type="text" onfocus="WdatePicker({minDate:'#F{$dp.$D(\'ddcx-ddksrqQb\',{d:1});}', dateFmt: 'yyyy-MM-dd HH:mm:ss', maxDate: new Date()})">
+			</div>
+			<div class="queryInlineBox">
+				<label class="inputName" for="ddcx-cfCs">出发城市</label>
+				<input type="text" id="ddcx-cfcs">
+			</div>
+			<div class="queryInlineBox">
+				<label class="inputName" for="ddcx-mddCs">目的地城市</label>
+				<input type="text" id="ddcx-mddCs">
+			</div>
+			<div class="queryInlineBox">
+				<label class="inputName" for="ddcx-cfddQb">归属地</label>
+				<select name="ddztQb" id="ddcx-cfddQb">
+				</select>
+			</div>
+			<div class="queryInlineBox">
+				<label class="inputName" for="ddcx-khtelQb">客户手机号</label>
+				<input id="ddcx-khtelQb" type="text">
+			</div>
+			<div class="btnInlineBox">
+				<button class="btn" id="ddcx_btnQuery" type="submit">查询</button>
+			</div>
+		</form>
+	</div>
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-props="region:'center', splitter:false" id="ddcxContentPane">
+		<div id="ddcxTabel" class='overflow-x:scroll'></div>
+	</div>
+</div><!-- end BorderContainer -->
+
+<div data-dojo-type="dijit/Dialog" data-dojo-id="ddcx_dialog" id="ddcx_dialog" title="">
+	<form action="" method="post">
+		<!--<input type="hidden" id="user_id">-->
+		<div class="inputItemBox">
+			<label class="inputName" for="ddcx_gwm">手机号</label>
+			<input id="ddcx_gwm" type="text" maxlength="11">
+		</div>
+		<div class="inputItemBox">
+			<label class="inputName" for="ddcx_passeord">密码</label>
+			<input id="ddcx_passeord" type="password">
+		</div>
+		<div class="inputItemBox">
+			<label class="inputName" for="ddcx_name">姓名</label>
+			<input id="ddcx_name" type="text">
+		</div>
+		<div class="inputItemBox">
+			<label class="inputName" for="ddcx_card">身份证号</label>
+			<input id="ddcx_card" type="text" maxlength="18">
+		</div>
+
+	</form>
+</div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="ddcx_detail" id="ddcx_detail" title="详细信息">
+	<table border="1" cellspacing="0" class="panel-table">
+		<tr>
+			<th>姓名</th>
+			<td id="ddcx_gkname">
+				<!--<input type="text">-->
+			</td>
+			<th>手机号</th>
+			<td id="ddcx_gktel">
+				<!--<input type="text">-->
+			</td>
+			<th>订单创建时间</th>
+			<td id="ddcx_cjsj">
+				<!--<input type="text">-->
+			</td>
+		</tr>
+		<tr>
+			<th>订单备注</th>
+			<td id="ddcx_ddbz">
+				<!--<input type="text">-->
+			</td>
+			<th>返程交通信息</th>
+			<td id="ddcx_fcxx">
+				<!--<input type="text">-->
+			</td>
+			<th>去程交通信息</th>
+			<td id="ddcx_qcxx">
+				<!--<input type="text">-->
+			</td>
+		</tr>
+		<tr>
+			<th>订单合计金额</th>
+			<td id="ddcx_hjje">
+				<!--<input type="text">-->
+			</td>
+			<th>订单状态</th>
+			<td id="ddcx_ddzt">
+				<!--<input type="text">-->
+			</td>
+			<th>老人人数</th>
+			<td id="ddcx_lrrs">
+				<!--<input type="text">-->
+			</td>
+		</tr>
+		<tr>
+			<th>儿童不占床人数</th>
+			<td id="ddcx_etbzc">
+				<!--<input type="text">-->
+			</td>
+			<th>儿童人数</th>
+			<td id="ddcx_etrs">
+				<!--<input type="text">-->
+			</td>
+			<th>成人人数</th>
+			<td id="ddcx_crrs">
+				<!--<input type="text">-->
+			</td>
+		</tr>
+		<tr>
+			<th>订单编号</th>
+			<td id="ddcx_ddbh">
+				<!--<input type="text">-->
+			</td>
+			<th>出团日期</th>
+			<td id="ddcx_ctrq">
+				<!--<input type="date">-->
+			</td>
+			<th>返程日期</th>
+			<td id="ddcx_fcrq">
+				<!--<input type="date">-->
+			</td>
+		</tr>
+		<tr>
+			<th>出发城市</th>
+			<td id="ddcx_cfcs">
+				<!--<input type="text">-->
+			</td>
+			<th>目的城市</th>
+			<td id="ddcx_mddcs">
+				<!--<input type="text">-->
+			</td>
+			<th>旅游天数</th>
+			<td id="ddcx_lyts">
+				<!--<input type="text">-->
+			</td>
+		</tr>
+		<tr>
+			<th>送团人员</th>
+			<td id="ddcx_stry">
+				<!--<input type="text">-->
+			</td>
+			<th>送团标志</th>
+			<td id="ddcx_stbz">
+				<!--<input type="text">-->
+			</td>
+			<th>接团人员</th>
+			<td id="ddcx_jtry">
+				<!--<input type="text">-->
+			</td>
+		</tr>
+		<tr>
+			<th>接团标志</th>
+			<td id="ddcx_jtbz">
+				<!--<input type="text">-->
+			</td>
+			<th>集合地点</th>
+			<td id="ddcx_jhdd">
+				<!--<input type="text">-->
+			</td>
+			<th>订单变更金额</th>
+			<td id="ddcx_ddbgje">
+				<!--<input type="text">-->
+			</td>
+		</tr>
+	</table>
+	<!--<h2>出行人明细</h2>-->
+	<form>
+		<table border="1" cellspacing="0" id="ddcx_cxr" class="panel-table">
+		</table>
+	</form>
+	<!--<div class="queryInlineBox">-->
+		<!--<label class="inputName" for="ddcx_gkname">姓名</label>-->
+		<!--<span id="ddcx_gkname"></span>-->
+	<!--</div>-->
+	<!--<div class="queryInlineBox">
+		<label class="inputName" for="ddcx_gktel">手机号</label>
+		<span id="ddcx_gktel"></span>
+	</div>
+	<div class="queryInlineBox">
+		<label class="inputName" for="ddcx_cjsj">订单创建时间</label>
+		<span id="ddcx_cjsj"></span>
+	</div>
+	<div class="queryInlineBox">
+		<label class="inputName" for="ddcx_ddbz">订单备注</label>
+		<span id="ddcx_ddbz"></span>
+	</div>
+	<div class="queryInlineBox">
+		<label class="inputName" for="ddcx_fcxx">返程交通信息</label>
+		<span id="ddcx_fcxx"></span>
+	</div>
+	<div class="queryInlineBox">
+		<label class="inputName" for="ddcx_qcxx">去程交通信息</label>
+		<span id="ddcx_qcxx"></span>
+	</div>
+	<div class="queryInlineBox">
+		<label class="inputName" for="ddcx_hjje">订单合计金额</label>
+		<span id="ddcx_hjje"></span>
+	</div>
+	<div class="queryInlineBox">
+		<label class="inputName" for="ddcx_ddzt">订单状态</label>
+		<span id="ddcx_ddzt"></span>
+	</div>
+	<div class="queryInlineBox">
+		<label class="inputName" for="ddcx_lrrs">老人人数</label>
+		<span id="ddcx_lrrs"></span>
+	</div>
+	<div class="queryInlineBox">
+		<label class="inputName" for="ddcx_etbzc">儿童不占床人数</label>
+		<span id="ddcx_etbzc"></span>
+	</div>
+	<div class="queryInlineBox">
+		<label class="inputName" for="ddcx_etrs">儿童人数</label>
+		<span id="ddcx_etrs"></span>
+	</div>
+	<div class="queryInlineBox">
+		<label class="inputName" for="ddcx_crrs">成人人数</label>
+		<span id="ddcx_crrs"></span>
+	</div>
+	<div class="queryInlineBox">
+		<label class="inputName" for="ddcx_ddbh">订单编号</label>
+		<span id="ddcx_ddbh"></span>
+	</div>
+	<div class="queryInlineBox">
+		<label class="inputName" for="ddcx_ctrq">出团日期</label>
+		<span id="ddcx_ctrq"></span>
+	</div>
+	<div class="queryInlineBox">
+		<label class="inputName" for="ddcx_fcrq">返程日期</label>
+		<span id="ddcx_fcrq"></span>
+	</div>
+	<div class="queryInlineBox">
+		<label class="inputName" for="ddcx_cfcs">出发城市</label>
+		<span id="ddcx_cfcs"></span>
+	</div>
+	<div class="queryInlineBox">
+		<label class="inputName" for="ddcx_mddcs">目的城市</label>
+		<span id="ddcx_mddcs"></span>
+	</div>
+	<div class="queryInlineBox">
+		<label class="inputName" for="ddcx_lyts">旅游天数</label>
+		<span id="ddcx_lyts"></span>
+	</div>
+	<div class="queryInlineBox">
+		<label class="inputName" for="ddcx_stry">送团人员</label>
+		<span id="ddcx_stry"></span>
+	</div>
+	<div class="queryInlineBox">
+		<label class="inputName" for="ddcx_stbz">送团标志</label>
+		<span id="ddcx_stbz"></span>
+	</div>
+	<div class="queryInlineBox">
+		<label class="inputName" for="ddcx_jtry">接团人员</label>
+		<span id="ddcx_jtry"></span>
+	</div>
+	<div class="queryInlineBox">
+		<label class="inputName" for="ddcx_jtbz">接团标志</label>
+		<span id="ddcx_jtbz"></span>
+	</div>
+	<div class="queryInlineBox">
+		<label class="inputName" for="ddcx_jhdd">集合地点</label>
+		<span id="ddcx_jhdd"></span>
+	</div>
+	<div class="queryInlineBox">
+		<label class="inputName" for="ddcx_ddbgje">订单变更金额</label>
+		<span id="ddcx_ddbgje"></span>
+	</div>-->
+</div>
+<!--<div data-dojo-type="dijit/Dialog" data-dojo-id="ddcx_delete" id="ddcx_delete" title="">
+	确认删除该用户信息？
+	<form action="" method="post">
+		<div class="btnItemBox">
+			<input type="hidden" id="ddcx_ID">
+			<button class="btn" type="submit" id="ddcx_confirmD">确认</button>
+			<button class="btn" type="button" id="ddcx_delD">取消</button>
+		</div>
+	</form>
+</div>-->
+<script type="text/javascript">
+	require(['app/html/tjlb/ddcx', "dojo/domReady!"],
+		function (DDCX) {
+			new DDCX();
+		});
+</script>
+</body>
+</html>

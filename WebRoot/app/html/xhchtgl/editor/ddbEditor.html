@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>小货车管理</title>
+	<style>
+		#cldEditorPanel .iFPanel {
+			padding: 10px;
+		}
+		#cldEditorPanel .iFComboBox {
+			width: calc(100% - 6em);
+		}
+		#cldEditorPanel .iFSubItem {
+			width: calc(33% - 60px);
+			padding-right: 60px;
+			margin-top: 0px;
+		}
+		#cldEditorPanel .iFTextArea {
+			width: calc(100% - 60px);
+			padding-right: 60px;
+		}
+	</style>
+</head>
+<body>
+<form id="clbEditorForm">
+	<div id="cldEditorPanel">
+		<div class="iFTabularPanel" style="margin-bottom: 10px;">
+			<div class="iFTitle">
+				<label>当事人基本信息</label>
+			</div>
+			<div class="iFContent">
+				<div class="iFPanel" style="padding-left: 20px; padding-right: 10px;">
+					<div class="iFW33 clearfix">					
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">姓名</label>
+								<div class="iFInput">
+									<input  type="text"  id="tc-name">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">证件号</label>
+								<div class="iFInput">
+									<input  type="text" id="tc-zjh">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">出生日期</label>
+								<div class="iFInput">
+									<input  type="text" id="tc-csrq">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">联系电话</label>
+								<div class="iFInput">
+									<input  type="text" id="tc-lxdh">
+								</div>
+							</div>
+						</div>
+		
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">通讯地址</label>
+								<div class="iFInput">
+									<input  type="text" id="tc-txdz">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">业户名称</label>
+								<div class="iFInput">
+									<input  type="text" id="tc-yhmc">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">业户地址</label>
+								<div class="iFInput">
+									<input  type="text" id="tc-yhdz">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">经营许可证</label>
+								<div class="iFInput">
+									<input  type="text" id="tc-jyxk">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">从业资格证</label>
+								<div class="iFInput">
+									<input  type="text" id="tc-cyzg">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">ic卡分值</label>
+								<div class="iFInput">
+									<input  type="text" id="tc-icfz">
+								</div>
+							</div>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		<div class="iFTabularPanel">
+			<div class="iFTitle">
+				<label>违章信息</label>
+			</div>
+			<div class="iFContent">
+				<div class="iFPanel" style="padding-left: 20px; padding-right: 10px;">
+					<div class="iFW33 clearfix">
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">执法机构</label>
+								<div class="iFInput">
+									<input type="text" id="tc-zfjg">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">执法部门</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-zfbm">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">执法人</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-zfr">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">案件类别</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-ajlb">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">案件原由</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-ajyy">
+								</div>
+							</div>
+						</div>
+			
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">案件状态</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-ajzt">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">扣分</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-gf">
+								</div>
+							</div>
+						</div>
+						
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">罚款金额</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-fkje">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">执法时间</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-wfsj">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">违章时间</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-wzsj">
+								</div>
+							</div>
+						</div>
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">更新时间</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-gxsj">
+								</div>
+							</div>
+						</div>
+						
+						<div class="iFSubItem">
+							<div class="iFInputItem">
+								<label class="iFLabel">更新人</label>
+								<div class="iFInput">
+									<input type="text"  id="tc-gxr">
+								</div>
+							</div>
+						</div>
+						
+				</div>
+			</div>
+		</div>
+	</div>
+		<div class="iFBtnItem">
+<!-- 			<a href="javascript:void(0);" class="iFBtn clb-iFBtnCommit">提交</a>
+ -->			<a href="javascript:void(0);" class="iFBtn clb-iFBtnClose">关闭</a>
+		</div>
+	</div>
+</form>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>公司表</title>
+	<style>
+		#gsbTabel {
+			height: calc(100% - 65px);
+		}
+		#gsbDialog .dijitDialogPaneContent {
+			padding: 0;
+		}
+		#gsbDialogPanel {
+			width: 500px;
+			height: 410px;
+		}
+	</style>
+</head>
+<body>
+<div class="">
+	<div class="iFInputItem">
+	<div class="iFInlineItem" id="gsmc-comboBoxPanel">
+			<label class="iFLabel">公司名称</label>
+			<div class="iFComboBox" id="gsmc-comboBox" style="width: 200px;">
+				<input type="text" class="gsmc-list" data-value="">
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList" id="gsmc-list-ul">
+<!-- 					<li data-value="" style="height: 1.5em;">1234</li> -->
+				</ul>
+			</div>
+	</div>
+		<div class="iFInlineItem" style="line-height: 30px;">
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="gsbQuery">查询</a>
+			<span class="w10px"></span>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="gsbDc">导出</a>
+		</div>
+	</div>
+</div>
+<div id="gsbTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="gsbDialog" id="gsbDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="gsbDialogPanel" id="gsbDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	findgsmc().then(function(data){
+		xlktyff("gsmc-list-ul",data.datas);
+		comboboxDFun('#gsmc-comboBoxPanel');
+	});
+	
+	$(".gsmc-list").on('keyup',function(){
+		$("#gsmc-list-ul").empty();
+		console.log($(".gsmc-list").val());
+		if($(".gsmc-list").val()==''){
+			findgsmc().then(function(data){
+				xlktyffComboboxDFun("gsmc-comboBoxPanel",data);
+			});
+		}else{
+			findgsmctj($(".gsmc-list").val()).then(function(data){
+				xlktyffComboboxDFun("gsmc-comboBoxPanel",data);
+			});
+			}
+	})
+	require(['app/html/xhchtgl/gsb', "dojo/domReady!"], function (GSB) {
+		new GSB();
+	});
+</script>
+</body>
+</html>

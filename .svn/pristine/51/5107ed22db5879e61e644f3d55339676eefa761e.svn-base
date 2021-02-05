@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>公司月统计</title>
+	<style>
+		#gsytjTabel {
+			height: calc(100% - 50px);
+		}
+		
+			.field-dojoId{width: 80px;white-space: nowrap;}
+				.field-FGS{width: 200px;white-space: nowrap;}
+		.field-DAY{width: 100px;white-space: nowrap;}
+		.field-RYYCS{width: 120px;white-space: nowrap;}
+		.field-CLZS{width: 120px;white-space: nowrap;}
+		.field-RYYCL{width: 120px;white-space: nowrap;}
+		.field-RZLC{width: 120px;white-space: nowrap;}
+		.field-RZKLC{width: 120px;white-space: nowrap;}
+		.field-RKSLC{width: 120px;white-space: nowrap;}
+		.field-RYSJE{width: 120px;white-space: nowrap;}
+		.field-DHSJ{width: 120px;white-space: nowrap;}
+		.field-RYYSC{width: 120px;white-space: nowrap;}
+		.field-ZZCS{width: 120px;white-space: nowrap;}
+		.field-PJYS{width: 120px;white-space: nowrap;}
+		.field-PJXSSD{width: 120px;white-space: nowrap;}
+		.field-PJYYSC{width: 120px;white-space: nowrap;}
+		.field-PJDHSJ{width: 120px;white-space: nowrap;}
+		.field-SLL{width: 120px;white-space: nowrap;}
+	</style>
+</head>
+<body>
+<div class="" id="gsytjPanel">
+	<div class="iFInlineItem">
+		<label class="iFLabel">月份</label>
+		<div class="iFInput" style="width: 110px;">
+			<input type="text" id="gsytj-yf">
+		</div>
+	</div>
+	<div class="iFInlineItem" id="gsytj-company">
+		<label class="iFLabel">公司</label>
+		<div class="iFComboBox" id="gsytj-company-comboBox" style="width: 160px;">
+			<input type="text" >
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+			</ul>
+		</div>
+	</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="gsytjQuery">查询</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="gsytjDaochu">导出Excel</a>
+	</div>
+</div>
+<div id="gsytjTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="gsytjDialog" id="gsytjDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="gsytjDialogPanel" id="gsytjDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	require(['app/html/zhywbb/czsjcx/gsytj', "dojo/domReady!"], function (GSYTJ) {
+		new GSYTJ();
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>未上线车辆统计</title>
+	<style>
+		#wkzcbhclTabel {
+			height: calc(100% - 50px);
+			width : 100%;
+			text-align:center;
+			vertical-align:middle;
+		}
+		.mf-table, .mf-table thead th {
+		border: 1px solid #6bb3ff
+		}
+		.mf-table th, .mf-table td {
+			line-height: 28px;
+			padding-left: 5px;
+			padding-right: 5px;
+		}
+		.mf-table tbody tr:nth-child(even) {
+		background: #eef9ff none;
+		}
+		.mf-table tbody td {
+		border-left: 1px solid #eee;
+		border-right: 1px solid #eee;
+		}
+		.mf-table tbody tr td:first-child {
+		border-left: 1px solid #6bb3ff;
+		}
+		.mf-table tbody tr td:last-child {
+		border-right: 1px solid #6bb3ff;
+		}
+	</style>
+</head>
+<body>
+<div class="" id="wkzcbhclPanel">
+	<div class="iFInlineItem" id="wkzcbhcl-qukuaiBox">
+		<label class="iFLabel">区块</label>
+		<div class="iFComboBox" id="wkzcbhcl_qukuai-comboBox" style="width: 160px;">
+			<input type="text" readonly id="wkzcbhcl-qk">
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList" id="wkzcbhcl-qk-ul">
+			</ul>
+		</div>
+	</div>
+	<div class="iFInlineItem" id="wkzcbhcl-qsrqBox">
+		<label class="iFLabel">起始日期</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="wkzcbhcl-startTime">
+		</div>
+	</div>
+	<div class="iFInlineItem" id="wkzcbhcl-jsrqBox">
+		<label class="iFLabel">结束日期</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="wkzcbhcl-endTime">
+		</div>
+	</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="wkzcbhclQuery">查询</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="wkzcbhclexcel">导出Excel</a>
+	</div>
+</div>
+<div>
+	<table id="wkzcbhclTabel" class="mf-table">
+		<thead><tr><th>序号</th><th>公司</th><th>车号</th><th>终端类型</th><th>终端子类型</th></tr></thead>
+	</table>
+</div>
+<script type="text/javascript">
+$('#wkzcbhcl-qk').val('全部')
+$.ajax({
+	 type: "POST",
+	url: basePath + "form/getOwner",
+	data:{},
+	timeout : 180000,
+	dataType: 'json',
+	success:function(data){
+		xlktyff("wkzcbhcl-qk-ul",data);
+ 		comboboxDFun('#wkzcbhcl_qukuai-comboBox')
+	},
+	error: function(){
+	}         
+});
+$("#wkzcbhcl-startTime").val(setformatday(new Date(new Date().getTime() - 24*60*60*1000)));
+$("#wkzcbhcl-endTime").val(setformatday(new Date(new Date().getTime() - 24*60*60*1000)));
+	$("#wkzcbhclQuery").click(function(){
+		layer.load(2);
+		$.ajax({
+		     url :  "form/kzcztwbhcl",
+		     type : 'post',
+		     data:'postData={"stime":"'+$("#wkzcbhcl-startTime").val()+
+					'","etime":"'+$("#wkzcbhcl-endTime").val()+
+					'","owner":"'+$("#wkzcbhcl-qk").val()+'"}',
+		     dataType: 'json',
+		     success:function(data){
+		    	 layer.closeAll();
+		    	 wkzcriqi = "";
+		    	 getAll($("#wkzcbhcl-startTime").val(),$("#wkzcbhcl-endTime").val());
+		    	 var wkzc = wkzcriqi.split(',');
+		    	 var tab = '<thead><tr><th>序号</th><th>公司</th><th>车号</th><th>终端类型</th><th>终端子类型</th>';
+	    		 for(var i=0; i<wkzc.length; i++){
+	    			 if(wkzc[i].length>1){
+	    				 tab += '<th>'+wkzc[i]+'</th>';
+	    			 }
+	    		 }
+	    		 tab += '</tr></thead><tbody>';
+	    		 var k = '';
+		    	 for(var i=0; i<data.length; i++){
+		    		 tab += '<tr><td>'+(i+1)+'</td><td>'+data[i].COMP_NAME+'</td><td>'+data[i].VEHI_NO+'</td><td>'+data[i].MT_NAME+'</td><td>'+data[i].MDT_SUB_TYPE+'</td>';
+		    		 for(var j=0; j<wkzc.length; j++){
+		    			 if(wkzc[j].length>1){
+		    				 k ="M"+(j+1);
+		    				 tab += '<td>'+data[i][k]+'</td>';
+		    			 }
+		    		 }
+		    		 tab += '</tr>';
+		    	 }
+	    		 $('#wkzcbhclTabel').html('</tbody>'+tab);
+		     },
+		     error:function(data){
+		    	 layer.closeAll();
+		     }
+	     });
+	})
+	$("#wkzcbhclQuery").click();
+	$('#wkzcbhclexcel').on('click', function() {
+		var postData = {"stime":$("#wkzcbhcl-startTime").val(),"etime":$("#wkzcbhcl-endTime").val()
+				,"owner":$("#wkzcbhcl-qk").val()};
+			url = "form/kzcztwbhclexcle?postData="
+				+ encodeURI(encodeURI(JSON.stringify(postData))), window.open(url)
+    });
+	Date.prototype.format=function (){
+	    var s='';
+// 	    s+=this.getFullYear()+'-';          // 获取年份。
+// 	    s+=(this.getMonth()+1)+"-";         // 获取月份。
+	    s+= this.getDate()+"日,";                 // 获取日。
+	    return(s);                          // 返回日期。
+	};
+	var wkzcriqi = '';
+	function getAll(begin,end){
+	    var ab = begin.split("-");
+	    var ae = end.split("-");
+	    var db = new Date();
+	    db.setUTCFullYear(ab[0], ab[1]-1, ab[2]);
+	    var de = new Date();
+	    de.setUTCFullYear(ae[0], ae[1]-1, ae[2]);
+	    var unixDb=db.getTime();
+	    var unixDe=de.getTime();
+	    for(var k=unixDb;k<=unixDe;){
+	    wkzcriqi+=(new Date(parseInt(k))).format();
+	    k=k+24*60*60*1000;
+	    }
+	}
+	/*时间控件*/
+	$('#wkzcbhcl-startTime').on('focus', function () {
+		WdatePicker({
+			onpicked: function () {
+				$('#wyycltj-endTime').trigger('focus')
+			},
+			dateFmt: STATEDATE,
+			maxDate:'%y-%M-{%d-1}',
+			minDate:'2018-04-16'
+		});
+	});
+	$('#wkzcbhcl-endTime').on('focus', function () {
+		WdatePicker({dateFmt: STATEDATE,
+			maxDate:'%y-%M-{%d-1}',
+			minDate:'2018-04-16'
+		});
+	});
+	/*下拉框*/
+	 $('#wkzcbhclPanel .iFComboBox').on('click', function () {
+	 	var thisOne = this;
+	 	if ($(this).hasClass('selected')) {
+	 		$(this).removeClass('selected');
+	 	} else {
+	 		$(this).addClass('selected');
+	 		$(this).find('.iFList').on('click', function () {
+	 			if (event.stopPropagation){event.stopPropagation();}else if (window.event) {window.event.cancelBubble = true;}
+	 		}).find('li').off('click').on('click', function () {
+	 			$(this).addClass('selected').siblings('.selected').removeClass('selected');
+	 			$(thisOne).find('input').data('value', $(this).data('value')).val($(this).text()).end().removeClass('selected');
+	 			$(thisOne).find('input').trigger('change');
+	 		});
+	 	}
+	 });
+	addEventComboBox('#wkzcbhclPanel');
+</script>
+</body>
+</html>

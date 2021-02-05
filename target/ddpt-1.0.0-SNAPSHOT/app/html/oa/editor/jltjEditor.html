@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>翻译记录-编辑</title>
+	<style>
+		#jltjEditorPanel {
+			margin-right: 30px;
+		}
+		#jltjEditorPanel .iFInputItem > .iFLabel {
+			width: 6em;
+		}
+		#jltjEditorPanel .iFInputItem > .iFInput {
+			width: calc(100% - 7em);
+		}
+	</style>
+</head>
+<body>
+<form action="" id="jltj-form">
+	<div class="iFFormPanel" id="jltjEditorPanel">
+		<div class="clearfix">
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">处理工号</label>
+					<div class="iFInput">
+						<input type="text" id="jltj-clgh" readonly name="AD_USERID">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">车牌号码</label>
+					<div class="iFInput">
+						<input type="text" id="jltj-cphm" name="AD_CAR_NO">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">司机电话</label>
+					<div class="iFInput">
+						<input type="text" id="jltj-sjdh" name="DRIVER_TEL">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">报警时间</label>
+					<div class="iFInput">
+						<input type="text" id="jltjEditor-bjsj" name="AD_DBTIME" readonly onfocus="WdatePicker({dateFmt: STATEDATETIME})">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">处警时间</label>
+					<div class="iFInput">
+						<input type="text" id="jltjEditor-cjsj" name="AD_DEALTIME" readonly onfocus="WdatePicker({dateFmt: STATEDATETIME})">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">监听时间</label>
+					<div class="iFInput">
+						<input type="text" id="jltjEditor-jtsj" name="AD_LISTENTIME" onfocus="WdatePicker({dateFmt: STATEDATETIME})">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="iFInputItem">
+			<label class="iFLabel">监听情况</label>
+			<div class="iFRadio iFRCBox">
+				<input type="radio" name="jtqk" id="jltjEditor-jtqkwyc" value="无异常" checked>
+				<label for="jltjEditor-jtqkwyc">无异常</label>
+				<input type="radio" name="jtqk" id="jltjEditor-jtqkyc" value="异常">
+				<label for="jltjEditor-jtqkyc">异常</label>
+				<input type="text" id="jltjEditor-jtqkycText">
+			</div>
+		</div>
+		<div class="iFInputItem">
+			<label class="iFLabel">定位情况</label>
+			<div class="iFRadio iFRCBox">
+				<input type="radio" name="dwqk" id="jltjEditor-dwqkfjq" value="非精确" checked>
+				<label for="jltjEditor-dwqkfjq">非精确</label>
+				<input type="radio" name="dwqk" id="jltjEditor-dwqzai" value="在">
+				<label for="jltjEditor-dwqzai">在</label>
+				<input type="text" id="jltjEditor-dwqzaiText">
+				<span>附近上传劫警</span>
+			</div>
+		</div>
+		<div class="iFInputItem">
+			<label class="iFLabel">处理结果</label>
+			<div class="iFRadio iFRCBox">
+				<input type="radio" name="cljg" id="jltjEditor-cljgbjjc" value="报警解除" checked>
+				<label for="jltjEditor-cljgbjjc">报警解除</label>
+				<input type="radio" name="cljg" id="jltjEditor-cljgqt" value="其它">
+				<label for="jltjEditor-cljgqt">其它</label>
+				<input type="text" id="jltjEditor-cljgqtText">
+			</div>
+		</div>
+		<div class="iFInputItem">
+			<label class="iFLabel">后续处理</label>
+			<div class="iFRadio iFRCBox">
+				<input type="radio" name="AD_LASTDEAL" id="jltjEditor-hqclxy" value="需要" checked>
+				<label for="jltjEditor-hqclxy">需要</label>
+				<input type="radio" name="AD_LASTDEAL" id="jltjEditor-hqclbxy" value="不需要">
+				<label for="jltjEditor-hqclbxy">不需要</label>
+			</div>
+		</div>
+		<div class="iFInputItem">
+			<label class="iFLabel">报警类型</label>
+			<div class="iFRadio iFRCBox">
+				<input type="radio" name="AD_ALERTTYPE" id="jltjEditor-bjlxzsbj" value="真实报警">
+				<label for="jltjEditor-bjlxzsbj">真实报警</label>
+				<input type="radio" name="AD_ALERTTYPE" id="jltjEditor-bjlxcsbj" value="测试报警">
+				<label for="jltjEditor-bjlxcsbj">测试报警</label>
+				<input type="radio" name="AD_ALERTTYPE" id="jltjEditor-bjlxbjkggz" value="报警开关故障">
+				<label for="jltjEditor-bjlxbjkggz">报警开关故障</label>
+				<input type="radio" name="AD_ALERTTYPE" id="jltjEditor-bjlxwbj" value="误报警" checked>
+				<label for="jltjEditor-bjlxwbj">误报警</label>
+			</div>
+		</div>
+		<div class="iFInputItem iFTextArea">
+			<label class="iFLabel">事件内容</label>
+			<div class="iFInput">
+				<textarea id="jltj-sjnr" name="AD_CONDITION"></textarea>
+			</div>
+		</div>
+		<div class="iFInputItem iFTextArea">
+			<label class="iFLabel">备注</label>
+			<div class="iFInput">
+				<textarea id="jltj-bz" name="AD_MEMO"></textarea>
+			</div>
+		</div>
+		<div class="iFBtnItem">
+			<a href="javascript:void(0);" class="iFBtn iFBtnCommit">提交</a>
+			<a href="javascript:void(0);" class="iFBtn iFBtnClose">关闭</a>
+		</div>
+	</div>
+</form>
+</body>
+</html>

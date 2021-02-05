@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>车辆结对订单统计</title>
+	<style>
+		#cljdtjTabel {
+			height: calc(100% - 100px);
+		}
+		#cljdtjTabel .field-dojoId{width: 80px;white-space: nowrap;}
+		#cljdtjTabel .field-RQ{width: 90px;white-space: nowrap;}
+		#cljdtjTabel .field-GSMC{width: 150px;white-space: nowrap;}
+		#cljdtjTabel .field-JSY{width: 120px;white-space: nowrap;}
+		#cljdtjTabel .field-CPHM{width: 120px;white-space: nowrap;}
+		#cljdtjTabel .field-NUM{width: 110px;white-space: nowrap;}
+	</style>
+</head>
+<body>
+<div class="" id="cljdtjPanel">
+	<div class="iFInputItem">
+		<div class="iFInlineItem">
+			<label class="iFLabel">开始时间</label>
+			<div class="iFInput" style="width: 150px;">
+				<input type="text" id="cljdtj-stime"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">结束时间</label>
+			<div class="iFInput" style="width: 150px;">
+				<input type="text" id="cljdtj-etime"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">公司名称</label>
+			<div class="iFComboBox" id="cljdtj-gsmc-comboBox" style="width: 160px;">
+				<input type="text" >
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+					<li data-value="" style="height: 1.5em;"></li>
+				</ul>
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">车牌号码</label>
+			<div class="iFComboBox" id="cljdtj-cphm-comboBox" style="width: 160px;">
+				<input type="text" >
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+					<li data-value="" style="height: 1.5em;"></li>
+				</ul>
+			</div>
+		</div>
+		<div class="iFInlineItem" style="line-height: 30px;margin-left: 5px;vertical-align: middle;">
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="cljdtjbtn">查询</a>
+			<span class="w10px"></span>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="cljdtjdcbtn">导出</a>
+		</div>
+	</div>
+</div>
+<div id="cljdtjTabel"></div>
+<script type="text/javascript">
+	require(['app/html/zxcxk/cljdtj', "dojo/domReady!"], function (CLJDTJ) {
+		new CLJDTJ();
+	});
+</script>
+</body>
+</html>

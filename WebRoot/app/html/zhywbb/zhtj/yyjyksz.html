@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>营运交易空驶综合统计</title>
+	<style>
+		#yyjykszTabel {
+			height: calc(100% - 70px);
+		}
+		
+		.field-dojoId{width: 70px;white-space: nowrap;}
+		.field-FGS{width: 200px;white-space: nowrap;}
+		.field-CH{width: 110px;white-space: nowrap;}
+		.field-QY{width: 110px;white-space: nowrap;}
+		.field-SIM_NUM{width: 120px;white-space: nowrap;}
+		.field-XJJYKS{width: 120px;white-space: nowrap;}
+		.field-SKJYKS{width: 120px;white-space: nowrap;}
+		.field-YYJYKS{width: 120px;white-space: nowrap;}
+	</style>
+</head>
+<body>
+<div class="" id="yyjykszPanel">
+	<div class="iFInlineItem">
+		<label class="iFLabel">起始时间</label>
+		<div class="iFInput" style="width: 110px;">
+			<input type="text" id="yyjyksz-startTime">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">结束时间</label>
+		<div class="iFInput" style="width: 110px;">
+			<input type="text" id="yyjyksz-endTime">
+		</div>
+	</div>
+	
+<div class="iFInlineItem" id="yyjyksz-quyu">
+		<label class="iFLabel">区域</label>
+	<div class="iFComboBox" id="yyjyksz-quyu-comboBox" style="width: 160px;">
+			<input type="text" value="主城区" data-value="1" >
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+				<li data-value="0" >全部</li>
+				<li data-value="1" >主城区</li>
+				<li data-value="2" >余杭区</li>
+				<li data-value="3" >萧山区</li>
+				<li data-value="4" >临安区</li>
+				<li data-value="5" >富阳区</li>
+				<li data-value="6" >淳安区</li>
+				<li data-value="7" >建德市</li>
+			</ul>
+		</div>
+	</div>
+	<div class="iFInlineItem" id="yyjyksz-company">
+		<label class="iFLabel">公司</label>
+		<div class="iFComboBox" id="yyjyksz-company-comboBox" style="width: 160px;">
+			<input type="text" >
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+			</ul>
+		</div>
+	</div>
+	
+	<div class="iFInlineItem" id="yyjyksz-cphm">
+		<label class="iFLabel">车牌号码</label>
+		<div class="iFComboBox" id="yyjyksz-cphm-comboBox" style="width: 120px;">
+			<input type="text" >
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+			</ul>
+		</div>
+	</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="yyjykszQuery">查询</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="yyjykszDaochu">导出Excel</a>
+	</div>
+</div>
+<div id="yyjykszTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="yyjykszDialog" id="yyjykszDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="yyjykszDialogPanel" id="yyjykszDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	require(['app/html/zhywbb/zhtj/yyjyksz', "dojo/domReady!"], function (YYJYKSZ) {
+		new YYJYKSZ();
+	});
+</script>
+</body>
+</html>

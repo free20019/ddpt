@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>咨询修改</title>
+</head>
+<body>
+<div id="zxeditpanal">
+<div class="iFInputItem">
+	<label class="iFLabel">业务编号:</label>
+	<div class="iFInput" style="width: calc(50% - 75px);">
+		<input type="text" id="zxxg-ywbh" readonly="readonly">
+	</div>
+<!--</div>-->
+<!--<div class="iFInputItem">-->
+	<label class="iFLabel">来电号码:</label>
+	<div class="iFInput" style="width: calc(50% - 75px);">
+		<input type="text" id="zxxg-ldhm">
+	</div>
+</div>
+<div class="iFInputItem">
+	<label class="iFLabel">客户姓名:</label>
+	<div class="iFInput" style="width: calc(50% - 75px);">
+		<input type="text" id="zxxg-khxm">
+	</div>
+	<label class="iFLabel">车牌号码:</label>
+	<div class="iFInput" style="width: calc(50% - 75px);">
+		<input type="text" id="zxxg-cphm">
+	</div>
+</div>
+
+
+<div class="iFInputItem">
+		<label class="iFLabel">公司名称:</label>
+		<div class="iFInput" style="width: calc(50% - 75px);">
+			<input type="text" id="zxxg-comp">
+		</div>
+		<label class="iFLabel">受理对象:</label>
+			<div class="iFComboBox" id="zxxg-cldx-box" style="width: calc(50% - 75px);">
+				<input type="text" id="zxxg-cldx">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+							<li data-value="出租集团">出租集团</li>
+							<li data-value="公司">公司</li>
+							<li data-value="司机">司机</li>
+							<li data-value="乘客">乘客</li>
+							<li data-value="运管">运管</li>
+							<li data-value="其他">其他</li>
+						</ul>
+			</div>
+</div>
+<div class="iFInputItem">
+	<label class="iFLabel">处理类型:</label>
+			<div class="iFComboBox" id="zxxg-cllx-box" style="display: inline-block;width: calc(50% - 75px);">
+				<input type="text" id="zxxg-cllx">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+						<li data-value="0">地址咨询查找</li>
+						<li data-value="1">测距里程费用</li>
+						<li data-value="2">定位导航指路</li>
+						<li data-value="3">公交铁路客运</li>
+						<li data-value="4">司机路况反馈</li>
+						<li data-value="5">司机建议投诉</li>
+						<li data-value="6">乘客投诉</li>
+						<li data-value="7">其他</li>
+						</ul>
+			</div>
+			<div class="iFComboBox" id="zxxg-cllx-box2" style="display: none;width: calc(50% - 75px);">
+				<input type="text" id="zxxg-cllx2">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+						<li data-value="0">投诉登记</li>
+						<li data-value="1">失物登记</li>
+						<li data-value="2">业务咨询</li>
+						<li data-value="3">夜间移车</li>
+						<li data-value="4">事故处理</li>
+						<li data-value="5">应急事件</li>
+						<li data-value="6">表扬登记</li>
+						<li data-value="7">其他</li>
+						</ul>
+			</div>
+			<label class="iFLabel" id="zxxg-tslx-label" style="display: none;">投诉类型:</label>
+			<div class="iFComboBox" id="zxxg-tslx-box2" style="display: none; width: calc(50% - 75px);">
+				<input type="text" id="zxxg-tslx2">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+						<li data-value="0">绕道</li>
+						<li data-value="1">拒载</li>
+						<li data-value="2">服务质量</li>
+						<li data-value="3">收费问题</li>
+						<li data-value="4">中途抛客</li>
+						<li data-value="5">不按规定使用计价器</li>
+						<li data-value="6">其他</li>
+						</ul>
+			</div>
+</div>
+<div class="iFInputItem">
+		<label class="iFLabel">处理状态:</label>
+		<div class="iFComboBox" id="zxxg-clzt-box" style="width: calc(50% - 75px);">
+			<input type="text" id="zxxg-clzt">
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+				<li data-value="已处理">已处理</li>
+				<li data-value="待处理">待处理</li>
+			</ul>
+		</div>
+	</div>
+<div class="iFInputItem iFTextArea" style="vertical-align: middle;width: calc(100% - 12px);">
+	<label class="iFLabel" style="padding-right: 4px;">服务内容:</label>
+	<div class="iFInput">
+		<textarea id="zxxg-fwnr"></textarea>
+	</div>
+</div>
+<div class="iFBtnItem">
+	<a href="javascript:void(0);" class="iFBtn" id="zxxgtjbtn">提交</a>
+	<a href="javascript:void(0);" class="iFBtn" id="zxxgtcbtn">退出</a>
+</div>
+</div>
+</body>
+</html>

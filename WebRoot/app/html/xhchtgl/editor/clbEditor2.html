@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>车辆表-编辑</title>
+	<style>
+		#cldEditorPanel .iFPanel {
+			padding: 10px;
+		}
+		#cldEditorPanel .iFComboBox {
+			width: calc(100% - 6em);
+		}
+		#cldEditorPanel .iFSubItem {
+			width: calc(33% - 60px);
+			padding-right: 60px;
+		}
+		#cldEditorPanel .iFTextArea {
+			width: calc(100% - 60px);
+			padding-right: 60px;
+		}
+	</style>
+</head>
+<body>
+<div id="cldEditorPanel">
+	<div class="iFInputItem">
+		<div class="iFInputItem" style="border-bottom: 1px solid #1e8cff;">
+			<div class="iFInlineItem">
+				<label class="iFLabel">公司关键字</label>
+				<div class="iFInput" style="width: 160px;">
+					<input type="text">
+				</div>
+				<a href="javascript:void(0);" class="iFBtn">过滤</a>
+			</div>
+		</div>
+	</div>
+	<div class="iFTabularPanel" style="margin-bottom: 10px;">
+		<div class="iFTitle">
+			<label>车辆信息</label>
+		</div>
+		<div class="iFContent">
+			<div class="iFPanel" style="padding-left: 20px; padding-right: 10px;">
+				<div class="iFW33 clearfix">
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">公司</label>
+							<div class="iFComboBox" id="clbEditor-clxx_gs">
+								<input type="text" readonly>
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">一号公司</li>
+									<li data-value="1">二号公司</li>
+									<li data-value="2">三号公司</li>
+									<li data-value="3">四号公司</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">分公司</label>
+							<div class="iFComboBox" id="clbEditor-clxx_fgs">
+								<input type="text" readonly>
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">一号分公司</li>
+									<li data-value="1">二号分公司</li>
+									<li data-value="2">三号分公司</li>
+									<li data-value="3">四号分公司</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">车辆编号</label>
+							<div class="iFInput">
+								<input type="text">
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">SIM卡号</label>
+							<div class="iFInput">
+								<input type="text">
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">车牌号码</label>
+							<div class="iFInput">
+								<input type="text">
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">原SIM卡号</label>
+							<div class="iFInput">
+								<input type="text">
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">车主姓名</label>
+							<div class="iFInput">
+								<input type="text">
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">车辆类型</label>
+							<div class="iFComboBox" id="clbEditor-clxx_cllx">
+								<input type="text" readonly>
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">一号车辆</li>
+									<li data-value="1">二号车辆</li>
+									<li data-value="2">三号车辆</li>
+									<li data-value="3">四号车辆</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">车主电话</label>
+							<div class="iFInput">
+								<input type="text">
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">白班电话</label>
+							<div class="iFInput">
+								<input type="text">
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">晚班电话</label>
+							<div class="iFInput">
+								<input type="text">
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">车辆颜色</label>
+							<div class="iFComboBox" id="clbEditor-clxx_clys">
+								<input type="text" readonly>
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">一号车辆</li>
+									<li data-value="1">二号车辆</li>
+									<li data-value="2">三号车辆</li>
+									<li data-value="3">四号车辆</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">初装时间</label>
+							<div class="iFInput">
+								<input type="text" onfocus="WdatePicker({dateFmt: STATEDATE})">
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">车牌类型</label>
+							<div class="iFComboBox" id="clbEditor-clxx_cplx">
+								<input type="text" readonly>
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">一号车辆</li>
+									<li data-value="1">二号车辆</li>
+									<li data-value="2">三号车辆</li>
+									<li data-value="3">四号车辆</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">查询密码</label>
+							<div class="iFInput">
+								<input type="text">
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">车辆子公司</label>
+							<div class="iFInput">
+								<input type="text">
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">计价器类型</label>
+							<div class="iFComboBox" id="clbEditor-clxx_jjqlx">
+								<input type="text" readonly>
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">一号车辆</li>
+									<li data-value="1">二号车辆</li>
+									<li data-value="2">三号车辆</li>
+									<li data-value="3">四号车辆</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">车辆状态</label>
+							<div class="iFComboBox" id="clbEditor-clxx_clzt">
+								<input type="text" readonly>
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">一号车辆</li>
+									<li data-value="1">二号车辆</li>
+									<li data-value="2">三号车辆</li>
+									<li data-value="3">四号车辆</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">服务状态</label>
+							<div class="iFComboBox" id="clbEditor-clxx_fwzt">
+								<input type="text" readonly>
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">一号车辆</li>
+									<li data-value="1">二号车辆</li>
+									<li data-value="2">三号车辆</li>
+									<li data-value="3">四号车辆</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">虚拟网</label>
+							<div class="iFInput">
+								<input type="text">
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">最后修改人</label>
+							<div class="iFInput">
+								<input type="text">
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">改造时间</label>
+							<div class="iFInput">
+								<input type="text" onfocus="WdatePicker({dateFmt: STATEDATE})">
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">升级时间</label>
+							<div class="iFInput">
+								<input type="text" onfocus="WdatePicker({dateFmt: STATEDATE})">
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">车牌颜色</label>
+							<div class="iFComboBox" id="clbEditor-clxx_cpys">
+								<input type="text" readonly>
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">一号车辆</li>
+									<li data-value="1">二号车辆</li>
+									<li data-value="2">三号车辆</li>
+									<li data-value="3">四号车辆</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">应急车辆</label>
+							<div class="iFComboBox" id="clbEditor-clxx_yjcl">
+								<input type="text" readonly>
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">一号车辆</li>
+									<li data-value="1">二号车辆</li>
+									<li data-value="2">三号车辆</li>
+									<li data-value="3">四号车辆</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">交接班时间</label>
+							<div class="iFInput">
+								<input type="text" onfocus="WdatePicker({dateFmt: STATEDATE})">
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">交接班地址</label>
+							<div class="iFInput">
+								<input type="text">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="iFInputItem iFTextArea">
+					<label class="iFLabel">备注</label>
+					<div class="iFInput">
+						<textarea></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="iFTabularPanel">
+		<div class="iFTitle">
+			<label>终端信息</label>
+		</div>
+		<div class="iFContent">
+			<div class="iFPanel" style="padding-left: 20px; padding-right: 10px;">
+				<div class="iFW33 clearfix">
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel" style="margin-left: -8px; margin-right: 8px; white-space: nowrap;">终端类型名称</label>
+							<div class="iFComboBox" id="clbEditor-zdxx_gs">
+								<input type="text" readonly data-value="" value="请选择">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">华强lt</li>
+									<li data-value="1">华强V36</li>
+									<li data-value="2">出租部标</li>
+									<li data-value="3">华强V36</li>
+									<li data-value="4">星软</li>
+									<li data-value="5">海太</li>
+									<li data-value="6">华强</li>
+									<li data-value="7">飞田GPRS</li>
+									<li data-value="8">大潮</li>
+									<li data-value="9">天昊GPRS</li>
+									<li data-value="10">华强测试</li>
+									<li data-value="11">华强GPRS</li>
+									<li data-value="12">飞田CDMA</li>
+									<li data-value="13">赢时通</li>
+									<li data-value="14">部标</li>
+									<li data-value="15">淳安华强</li>
+									<li data-value="16">淳安出租</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">终端编号</label>
+							<div class="iFInput">
+								<input type="text">
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">调度类型</label>
+							<div class="iFComboBox" id="clbEditor-zdxx_ddlx">
+								<input type="text" readonly data-value="0" value="新">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">新</li>
+									<li data-value="1">老</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">报告IP</label>
+							<div class="iFInput">
+								<input type="text" disabled value="">
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">通话功能</label>
+							<div class="iFComboBox" id="clbEditor-zdxx_thgn">
+								<input type="text" readonly data-value="0" value="无">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">无</li>
+									<li data-value="1">有</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">安装人员</label>
+							<div class="iFInput">
+								<input type="text">
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">通信类型名</label>
+							<div class="iFComboBox" id="clbEditor-zdxx_txlxm">
+								<input type="text" readonly data-value="" value="请选择">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">联通GPRS</li>
+									<li data-value="1">电信EVDO</li>
+									<li data-value="2">联通短信专线</li>
+									<li data-value="3">移动短信专线</li>
+									<li data-value="4">联通CDMA专线</li>
+									<li data-value="5">移动GPRS专线</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">初创时间</label>
+							<div class="iFInput">
+								<input type="text" readonly onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'});">
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">改造时间</label>
+							<div class="iFInput">
+								<input type="text" readonly onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'});">
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">升级时间</label>
+							<div class="iFInput">
+								<input type="text" readonly onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'});">
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">终端状态</label>
+							<div class="iFComboBox" id="clbEditor-zdxx_zdzt">
+								<input type="text" readonly disabled data-value="0" value="未用">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">未用</li>
+									<li data-value="1">停用</li>
+									<li data-value="2">未用</li>
+									<li data-value="3">在用</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">终端型号</label>
+							<div class="iFComboBox" id="clbEditor-zdxx_zdxh">
+								<input type="text" readonly data-value="" value="请选择">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">华强V37</li>
+									<li data-value="1">苏州天泽</li>
+									<li data-value="2">华强VD10</li>
+									<li data-value="3">通用联通3G</li>
+									<li data-value="4">通用移动4G-2</li>
+									<li data-value="5">鲲博电信4G-K17Y25</li>
+									<li data-value="6">飞田移动4G</li>
+									<li data-value="7">华强移动4G</li>
+									<li data-value="8">海康移动4G</li>
+									<li data-value="9">通用移动4G-3</li>
+									<li data-value="10">华强X83</li>
+									<li data-value="11">飞田GPRS(一体式)</li>
+									<li data-value="12">飞田GPRS(分体式)</li>
+									<li data-value="13">海康部标</li>
+									<li data-value="14">数源</li>
+									<li data-value="15">通用移动4G</li>
+									<li data-value="16">飞田540</li>
+									<li data-value="17">深圳锐明</li>
+									<li data-value="18">慧时通移动4G</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">警报过滤</label>
+							<div class="iFComboBox" id="clbEditor-zdxx_bjgl">
+								<input type="text" readonly data-value="0" value="否">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">否</li>
+									<li data-value="1">是</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">接收端口</label>
+							<div class="iFInput">
+								<input type="text" value="7888" disabled>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">GPS端口</label>
+							<div class="iFInput">
+								<input type="text" disabled value="7887">
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">发送端口</label>
+							<div class="iFInput">
+								<input type="text" disabled value="7889">
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">紫色1号高</label>
+							<div class="iFComboBox" id="clbEditor-zdxx_zs1hg">
+								<input type="text" readonly data-value="" value="">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">喇叭开</li>
+									<li data-value="1">喇叭关</li>
+									<li data-value="2">防雾灯开</li>
+									<li data-value="3">防雾灯关</li>
+									<li data-value="4">门开</li>
+									<li data-value="5">门关</li>
+									<li data-value="6">近光灯开</li>
+									<li data-value="7">近光灯关</li>
+									<li data-value="8">远光灯开</li>
+									<li data-value="9">远光灯关</li>
+									<li data-value="10">右转弯灯开</li>
+									<li data-value="11">右转弯灯关</li>
+									<li data-value="12">左转弯灯开</li>
+									<li data-value="13">左转弯灯关</li>
+									<li data-value="14">刹车开</li>
+									<li data-value="15">刹车关</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">灰色2号高</label>
+							<div class="iFComboBox" id="clbEditor-zdxx_hs2hg">
+								<input type="text" readonly data-value="" value="">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">喇叭开</li>
+									<li data-value="1">喇叭关</li>
+									<li data-value="2">防雾灯开</li>
+									<li data-value="3">防雾灯关</li>
+									<li data-value="4">门开</li>
+									<li data-value="5">门关</li>
+									<li data-value="6">近光灯开</li>
+									<li data-value="7">近光灯关</li>
+									<li data-value="8">远光灯开</li>
+									<li data-value="9">远光灯关</li>
+									<li data-value="10">右转弯灯开</li>
+									<li data-value="11">右转弯灯关</li>
+									<li data-value="12">左转弯灯开</li>
+									<li data-value="13">左转弯灯关</li>
+									<li data-value="14">刹车开</li>
+									<li data-value="15">刹车关</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">白色3号高</label>
+							<div class="iFComboBox" id="clbEditor-zdxx_zs3hg">
+								<input type="text" readonly data-value="" value="">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">喇叭开</li>
+									<li data-value="1">喇叭关</li>
+									<li data-value="2">防雾灯开</li>
+									<li data-value="3">防雾灯关</li>
+									<li data-value="4">门开</li>
+									<li data-value="5">门关</li>
+									<li data-value="6">近光灯开</li>
+									<li data-value="7">近光灯关</li>
+									<li data-value="8">远光灯开</li>
+									<li data-value="9">远光灯关</li>
+									<li data-value="10">右转弯灯开</li>
+									<li data-value="11">右转弯灯关</li>
+									<li data-value="12">左转弯灯开</li>
+									<li data-value="13">左转弯灯关</li>
+									<li data-value="14">刹车开</li>
+									<li data-value="15">刹车关</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">黄色4号高</label>
+							<div class="iFComboBox" id="clbEditor-zdxx_hs4hg">
+								<input type="text" readonly data-value="" value="">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">喇叭开</li>
+									<li data-value="1">喇叭关</li>
+									<li data-value="2">防雾灯开</li>
+									<li data-value="3">防雾灯关</li>
+									<li data-value="4">门开</li>
+									<li data-value="5">门关</li>
+									<li data-value="6">近光灯开</li>
+									<li data-value="7">近光灯关</li>
+									<li data-value="8">远光灯开</li>
+									<li data-value="9">远光灯关</li>
+									<li data-value="10">右转弯灯开</li>
+									<li data-value="11">右转弯灯关</li>
+									<li data-value="12">左转弯灯开</li>
+									<li data-value="13">左转弯灯关</li>
+									<li data-value="14">刹车开</li>
+									<li data-value="15">刹车关</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">绿色5号高</label>
+							<div class="iFComboBox" id="clbEditor-zdxx_ls5hg">
+								<input type="text" readonly data-value="" value="">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">喇叭开</li>
+									<li data-value="1">喇叭关</li>
+									<li data-value="2">防雾灯开</li>
+									<li data-value="3">防雾灯关</li>
+									<li data-value="4">门开</li>
+									<li data-value="5">门关</li>
+									<li data-value="6">近光灯开</li>
+									<li data-value="7">近光灯关</li>
+									<li data-value="8">远光灯开</li>
+									<li data-value="9">远光灯关</li>
+									<li data-value="10">右转弯灯开</li>
+									<li data-value="11">右转弯灯关</li>
+									<li data-value="12">左转弯灯开</li>
+									<li data-value="13">左转弯灯关</li>
+									<li data-value="14">刹车开</li>
+									<li data-value="15">刹车关</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">蓝色6号高</label>
+							<div class="iFComboBox" id="clbEditor-zdxx_ls6hg">
+								<input type="text" readonly data-value="" value="">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">喇叭开</li>
+									<li data-value="1">喇叭关</li>
+									<li data-value="2">防雾灯开</li>
+									<li data-value="3">防雾灯关</li>
+									<li data-value="4">门开</li>
+									<li data-value="5">门关</li>
+									<li data-value="6">近光灯开</li>
+									<li data-value="7">近光灯关</li>
+									<li data-value="8">远光灯开</li>
+									<li data-value="9">远光灯关</li>
+									<li data-value="10">右转弯灯开</li>
+									<li data-value="11">右转弯灯关</li>
+									<li data-value="12">左转弯灯开</li>
+									<li data-value="13">左转弯灯关</li>
+									<li data-value="14">刹车开</li>
+									<li data-value="15">刹车关</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">棕色7号高</label>
+							<div class="iFComboBox" id="clbEditor-zdxx_zs7hg">
+								<input type="text" readonly data-value="" value="">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">喇叭开</li>
+									<li data-value="1">喇叭关</li>
+									<li data-value="2">防雾灯开</li>
+									<li data-value="3">防雾灯关</li>
+									<li data-value="4">门开</li>
+									<li data-value="5">门关</li>
+									<li data-value="6">近光灯开</li>
+									<li data-value="7">近光灯关</li>
+									<li data-value="8">远光灯开</li>
+									<li data-value="9">远光灯关</li>
+									<li data-value="10">右转弯灯开</li>
+									<li data-value="11">右转弯灯关</li>
+									<li data-value="12">左转弯灯开</li>
+									<li data-value="13">左转弯灯关</li>
+									<li data-value="14">刹车开</li>
+									<li data-value="15">刹车关</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">红色8号高</label>
+							<div class="iFComboBox" id="clbEditor-zdxx_hs8hg">
+								<input type="text" readonly data-value="" value="">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">喇叭开</li>
+									<li data-value="1">喇叭关</li>
+									<li data-value="2">防雾灯开</li>
+									<li data-value="3">防雾灯关</li>
+									<li data-value="4">门开</li>
+									<li data-value="5">门关</li>
+									<li data-value="6">近光灯开</li>
+									<li data-value="7">近光灯关</li>
+									<li data-value="8">远光灯开</li>
+									<li data-value="9">远光灯关</li>
+									<li data-value="10">右转弯灯开</li>
+									<li data-value="11">右转弯灯关</li>
+									<li data-value="12">左转弯灯开</li>
+									<li data-value="13">左转弯灯关</li>
+									<li data-value="14">刹车开</li>
+									<li data-value="15">刹车关</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">紫色1号低</label>
+							<div class="iFComboBox" id="clbEditor-zdxx_zs1hd">
+								<input type="text" readonly data-value="" value="">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">喇叭开</li>
+									<li data-value="1">喇叭关</li>
+									<li data-value="2">防雾灯开</li>
+									<li data-value="3">防雾灯关</li>
+									<li data-value="4">门开</li>
+									<li data-value="5">门关</li>
+									<li data-value="6">近光灯开</li>
+									<li data-value="7">近光灯关</li>
+									<li data-value="8">远光灯开</li>
+									<li data-value="9">远光灯关</li>
+									<li data-value="10">右转弯灯开</li>
+									<li data-value="11">右转弯灯关</li>
+									<li data-value="12">左转弯灯开</li>
+									<li data-value="13">左转弯灯关</li>
+									<li data-value="14">刹车开</li>
+									<li data-value="15">刹车关</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">灰色2号低</label>
+							<div class="iFComboBox" id="clbEditor-zdxx_hs2hd">
+								<input type="text" readonly data-value="" value="">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">喇叭开</li>
+									<li data-value="1">喇叭关</li>
+									<li data-value="2">防雾灯开</li>
+									<li data-value="3">防雾灯关</li>
+									<li data-value="4">门开</li>
+									<li data-value="5">门关</li>
+									<li data-value="6">近光灯开</li>
+									<li data-value="7">近光灯关</li>
+									<li data-value="8">远光灯开</li>
+									<li data-value="9">远光灯关</li>
+									<li data-value="10">右转弯灯开</li>
+									<li data-value="11">右转弯灯关</li>
+									<li data-value="12">左转弯灯开</li>
+									<li data-value="13">左转弯灯关</li>
+									<li data-value="14">刹车开</li>
+									<li data-value="15">刹车关</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">白色3号低</label>
+							<div class="iFComboBox" id="clbEditor-zdxx_zs3hd">
+								<input type="text" readonly data-value="" value="">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">喇叭开</li>
+									<li data-value="1">喇叭关</li>
+									<li data-value="2">防雾灯开</li>
+									<li data-value="3">防雾灯关</li>
+									<li data-value="4">门开</li>
+									<li data-value="5">门关</li>
+									<li data-value="6">近光灯开</li>
+									<li data-value="7">近光灯关</li>
+									<li data-value="8">远光灯开</li>
+									<li data-value="9">远光灯关</li>
+									<li data-value="10">右转弯灯开</li>
+									<li data-value="11">右转弯灯关</li>
+									<li data-value="12">左转弯灯开</li>
+									<li data-value="13">左转弯灯关</li>
+									<li data-value="14">刹车开</li>
+									<li data-value="15">刹车关</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">黄色4号低</label>
+							<div class="iFComboBox" id="clbEditor-zdxx_hs4hd">
+								<input type="text" readonly data-value="" value="">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">喇叭开</li>
+									<li data-value="1">喇叭关</li>
+									<li data-value="2">防雾灯开</li>
+									<li data-value="3">防雾灯关</li>
+									<li data-value="4">门开</li>
+									<li data-value="5">门关</li>
+									<li data-value="6">近光灯开</li>
+									<li data-value="7">近光灯关</li>
+									<li data-value="8">远光灯开</li>
+									<li data-value="9">远光灯关</li>
+									<li data-value="10">右转弯灯开</li>
+									<li data-value="11">右转弯灯关</li>
+									<li data-value="12">左转弯灯开</li>
+									<li data-value="13">左转弯灯关</li>
+									<li data-value="14">刹车开</li>
+									<li data-value="15">刹车关</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">绿色5号低</label>
+							<div class="iFComboBox" id="clbEditor-zdxx_ls5hd">
+								<input type="text" readonly data-value="" value="">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">喇叭开</li>
+									<li data-value="1">喇叭关</li>
+									<li data-value="2">防雾灯开</li>
+									<li data-value="3">防雾灯关</li>
+									<li data-value="4">门开</li>
+									<li data-value="5">门关</li>
+									<li data-value="6">近光灯开</li>
+									<li data-value="7">近光灯关</li>
+									<li data-value="8">远光灯开</li>
+									<li data-value="9">远光灯关</li>
+									<li data-value="10">右转弯灯开</li>
+									<li data-value="11">右转弯灯关</li>
+									<li data-value="12">左转弯灯开</li>
+									<li data-value="13">左转弯灯关</li>
+									<li data-value="14">刹车开</li>
+									<li data-value="15">刹车关</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">蓝色6号低</label>
+							<div class="iFComboBox" id="clbEditor-zdxx_ls6hd">
+								<input type="text" readonly data-value="" value="">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">喇叭开</li>
+									<li data-value="1">喇叭关</li>
+									<li data-value="2">防雾灯开</li>
+									<li data-value="3">防雾灯关</li>
+									<li data-value="4">门开</li>
+									<li data-value="5">门关</li>
+									<li data-value="6">近光灯开</li>
+									<li data-value="7">近光灯关</li>
+									<li data-value="8">远光灯开</li>
+									<li data-value="9">远光灯关</li>
+									<li data-value="10">右转弯灯开</li>
+									<li data-value="11">右转弯灯关</li>
+									<li data-value="12">左转弯灯开</li>
+									<li data-value="13">左转弯灯关</li>
+									<li data-value="14">刹车开</li>
+									<li data-value="15">刹车关</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">棕色7号低</label>
+							<div class="iFComboBox" id="clbEditor-zdxx_zs7hd">
+								<input type="text" readonly data-value="" value="">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">喇叭开</li>
+									<li data-value="1">喇叭关</li>
+									<li data-value="2">防雾灯开</li>
+									<li data-value="3">防雾灯关</li>
+									<li data-value="4">门开</li>
+									<li data-value="5">门关</li>
+									<li data-value="6">近光灯开</li>
+									<li data-value="7">近光灯关</li>
+									<li data-value="8">远光灯开</li>
+									<li data-value="9">远光灯关</li>
+									<li data-value="10">右转弯灯开</li>
+									<li data-value="11">右转弯灯关</li>
+									<li data-value="12">左转弯灯开</li>
+									<li data-value="13">左转弯灯关</li>
+									<li data-value="14">刹车开</li>
+									<li data-value="15">刹车关</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel">红色8号低</label>
+							<div class="iFComboBox" id="clbEditor-zdxx_hs8hd">
+								<input type="text" readonly data-value="" value="">
+								<a href="javascript:void(0);"></a>
+								<ul class="iFList">
+									<li data-value="0">喇叭开</li>
+									<li data-value="1">喇叭关</li>
+									<li data-value="2">防雾灯开</li>
+									<li data-value="3">防雾灯关</li>
+									<li data-value="4">门开</li>
+									<li data-value="5">门关</li>
+									<li data-value="6">近光灯开</li>
+									<li data-value="7">近光灯关</li>
+									<li data-value="8">远光灯开</li>
+									<li data-value="9">远光灯关</li>
+									<li data-value="10">右转弯灯开</li>
+									<li data-value="11">右转弯灯关</li>
+									<li data-value="12">左转弯灯开</li>
+									<li data-value="13">左转弯灯关</li>
+									<li data-value="14">刹车开</li>
+									<li data-value="15">刹车关</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="iFSubItem">
+						<div class="iFInputItem">
+							<label class="iFLabel" style="white-space: nowrap;">终端设备ID</label>
+							<div class="iFInput">
+								<input type="text">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="iFInputItem iFTextArea">
+					<label class="iFLabel">备注</label>
+					<div class="iFInput">
+						<textarea></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="iFBtnItem">
+		<!--<a href="javascript:void(0);" class="iFBtn iFBtnCommit">提交</a>-->
+		<a href="javascript:void(0);" class="iFBtn iFBtnClose">退出</a>
+	</div>
+</div>
+</body>
+</html>

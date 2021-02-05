@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>失误查找</title>
+    <style>
+        #odlxt-borderContainer { padding: 0; }
+        #odlxt-centerContentPane {  padding: 0;  }
+        #odlxtMap { width: 100%; height: 100%; }
+        #odlxt-borderContainer .iFInputItem{
+            text-align: center;
+            margin: 10px 0;
+        }
+        #AMapToolBox {
+            width: 400px;
+            /*height: calc(100% - 70px);*/
+            /*min-height: 500px;*/
+            position: absolute;
+            top: 35px;
+            left: 50px;
+            bottom: 35px;
+            box-shadow: 2px 2px 4px #aaa;
+            background: #ffffff;
+/*             overflow: auto; */
+			height: 400px;
+        }
+        .clearMap {
+            padding: 5px 10px;
+            position: absolute;
+            top: 20px;
+            left: -72px;
+            border: none;
+            border-radius: 50px 0 0 50px/50px 0 0 50px;
+            outline: none;
+            background: #c6e9ff;
+        }
+        .one1, .zhong1, .two1 {
+            width: 90px;
+            width: calc(100% - 20px);
+            htight: 85px;
+            min-height: 85px;
+            position: relative;
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+           /* padding-bottom: 10px;*/
+            border: 1px solid #1e8cff;
+            font-size: 12px;
+        }
+        .one1 > .dt, .zhong1 > .dt, .two1 > .dt {
+            padding-left: .3em;
+            padding-right: .3em;
+            position: absolute;
+            top: -.5em;
+            left: 1em;
+            background: #ffffff;
+        }
+            .dd {
+                float: left;
+                width: 100%;
+            }
+            .dd {
+                position: relative;
+                display: block;
+                margin: 0;
+                padding: 0;
+                max-width: 600px;
+                list-style: none;
+                font-size: 13px;
+                line-height: 20px;
+            }
+
+        .one1 > .dd label, .zhong1 > .dd label, .two1 > .dd label {
+            width: 80px;
+            margin-top: 15px;
+            margin-left: 4px;
+            text-indent: 25px;
+            display: inline-block;
+        }
+        .dwqdfw, .dwzjdfw, .dwzdfw {
+            border-radius: 5px;
+            border: 1px solid #FF9934;
+            width: 110px;
+            height: 42px;
+            position: absolute;
+            top: 17px;
+            left: 250px;
+            display: block;
+            background: #FEBE22 linear-gradient(180deg, #fed308, #fecb20, #ffc637);
+            background-image: linear-gradient(rgb(254, 211, 8), rgb(254, 203, 32), rgb(255, 198, 55));
+            background-position-x: initial;
+            background-position-y: initial;
+            background-size: initial;
+            background-repeat-x: initial;
+            background-repeat-y: initial;
+            background-attachment: initial;
+            background-origin: initial;
+            background-clip: initial;
+            background-color: rgb(254, 190, 34);
+            outline: none;
+        }
+        .hide{ display: none; }
+        #odlxt-borderContainer .panel-titleBpx > .content {
+            margin: 7px;
+            border: 1px solid #1e8cff;
+            padding: 0;
+        }
+        #odlxt-borderContainer .fwxz{
+            min-height: 80px;
+            border: 1px solid #1e8cff;
+            margin: 0 8px;
+        }
+        #AMapToolBox .panel-titleBpx .title span{
+            display: inline-block;
+            padding: 2px;
+            border-right:1px solid transparent ;
+            border-left: 1px solid transparent ;
+            cursor: pointer;
+            text-indent: 0;
+        }
+        #AMapToolBox .panel-titleBpx .title span.click{
+            display: inline-block;
+            padding: 2px;
+            background-color: #fff;
+            border-right:2px solid #1e8cff ;
+            border-left: 2px solid #1e8cff ;
+            border-top: 2px solid #1e8cff;
+
+        }
+        #odlxt_stime, #odlxt_etime, #zj_stime, #zj_etime, #zd_stime, #zd_etime{width: 140px;height: 18px;border: 1px solid #1e8cff;outline: none}
+        #AMapToolBox .iFTable th{border: 0}
+        .odtckclose {
+            padding: 5px 10px;
+            position: absolute;
+            top: -5px;
+            left: 370px;
+            border: none;
+            border-radius: 50px 0 0 50px/50px 0 0 50px;
+            outline: none;
+            width: 20px;
+            height: 20px;
+        }
+        .odtckshow {
+            padding: 5px 10px;
+            position: absolute;
+            top: -5px;
+            right: 0px;
+            border: none;
+            border-radius: 50px 0 0 50px/50px 0 0 50px;
+            outline: none;
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="odlxt-borderContainer" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="persist:true, gutters:false, liveSplitters:true">
+    <div id="odlxt-centerContentPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center', splitter:false">
+        <div id="odlxtMap"></div>
+        <img class="odtckshow" src="resources/images/xs.png">
+        <div id="AMapToolBox"  class="s2Panel">
+        	<img class="odtckclose" src="resources/images/gb.png">
+            <div class="one1" style="height: 87px;">
+                <div class="dt">查询条件</div>
+                <div class="dd">
+                	<label class="iFLabel">起点：</label>
+					<div class="iFComboBox" id="odlxt-qd-comboBox" style="width: 100px;">
+						<input type="text" value="火车东站" data-value="火车东站" >
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+							<li data-value="火车东站">火车东站</li>
+							<li data-value="萧山机场">萧山机场</li>
+							<li data-value="城站火车站">城站火车站</li>
+						</ul>
+					</div>
+					<label class="iFLabel" style="text-indent: 0px;width: 45px;">时间段:</label>
+					<div class="iFComboBox" id="odlxt-sjd-comboBox" style="width: 100px;">
+						<input type="text" value="全天" data-value="全天" >
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+							<li data-value="全天" >全天</li>
+							<li data-value="23:00~2:00" >23:00~2:00</li>
+						</ul>
+					</div><br>
+                    <label style="width:90px;">起始时间：</label>
+                    <input type="text" id="odlxt_stime" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" style="width:100px">
+                    <label style="width:45px;text-indent: 20px;">至</label>
+                    <input type="text" id="odlxt_etime" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" style="width:100px">
+                </div>
+            </div>
+            <div class="iFInputItem" style="height: 21px;">
+                <a href="javascript:void(0);" class="iFBtn iFColorOrange findodlxt"><i class="iconfont">&#xe625;</i>查询</a>
+            </div>
+            <div style="height: 245px;overflow: auto;">
+	            <table class="iFTable rtjtable" style="text-align: center;">
+					<thead>
+					<tr>
+						<th>序号</th>
+						<th>目的地</th>
+						<th>车辆数量</th>
+					</tr>
+					</thead>
+					<tbody id="odlxt_tbody">
+					</tbody>
+					
+				</table>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var map = new AMap.Map('odlxtMap', {
+        resizeEnable: true,
+        zoom:13,
+    });
+    var loadindex;
+    addEventComboBox('.s2Panel');
+    $("#odlxt_stime").val(setformat3(new Date(new Date().getTime() - 1000*60*60*24)));
+    $("#odlxt_etime").val(setformat3(new Date()));
+    $('.findodlxt').on('click', function(){
+    	loadindex = layer.load(1);
+    	$.ajax({
+  			 type: "POST",
+  		        url:"form/getodlxt",
+  		        data:{
+  					"STIME" : $("#odlxt_stime").val(),
+  					"ETIME" : $("#odlxt_etime").val(),
+  					"QD" : $("#odlxt-qd-comboBox").find('input').val(),
+  					"SJD" : $("#odlxt-sjd-comboBox").find('input').val()
+  		        },
+  		        dataType: 'json',
+  				timeout : 3600000,
+  			success:function(data){
+  				//console.log(data)
+  				map.clearMap();
+  				layer.close(loadindex);
+  				odlxt(data.qd[0].AREA_COORDINATES, $("#odlxt-qd-comboBox").find('input').val(),'0','0', '');
+  				if(data.zd.length == 0){
+  					$('#odlxt_tbody').html('<tr><td colspan="3">无数据</td></tr>');
+  					return;
+  				}
+  				var tab = '';
+  				for(var i=0; i<data.zd.length; i++){
+  					odlxt(data.zd[i].AREA_COORDINATES, data.zd[i].AREA_NAME,data.zd[i].COUNT_NUM,'1',data.zd[i]);
+  					tab += '<tr tdid="'+data.zd[i].AREA_ID+'" class="mapquery"><td>'+(i+1)+'</td><td>'+data.zd[i].AREA_NAME+'</td><td>'+data.zd[i].COUNT_NUM+'</td></tr>';
+  				}
+  				$('#odlxt_tbody').html(tab);
+  				$('.mapquery').on('click', function(){
+  					var tbid = $(this).attr('tdid');
+  					var mar = map.getAllOverlays();
+  					for(var i=0; i<mar.length;i++){
+  						if(mar[i].hasOwnProperty('lxt') && mar[i].lxt.AREA_ID==tbid){
+  							AMap.event.trigger(mar[i],'mouseover');
+  							map.setZoomAndCenter(13, [mar[i].lxt.AREA_COORDINATES.split(";")[0].split(",")[0], mar[i].lxt.AREA_COORDINATES.split(";")[0].split(",")[1]]);
+  						}
+  					}
+  				})
+  			},
+  			error:function(){
+  				layer.closeAll('loading');
+  			}
+  		});
+    })
+    function odlxt(obj,name,num,type,data){
+				var polygonArr=new Array();//多边形覆盖物节点坐标数组
+				var zbs = obj.split(";");
+				for(var i=0;i<zbs.length;i++){
+					var zb = zbs[i].split(",");
+					polygonArr.push(new AMap.LngLat(zb[0],zb[1]));   
+				}
+				var txt = "",ys="";
+			  	if(type == '0'){
+			  		txt = "区域名："+name;
+		  			ys = "#7b1fa2";
+			  	}else{
+			  		txt = $("#odlxt-qd-comboBox").find('input').val()+"  至     "+name+"<br>数量："+num;
+		  			ys = "#1976d2";
+			  	}
+			  	var  polygon = new AMap.Polygon({
+			        path: polygonArr,//设置多边形边界路径
+			        strokeColor: "white", //线颜色
+			        strokeOpacity: 0.8, //线透明度
+			        strokeWeight: 0.8,    //线宽
+			        fillColor: ys, //填充色
+			        fillOpacity: 0.7//填充透明度
+			    });
+			  	polygon.lxt = data;
+				polygon.setMap(map);  
+				polygon.on('mouseover', function() {
+			        var info = [];
+			        info.push(txt);
+			        infoWindow = new AMap.InfoWindow({
+			            content: info.join("<br/>")  //使用默认信息窗体框样式，显示信息内容
+			        });
+			        infoWindow.open(map, [obj.split(";")[0].split(",")[0], obj.split(";")[0].split(",")[1]]);
+			    });
+				polygon.on('mouseout', function() {
+					infoWindow.close();
+			    });
+			}
+    $('.odtckclose').on('click', function(){
+    	$('#AMapToolBox').hide();
+    	 $('.odtckshow').show();
+    })
+    $('.odtckshow').hide();
+    $('.odtckshow').on('click', function(){
+    	$('#AMapToolBox').show();
+    	$('.odtckshow').hide();
+    })
+</script>
+</body>
+</html>

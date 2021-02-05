@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>终端状态表</title>
+	<style>
+		#zdztbTabel {
+			height: calc(100% - 50px);
+		}
+		#zdztbDialog .dijitDialogPaneContent {
+			padding: 0;
+		}
+		#zdztbDialogPanel {
+			width: 300px;
+			height: 200px;
+		}
+	</style>
+</head>
+<body>
+<div class="">
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="zdztbAdd">添加</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="zdztbUpd">修改</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="zdztbDel">删除</a>
+	</div>
+</div>
+<div id="zdztbTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="zdztbDialog" id="zdztbDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="zdztbDialogPanel" id="zdztbDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	require(['app/html/czchtgl/zdztb', "dojo/domReady!"], function (ZDZTB) {
+		new ZDZTB();
+	});
+</script>
+</body>
+</html>

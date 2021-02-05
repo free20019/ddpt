@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>出租日志-编辑</title>
+	<style>
+		#czywEditorPanel {
+			margin-right: 30px;
+		}
+		#czywEditorPanel .iFInputItem > .iFLabel {
+			width: 7em;
+		}
+		#czywEditorPanel .iFInputItem > .iFInput {
+			width: calc(100% - 8em);
+		}
+	</style>
+</head>
+<body>
+<form action="" id="czyw-form">
+	<div class="iFFormPanel" id="czywEditorPanel">
+		<div class="clearfix">
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">业务编号</label>
+					<div class="iFInput">
+						<input type="text" name = "DISP_ID" id="czyw-ywbh">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">业务类型</label>
+					<div class="iFComboBox" id="czywEditor-ywlx" style="width: calc(100% - 8em);">
+						<input type="text" readonly data-value="0" value="手工调度" name = "TYPE" id="czyw-ywlx">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+							<li data-value="0">手工调度</li>
+							<li data-value="1">应急车队</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">客户姓名</label>
+					<div class="iFInput">
+						<input type="text" name = "CI_NAME" id="czyw-khxm">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">客户联系电话</label>
+					<div class="iFInput">
+						<input type="text" name="DISP_TEL" id="czyw-khdh">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">车牌号码</label>
+					<div class="iFInput">
+						<input type="text" name="VEHI_NO" id="czyw-cphm">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">调度员工号</label>
+					<div class="iFInput">
+						<input type="text" id="czyw-ddygh" readonly>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="iFInputItem">
+			<label class="iFLabel">调度时间</label>
+			<div class="iFInput">
+				<input type="text" id="czywEditor-ddsj" name="OWD_TIME">
+			</div>
+		</div>
+		<div class="iFInputItem">
+			<label class="iFLabel">详细地址</label>
+			<div class="iFInput">
+				<input type="text" name = "ADDRESS" id="czyw-xxdz">
+			</div>
+		</div>
+		<div class="iFInputItem iFTextArea">
+			<label class="iFLabel">备注</label>
+			<div class="iFInput">
+				<textarea name="NOTE" id="czyw-bz"></textarea>
+			</div>
+		</div>
+		<div class="iFBtnItem">
+			<a href="javascript:void(0);" class="iFBtn iFBtnCommit">提交</a>
+			<a href="javascript:void(0);" class="iFBtn iFBtnClose">关闭</a>
+		</div>
+	</div>
+</form>
+</body>
+</html>

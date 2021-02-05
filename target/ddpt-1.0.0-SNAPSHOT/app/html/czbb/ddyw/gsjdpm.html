@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>公司接单排名</title>
+	<style>
+		#gsjdpmTabel {
+			height: calc(100% - 50px);
+		}
+	</style>
+</head>
+<body>
+<div class="" id="gsjdpmPanel">
+<!-- 	<div class="iFInlineItem" id="gsjdpm-qukuaiBox"> -->
+<!-- 		<label class="iFLabel">区块</label> -->
+<!-- 		<div class="iFComboBox" id="gsjdpm_qukuai-comboBox" style="width: 160px;"> -->
+<!-- 			<input type="text" readonly id="gsjdpm-qk"> -->
+<!-- 			<a href="javascript:void(0);"></a> -->
+<!-- 			<ul class="iFList" id="gsjdpm-qk-ul"> -->
+<!-- 			</ul> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- 	<div class="iFInlineItem" id="gsjdpm-gongsiBox"> -->
+<!-- 		<label class="iFLabel">公司</label> -->
+<!-- 		<div class="iFComboBox" id="gsjdpm_gongsi-comboBox" style="width: 160px;"> -->
+<!-- 			<input type="text" readonly id="gsjdpm-gs"> -->
+<!-- 			<a href="javascript:void(0);"></a> -->
+<!-- 			<ul class="iFList" id="gsjdpm-gs-ul"> -->
+<!-- 			</ul> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+	<div class="iFInlineItem" id="gsjdpm-qsrqBox">
+		<label class="iFLabel">起始日期</label>
+		<div class="iFInput" style="width: 140px;" readonly>
+			<input type="text" id="gsjdpm-startTime">
+		</div>
+	</div>
+	<div class="iFInlineItem" id="gsjdpm-jsrqBox">
+		<label class="iFLabel">结束日期</label>
+		<div class="iFInput" style="width: 140px;">
+			<input type="text" id="gsjdpm-endTime" readonly>
+		</div>
+	</div>
+	<div class="iFInlineItem" id="gsjdpm-jsrqBox">
+		<label class="iFLabel">接单数大于</label>
+		<div class="iFInput" style="width: 140px;">
+			<input type="text" id="gsjdpm-jds">
+		</div>
+	</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="gsjdpmQuery">查询</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="gsjdpmexcel">导出Excel</a>
+	</div>
+</div>
+<div id="gsjdpmTabel"></div>
+<!--<div data-dojo-type="dijit/Dialog" data-dojo-id="gsjdpmDialog" id="gsjdpmDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="gsjdpmDialogPanel" id="gsjdpmDialogPanel"></div>
+</div>-->
+<script type="text/javascript">
+// 	findcomp("").then(function(data){
+// 		xlktyff("gsjdpm-gs-ul",data.datas);
+// 		comboboxDFun('#gsjdpm_gongsi-comboBox')
+// 	});
+// 	findqk().then(function(data){
+// 		xlktyff("gsjdpm-qk-ul",data.datas);
+// 		comboboxDFun('#gsjdpm_qukuai-comboBox')
+// 	});
+	require(['app/html/czbb/ddyw/gsjdpm', "dojo/domReady!"], function (GSJDPM) {
+		new GSJDPM();
+	});
+</script>
+</body>
+</html>

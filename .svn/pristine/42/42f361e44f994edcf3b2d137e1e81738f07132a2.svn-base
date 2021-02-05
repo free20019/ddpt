@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>车辆颜色表</title>
+	<style>
+		#clysbTabel {
+			height: calc(100% - 50px);
+		}
+		#clysbTabels {
+			height: 100%;
+		}
+		#clysbDialog .dijitDialogPaneContent {
+			padding: 0;
+		}
+		#clysbDialogPanel {
+			width: 300px;
+			height: 200px;
+		}
+	</style>
+</head>
+<body>
+<div class="">
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clysbAdd">添加</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clysbUpd">修改</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clysbDel">删除</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clysbDc">导出</a>
+	</div>
+</div>
+<div id="clysbTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="clysbDialog" id="clysbDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="clysbDialogPanel" id="clysbDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	require(['app/html/czchtgl/clysb', "dojo/domReady!"], function (CLYSB) {
+		new CLYSB();
+	});
+</script>
+</body>
+</html>

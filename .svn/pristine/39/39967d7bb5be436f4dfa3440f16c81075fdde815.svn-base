@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>短信业务-编辑</title>
+	<style>
+		#xtgzEditorPanel {
+			margin-right: 30px;
+		}
+		#xtgzEditorPanel .iFInputItem > .iFLabel {
+			width: 5em;
+		}
+		#xtgzEditorPanel .iFInputItem > .iFInput {
+			width: calc(100% - 6em);;
+		}
+	</style>
+</head>
+<body>
+<form action="" id="xtgz-form">
+	<div class="iFFormPanel" id="xtgzEditorPanel">
+		<div class="clearfix">
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">状态</label>
+					<div class="iFComboBox" id="car-comboBox" style="width: calc(100% - 6em);;">
+						<input type="text" readonly data-value="0" value="未修好" id="xtgz-zt" name="TYPE">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+							<li data-value="0">未修好</li>
+							<li data-value="1">已修好</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">记录人</label>
+					<div class="iFInput">
+						<input type="text" id="xtgz-jlr">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">时间</label>
+					<div class="iFInput">
+						<input type="text" id="xtgzEditor-sj" readonly onfocus="WdatePicker({dateFmt: STATEDATETIME})" name="DATETIME">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="iFInputItem iFTextArea">
+			<label class="iFLabel">内容</label>
+			<div class="iFInput">
+				<textarea id="xtgz-nr" name="CONTENT"></textarea>
+			</div>
+		</div>
+		<div class="iFBtnItem">
+			<a href="javascript:void(0);" class="iFBtn iFBtnCommit">提交</a>
+			<a href="javascript:void(0);" class="iFBtn iFBtnClose">关闭</a>
+		</div>
+	</div>
+</form>
+</body>
+</html>

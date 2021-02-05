@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>业务查询</title>
+    <style>
+        #xxywcxTabel {
+            height: calc(100% - 130px);
+        }
+
+        #ywcxTabel td, th {
+            white-space: nowrap;
+        }
+
+        .btn-sm2 {
+            padding: 5px 10px;
+            font-size: 12px;
+            line-height: 0.5;
+            border-radius: 3px;
+            color: #fff;
+            background-color: #337ab7;
+            border-color: #2e6da4;
+        }
+
+        .field-dojoId {
+            width: 60px
+        }
+
+        .field-DISP_ID {
+            width: 90px
+        }
+
+        .field-ORDER_NR {
+            width: 130px
+        }
+
+        .field-ORDER_PRICE {
+            width: 100px
+        }
+
+        .field-PAY_PRICE {
+            width: 100px
+        }
+
+        .field-ELDERLY_MAME {
+            width: 100px
+        }
+
+        .field-ELDERLY_PHONE {
+            width: 115px
+        }
+
+        .field-EMERGENCY_CONTACT {
+            width: 100px
+        }
+
+        .field-EMERGENCY_PHONE {
+            width: 140px
+        }
+
+        .field-ORDER_START_TIME {
+            width: 160px
+        }
+
+        .field-ORDERED_HOURS {
+            width: 100px
+        }
+
+        .field-STARTING_POINT {
+            width: 100px
+        }
+
+        .field-ENDING_POINT {
+            width: 100px
+        }
+
+        .field-PAY_STATUS {
+            width: 100px
+        }
+
+        .field-LATEST_STATUS {
+            width: 100px
+        }
+
+        .field-ORDER_VALID {
+            width: 100px
+        }
+
+        .field-TRIP_START_TIME {
+            width: 160px
+        }
+
+        .field-TRIP_END_TIME {
+            width: 160px
+        }
+
+        .field-START_PIC_URL {
+            width: 150px
+        }
+
+        .field-END_PIC_URL {
+            width: 150px
+        }
+
+        .field-DIAODU_STATUS {
+            width: 100px
+        }
+
+        .field-DRIVER_NAME {
+            width: 100px
+        }
+
+        .field-DRIVER_PHONE {
+            width: 115px
+        }
+
+        .field-VECHICLE_CATAG {
+            width: 100px
+        }
+
+        .field-VECHICLE_PLATE {
+            width: 100px
+        }
+
+        .field-CANCEL_REASON {
+            width: 150px
+        }
+
+    </style>
+</head>
+<body>
+<div class="" id="xxywcxPanel">
+    <div class="iFInputItem">
+        <div class="iFInlineItem">
+            <label class="iFLabel">业务编号</label>
+            <div class="iFInput" style="width: 160px;">
+                <input type="text" id="xxyw_ywbh">
+            </div>
+        </div>
+        <div class="iFInlineItem">
+            <label class="iFLabel">车牌号码</label>
+            <div class="iFInput" style="width: 160px;">
+                <input type="text" id="xxyw_cphm">
+            </div>
+        </div>
+        <div class="iFInlineItem">
+            <label class="iFLabel">司机电话</label>
+            <div class="iFInput" style="width: 160px;">
+                <input type="text" id="xxyw_sjdh">
+            </div>
+        </div>
+        <div class="iFInlineItem">
+            <label class="iFLabel">调度状态</label>
+            <div class="iFComboBox" id="xxyw_ddzt" style="width: 160px;">
+                <input type="text" readonly>
+                <a href="javascript:void(0);"></a>
+                <ul class="iFList">
+                    <li data-value="" style="height: 1.5em;"></li>
+                    <li data-value="0">已下单</li>
+                    <li data-value="9">未调度</li>
+                </ul>
+            </div>
+        </div>
+        <div class="iFInlineItem">
+            <label class="iFLabel">老人姓名</label>
+            <div class="iFInput" style="width: 160px;">
+                <input type="text" id="xxyw_lrxm">
+            </div>
+        </div>
+        <div class="iFInlineItem">
+            <label class="iFLabel">老人电话</label>
+            <div class="iFInput" style="width: 160px;">
+                <input type="text" id="xxyw_lrdh">
+            </div>
+        </div>
+        <div class="iFInlineItem">
+            <label class="iFLabel">查询关键字</label>
+            <div class="iFInput" style="width: 160px;">
+                <input type="text" id="xxyw_cxgjz">
+            </div>
+        </div>
+
+        <div class="iFInlineItem">
+            <label class="iFLabel">开始时间</label>
+            <div class="iFInput" style="width: 150px;">
+                <input type="text" id="xxyw_stime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+            </div>
+            <label>到</label>
+            <div class="iFInput" style="width: 150px;">
+                <input type="text" id="xxyw_etime" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+            </div>
+        </div>
+        <div class="iFInlineItem" style="line-height: 30px;">
+            <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="xxywcxbtn">查询</a>
+            <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="xxywcxdaochubtn">导出</a>&nbsp;&nbsp;
+        </div>
+    </div>
+</div>
+<div id="xxywcxTabel"></div>
+<div style="padding: 10px;">查询结果：共<span id="xxywts">0</span>条记录</div>
+<script type="text/javascript">
+    require(['app/html/zxcxk/xxywcx', "dojo/domReady!"], function (XXYWCX) {
+        new XXYWCX();
+    });
+</script>
+</body>
+</html>

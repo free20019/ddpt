@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>咨询查询</title>
+	<style>
+		#zxcxTabel {
+			height: calc(100% - 80px);
+		}
+		
+		#zxcxTabel .field-dojoId{width: 60px;white-space: nowrap;}
+		#zxcxTabel .field-CS_TELNUM{width: 110px;white-space: nowrap;}
+		#zxcxTabel .field-CS_CLIENT{width: 80px;white-space: nowrap;}
+		#zxcxTabel .field-CS_DEALDATETIME{width: 160px;white-space: nowrap;}
+		#zxcxTabel .field-CS_STATE{width: 80px;white-space: nowrap;}
+		#zxcxTabel .field-CS_TYPE{width: 80px;white-space: nowrap;}
+		#zxcxTabel .field-CS_WORKERNUM{width: 70px;white-space: nowrap;}
+		#zxcxTabel .field-CS_VEHIID{width: 80px;white-space: nowrap;}
+		#zxcxTabel .field-CS_MEMO{width: 160px;white-space: nowrap;}
+		#zxcxTabel .field-CS_OBJECT{width: 80px;white-space: nowrap;}
+	</style>
+</head>
+<body>
+<div class="" id="zxhtml">
+	<div class="iFInputItem">
+		<div class="iFInlineItem">
+			<label class="iFLabel">处理对象</label>
+			<div class="iFComboBox" id="zxcldx-comboBox" style="width: 160px;">
+				<input type="text">
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+					<li data-value="0">司机</li>
+					<li data-value="1">乘客</li>
+					<li data-value="2">公司</li>
+					<li data-value="3">运管</li>
+					<li data-value="4">其他</li>
+				</ul>
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">来电电话</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="zxlddh">
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">关键字</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="zxcxgjz">
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">处理类型</label>
+			<div class="iFComboBox" id="zxcllx-comboBox" style="width: 160px;">
+				<input type="text">
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+					<li data-value="0">地址咨询查找</li>
+					<li data-value="1">测距里程费用</li>
+					<li data-value="2">定位导航指路</li>
+					<li data-value="3">公交铁路客运</li>
+					<li data-value="4">司机路况反馈</li>
+					<li data-value="5">司机建议投诉</li>
+					<li data-value="6">乘客投诉</li>
+					<li data-value="7">其他</li>
+				</ul>
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">工号</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="zxgh">
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">开始时间</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="zxstime"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">结束时间</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="zxetime"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+			</div>
+		</div>
+		<div class="iFInlineItem" style="line-height: 30px;">
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="zxcxbtn">查询</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="zxcxdaochubtn">导出</a>
+		</div>
+	</div>
+</div>
+<div id="zxcxTabel"></div>
+<div style="padding: 10px;">查询结果：共<span id="zxts">0</span>条记录</div>
+<script type="text/javascript">
+	require(['app/html/zxcxk/zxcx', "dojo/domReady!"], function (ZXCX) {
+		new ZXCX();
+	});
+</script>
+</body>
+</html>

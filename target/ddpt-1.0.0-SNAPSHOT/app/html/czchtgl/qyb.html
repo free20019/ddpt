@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>区域表</title>
+	<style>
+		#qybTabel {
+			height: calc(100% - 50px);
+		}
+		#qybTabels {
+			height: 100%;
+		}
+		#qybDialogPanel {
+			height: 403px;
+		}
+	</style>
+</head>
+<body>
+<div class="">
+	<div class="iFInputItem">
+		<div class="iFInlineItem" style="line-height: 30px;">
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="qybAdd">添加</a>
+	        <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="qybUpd">修改</a>
+	        <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="qybDel">删除</a>
+	        <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="qybDc">导出</a>
+		</div>
+	</div>
+</div>
+<div id="qybTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="qybDialog" id="qybDialog">
+    <div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="qybDialogPanel" id="qybDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	require(['app/html/czchtgl/qyb', "dojo/domReady!"], function (QYB) {
+		new QYB();
+	});
+</script>
+</body>
+</html>

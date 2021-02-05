@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>叫车统计</title>
+	<style>
+		#hwlnbTabel {
+			height: calc(100% - 50px);
+		}
+	</style>
+</head>
+<body>
+<div class="" id="hwlnbPanel">
+	<div class="iFInlineItem" id="hwlnb-qsrqBox">
+		<label class="iFLabel">起始日期</label>
+		<div class="iFInput" style="width: 160px;" readonly>
+			<input type="text" id="hwlnb-startTime">
+		</div>
+	</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="hwlnbQuery">查询</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="hwlnbexcel">导出Excel</a>
+	</div>
+</div>
+<div id="hwlnbTabel"></div>
+<!--<div data-dojo-type="dijit/Dialog" data-dojo-id="hwlnbDialog" id="hwlnbDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="hwlnbDialogPanel" id="hwlnbDialogPanel"></div>
+</div>-->
+<script type="text/javascript">
+	require(['app/html/czbb/ddyw/hwlnb', "dojo/domReady!"], function (hwlnb) {
+		new hwlnb();
+	});
+</script>
+</body>
+</html>

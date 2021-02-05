@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>驾驶员管理</title>
+    <style>
+        #khbTabel {
+            height: calc(100% - 90px);
+        }
+        #khbTabels {
+            height: 100%;
+        }
+        #khbDialog .dijitDialogPaneContent {
+            padding: 0;
+        }
+        #khbDialogPanel {
+            width: 900px;
+            height: 400px;
+        }
+        #khbTabel .field-ID_NUMBER{width: 160px}
+        #khbTabel .field-VEHICLE_ID{width: 160px}
+        #khbTabel .field-COMPANY_LICENSE_NUMBER{width: 110px}
+    </style>
+</head>
+<body>
+<div class="" id="jsyPanel">
+	<div class="iFInlineItem">
+		<label class="iFLabel">身份证号</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="jsy_sfzh">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">车牌号</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="jsy_cph">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">姓名</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="jsy_name">
+		</div>
+	</div>
+	<div class="iFInlineItem" id="gsm-comboBoxPanel">
+			<label class="iFLabel">公司名</label>
+			<div class="iFComboBox" id="gsm-comboBox" style="width: 200px;">
+				<input type="text" class="gsm-list" data-value="">
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList" id="gsm-list-ul">
+<!-- 					<li data-value="" style="height: 1.5em;">1234</li> -->
+				</ul>
+			</div>
+	</div><br>
+	<div class="iFInlineItem">
+		<label class="iFLabel">服务证号</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="jsy_fwzh">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">经营许可证</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="jsy_jyxk">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">证照状态</label>
+		<div class="iFInput" style="width: 160px;">
+			<select class="iFInput" id="jsy_zzzt" style="width: 160px;height:22px">
+					<option value="">全部</option>
+					<option value="正常">正常</option>
+					<option value="注销">注销</option>
+					<option value="无效">无效</option>
+					
+				</select>
+		</div>
+	</div>
+	<div class="iFInlineItem" id="sqm-comboBoxPanel">
+			<label class="iFLabel">所在地市</label>
+			<div class="iFComboBox" id="sqm-comboBox" style="width: 200px;">
+				<input type="text" class="sqm-list" data-value="" >
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList" id="sqm-list-ul">
+<!-- 					<li data-value="" style="height: 1.5em;">1234</li> -->
+				</ul>
+			</div>
+	</div>
+    <div class="iFInlineItem" style="line-height: 30px;">
+    	<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="khbFind">查询</a>
+    	<span class="w10px"></span>
+        <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="khbDet">详情</a>
+        <span class="w10px"></span>
+         <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="khbDc">导出</a>
+    </div>
+</div>
+<div id="khbTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="khbDialog" id="khbDialog">
+    <div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="khbDialogPanel" id="khbDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	findsqm().then(function(data){
+		xlktyff("sqm-list-ul",data.datas);
+		comboboxDFun('#sqm-comboBoxPanel');
+	});
+	findgsm().then(function(data){
+		xlktyff("gsm-list-ul",data.datas);
+		comboboxDFun('#gsm-comboBoxPanel');
+	});
+	$(".gsm-list").on('keyup',function(){
+		$("#gsm-list-ul").empty();
+		console.log($(".gsm-list").val());
+		if($(".gsm-list").val()==''){
+			findgsm().then(function(data){
+				xlktyffComboboxDFun("gsm-comboBoxPanel",data);
+			});
+		}else{
+			findgsmtj($(".gsm-list").val()).then(function(data){
+				xlktyffComboboxDFun("gsm-comboBoxPanel",data);
+			});
+			}
+	})
+	$(".sqm-list").on('keyup',function(){
+		$("#sqm-list-ul").empty();
+		console.log($(".sqm-list").val());
+		if($(".sqm-list").val()==''){
+			findsqm().then(function(data){
+				xlktyffComboboxDFun("sqm-comboBoxPanel",data);
+			});
+		}else{
+			findsqmtj($(".sqm-list").val()).then(function(data){
+				xlktyffComboboxDFun("sqm-comboBoxPanel",data);
+			});
+			}
+	})
+    require(['app/html/xhchtgl/khb', "dojo/domReady!"], function (KHB) {
+        new KHB();
+    });
+</script>
+</body>
+</html>

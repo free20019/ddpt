@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>车辆表</title>
+	<style>
+		#clbTabel {
+			height: calc(100% - 94px);
+		}
+		#clbTabels {
+		height: 100%;
+		}
+		#clbDialog .dijitDialogPaneContent {
+			padding: 0;
+		}
+		#clbDialogPanel {
+			width: 900px;
+			height: 800px;
+		}
+		#clbTabel .field-dojoId{width: 45px}
+	</style>
+</head>
+<body>
+<div class="" id="clbPanel">
+	<div class="iFInputItem">
+<!-- 		<div class="iFInlineItem"> -->
+<!-- 			<label class="iFLabel" style="width: 67px;">公司筛选</label> -->
+<!-- 			<div class="iFInput" style="width: 160px;"> -->
+<!-- 				<input type="text" id="clb-gssx"> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+		<div class="iFInlineItem" id="cp-comboBoxPanel">
+			<label class="iFLabel">车牌号码</label>
+			<div class="iFComboBox" id="cp-comboBox" style="width: 200px;">
+				<input type="text" class="cp-list" data-value="" >
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList" id="cp-list-ul">
+<!-- 					<li data-value="" style="height: 1.5em;">1234</li> -->
+				</ul>
+			</div>
+		</div>
+		<div class="iFInlineItem" id="yh-comboBoxPanel">
+			<label class="iFLabel">业户名称</label>
+			<div class="iFComboBox" id="yh-comboBox" style="width: 200px;">
+				<input type="text" class="yh-list" data-value="" >
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList" id="yh-list-ul">
+<!-- 					<li data-value="" style="height: 1.5em;">1234</li> -->
+				</ul>
+			</div>
+		</div>
+		<div class="iFInlineItem" id="sq-comboBoxPanel">
+			<label class="iFLabel">所在地市</label>
+			<div class="iFComboBox" id="sq-comboBox" style="width: 200px;">
+				<input type="text" class="sq-list" data-value="" >
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList" id="sq-list-ul">
+<!-- 					<li data-value="" style="height: 1.5em;">1234</li> -->
+				</ul>
+			</div>
+		</div><br>
+		<div class="iFInlineItem">
+			<label class="iFLabel" style="width: 100px;">道路运输证号</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="xhc-dlys">
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel" style="width: 100px;">经营许可证号</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="xhc-jyxk">
+			</div>
+		</div>
+
+		<div class="iFInlineItem">
+			<label class="iFLabel" >状态</label>
+			<div class="iFInput" style="width: 160px;">
+				<select class="iFInput" id="xhc-zt" style="width: 160px;height:22px">
+					<option value="">全部</option>
+					<option value="10">营运</option>
+					<option value="21">停运</option>
+					<!-- <option value="31">迁出（过户）</option> -->
+					<option value="31">已转出</option>
+					<!-- <option value="32">迁出（转籍）</option> -->
+					<option value="32">已转籍</option>
+					<!-- <option value="33">报废</option> -->
+					<option value="33">已报废</option>
+					<option value="35">检测不合格</option>
+					<option value="80">注销</option>
+					
+				</select>
+			</div>
+		</div>
+		<div class="iFInlineItem" style="line-height: 30px;">
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clbQuery">查询</a>
+			<span class="w10px"></span>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clbDet">详情</a>
+			<span class="w10px"></span>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clbDc">导出</a>
+		</div>
+	</div>
+</div>
+<div id="clbTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="clbDialog" id="clbDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="clbDialogPanel" id="clbDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	fingcp().then(function(data){
+		xlktyff("cp-list-ul",data.datas);
+		comboboxDFun('#cp-comboBoxPanel');
+	});
+	findsq().then(function(data){
+		xlktyff("sq-list-ul",data.datas);
+		comboboxDFun('#sq-comboBoxPanel');
+	});
+	findyh().then(function(data){
+		xlktyff("yh-list-ul",data.datas);
+		comboboxDFun('#yh-comboBoxPanel');
+	});
+	
+	$(".cp-list").on('keyup',function(){
+		$("#cp-list-ul").empty();
+		console.log($(".cp-list").val());
+		if($(".cp-list").val()==''){
+			fingcp().then(function(data){
+				xlktyffComboboxDFun("cp-comboBoxPanel",data);
+			});
+		}else{
+			findcptj($(".cp-list").val()).then(function(data){
+				xlktyffComboboxDFun("cp-comboBoxPanel",data);
+
+			});
+		}
+	})
+		$(".yh-list").on('keyup',function(){
+		$("#yh-list-ul").empty();
+		console.log($(".yh-list").val());
+		if($(".yh-list").val()==''){
+			findyh().then(function(data){
+				xlktyffComboboxDFun("yh-comboBoxPanel",data);
+			});
+		}else{
+			findyhtj($(".yh-list").val()).then(function(data){
+				xlktyffComboboxDFun("yh-comboBoxPanel",data);
+			});
+		}
+	})
+	$(".sq-list").on('keyup',function(){
+		if($(".sq-list").val()==''){
+			findsq().then(function(data){
+				xlktyffComboboxDFun("sq-comboBoxPanel",data);
+			});
+		}else{
+			findsqtj($(".sq-list").val()).then(function(data){
+				xlktyffComboboxDFun("sq-comboBoxPanel",data);
+			});
+		}
+	})
+// 	$("#sq-comboBoxPanel").find('input').on('keyup',function(){
+// 		if($(".sq-list").val()==''){
+// 			findsq().then(function(data){
+// 				$("#sq-comboBoxPanel").find('.iFList').html("");
+// 				xlktyff2("sq-comboBoxPanel",data);
+// 			});
+// 		}else{
+// 			findsqtj($(".sq-list").val()).then(function(data){
+// 				$("#sq-comboBoxPanel").find('.iFList').html("");
+// 				xlktyff2("sq-comboBoxPanel",data);
+// 			});
+// 		}
+// 	});
+	require(['app/html/xhchtgl/clb', "dojo/domReady!"], function (CLB) {
+		new CLB();
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>好人好事</title>
+	<style>
+		#hrhsTabel {
+			height: calc(100% - 50px);
+		}
+		#hrhsDialog .dijitDialogPaneContent {
+			padding: 0;
+		}
+		#hrhsDialogPanel {
+			width: 550px;
+			height: 200px;
+		}
+	</style>
+</head>
+<body>
+<div class="" id="hrhsPanel" style="margin-bottom: 10px;">
+	<div class="iFInlineItem">
+		<label class="iFLabel">日期</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="hrhs-date">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">关键字</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="hrhs-gjz">
+		</div>
+	</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="hrhsQuery">查询</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="hrhs-add">添加</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="hrhs-excel">导出</a>
+	</div>
+</div>
+<dl class="iFTitlePanel" id="hrhs-infoPanel">
+	<dt class="iFTitle">
+		<div class="iFInlineItem">
+			<input type="checkbox" class="iFCheckBox" id="hrhs-allSelect">
+			<label for="hrhs-allSelect">全选</label>
+		</div>
+		<div class="iFBtn iFBtnDelect" id="hrhs-AllDelete">删除</div>
+	</dt>
+<!-- 	<dd class="iFItem iFContent"> -->
+<!-- 		<div class="iFTabularPanel"> -->
+<!-- 			<div class="iFTitle"> -->
+<!-- 				<input type="checkbox" class="iFCheckBox iFCheckboxItem"> -->
+<!-- 				<label>记录编号</label> -->
+<!-- 				<span>[132234]</span> -->
+<!-- 			</div> -->
+<!-- 			<div class="iFContent" data-numId="1"> -->
+<!-- 				<div class="iFWAuto iFItem clearfix"> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 30%"> -->
+<!-- 						<label class="iFLabel iFTitleName">时间</label> -->
+<!-- 						<div class="iFText">2017-09-01 09:20:00</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 30%;"> -->
+<!-- 						<label class="iFLabel iFTitleName">记录人</label> -->
+<!-- 						<div class="iFText">hzgps</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFBtnBox" style="width: 40%; line-height: 30px; text-align: center;"> -->
+<!-- 						<a href="javascript:void(0);" class="iFBtn iFBtnMin iFBtnEditor hrhsEditor">编辑</a> -->
+<!-- 						<a href="javascript:void(0);" class="iFBtn iFBtnMin iFBtnDelect hrhsDelete">删除</a> -->
+<!-- 						<a href="javascript:void(0);" class="iFBtn iFBtnMin iFBtnLocked">锁定</a> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="iFWAuto iFItem clearfix"> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 30%;"> -->
+<!-- 						<label class="iFLabel iFTitleName">标题</label> -->
+<!-- 						<div class="iFText">表扬</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 30%;"> -->
+<!-- 						<label class="iFLabel iFTitleName">车牌</label> -->
+<!-- 						<div class="iFText">浙AT3465</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="iFItem iFTextAreaItem"> -->
+<!-- 					<label class="iFLabel iFTitleName">内容</label> -->
+<!-- 					<div class="iFTextArea">13588418434 厉先生来电表扬浙AT3465主动送回车内遗失物品</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</dd> -->
+<!-- 	<dd class="iFItem iFContent"> -->
+<!-- 		<div class="iFTabularPanel"> -->
+<!-- 			<div class="iFTitle"> -->
+<!-- 				<input type="checkbox" class="iFCheckBox iFCheckboxItem"> -->
+<!-- 				<label>记录编号</label> -->
+<!-- 				<span>[8240]</span> -->
+<!-- 			</div> -->
+<!-- 			<div class="iFContent" data-numId="1"> -->
+<!-- 				<div class="iFWAuto iFItem clearfix"> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 30%"> -->
+<!-- 						<label class="iFLabel iFTitleName">时间</label> -->
+<!-- 						<div class="iFText">2017-09-01 09:20:00</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 30%;"> -->
+<!-- 						<label class="iFLabel iFTitleName">记录人</label> -->
+<!-- 						<div class="iFText">551</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFBtnBox" style="width: 40%; line-height: 30px; text-align: center;"> -->
+<!-- 						<a href="javascript:void(0);" class="iFBtn iFBtnMin iFBtnEditor hrhsEditor">编辑</a> -->
+<!-- 						<a href="javascript:void(0);" class="iFBtn iFBtnMin iFBtnDelect hrhsDelete">删除</a> -->
+<!-- 						<a href="javascript:void(0);" class="iFBtn iFBtnMin iFBtnLocked">锁定</a> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="iFWAuto iFItem clearfix"> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 30%;"> -->
+<!-- 						<label class="iFLabel iFTitleName">标题</label> -->
+<!-- 						<div class="iFText">表扬</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 30%;"> -->
+<!-- 						<label class="iFLabel iFTitleName">车牌</label> -->
+<!-- 						<div class="iFText">浙AT0640</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="iFItem iFTextAreaItem"> -->
+<!-- 					<label class="iFLabel iFTitleName">内容</label> -->
+<!-- 					<div class="iFTextArea">018067073888张先生来电表扬浙AT0640主动送回车内遗失物品</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</dd> -->
+</dl>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="hrhsDialog" id="hrhsDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="hrhsDialogPanel" id="hrhsDialogPanel"></div>
+</div>
+<script type="text/javascript">
+$("#hrhs-date").val(setformatyear(new Date));
+	require(['app/html/oa/hrhs', "dojo/domReady!"], function (HRHS) {
+		new HRHS();
+	});
+</script>
+</body>
+</html>

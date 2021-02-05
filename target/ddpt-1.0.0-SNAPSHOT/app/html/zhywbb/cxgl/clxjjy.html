@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>车辆现金交易查询</title>
+	<style>
+		#clxjjyTabel {
+			height: calc(100% - 100px);
+		}
+		
+			.field-dojoId{width: 80px;white-space: nowrap;}
+			.field-JIAOYITYPE{width: 110px;white-space: nowrap;}
+			.field-QY{width: 110px;white-space: nowrap;}
+			.field-FGS{width: 150px;white-space: nowrap;}
+			.field-SIM{width: 130px;white-space: nowrap;}
+			.field-YINGYUN{width: 110px;white-space: nowrap;}
+			.field-CPHM{width: 100px;white-space: nowrap;}
+			.field-SHANGCHE{width: 180px;white-space: nowrap;}
+			.field-XIACHE{width: 180px;white-space: nowrap;}
+			.field-JICHENG{width: 80px;white-space: nowrap;}
+			.field-DENGHOU{width: 110px;white-space: nowrap;}
+			.field-JINE{width: 80px;white-space: nowrap;}
+			.field-KONGSHI{width: 80px;white-space: nowrap;}
+			.field-ZHONGXINTIME{width: 180px;white-space: nowrap;}
+	</style>
+</head>
+<body>
+<div class="" id="clxjjyPanel">
+	<div class="iFInlineItem">
+		<label class="iFLabel">起始时间</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="clxjjy-startTime">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">结束时间</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="clxjjy-endTime">
+		</div>
+	</div>
+	
+	<div class="iFInlineItem" id="clxjjy-quyu">
+		<label class="iFLabel">区域</label>
+	<div class="iFComboBox" id="clxjjy-quyu-comboBox" style="width: 160px;">
+			<input type="text" value="主城区" data-value="1" >
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+				<li data-value="0" >全部</li>
+				<li data-value="1" >主城区</li>
+				<li data-value="2" >余杭区</li>
+				<li data-value="3" >萧山区</li>
+				<li data-value="4" >临安区</li>
+				<li data-value="5" >富阳区</li>
+				<li data-value="6" >淳安区</li>
+				<li data-value="7" >建德市</li>
+			</ul>
+		</div>
+	</div>
+	<div class="iFInlineItem" id="clxjjy-company">
+		<label class="iFLabel">公司</label>
+		<div class="iFComboBox" id="clxjjy-company-comboBox" style="width: 160px;">
+			<input type="text" >
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+			</ul>
+		</div>
+	</div>
+	<div class="iFInlineItem" id="clxjjy-cphm">
+		<label class="iFLabel">车牌号码</label>
+		<div class="iFComboBox" id="clxjjy-cphm-comboBox" style="width: 160px;">
+			<input type="text" >
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+			</ul>
+		</div>
+	</div>
+	<div class="iFInlineItem" style="margin-left: 10px;">
+		<input type="checkbox" class="iFCheckBox" id="clxjjy-cxtj1" name="clxjjychk" value="1" checked>
+		<label for="clxjjy-cxtj1" style="margin-right: 10px;">上车时间&lt;下车时间</label>
+		<input type="checkbox" class="iFCheckBox" id="clxjjy-cxtj2" name="clxjjychk" value="2" checked>
+		<label for="clxjjy-cxtj2" style="margin-right: 10px;">实载里程&lt;时差*120km／h</label>
+		<input type="checkbox" class="iFCheckBox" id="clxjjy-cxtj3" name="clxjjychk" value="3" checked>
+		<label for="clxjjy-cxtj3" style="margin-right: 10px;">时差&lt;12h</label>
+		<input type="checkbox" class="iFCheckBox" id="clxjjy-cxtj4" name="clxjjychk" value="4" checked>
+		<label for="clxjjy-cxtj4" style="margin-right: 10px;">无英文</label>
+	</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clxjjyQuery">查询</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clxjjyDaochu">导出Excel</a>
+	</div>
+</div>
+<div id="clxjjyTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="clxjjyDialog" id="clxjjyDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="clxjjyDialogPanel" id="clxjjyDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	require(['app/html/zhywbb/cxgl/clxjjy', "dojo/domReady!"], function (CLXJJY) {
+		new CLXJJY();
+	});
+</script>
+</body>
+</html>

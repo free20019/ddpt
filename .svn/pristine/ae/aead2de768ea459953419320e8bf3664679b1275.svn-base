@@ -1,0 +1,174 @@
+package mvc.controllers;
+
+
+import helper.Bean2Map;
+import helper.Client;
+import helper.DownloadAct;
+
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import mvc.service.BjjkxServer;
+import net.sf.json.JSONObject;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+//import cn.com.activeMQ.Sender;
+
+import com.tw.cache.DataItem;
+import com.tw.cache.GisData;
+
+
+
+@Controller
+@RequestMapping(value = "/bjjkx")
+public class BjjkxAction {
+	private BjjkxServer bjjkxService;
+
+	public BjjkxServer getBjjkxServer() {
+		return bjjkxService;
+	}
+
+	@Autowired
+	public void setBjjkxServer(BjjkxServer bjjkxService) {
+		this.bjjkxService = bjjkxService;
+	}
+	
+	/**
+	 * 当日咨询历史记录导出
+	 * @return
+	 * @throws Exception 
+	 */
+	@RequestMapping(value = "/xxc_daochu")
+	@ResponseBody
+	public String xxc_daochu(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		String a[] = {"车牌","公司","定位时间","经度","纬度"};//导出列明
+		String b[] = {"vehino","compname","dateTime","longi","lati"};//导出map中的key
+		String gzb = "下线车辆";//导出sheet名和导出的文件名
+		DataItem data = (DataItem) GisData.map.get("data");
+		List<Map<String, Object>>list = new ArrayList<Map<String,Object>>();
+		if(null != data){
+			list = Bean2Map.convertListBean2ListMap(data.getLxvehilist());
+		}
+		new DownloadAct().download(request,response,a,b,gzb,list);
+		return null;
+    }
+	
+	/**
+	 * 报警区域查询
+	 * @return
+	 */
+//	@RequestMapping(value = "/bjqy")
+//	@ResponseBody
+//	public String findcp(HttpServletRequest request,@RequestParam("postData") String postData
+//			) {
+//		String msg = bjjkxService.bjqy();
+//		return msg;
+//	}
+	
+	/**
+	 * 查询数据
+	 * 
+	 */
+	@RequestMapping(value = "/bjdata")
+	@ResponseBody
+	public String bjdata(HttpServletRequest request,@RequestParam("postData") String postData
+			) {
+		String msg = bjjkxService.bjdata();
+		return msg;
+	}
+	/**
+	 * 报警解除
+	 * @throws UnsupportedEncodingException 
+	 * 
+	 */
+//	@RequestMapping(value = "/jcbj")
+//	@ResponseBody
+//	public String jcbj(HttpServletRequest request,@RequestParam("postData") String postData
+//			) throws UnsupportedEncodingException {
+//		postData = java.net.URLDecoder.decode(postData, "UTF-8");
+//		//Sender.StartSend("192.168.0.102","hz_taxi_905_gj",postData);
+//		Sender.StartSend("192.168.0.102","hz_taxi_905_gj",postData);
+//		bjjkxService.jcbjlog(postData);
+//		return "{\"msg\":\"1\"}";
+//	}
+	
+	/**
+	 * 按车牌查询公司
+	 * @return
+	 */
+	@RequestMapping(value = "/findcompname")
+	@ResponseBody
+	public String findcompname(HttpServletRequest request,@RequestParam("cp") String cp
+			) {
+		String msg = bjjkxService.findcompname(cp);
+		return msg;
+	}
+	
+	/**
+	 * 报警处理
+	 * @throws IOException 
+	 * 
+	 */
+	@RequestMapping(value = "/bjcl")
+	@ResponseBody
+	public String bjcl(HttpServletRequest request,@RequestParam("postData") String postData
+			) throws IOException {
+		postData = java.net.URLDecoder.decode(postData, "UTF-8");
+		String msg = bjjkxService.bjcl(postData);
+		return msg;
+	}
+	/**
+	 * 报警处理edit
+	 * @throws IOException 
+	 * 
+	 */
+	@RequestMapping(value = "/bjcledit")
+	@ResponseBody
+	public String bjcledit(HttpServletRequest request,@RequestParam("postData") String postData
+			) throws IOException {
+		postData = java.net.URLDecoder.decode(postData, "UTF-8");
+		String msg = bjjkxService.bjcledit(postData);
+		return msg;
+	}
+	/**
+	 * 查询报警处理
+	 * @throws IOException 
+	 * 
+	 */
+	@RequestMapping(value = "/findbjclitem")
+	@ResponseBody
+	public String findbjclitem(HttpServletRequest request,@RequestParam("postData") String postData
+			) throws IOException {
+		postData = java.net.URLDecoder.decode(postData, "UTF-8");
+		String msg = bjjkxService.findbjclitem(postData);
+		return msg;
+	}
+	
+	@RequestMapping(value = "/addarea")
+	@ResponseBody
+	public String addarea(HttpServletRequest request,@RequestParam("postData") String postData
+			) throws IOException {
+		postData = java.net.URLDecoder.decode(postData, "UTF-8");
+		String msg = bjjkxService.addarea(postData);
+		return msg;
+	}
+	@RequestMapping(value = "/delarea")
+	@ResponseBody
+	public String delarea(HttpServletRequest request,@RequestParam("areaid") String areaid
+			) throws IOException {
+		String msg = bjjkxService.delarea(areaid);
+		return msg;
+	}
+}

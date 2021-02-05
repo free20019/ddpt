@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>营运月报</title>
+	<style>
+		#yyybTabel {
+			height: calc(100% - 100px);
+		}
+		
+			.field-dojoId{width: 60px;white-space: nowrap;}
+			.field-TIME{width: 180px;white-space: nowrap;}
+			.field-REPORE_VHIC{width: 110px;white-space: nowrap;}
+			.field-REPORE_NO{width: 110px;white-space: nowrap;}
+			.field-REPROE_VHICNO{width: 110px;white-space: nowrap;}
+			.field-REPORE_TURNOVER{width: 110px;white-space: nowrap;}
+			.field-REPORE_RADE{width: 100px;white-space: nowrap;}
+			.field-REPORE_AMOUNT_REVENUE{width: 100px;white-space: nowrap;}
+			.field-REPORE_ACTUAL_LOADING{width: 100px;white-space: nowrap;}
+			.field-REPORE_CAR_TIME{width: 110px;white-space: nowrap;}
+			.field-REPROE_REVENUE_TIME{width: 110px;white-space: nowrap;}
+			.field-REPORE_WAIT_TIME{width: 110px;white-space: nowrap;}
+			.field-REPORE_MILEAGE{width: 110px;white-space: nowrap;}
+			.field-REPORE_ACTUAL_MILEAGE{width: 110px;white-space: nowrap;}
+			.field-REPORE_EMPTY_MILEAGE{width: 110px;white-space: nowrap;}
+	</style>
+</head>
+<body>
+<div class="" id="yyybPanel">
+	<div class="iFInlineItem">
+		<label class="iFLabel">起始时间</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="yyyb-startTime">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">结束时间</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="yyyb-endTime">
+		</div>
+	</div>
+	
+	
+	<div class="iFInlineItem" id="yyyb-company">
+		<label class="iFLabel">公司</label>
+		<div class="iFComboBox" id="yyyb-company-comboBox" style="width: 160px;">
+			<input type="text" >
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+			</ul>
+		</div>
+	</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="yyybQuery">查询</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="yyybDaochu">导出Excel</a>
+	</div>
+</div>
+<div id="yyybTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="yyybDialog" id="yyybDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="yyybDialogPanel" id="yyybDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	require(['app/html/zhywbb/yysjfx/yyyb', "dojo/domReady!"], function (YYYB) {
+		new YYYB();
+	});
+</script>
+</body>
+</html>

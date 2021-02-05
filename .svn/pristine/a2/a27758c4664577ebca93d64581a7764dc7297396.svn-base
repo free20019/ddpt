@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>调度平台</title>
+    <link rel="stylesheet" href="app/main.css"/>
+    <link rel="stylesheet" href="resources/style/iconfont.css"/>
+	<link rel="shortcut icon" href="resources/images/favicon.ico" />
+    <script src="resources/script/jquery-1.12.1.min.js"></script>
+	<script type="text/javascript" src="app/config.js"></script>
+    <style type="text/css">
+        #borderContainer { width: 100%; height: 100%; margin: 0; padding: 0; }
+        #borderContainer > #topContentPane_splitter { height: 0; }
+        #borderContainer > #leftContentPane_splitter { width: 0; }
+        #topContentPane {
+			height: 90px;
+			padding: 0;
+            background: #0063A7;
+        }
+
+        #topContentPane .logoTitle {
+			display: inline-block;
+            height: 30px;
+            line-height: 30px;
+			margin-right: 10px;
+            margin-bottom: 0!important;
+			padding: 0;
+            font-size: 20px!important;
+            font-weight: normal;
+			text-align: left;
+			text-indent: 100px;
+            color: #FEBE22;
+        }
+		.logoTitle .logo {
+			position: absolute;
+            top: 50%;  left: 40px;
+			display: inline-block;
+			width: 48px;
+			height: 48px;
+            margin-top: -24px;
+			background: url(./resources/images/logo.png) center / 100% no-repeat;
+		}
+		.logoTitle span {
+			font-size: 16px;
+		}
+		#centerContentPane {
+			padding: 0;
+		}
+		.menuList {
+			padding-left: 30px;
+            /*background-color: #0063A7;*/
+		}
+		.menuList li {
+			position: relative;
+			float: left;
+			width: 90px;
+			height: 60px;
+			color: #0bc572;
+			cursor: pointer;
+		}
+		.menuList li.selected {
+			color: #010066;
+			background: #fed406;
+			background-image: linear-gradient(#fed406, #fec844 70%);
+		}
+		.menuList .icon {
+			position: absolute;
+			top: 5px;  left: 50%;
+			width: 35px;
+			height: 35px;
+			margin-left: -15px;
+			background-size: 35px;
+			background-position: center;
+		}
+		.icon-xdd {  background-image: url(./resources/images/ddpt/icon-xdd.png);}
+		.icon-yytz {  background-image: url(./resources/images/ddpt/icon-yytz.png);}
+		.icon-qtscyw {  background-image: url(./resources/images/ddpt/icon-qtscyw.png);}
+		.icon-jfcx {  background-image: url(./resources/images/ddpt/icon-jfcx.png);}
+		.icon-lovedd { background-image: url(./resources/images/ddpt/icon-love1.png);background-repeat: no-repeat;}
+		.icon-dxjr {  background-image: url(./resources/images/ddpt/icon-dxjr.png);}
+		.selected .icon-xdd {  background-image: url(./resources/images/ddpt/icon-xdd-h.png);  }
+		.selected .icon-yytz {  background-image: url(./resources/images/ddpt/icon-yytz-h.png);  }
+		.selected .icon-qtscyw {  background-image: url(./resources/images/ddpt/icon-qtscyw-h.png);  }
+		.selected .icon-jfcx {  background-image: url(./resources/images/ddpt/icon-jfcx-h.png);  }
+		.selected .icon-lovedd {  background-image: url(./resources/images/ddpt/icon-love-h1.png); background-repeat: no-repeat; }
+		.selected .icon-dxjr {  background-image: url(./resources/images/ddpt/icon-dxjr-h.png);  }
+		.menuList span {display: block;margin-top: 42px;text-align: center;}
+		#xdd-topContentPane {
+			/*height: 61px;*/
+			padding: 0;
+			background: #008AC3;
+		}
+		#xdd-topContentPane a {
+			float: left;
+			width: calc(100% / 11);
+			/*padding-bottom: 6px;*/
+			/*text-align: center;*/
+			text-indent: 40px;
+			text-decoration: none;
+			color: #ffffff;
+		}
+		#xdd-topContentPane a.selected {
+			color: #000066;
+			background: #ecf8fb;
+			background-image: linear-gradient(#ecf8fb, #e9e9eb);
+		}
+		#xdd-topContentPane a {  position: relative;  }
+		#xdd-topContentPane .icon {
+			position: absolute;
+			top: 50%;  left: 10px;
+			width: 20px;
+			height: 20px;
+			margin-top: -10px;
+			background-size: 20px;
+			background-position: center;
+		}
+		#xdd-topContentPane span {display: block;line-height: 30px;}
+		#xdd-topContentPane .objString {text-indent: 0;}
+		#xdd-topContentPane .objString span {line-height: 30px;}
+
+		.icon-zm {  background-image: url(./resources/images/ddpt/icon-zm.png);  }
+		.icon-zx {  background-image: url(./resources/images/ddpt/icon-zx.png);  }
+		.icon-jj {  background-image: url(./resources/images/ddpt/icon-jj.png);  }
+		.icon-gj {  background-image: url(./resources/images/ddpt/icon-gj.png);  }
+		.icon-wb {  background-image: url(./resources/images/ddpt/icon-wb.png);  }
+		.icon-hjbc {  background-image: url(./resources/images/ddpt/icon-hjbc.png);  }
+		.icon-hf {  background-image: url(./resources/images/ddpt/icon-hf.png);  }
+		.icon-hjzy {  background-image: url(./resources/images/ddpt/icon-hjzy.png);  }
+		.icon-hy {  background-image: url(./resources/images/ddpt/icon-hy.png);  }
+		.icon-hywc {  background-image: url(./resources/images/ddpt/icon-hywc.png);  }
+		.icon-qxhy {  background-image: url(./resources/images/ddpt/icon-qxhy.png);  }
+		.selected .icon-zm {  background-image: url(./resources/images/ddpt/icon-zm-h.png);  }
+		.selected .icon-zx {  background-image: url(./resources/images/ddpt/icon-zx-h.png);  }
+		.selected .icon-jj {  background-image: url(./resources/images/ddpt/icon-jj-h.png);  }
+		.selected .icon-gj {  background-image: url(./resources/images/ddpt/icon-gj-h.png);  }
+		.selected .icon-wb {  background-image: url(./resources/images/ddpt/icon-wb-h.png);  }
+		.selected .icon-hjbc {  background-image: url(./resources/images/ddpt/icon-hjbc-h.png);  }
+		.selected .icon-hf {  background-image: url(./resources/images/ddpt/icon-hf-h.png);  }
+		.selected .icon-hjzy {  background-image: url(./resources/images/ddpt/icon-hjzy-h.png);  }
+		.selected .icon-cs {  background-image: url(./resources/images/ddpt/icon-cs-h.png);  }
+		.selected .icon-cswc {  background-image: url(./resources/images/ddpt/icon-cswc-h.png);  }
+		.selected .icon-qxcs {  background-image: url(./resources/images/ddpt/icon-qxcs-h.png);  }
+		.selected .icon-hy {  background-image: url(./resources/images/ddpt/icon-hy-h.png);  }
+		.selected .icon-hywc {  background-image: url(./resources/images/ddpt/icon-hywc-h.png);  }
+		.selected .icon-qxhy {  background-image: url(./resources/images/ddpt/icon-qxhy-h.png);  }
+    </style>
+    
+    <script type="text/javascript" language="javascript" FOR="CTIProxy" EVENT="CallIncommingEvt(EDUID,ANI,DNIS,UUI,UCID)">
+		//来电事件
+		// CallIncommingEvt(ANI);
+		CallIncommingEvt(EDUID,ANI,DNIS,UUI,UCID);
+    </script>
+	<script type="text/javascript" language="javascript" FOR="CTIProxy" EVENT="CallConnectEvt(EDUID,ANI,DNIS,UCID)">
+		//电话接听事件
+		CallConnectEvt(ANI);
+	</script>
+	<script type="text/javascript" language="javascript" FOR="CTIProxy" EVENT="CallDisconnectEvt(PhoneNum)">
+		WrapupEvt(PhoneNum);
+	</script>
+	<script type="text/javascript" language="javascript" FOR="CTIProxy" EVENT="WrapupEvt(PhoneNum)">
+		//挂机事件
+		WrapupEvt(PhoneNum);
+	</script>
+	<script type="text/javascript" language="javascript" FOR="CTIProxy" EVENT="CallAlertingEvt(EDUID,ANI,DNIS)">
+		//振铃事件
+		CallAlertingEvt();
+	</script>
+	<script type="text/javascript" language="javascript" FOR="CTIProxy" EVENT="LogInEvt(AgentID)">
+		//坐席登录事件
+		LogInEvt(AgentID);
+	</script>
+	<script type="text/javascript" language="javascript" FOR="CTIProxy" EVENT="AgentAUXEvt(AgentID)">
+		//坐席置忙事件
+		AgentAUXEvt(AgentID);
+	</script>
+	<script type="text/javascript" language="javascript" FOR="CTIProxy" EVENT="AgentWorkEvt(AgentID)">
+		//坐席工作事件
+		AgentWorkEvt(AgentID);
+	</script>
+	<script type="text/javascript" language="javascript" FOR="CTIProxy" EVENT="StartConferenceEvt(PhoneNum)">
+		console.log("开始会议>"+PhoneNum);
+		StartConferenceEvt(PhoneNum);
+	</script>
+  	<script type="text/javascript" language="javascript" FOR="CTIProxy" EVENT="CompleteConferenceEvt(PhoneNum)">
+  		console.log("会议完成>"+PhoneNum);
+  		CompleteConferenceEvt(PhoneNum);
+	</script>
+	<script type="text/javascript" language="javascript" FOR="CTIProxy" EVENT="CallHoldEvt(PhoneNum)">
+		console.log("呼叫保持>"+PhoneNum);
+		CallHoldEvt(PhoneNum);
+	</script>
+	<script type="text/javascript" language="javascript" FOR="CTIProxy" EVENT="CallRetrieveEvt(PhoneNum)">
+		console.log("呼叫保持取消>"+PhoneNum);
+	</script>
+	<script type="text/javascript" language="javascript" FOR="CTIProxy" EVENT="ConferencingEvt(PhoneNum)">
+		console.log("会议中>"+PhoneNum);
+		ConferencingEvt(PhoneNum);
+	</script>
+</head>
+<body class="claro" style="overflow: hidden;">
+<object classid="clsid:6A1A94C3-6D64-423B-9836-0EC80128B844"
+style="width: 1px;
+height: 1px;" visible="true"
+id="CTIProxy"></object>
+<div id="borderContainer" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="persist:true, gutters:false, liveSplitters:true">
+    <div id="topContentPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top', splitter:false">
+		<ul class="menuList clearfix">
+			<li data-skip="xdd" class="selected"><i class="icon icon-xdd"></i><span>调度</span></li>
+			<li data-skip="yytz"><i class="icon icon-yytz"></i><span>咨询</span></li>
+			<!--<li data-skip="qtscyw"><i class="icon icon-qtscyw"></i><span>其他生成业务</span></li>-->
+			<li data-skip="jfcx"><i class="icon icon-jfcx"></i><span>积分</span></li>
+			<li data-skip="lovedd"><i class="icon icon-lovedd"></i><span>爱心记录</span></li>
+		</ul>
+        <div class="panel-rightBox" style="margin-bottom: 24px;">
+            <a href="javascript:void(0);" class="btn"><i class="iconfont"></i>
+            工号:<span id="ddxpt-dlgh"></span>
+            &nbsp;&nbsp;分机号:<span id="ddxpt-dlfjh"></span>
+            &nbsp;&nbsp;通信状态:<span id="ddxpt-txzt"></span>
+            &nbsp;&nbsp;呼叫中心:<span id="ddxpt-hjzx"></span>
+            </a>
+            <a href="javascript:void(0);" onclick="fhcd()" class="btn" title="返回菜单"><i class="iconfont icon-xitongcaidan" style="font-size: 18px;"></i></a>
+            <a href="javascript:void(0);" onclick="fhdl()" class="btn" title="返回登陆"><i class="iconfont icon-close"></i></a>
+        </div>
+    
+    <div id="xdd-topContentPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top', splitter:false">
+		<a href="javascript:void(0);" class="objString"><span style="float: right;font-size:14px">当前状态:   </span></a>
+		<a href="javascript:void(0);" class="objString"><span style="float: left;font-size:14px" id="dhdqzt">置忙</span></a>
+		<a href="javascript:void(0);" class="selected"><i class="icon icon-zm"></i><span>置忙</span></a>
+		<a href="javascript:void(0);" ><i class="icon icon-zx"></i><span>置闲</span></a>
+<!-- 		<a href="javascript:void(0);"><i class="icon icon-jj"></i><span>接机</span></a> -->
+<!-- 		<a href="javascript:void(0);"><i class="icon icon-gj"></i><span>挂机</span></a> -->
+		<a href="javascript:void(0);"><i class="icon icon-wb"></i><span>外拨</span></a>
+		<a href="javascript:void(0);"><i class="icon icon-hjbc"></i><span>呼叫保持</span></a>
+		<a href="javascript:void(0);"><i class="icon icon-hf"></i><span>恢复</span></a>
+<!-- 		<a href="javascript:void(0);"><i class="icon icon-hjzy"></i><span>呼叫转移</span></a> -->
+		<a href="javascript:void(0);"><i class="icon icon-hy"></i><span>会议</span></a>
+		<a href="javascript:void(0);"><i class="icon icon-hywc"></i><span>会议完成</span></a>
+		<a href="javascript:void(0);"><i class="icon icon-qxhy"></i><span>取消会议</span></a>
+<!-- 		<a href="javascript:void(0);"><i class="icon icon-dl"></i><span>登录</span></a> -->
+	</div>
+	</div>
+    <div id="centerContentPane" data-dojo-type="dojox/layout/ContentPane" data-dojo-props="region:'center', splitter:false" href="app/html/ddxptContainer.html"></div>
+</div>
+
+<script src="resources/script/echarts.min.js"></script>
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=d0face2397384365119fbf558c48c10a&plugin=AMap.Geocoder,AMap.Autocomplete,AMap.PlaceSearch,AMap.MarkerClusterer"></script>
+<script src= "resources/script/My97DatePicker/WdatePicker.js"></script>
+<script src="resources/script/layer/layer.js"></script>
+<script src="http://115.236.61.148:9085/jslib/myDojo/dojo/dojo.js"></script>
+<script src="app/main.js"></script>
+<!-- <script src="app/maindd.js"></script> -->
+</body>
+<!-- <script language="javascript" event="LogInEvt(agentID)" for="CTIProxy"> -->
+<!-- 	if(status==null){ -->
+<!-- 	   layer.msg("坐席登陆成功！坐席id:"+agentID); -->
+<!-- 	} -->
+<!-- </script> -->
+<script type="text/javascript">
+var tcindex=1;
+function fhcd(){
+	if ((!!window.ActiveXObject || "ActiveXObject" in window)&&CTIProxy){
+		CTIProxy.Logout();
+	 }
+	if(typeof(client)!="undefined"&&client&&$("#ddxpt-txzt").html()=="已连接"){
+		tcindex=1;
+		client.disconnect();
+	}
+	window.location.href="menu.html";
+}
+function fhdl(){
+		layer.confirm('确定退出到登录页面？', {
+			  btn: ['确定','取消'] //按钮
+			}, function(){
+				if ((!!window.ActiveXObject || "ActiveXObject" in window)&&CTIProxy){
+					CTIProxy.Logout();
+				 }
+				if(typeof(client)!="undefined"&&client&&$("#ddxpt-txzt").html()=="已连接"){
+					tcindex=1;
+					client.disconnect();
+				}
+				window.location.href="login.html";
+			}, function(){
+		});
+}
+</script>
+</html>

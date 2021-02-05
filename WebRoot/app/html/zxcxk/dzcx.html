@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>地址查询</title>
+	<style>
+		#dzcxTabel {
+			height: calc(100% - 80px);
+		}
+		#dzcxDialogPanel {
+			width: 400px;
+			height: 240px;
+		}
+		.field-PNAME{
+			width: 160px;
+			white-space: nowrap;
+		}
+		.field-GPNAME{
+			width: 260px;
+			white-space: nowrap;
+		}
+		.field-NOTE{
+			white-space: nowrap;
+		}
+		#dzcxTabel .dgrid-scroller .dgrid-cell{
+			height: 0px;
+			padding: 1px;
+		}
+	</style>
+</head>
+<body>
+<div class="">
+	<div class="iFInputItem">
+		<div class="iFInlineItem">
+			<label class="iFLabel">查询关键字</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="dzcx_cxgjz">
+			</div>
+		</div>
+		<div class="iFInlineItem" style="line-height: 30px;">
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="dzcxbtn">查询</a>
+			<span class="w10px"></span>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="dzcxAdd">添加</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="dzcxUpd">修改</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="dzcxDel">删除</a>
+		</div>
+	</div>
+</div>
+<div id="dzcxTabel"></div>
+<div style="padding: 10px;">查询结果：共<span id="dzts">0</span>条记录</div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="dzcxDialog" id="dzcxDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="dzcxDialogPanel" id="dzcxDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	require(['app/html/zxcxk/dzcx', "dojo/domReady!"], function (DZCX) {
+		new DZCX();
+	});
+</script>
+</body>
+</html>

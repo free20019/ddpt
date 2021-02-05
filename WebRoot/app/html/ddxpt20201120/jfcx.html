@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>调度席平台--积分查询</title>
+    <style>
+        #jfcxTabel {
+            height: calc(100% - 80px);
+        }
+        #jfcxPanel,#jfcxTabel{background-color: #F3F8FC}
+        #jfcxPanel{padding: 20px 0;color: #010067}
+        #jfcxTabel-header{color: #010067}
+        #jfcxPanel .iFBtn .iFColorOrange{width: 78px}
+        
+		       #jfcxTabel .field-JD_ID{width: 100px;white-space: nowrap;}
+        		#jfcxTabel .field-VEHI_NO{width: 100px;white-space: nowrap;}
+        		#jfcxTabel .field-EVENT_TYPE{width: 100px;white-space: nowrap;}
+        		#jfcxTabel .field-JF_AMOUNT{width: 100px;white-space: nowrap;}
+        		#jfcxTabel .field-JF_BALANCE{width: 100px;white-space: nowrap;}
+        		#jfcxTabel .field-JF_CLASS{width: 100px;white-space: nowrap;}
+        		#jfcxTabel .field-EVENT_DETAIL{width: 150px;white-space: nowrap;}
+        		#jfcxTabel .field-EVENT_TIME{width: 180px;white-space: nowrap;}
+        		#jfcxTabel .field-USER_ID{width: 100px;white-space: nowrap;}
+    </style>
+</head>
+<body>
+<div class="" id="jfcxPanel">
+    <div class="iFInlineItem" id="jfcx-ldhmBox">
+        <label class="iFLabel">车牌号码:</label>
+        <div class="iFComboBox" id="cphm-comboBox" style="display: inline-block; width: 120px">
+			<input type="text" id="jfcx-cphm">
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+			</ul>
+		</div>
+        
+    </div>
+    <div class="iFInlineItem" id="jfcx-sldxBox">
+        <label class="iFLabel">关键字:</label>
+        <div class="iFInput" style="width: 120px;">
+            <input type="text" id="jfcx-gjz">
+        </div>
+    </div>
+<!--     <div class="iFInlineItem" id="jfcx-cklxBox"> -->
+<!--         <label class="iFLabel">查看类型:</label> -->
+<!--         <div class="iFComboBox" id="jfcx_cklx-comboBox" style="width: 120px;"> -->
+<!--             <input type="text" id="jfcx-cklx"> -->
+<!--             <a href="javascript:void(0);"></a> -->
+<!--             <ul class="iFList"> -->
+<!--                 <li data-value="0">未补单</li> -->
+<!--                 <li data-value="1">已补单</li> -->
+<!--             </ul> -->
+<!--         </div> -->
+<!--     </div> -->
+    <div class="iFInlineItem" id="jfcx-kssjBox">
+        <label class="iFLabel">开始时间</label>
+        <div class="iFInput" style="width: 140px;">
+            <input type="text" id="jfcx-stime">
+        </div>
+    </div>
+    <div class="iFInlineItem" id="jfcx-zzsjBox">
+        <label class="iFLabel">终止时间:</label>
+        <div class="iFInput" style="width: 140px;">
+            <input type="text" id="jfcx-etime">
+        </div>
+    </div>
+    <div class="iFInlineItem" style="line-height: 30px;">
+        <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="jfcxQuery">查&nbsp;&nbsp;&nbsp;&nbsp;询</a>
+        <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="jfcxDaochu">导出数据</a>
+<!--         <a href="javascript:void(0);" class="iFBtn iFColorOrange">刷&nbsp;&nbsp;&nbsp;&nbsp;新</a> -->
+<!--         <a href="javascript:void(0);" class="iFBtn iFColorOrange">删&nbsp;&nbsp;&nbsp;&nbsp;除</a> -->
+    </div>
+</div>
+<div id="jfcxTabel"></div>
+<!--<div data-dojo-type="dijit/Dialog" data-dojo-id="jfcxDialog" id="jfcxDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="jfcxDialogPanel" id="jfcxDialogPanel"></div>
+</div>-->
+<script type="text/javascript">
+    require(['app/html/ddxpt/jfcx', "dojo/domReady!"], function (jfcx) {
+        new jfcx();
+    });
+</script>
+</body>
+</html>

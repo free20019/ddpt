@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>失误登记</title>
+	<style>
+		#swdjTabel {
+			height: calc(100% - 50px);
+		}
+		#swdjDialog .dijitDialogPaneContent {
+			padding: 0;
+		}
+		#swdjDialogPanel {
+			width: 600px;
+			height: 450px;
+		}
+		.iFContentcount > .iFItem {
+		    border-bottom: 1px solid #b0c2ca;
+		}
+	</style>
+</head>
+<body>
+<div class="" id="swdjPanel" style="margin-bottom: 10px;">
+	<div class="iFInlineItem">
+		<label class="iFLabel">开始日期</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="swdj-sdate">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">结束日期</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="swdj-edate">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">查询内容</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="swdj-gjz">
+		</div>
+	</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="swdjQuery">查询</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="swdj-add">添加</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="swdj-excel">导出</a>
+	</div>
+</div>
+<dl class="iFTitlePanel" id="swdj-infoPanel">
+	<dt class="iFTitle">
+		<div class="iFInlineItem">
+			<input type="checkbox" class="iFCheckBox" id="swdj-allSelect">
+			<label for="swdj-allSelect">全选</label>
+		</div>
+		<div class="iFBtn iFBtnDelect" id="swdj-AllDelete">删除</div>
+	</dt>
+<!-- 	<dd class="iFItem iFContent"> -->
+<!-- 		<div class="iFTabularPanel"> -->
+<!-- 			<div class="iFTitle"> -->
+<!-- 				<input type="checkbox" class="iFCheckBox iFCheckboxItem"> -->
+<!-- 				<label>记录编号</label> -->
+<!-- 				<span>[132234]</span> -->
+<!-- 			</div> -->
+<!-- 			<div class="iFContent" data-numId="1"> -->
+<!-- 				<div class="iFWAuto iFItem clearfix"> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 25%"> -->
+<!-- 						<label class="iFLabel iFTitleName">接电话时间</label> -->
+<!-- 						<div class="iFText">2017-09-01 09:20:00</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 25%"> -->
+<!-- 						<label class="iFLabel iFTitleName">上车时间</label> -->
+<!-- 						<div class="iFText">2017-09-01 09:20:00</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 25%"> -->
+<!-- 						<label class="iFLabel iFTitleName">下车时间</label> -->
+<!-- 						<div class="iFText">2017-09-01 09:20:00</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFBtnBox" style="width: 25%; line-height: 30px; text-align: center;"> -->
+<!-- 						<a href="javascript:void(0);" class="iFBtn iFBtnMin iFBtnEditor">编辑</a> -->
+<!-- 						<a href="javascript:void(0);" class="iFBtn iFBtnMin iFBtnDelect">删除</a> -->
+<!-- 						<a href="javascript:void(0);" class="iFBtn iFBtnMin iFBtnLocked">锁定</a> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="iFWAuto iFItem clearfix"> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 25%"> -->
+<!-- 						<label class="iFLabel iFTitleName">调度员工号</label> -->
+<!-- 						<div class="iFText">502</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 25%"> -->
+<!-- 						<label class="iFLabel iFTitleName">车牌号</label> -->
+<!-- 						<div class="iFText">无</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 25%"> -->
+<!-- 						<label class="iFLabel iFTitleName" style="width: 7em;">车辆公司名称</label> -->
+<!-- 						<div class="iFText">无</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="iFWAuto iFItem clearfix"> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 25%"> -->
+<!-- 						<label class="iFLabel iFTitleName">客人姓名</label> -->
+<!-- 						<div class="iFText">黄小姐</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 25%"> -->
+<!-- 						<label class="iFLabel iFTitleName" style="width: 7em;">客人联系电话</label> -->
+<!-- 						<div class="iFText">18811503955</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 25%"> -->
+<!-- 						<label class="iFLabel iFTitleName">事件性质</label> -->
+<!-- 						<div class="iFText">查找失物</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="iFItem iFTextAreaItem"> -->
+<!-- 					<label class="iFLabel iFTitleName">事件内容</label> -->
+<!-- 					<div class="iFTextArea" style="padding-left: 5em;">18811503955，黄小姐，14:00左右东站到庆春路，遗失钱包，里面有身份证。</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="iFWAuto iFItem clearfix"> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 100%"> -->
+<!-- 						<label class="iFLabel iFTitleName">处理结果</label> -->
+<!-- 						<div class="iFText">无</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="iFItem iFTextAreaItem"> -->
+<!-- 					<label class="iFLabel iFTitleName">内容</label> -->
+<!-- 					<div class="iFTextArea">无</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</dd> -->
+</dl>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="swdjDialog" id="swdjDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="swdjDialogPanel" id="swdjDialogPanel"></div>
+</div>
+<script type="text/javascript">
+$("#swdj-sdate").val(setformatday(new Date));
+$("#swdj-edate").val(setformatday(new Date));
+	require(['app/html/oa/swdj', "dojo/domReady!"], function (SWDJ) {
+		new SWDJ();
+	});
+</script>
+</body>
+</html>

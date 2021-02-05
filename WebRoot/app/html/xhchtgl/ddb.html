@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>违章管理</title>
+	<style>
+		#ddbTabel {
+			height: calc(100% - 119px);
+		}
+		#ddbTabels {
+			height: 100%;
+		}
+		#ddbDialog .dijitDialogPaneContent {
+			padding: 0;
+		}
+		#ddbDialogPanel {
+			width: 900px;
+			height: 400px;
+		}
+		.ddbTabel th,.ddbTabel td {text-align: center;}
+		.ddbTabel .field-checkbox {width: 32px;}
+		.ddbTabel .field-dojoId {width: 30px;}
+		.ddbTabel .field-CI_ID {width: 100px;}
+		.ddbTabel .field-CUST_NAME {width: 80px;}
+		.ddbTabel .field-DISP_TYPE {width: 100px;}
+		.ddbTabel .field-CUST_TEL {width: 100px;}
+		.ddbTabel .field-ADDRESS_REF {width: 160px;}
+		.ddbTabel .field-ADDRESS {width: 160px;}
+		.ddbTabel .field-VEHI_NUM {width: 60px;}
+		.ddbTabel .field-DEST_ADDRESS {width: 100px;}
+		.ddbTabel .field-VEHI_NO {width: 80px;}
+		.ddbTabel .field-SIM_NUM {width: 120px;}
+		.ddbTabel .field-COMP_NAME {width: 120px;}
+		.ddbTabel .field-DISP_STATE {width: 80px;}
+		.ddbTabel .field-DISP_USER {width: 80px;}
+		.ddbTabel .field-DISP_TIME {width: 120px;}
+		.ddbTabel .field-NOTE {width: 100px;}
+	</style>
+</head>
+<body>
+<div class="">
+	<div class="iFInlineItem">
+		<label class="iFLabel">开始时间</label>
+		<div class="iFInput">
+			<input type="text" id="ddb-kssj" readonly onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss',maxDate:'%y-%M-%d 23:59:59'})">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">结束时间</label>
+		<div class="iFInput">
+			<input type="text" id="ddb-jssj" readonly onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss',maxDate:'%y-%M-%d 23:59:59'})">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">人员姓名</label>
+		<div class="iFInput">
+			<input type="text" id="ddb-name">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">车牌号</label>
+		<div class="iFInput">
+			<input type="text" id="ddb-cph">
+		</div>
+	</div>
+	<div class="iFInlineItem" id="xq-comboBoxPanel">
+			<label class="iFLabel">所在县区</label>
+			<div class="iFComboBox" id="xq-comboBox" style="width: 200px;">
+				<input type="text" class="xq-list" data-value="">
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList" id="xq-list-ul">
+				</ul>
+			</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">从业资格证</label>
+		<div class="iFInput">
+			<input type="text" id="ddb-cyzg">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">经营许可证</label>
+		<div class="iFInput">
+			<input type="text" id="ddb-jyxk">
+		</div>
+	</div>
+	<div class="iFInlineItem" id="qy-comboBoxPanel">
+			<label class="iFLabel">执法区域</label>
+			<div class="iFComboBox" id="qy-comboBox" style="width: 200px;">
+				<input type="text" class="qy-list" data-value="">
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList" id="qy-list-ul">
+<!-- 					<li data-value="" style="height: 1.5em;">1234</li> -->
+				</ul>
+			</div>
+	</div>
+	<div class="iFInlineItem" id="bm-comboBoxPanel">
+			<label class="iFLabel">执法部门</label>
+			<div class="iFComboBox" id="bm-comboBox" style="width: 200px;">
+				<input type="text" class="bm-list" data-value="">
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList" id="bm-list-ul">
+<!-- 					<li data-value="" style="height: 1.5em;">1234</li> -->
+				</ul>
+			</div>
+	</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="ddbFind">查询</a>
+		<span class="w10px"></span>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="ddbDet">详情</a>
+		<span class="w10px"></span>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="ddbDc">导出</a>
+	</div>
+</div>
+<div id="ddbTabel" class="ddbTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="ddbDialog" id="ddbDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="ddbDialogPanel" id="ddbDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	fingzfqy().then(function(data){
+		xlktyff("qy-list-ul",data.datas);
+		comboboxDFun('#qy-comboBoxPanel');
+	});
+	fingzfbm().then(function(data){
+		xlktyff("bm-list-ul",data.datas);
+		comboboxDFun('#bm-comboBoxPanel');
+	});
+	fingzfxq().then(function(data){
+		xlktyff("xq-list-ul",data.datas);
+		comboboxDFun('#xq-comboBoxPanel');
+	});
+	$(".qy-list").on('keyup',function(){
+		$("#qy-list-ul").empty();
+		console.log($(".qy-list").val());
+		if($(".qy-list").val()==''){
+			fingzfqy().then(function(data){
+				xlktyffComboboxDFun("qy-comboBoxPanel",data);
+			});
+		}else{
+			findzfqytj($(".qy-list").val()).then(function(data){
+				xlktyffComboboxDFun("qy-comboBoxPanel",data);
+			});
+		}
+	})
+	$(".bm-list").on('keyup',function(){
+		$("#bm-list-ul").empty();
+		console.log($(".bm-list").val());
+		if($(".bm-list").val()==''){
+			fingzfbm().then(function(data){
+				xlktyffComboboxDFun("bm-comboBoxPanel",data);
+			});
+		}else{
+			findzfbmtj($(".bm-list").val()).then(function(data){
+				xlktyffComboboxDFun("bm-comboBoxPanel",data);
+			});
+		}
+	})
+	$(".xq-list").on('keyup',function(){
+		$("#xq-list-ul").empty();
+		console.log($(".xq-list").val());
+		if($(".xq-list").val()==''){
+			fingzfxq().then(function(data){
+				xlktyffComboboxDFun("xq-comboBoxPanel",data);
+			});
+		}else{
+			findzfxqtj($(".xq-list").val()).then(function(data){
+				xlktyffComboboxDFun("xq-comboBoxPanel",data);
+			});
+		}
+	})
+// 	$("#ddb-kssj").val(setformat2(new Date()));
+// 	$("#ddb-jssj").val(setformat1(new Date()));
+	require(['app/html/xhchtgl/ddb', "dojo/domReady!"], function (DDB) {
+		new DDB();
+	});
+</script>
+</body>
+</html>

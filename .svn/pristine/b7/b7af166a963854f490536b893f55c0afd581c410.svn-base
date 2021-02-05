@@ -1,0 +1,665 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="ddpt:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f0619892-7c1b-4a22-8ed5-53c1f3f03735" name="Default" comment="1226更新">
+      <change beforePath="$PROJECT_DIR$" beforeDir="true" afterPath="$PROJECT_DIR$" afterDir="true" />
+      <change beforePath="$PROJECT_DIR$/.idea" beforeDir="true" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ddpt_war_exploded.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ddpt.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/app/html/czbb/cljc/wyycltj.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/app/html/czbb/cljc/wyycltj.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/app/html/czchtgl/axcz.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/app/html/czchtgl/axcz.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/app/html/czchtgl/clb.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/app/html/czchtgl/clb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/app/html/czchtgl/newoldvhic.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/app/html/czchtgl/newoldvhic.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/app/html/czchtgl/qxb.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/app/html/czchtgl/qxb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/app/html/ddxpt/xdd.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/app/html/ddxpt/xdd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/app/html/ddxpt/zx.html" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/app/html/ddxpt/zx.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/app/html/ddxpt/zx.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/app/html/ddxpt/zx.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/app/html/editor/zxEditor.html" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/app/html/editor/zxEditor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/czsjcx/cltj.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/czsjcx/cltj.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/czsjcx/jytj_az.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/czsjcx/jytj_az.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/czsjcx/jytj_qy.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/czsjcx/jytj_qy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/czsjcx/statistics4.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/czsjcx/statistics4.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/odlx/odlxt.html" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/odlx/odlxt.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/tjgl/xjjyje.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/tjgl/xjjyje.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/tjgl/xjjyks.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/tjgl/xjjyks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/tjgl/xjjyyysj.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/tjgl/xjjyyysj.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/tjgl/yyjycs.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/tjgl/yyjycs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/tjgl/yyjyddsj.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/tjgl/yyjyddsj.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/tjgl/yyjyjc.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/tjgl/yyjyjc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/tjgl/yyjyje.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/tjgl/yyjyje.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/tjgl/yyjyks.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/tjgl/yyjyks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/tjgl/yyjyyysj.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/app/html/zhywbb/tjgl/yyjyyysj.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/app/html/zxcxk/zxcx.html" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/app/html/zxcxk/zxcx.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebRoot/app/html/zxcxk/zxcx.js" beforeDir="false" afterPath="$PROJECT_DIR$/WebRoot/app/html/zxcxk/zxcx.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/tw/util/PushServie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tw/util/PushServie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvc/controllers/DdxptAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvc/controllers/DdxptAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvc/controllers/KbAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvc/controllers/KbAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvc/service/DdxptServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvc/service/DdxptServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mvc/service/KbServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mvc/service/KbServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target" beforeDir="true" />
+      <change beforePath="$PROJECT_DIR$/target/classes/helper/test1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/controllers/DdxptAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/service/DdxptServer$18.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/service/DdxptServer$19.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/service/DdxptServer$20.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/service/DdxptServer$21.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/service/DdxptServer$22.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/service/DdxptServer$23.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/service/DdxptServer$24.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/service/DdxptServer$25.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/service/DdxptServer$26.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/service/DdxptServer$27.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/service/DdxptServer$28.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/service/DdxptServer$29.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/service/DdxptServer$30.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/service/DdxptServer$31.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/service/DdxptServer$32.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/service/DdxptServer$33.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/service/DdxptServer$34.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/service/DdxptServer$35.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/service/DdxptServer$36.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/service/DdxptServer$37.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/service/DdxptServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/service/XxfsServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/service/XxywServer$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/service/XxywServer$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/service/XxywServer$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/service/XxywServer$7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mvc/service/XxywServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spring/applicationContext-mvc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/helper/test1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/controllers/DdxptAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/service/DdxptServer$18.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/service/DdxptServer$19.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/service/DdxptServer$20.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/service/DdxptServer$21.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/service/DdxptServer$22.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/service/DdxptServer$23.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/service/DdxptServer$24.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/service/DdxptServer$25.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/service/DdxptServer$26.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/service/DdxptServer$27.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/service/DdxptServer$28.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/service/DdxptServer$29.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/service/DdxptServer$30.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/service/DdxptServer$31.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/service/DdxptServer$32.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/service/DdxptServer$33.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/service/DdxptServer$34.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/service/DdxptServer$35.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/service/DdxptServer$36.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/service/DdxptServer$37.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/service/DdxptServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/service/XxfsServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/service/XxywServer$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/service/XxywServer$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/service/XxywServer$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/service/XxywServer$7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/mvc/service/XxywServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/classes/spring/applicationContext-mvc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/app/html/ddxpt/axdd.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/app/html/ddxpt/axdd.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/app/html/ddxpt/editor/xxddqxEditor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/app/html/ddxpt/xdd.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/app/html/ddxpt/zx.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/app/html/ddxpt/zx.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/app/html/index-xxfs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/app/html/zhywbb/cxgl/clskjy.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/app/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddpt-1.0.0-SNAPSHOT/index-xxfs.html" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="ddpt" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="E:\repo" />
+        <option name="mavenHome" value="D:/apache-maven-3.6.3" />
+        <option name="userSettingsFile" value="D:\apache-maven-3.6.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1V8w6dma1QIjFPE9QuOcXUBk7c3" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/WebRoot/app/html/ddxpt/editor" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.22325581" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="Y:\ideaWork\ddpt\WebRoot\app\html\ddxpt\editor" />
+      <recent name="E:\workspace\ddpt\WebRoot\app\html\zhywbb\czsjcx" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="FlashRunConfigurationType">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorDevice" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="clearAppDataOnEachLaunch" value="true" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="passParentEnv" value="true" />
+      <setting name="grailsApplicationRoot" value="" />
+      <setting name="launchBrowser" value="true" />
+      <setting name="launchBrowserUrl" value="" />
+      <setting name="depsClasspath" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ddpt" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.96" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="COMMON_VM_ARGUMENTS" value="-Dfile.encoding=utf-8" />
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
+      <deployment>
+        <artifact name="ddpt:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/ddpt" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_ddpt" />
+        <option name="HTTP_PORT" value="8090" />
+        <option name="JNDI_PORT" value="1101" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="50554" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="ddpt:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <option name="contentProportion" value="0.11525974" />
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>C:\Users\大吉大利\AppData\Roaming\Subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="SvnFileUrlMappingImpl">
+    <option name="myMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="Y:\ideaWork\ddpt" />
+          <option name="myCopyRoot" value="Y:\ideaWork\ddpt" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+    <option name="myMoreRealMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="Y:\ideaWork\ddpt" />
+          <option name="myCopyRoot" value="Y:\ideaWork\ddpt" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f0619892-7c1b-4a22-8ed5-53c1f3f03735" name="Default" comment="" />
+      <created>1498205774506</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1498205774506</updated>
+      <workItem from="1498205777599" duration="869000" />
+      <workItem from="1498206847314" duration="54000" />
+      <workItem from="1576647856911" duration="1199000" />
+      <workItem from="1576649123915" duration="1976000" />
+      <workItem from="1576717717580" duration="2844000" />
+      <workItem from="1577068643372" duration="3650000" />
+      <workItem from="1577237549264" duration="174000" />
+      <workItem from="1577238618614" duration="656000" />
+      <workItem from="1577257355739" duration="5960000" />
+      <workItem from="1577322243626" duration="3872000" />
+      <workItem from="1577429010983" duration="1081000" />
+      <workItem from="1577672260590" duration="18971000" />
+      <workItem from="1577752342806" duration="1575000" />
+      <workItem from="1578467462020" duration="872000" />
+      <workItem from="1578473757515" duration="1000000" />
+      <workItem from="1578536728408" duration="1331000" />
+      <workItem from="1578624033739" duration="27000" />
+      <workItem from="1578639490672" duration="2520000" />
+      <workItem from="1582769375227" duration="719000" />
+      <workItem from="1583111946552" duration="354000" />
+      <workItem from="1583139251806" duration="695000" />
+      <workItem from="1585040778135" duration="89000" />
+      <workItem from="1585195825227" duration="647000" />
+      <workItem from="1585619783222" duration="30000" />
+      <workItem from="1585637919843" duration="762000" />
+      <workItem from="1585641764298" duration="704000" />
+      <workItem from="1585798409237" duration="218000" />
+      <workItem from="1586219578850" duration="20241000" />
+      <workItem from="1586413414251" duration="310000" />
+      <workItem from="1586832819466" duration="2598000" />
+      <workItem from="1586921016152" duration="5998000" />
+      <workItem from="1587104324778" duration="9222000" />
+      <workItem from="1587369399769" duration="1110000" />
+      <workItem from="1587431082874" duration="671000" />
+      <workItem from="1587520849630" duration="8202000" />
+      <workItem from="1587604746457" duration="570000" />
+      <workItem from="1587689506667" duration="3301000" />
+      <workItem from="1588228390777" duration="928000" />
+      <workItem from="1588726335142" duration="2821000" />
+      <workItem from="1589186786188" duration="1305000" />
+      <workItem from="1589421403418" duration="23000" />
+      <workItem from="1589528854728" duration="944000" />
+      <workItem from="1590402268480" duration="24381000" />
+      <workItem from="1590540141680" duration="27227000" />
+      <workItem from="1590630174445" duration="46077000" />
+      <workItem from="1590972094854" duration="35407000" />
+      <workItem from="1591147515068" duration="3489000" />
+      <workItem from="1591231719927" duration="18234000" />
+      <workItem from="1591317041834" duration="4543000" />
+      <workItem from="1591580225538" duration="1092000" />
+      <workItem from="1591595017156" duration="2226000" />
+      <workItem from="1591774552501" duration="10513000" />
+      <workItem from="1592354499626" duration="13594000" />
+      <workItem from="1592440036891" duration="1372000" />
+      <workItem from="1599096218933" duration="48419000" />
+      <workItem from="1599809663517" duration="6901000" />
+      <workItem from="1600045020416" duration="75369000" />
+      <workItem from="1600401084884" duration="1214000" />
+      <workItem from="1600670028654" duration="739000" />
+      <workItem from="1600840146793" duration="51000" />
+      <workItem from="1600844641256" duration="317000" />
+      <workItem from="1600844975735" duration="9000" />
+      <workItem from="1600845532442" duration="1468000" />
+      <workItem from="1603416745796" duration="711000" />
+      <workItem from="1603680669197" duration="6411000" />
+      <workItem from="1603769559728" duration="4670000" />
+      <workItem from="1604383914328" duration="945000" />
+      <workItem from="1605056796616" duration="618000" />
+      <workItem from="1605749685797" duration="927000" />
+      <workItem from="1605836880029" duration="21929000" />
+      <workItem from="1606092533560" duration="13395000" />
+      <workItem from="1606264221876" duration="11979000" />
+      <workItem from="1606351356579" duration="18548000" />
+    </task>
+    <task id="LOCAL-00001" summary="1219更新">
+      <created>1576720564267</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1576720564267</updated>
+    </task>
+    <task id="LOCAL-00002" summary="1226更新">
+      <created>1577322002023</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1577322002023</updated>
+    </task>
+    <task id="LOCAL-00003" summary="1231更新">
+      <created>1577754602661</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1577754602661</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="1219更新" />
+    <MESSAGE value="1226更新" />
+    <MESSAGE value="1231更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="1231更新" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="414" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605837234678">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="414" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1605837234678" />
+    <state x="740" y="279" key="FileChooserDialogImpl" timestamp="1599102746952">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="740" y="279" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1599102746952" />
+    <state width="1634" height="211" key="GridCell.Tab.0.bottom" timestamp="1606369524294">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1634" height="211" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1606369524294" />
+    <state width="1634" height="211" key="GridCell.Tab.0.center" timestamp="1606369524294">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1634" height="211" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1606369524294" />
+    <state width="1634" height="211" key="GridCell.Tab.0.left" timestamp="1606369524294">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1634" height="211" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1606369524294" />
+    <state width="1634" height="211" key="GridCell.Tab.0.right" timestamp="1606369524294">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1634" height="211" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1606369524294" />
+    <state width="1634" height="211" key="GridCell.Tab.1.bottom" timestamp="1606369524295">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1634" height="211" key="GridCell.Tab.1.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1606369524295" />
+    <state width="1634" height="211" key="GridCell.Tab.1.center" timestamp="1606369524295">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1634" height="211" key="GridCell.Tab.1.center/0.0.1920.1050@0.0.1920.1050" timestamp="1606369524295" />
+    <state width="1634" height="211" key="GridCell.Tab.1.left" timestamp="1606369524294">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1634" height="211" key="GridCell.Tab.1.left/0.0.1920.1050@0.0.1920.1050" timestamp="1606369524294" />
+    <state width="1634" height="211" key="GridCell.Tab.1.right" timestamp="1606369524295">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1634" height="211" key="GridCell.Tab.1.right/0.0.1920.1050@0.0.1920.1050" timestamp="1606369524295" />
+    <state width="1634" height="211" key="GridCell.Tab.2.bottom" timestamp="1606369524177">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1634" height="211" key="GridCell.Tab.2.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1606369524177" />
+    <state width="1634" height="211" key="GridCell.Tab.2.center" timestamp="1606369524177">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1634" height="211" key="GridCell.Tab.2.center/0.0.1920.1050@0.0.1920.1050" timestamp="1606369524177" />
+    <state width="1634" height="211" key="GridCell.Tab.2.left" timestamp="1606369524177">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1634" height="211" key="GridCell.Tab.2.left/0.0.1920.1050@0.0.1920.1050" timestamp="1606369524177" />
+    <state width="1634" height="211" key="GridCell.Tab.2.right" timestamp="1606369524177">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1634" height="211" key="GridCell.Tab.2.right/0.0.1920.1050@0.0.1920.1050" timestamp="1606369524177" />
+    <state width="1634" height="211" key="GridCell.Tab.3.bottom" timestamp="1606369524178">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1634" height="211" key="GridCell.Tab.3.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1606369524178" />
+    <state width="1634" height="211" key="GridCell.Tab.3.center" timestamp="1606369524177">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1634" height="211" key="GridCell.Tab.3.center/0.0.1920.1050@0.0.1920.1050" timestamp="1606369524177" />
+    <state width="1634" height="211" key="GridCell.Tab.3.left" timestamp="1606369524177">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1634" height="211" key="GridCell.Tab.3.left/0.0.1920.1050@0.0.1920.1050" timestamp="1606369524177" />
+    <state width="1634" height="211" key="GridCell.Tab.3.right" timestamp="1606369524177">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1634" height="211" key="GridCell.Tab.3.right/0.0.1920.1050@0.0.1920.1050" timestamp="1606369524177" />
+    <state x="461" y="166" key="SettingsEditor" timestamp="1605856383542">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="461" y="166" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1605856383542" />
+    <state x="636" y="263" width="647" height="524" key="find.popup" timestamp="1606369672131">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="636" y="263" width="647" height="524" key="find.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1606369672131" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1605854754529">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1605854754529" />
+  </component>
+</project>

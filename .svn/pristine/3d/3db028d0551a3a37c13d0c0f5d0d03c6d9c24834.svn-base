@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>车辆表</title>
+	<style>
+		#cllxbTabel {
+			height: calc(100% - 50px);
+		}
+		#cllxbTabels {
+			height: 100%;
+		}
+		#cllxbDialog .dijitDialogPaneContent {
+			padding: 0;
+		}
+		#cllxbDialogPanel {
+			width: 300px;
+			height: 200px;
+		}
+	</style>
+</head>
+<body>
+<div class="">
+	<div class="iFInlineItem">
+			<label class="iFLabel">车辆类型</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="findcxb_name">
+			</div>
+		</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="cllxbQuery">查询</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="cllxbAdd">添加</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="cllxbUpd">修改</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="cllxbDel">删除</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="cllxbDc">导出</a>
+	</div>
+</div>
+<div id="cllxbTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="cllxbDialog" id="cllxbDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="cllxbDialogPanel" id="cllxbDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	require(['app/html/czchtgl/cplxb', "dojo/domReady!"], function (CLLXB) {
+		new CLLXB();
+	});
+</script>
+</body>
+</html>

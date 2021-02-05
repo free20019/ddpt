@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>电话管理</title>
+	<style>
+		#ryglTabel {
+			height: calc(100% - 70px);
+		}
+		#ryglTabel .field-checkbox{width: 60px;white-space: nowrap;}
+		#ryglTabel .field-dojoId{width: 60px;white-space: nowrap;}
+		#ryDialogPanel{width:300px;height: 120px}
+	</style>
+</head>
+<body>
+<div class="">
+	<div class="iFInputItem">
+		<div class="iFInlineItem">
+			<label class="iFLabel">查询关键字</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="rygl_cxgjz">
+			</div>
+		</div>
+		<div class="iFInlineItem" style="line-height: 30px;">
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="ryglbtn">查询</a>
+			<span class="w10px"></span>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="ryglAdd">添加</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="ryglUpd">修改</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="ryglDel">删除</a>
+		</div>
+	</div>
+</div>
+<div id="ryglTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="ryDialog" id="ryDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="ryDialogPanel" id="ryDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	require(['app/html/dxgl/rygl', "dojo/domReady!"], function (RYGL) {
+		new RYGL();
+	});
+</script>
+</body>
+</html>

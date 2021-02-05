@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+    .wbo{
+    	    background-color: #ffe597;
+		    border: 1px solid #ffcc9d;
+		    height: 23px;
+		    line-height: 23px;
+    }
+    
+    </style>
+</head>
+<body>
+<div class="formItems" id="pjPanel">
+	<div class="iFInputItem" style="margin-bottom: 13px">
+		<label class="iFTitleName" style="font-size: 14px;">订单编号</label>
+		<label style="color: #2363a7;font-size: 14px;" id="pjywd"></label>
+	</div>
+	<div class="iFInputItem" style="margin-bottom: 13px">
+		<label class="iFTitleName" style="font-size: 14px;">乘客姓名</label>
+		<label style="color: #2363a7;font-size: 14px;" id="pjckxm"></label>&nbsp;&nbsp;&nbsp;
+		<label class="iFTitleName" style="font-size: 14px;">联系电话</label>
+		<label style="color: #2363a7;font-size: 14px;" id="pjcksj"></label>&nbsp;&nbsp;&nbsp;
+		<label class="iFTitleName" style="font-size: 14px;">指派车辆</label>
+		<label style="color: #2363a7;font-size: 14px;" id="pjzpcl"></label>
+	</div>
+	<div class="iFInputItem" style="margin-bottom: 13px">
+		<label class="iFTitleName" style="font-size: 14px;">乘客满意度</label>
+		<div class="iFComboBox" id="ckmyd-comboBox" style="width:120px">
+			<input type="text" readonly style="font-size: 12px" id="pjckmyd" value="">
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+				<li data-value="" style="height: 1.5em;"></li>
+				<li data-value="" style="height: 1.5em;">非常满意</li>
+				<li data-value="" style="height: 1.5em;">基本满意</li>
+				<li data-value="" style="height: 1.5em;">不满意</li>
+			</ul>
+		</div>
+	</div>
+	<div class="iFInputItem" style="margin-bottom: 20px">
+		<label class="iFTitleName" style="font-size: 14px;">乘客评价内容</label>
+		<div class="iFInput" style="width: 100%;vertical-align: middle;">
+			<textarea type="text" id="pjckpj"></textarea>
+		</div>
+	</div>
+	<div class="iFInputItem" style="margin-bottom: 13px">
+		<label class="iFTitleName" style="font-size: 14px;">司机满意度</label>
+		<div class="iFComboBox" id="sjmyd-comboBox" style="width:120px">
+			<input type="text" readonly style="font-size: 12px" id="pjsjmyd" value="">
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+				<li data-value="" style="height: 1.5em;"></li>
+				<li data-value="" style="height: 1.5em;">非常满意</li>
+				<li data-value="" style="height: 1.5em;">基本满意</li>
+				<li data-value="" style="height: 1.5em;">不满意</li>
+			</ul>
+		</div>
+	</div>
+	<div class="iFInputItem" style="margin-bottom: 13px">
+		<label class="iFTitleName" style="font-size: 14px;">司机评价内容</label>
+		<div class="iFInput" style="width: 100%;vertical-align: middle;">
+			<textarea type="text" id="pjsjpj"></textarea>
+		</div>
+	</div>
+	<div class="iFInputItem" style="text-align: right">
+		<a href="javascript:void(0);" class="btn-bottom wbo" id="pjbtn" style="top: 133px">确定</a>
+	</div>
+</div>
+</body>
+</html>

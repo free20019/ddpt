@@ -1,0 +1,213 @@
+define([ "dijit/Dialog", "dgrid/Editor", "dijit/form/Button",
+        "dijit/form/DateTextBox", "dijit/form/TimeTextBox",
+        "dijit/form/SimpleTextarea", "dijit/form/Select",
+        "dijit/form/FilteringSelect", "dgrid/OnDemandGrid",
+        "dijit/form/TextBox", "app/Pagination", "dgrid/Selection",
+        "dgrid/Keyboard", "dgrid/extensions/ColumnResizer",
+        "dojo/store/Memory","cbtree/model/TreeStoreModel",
+        "dstore/Memory","dijit/form/NumberTextBox",
+        "dgrid/extensions/DijitRegistry", "dijit/registry", "dojo/dom-style",
+        'dstore/Trackable', 'dgrid/Selector',
+        "dojo/_base/declare", "dojo/dom-construct", "dojo/on","dijit/tree/ObjectStoreModel", "cbtree/Tree",
+        "cbtree/models/ForestStoreModel", "dojo/data/ItemFileWriteStore", "dojo/query", "app/util" ],
+    function(Dialog, Editor, Button, DateTextBox, TimeTextBox,
+             SimpleTextarea, Select, FilteringSelect, Grid, TextBox,
+             Pagination, Selection, Keyboard, ColumnResizer,
+             Memory2,TreeStoreModel,
+             Memory,NumberTextBox, DijitRegistry, registry, domStyle,
+             Trackable, Selector,
+             declare, dc, on,ObjectStoreModel, Tree,
+             ForestStoreModel, ItemFileWriteStore, query, util) {
+        var CustomGrid = declare([Grid, Selection, DijitRegistry, Editor, ColumnResizer, Selector]);
+		var ddbGrid = null, store = null;
+		var ddb_data;
+		var fxkfsr={};
+		var queryData =  {"STIME":$("#ddb-kssj").val(),
+				"ETIME":$("#ddb-jssj").val(),
+				"PARTY_NAME":$("#ddb-name").val(),
+				"AUTO_NUM":$("#ddb-cph").val(),
+				"AREA_NAME":$(".xq-list").val(),	
+				"CERTI_NUM":$("#ddb-cyzg").val(),
+				"LIENCE_NUM":$("#ddb-jyxk").val(),
+				"AREA":$(".qy-list").val(),
+				"ORGAN":$(".bm-list").val()};
+		var columns = {
+			checkbox: {label: '选择',selector: 'checkbox'},
+			dojoId: {label: '序号'},
+			PARTY_NAME: {label: '当事人姓名'},
+			AUTO_NUM: {label: '车号'},
+			INTEGRAL: {label: '扣分'},
+			ILLEGAL_TIME: {label: '违章时间',formatter : util.formatYYYYMMDDHHMISS},
+			LEGAL_TIME: {label: '执法时间',formatter : util.formatYYYYMMDDHHMISS},
+			UPD_DATE: {label: '录入时间',formatter : util.formatYYYYMMDDHHMISS},
+			CASE_REASON: {label: '案件原因'},
+			ORGAN: {label: '执法部门'},
+			AREA: {label: '执法区域'},
+			COM_NAME: {label: '业户名称'},
+			LIENCE_NUM: {label: '经营许可证号'},
+		};
+		var xhrArgsTabel = {
+			url : basePath + "xhchtgl/findwz",
+			postData : 'postData={"page":1,"pageSize":30}',
+			handleAs : "json",
+			Origin : self.location.origin,
+			preventCache : true,
+			withCredentials : true,
+			load : function(data) {
+				if(data.count>0){
+					ddb_data = data.datas;
+					for (var i = 0; i < data.datas.length; i++) {
+						data.datas[i] = dojo.mixin({
+							dojoId : i + 1
+						}, data.datas[i]);
+					}
+				}else{
+					dijit.byId('qd_dialog').show().then(function() {
+						$("#czjg").html('查询不到该信息！');
+					});
+				}
+				store = new Memory({
+					data : {
+						identifier : 'dojoId',
+						label : 'dojoId',
+						items : data.datas
+					}
+				});
+				ddbGrid.totalCount = data.count;
+				ddbGrid.set('collection', store);
+				ddbGrid.pagination.refresh(data.datas.length);
+				ddbGrid.on('dgrid-select', function (event) {
+					fxkfsr=ddbGrid.selection;
+				});
+				ddbGrid.on('dgrid-deselect', function (event) {
+					fxkfsr=ddbGrid.selection;
+				});
+			},
+			error : function(error) {
+				console.log(error);
+			}
+		};
+		var pageii = null;	
+		return declare( null,{
+			constructor:function(){
+				this.initToolBar();
+//				if (ddbGrid) {
+//					ddbGrid = null;
+//					dojo.empty('ddbTabel')
+//				}
+				if (ddbGrid) { ddbGrid.destroy(); }//dojo.destroy('zdbTabel');
+                dojo.create("div", {id:'ddbTabels', innerHTML:"",class:"ddbTabels" },'ddbTabel')
+				ddbGrid = new CustomGrid({
+//					collection: store,
+//					selectionMode: 'none', 
+//					allowSelectAll: true,
+					totalCount : 0,
+					pagination:null,
+					columns : columns
+				}, "ddbTabels");
+				pageii = new Pagination(ddbGrid,xhrArgsTabel,queryData,30);
+				dc.place(pageii.first(),'ddbTabels','after');
+//				this.get();
+			},
+			del: function (obj) {},
+			add:function () {},
+			update: function (json) {},
+			get: function () {},
+			initToolBar:function(){
+//				if (ddbGrid) { ddbGrid = null; dojo.empty('ddbTabel') }
+//				ddbGrid = new CustomGrid({ totalCount: 0, pagination: null,columns: columns}, 'ddbTabel');
+				var _self = this;
+				query('#ddbFind').on('click', function() {
+					queryData = {"STIME":$("#ddb-kssj").val(),
+							"ETIME":$("#ddb-jssj").val(),
+							"PARTY_NAME":$("#ddb-name").val(),
+							"AUTO_NUM":$("#ddb-cph").val(),
+							"AREA_NAME":$(".xq-list").val(),
+							"CERTI_NUM":$("#ddb-cyzg").val(),
+							"LIENCE_NUM":$("#ddb-jyxk").val(),
+							"AREA":$(".qy-list").val(),
+							"ORGAN":$(".bm-list").val()};
+//					if (ddbGrid) {
+//						ddbGrid = null;
+//						dojo.empty('ddbTabel')
+//					}
+					if (ddbGrid) { ddbGrid.destroy(); }//dojo.destroy('zdbTabel');
+	                dojo.create("div", {id:'ddbTabels', innerHTML:"" },'ddbTabel')
+					ddbGrid = new CustomGrid({
+						totalCount : 0,
+						pagination:null,
+						columns : columns
+					}, "ddbTabels");
+					$(".pagination").remove();
+					pageii = new Pagination(ddbGrid,xhrArgsTabel,queryData,30);
+					dc.place(pageii.first(),'ddbTabels','after');
+//					pageii.first();
+				});
+				query('#ddbDet').on('click', function() {
+					var sz=[];
+		        	for(var id in fxkfsr){
+		        		if(fxkfsr[id]){
+		        			sz.push(id);
+		        		}
+		        	}
+		        	if(sz.length==0){
+		        		dijit.byId('qd_dialog').show().then(function() {
+							$("#czjg").html('请选择一个违章信息后查看！');
+						});
+		        		return;
+		        	}
+		        	if(sz.length>1){
+		        		dijit.byId('qd_dialog').show().then(function() {
+							$("#czjg").html('每次只能查看一个！');
+						});
+		        		return;
+		        	}
+		        	ddbDialogPanel.set('href', 'app/html/xhchtgl/editor/ddbEditor.html');
+		        	ddbDialog.show().then(function () {
+		        		ddbDialog.set('title', '违章信息详情');
+								addEventComboBox('#cldEditorPanel');
+		        		$("#tc-name").val(ddb_data[sz[0]-1].PARTY_NAME);//姓名
+		        		$("#tc-zjh").val(ddb_data[sz[0]-1].PARTY_NUMBER);//证件号
+		        		$("#tc-csrq").val(util.formatYYYYMMDD(ddb_data[sz[0]-1].PARTY_BIRTHDAY));//出生日期
+		        		$("#tc-lxdh").val(ddb_data[sz[0]-1].PARTY_PHONE);//联系电话
+		        		$("#tc-txdz").val(ddb_data[sz[0]-1].PARTY_ADDR);//通讯地址
+		        		$("#tc-yhmc").val(ddb_data[sz[0]-1].COM_NAME);//业户名称
+		        		$("#tc-yhdz").val(ddb_data[sz[0]-1].COM_ADDR);//业户地址
+		        		$("#tc-jyxk").val(ddb_data[sz[0]-1].LIENCE_NUM);//经营许可证
+		        		$("#tc-cyzg").val(ddb_data[sz[0]-1].CERTI_NUM);//从业资格证
+		        		$("#tc-icfz").val(ddb_data[sz[0]-1].IC_SCORE);//ic卡分值
+		        		
+		        		$("#tc-zfjg").val(ddb_data[sz[0]-1].ORGAN);//执法机构
+		        		$("#tc-zfbm").val(ddb_data[sz[0]-1].AREA);//执法部门
+		        		$("#tc-zfr").val(ddb_data[sz[0]-1].MARSHALS_NAME);//执法人
+		        		$("#tc-ajlb").val(ddb_data[sz[0]-1].CASE_CATEGORY);//案件类别
+		        		$("#tc-ajyy").val(ddb_data[sz[0]-1].CASE_REASON);//案件原由
+		        		$("#tc-ajzt").val(ddb_data[sz[0]-1].CASE_STATUS);//案件状态
+		        		$("#tc-gf").val(ddb_data[sz[0]-1].INTEGRAL);//扣分
+		        		$("#tc-fkje").val(ddb_data[sz[0]-1].FINE);//罚款金额
+		        		$("#tc-wfsj").val(util.formatYYYYMMDD(ddb_data[sz[0]-1].LEGAL_TIME));//执法时间
+		        		$("#tc-wzsj").val(util.formatYYYYMMDD(ddb_data[sz[0]-1].ILLEGAL_TIME));//违章时间
+		        		$("#tc-gxsj").val(util.formatYYYYMMDD(ddb_data[sz[0]-1].UPD_DATE));//更新时间
+		        		$("#tc-gxr").val(ddb_data[sz[0]-1].UPD_PERSON);//更新人
+		        		
+                        query('.clb-iFBtnClose').on('click', function() {
+                        	ddbDialog.hide();
+                        });
+                    });
+				});
+				query('#ddbDc').on('click', function() {
+					var postData = {"STIME":$("#ddb-kssj").val(),
+									"ETIME":$("#ddb-jssj").val(),
+									"PARTY_NAME":$("#ddb-name").val(),
+									"AUTO_NUM":$("#ddb-cph").val(),
+									"AREA_NAME":$(".xq-list").val(),
+									"CERTI_NUM":$("#ddb-cyzg").val(),
+									"LIENCE_NUM":$("#ddb-jyxk").val(),
+									"AREA":$(".qy-list").val(),
+									"ORGAN":$(".bm-list").val()};
+					url = "backExcel/findwzexcle?postData="
+						+ encodeURI(encodeURI(JSON.stringify(postData))), window.open(url)
+				});
+			}
+		})
+	});

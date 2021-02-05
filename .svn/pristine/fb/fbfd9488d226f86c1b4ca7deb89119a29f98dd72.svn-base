@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>出租数据查询-统计2</title>
+	<style>
+		#statistics2Panel {
+			width: calc(100% - 20px);
+			height: calc(100% - 155px);
+			padding: 10px;
+			border: 1px solid #1e8cff;
+		}
+		.panel-btmDashed {
+			border-bottom: 1px dashed #000000;
+		}
+		.s2css{
+			height: calc(100% - 80px);
+			overflow: auto;
+		}
+		.s2zt{
+			color: #6bb2ff;
+			padding: 10px;
+		}
+		.rtjtable th,td{
+			white-space: nowrap;
+			color: black;
+		}
+	</style>
+</head>
+<body>
+<div class="topQueryPanel clearfix"  id="s2Panel">
+	<div class="queryPanel">
+		<div class="iFInlineItem" id="lxtj-sjd">
+			<label class="iFLabel">时间段</label>
+			<div class="iFComboBox" id="lxtj-sjd-comboBox" style="width: 100px;">
+				<input type="text" value="全天" data-value="全天" >
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+					<li data-value="全天" >全天</li>
+					<li data-value="23:00~2:00" >23:00~2:00</li>
+				</ul>
+			</div>
+		</div>
+		<div class="iFInlineItem" id="statistics2-rqBox">
+			<label class="iFLabel">起始时间</label>
+			<div class="iFInput" style="width: 100px">
+				<input type="text" id="lxtj-sdate">
+			</div>
+			<label>-</label>
+			<div class="iFInput" style="width: 100px">
+				<input type="text" id="lxtj-edate">
+			</div>
+		</div>
+		<div class="iFInlineItem" id="lxtj-qd">
+			<label class="iFLabel">起点</label>
+			<div class="iFComboBox" id="lxtj-qd-comboBox" style="width: 100px;">
+				<input type="text" value="火车东站" data-value="火车东站" >
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+					<li data-value="火车东站">火车东站</li>
+					<li data-value="萧山机场">萧山机场</li>
+				</ul>
+			</div>
+		</div>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="lxtj-query">查询</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="lxtj-daochu">导出</a>
+	</div>
+</div>
+<div id="ryytjdiv" class="s2css">
+<table class="iFTable rtjtable" style="text-align: center" >
+		<thead>
+		<tr>
+			<th>序号</th>
+			<th>目的地</th>
+			<th>车辆数量</th>
+		</tr>
+		</thead>
+		<tbody id="lstj_tbody">
+		</tbody>
+		
+	</table>
+	<br/><br/>
+</div>
+
+<script type="text/javascript">
+	require(['app/html/zhywbb/odlx/odlxtj', "dojo/domReady!"], function (ODLXTJ) {
+		new ODLXTJ();
+	});
+</script>
+</body>
+</html>

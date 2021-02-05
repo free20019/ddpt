@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>出租数据查询-统计1</title>
+	<style>
+		#jjrTable {
+			width: 100%;
+			height: calc(100% - 443px);
+			margin-top: 10px;
+		}
+
+		.field-dojoId{width: 80px;white-space: nowrap;}
+		.field-JJR{width: 100px;white-space: nowrap;}
+		.field-YF{width: 100px;white-space: nowrap;}
+		.field-SJD{width: 120px;white-space: nowrap;}
+		.field-QY{width: 100px;white-space: nowrap;}
+		.field-RYYCS{width: 120px;white-space: nowrap;}
+		.field-CLZS{width: 120px;white-space: nowrap;}
+		.field-RYYCL{width: 120px;white-space: nowrap;}
+		.field-RZLC{width: 120px;white-space: nowrap;}
+		.field-RZKLC{width: 120px;white-space: nowrap;}
+		.field-RKSLC{width: 120px;white-space: nowrap;}
+		.field-RYSJE{width: 120px;white-space: nowrap;}
+		.field-DHSJ{width: 120px;white-space: nowrap;}
+		.field-RYYSC{width: 120px;white-space: nowrap;}
+		.field-ZZCS{width: 120px;white-space: nowrap;}
+		.field-PJYS{width: 120px;white-space: nowrap;}
+		.field-PJXSSD{width: 120px;white-space: nowrap;}
+		.field-PJYYSC{width: 120px;white-space: nowrap;}
+		.field-PJDHSJ{width: 120px;white-space: nowrap;}
+		.field-SLL{width: 120px;white-space: nowrap;}
+	</style>
+</head>
+<body>
+<div class="topQueryPanel clearfix"  id="s3Panel">
+	<div class="queryPanel">
+		<div class="iFInlineItem" id="jjr-rqBox">
+			<label class="iFLabel">年份</label>
+			<div class="iFInput" style="width: 70px">
+				<input type="text" id="jjr-sdate">
+			</div>
+			<label class="iFLabel" style="width: 16px">至</label>
+			<div class="iFInput" style="width: 70px">
+				<input type="text" id="jjr-edate">
+			</div>
+		</div>
+		<div class="iFInlineItem" id="jjr-jr">
+			<label class="iFLabel">节日</label>
+			<div class="iFComboBox" id="jjr-jr-comboBox" style="width: 100px;">
+				<input type="text" value="国庆节" data-value="6">
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+					<li data-value="0">元旦节</li>
+					<li data-value="1">春节</li>
+					<li data-value="2">清明节</li>
+					<li data-value="3">劳动节</li>
+					<li data-value="4">端午节</li>
+					<li data-value="5">中秋节</li>
+					<li data-value="6">国庆节</li>
+				</ul>
+			</div>
+		</div>
+	<div class="iFInlineItem" id="jjr-quyu">
+		<label class="iFLabel">区域</label>
+		<div class="iFComboBox" id="jjr-quyu-comboBox" style="width: 100px;">
+			<input type="text" value="主城区" data-value="1" >
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+				<li data-value="0" >全部</li>
+				<li data-value="1" >主城区</li>
+				<li data-value="2" >余杭区</li>
+				<li data-value="3" >萧山区</li>
+				<li data-value="4" >临安区</li>
+				<li data-value="5" >富阳区</li>
+				<li data-value="6" >淳安区</li>
+				<li data-value="7" >建德市</li>
+			</ul>
+		</div>
+	</div>
+	</div>
+	<div class="queryPanel">
+		<div class="iFInlineItem" style="line-height: 35px;">
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="jjr-zgf">早高峰</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="jjr-wgf">晚高峰</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="jjr-qt">全天</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="jjr-yj">17:00 - 5:00</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="jjr-bt">5:00 - 17:00</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="jjr-lc">23:00 - 5:00</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="jjr-dc">导出</a>
+		</div>
+	</div>
+	<div class="queryPanel">
+		<div class="iFInlineItem" style="float: left; width: calc(50% - 20px); padding: 5px 10px;">周转次数 = 日总营运次数/营运车辆数</div>
+		<div class="iFInlineItem" style="float: left; width: calc(50% - 20px); padding: 5px 10px;">平均营运时长 = 营运时长/车辆数</div>
+		<div class="iFInlineItem" style="float: left; width: calc(50% - 20px); padding: 5px 10px;">平均营收 = 日总营收金额/营运车辆数</div>
+		<div class="iFInlineItem" style="float: left; width: calc(50% - 20px); padding: 5px 10px;">平均行驶速度 = 日载客行驶里程/营运时长</div>
+	</div>
+</div>
+<div id="jjrTable" ></div>
+<div style="height: 290px;width: 100%;margin-top: 10px" id="ss3Panel">
+	<div class="iFComboBox" style="width: 200px;position: absolute;z-index: 100;">
+		<input type="text" id="dataItemType" value="总营运次数(次)" data-value="RYYCS" >
+		<a href="javascript:void(0);"></a>
+		<ul class="iFList">
+			<li data-value="RYYCS" >总营运次数(次)</li>
+			<li data-value="RYYCL" >营运车辆数(辆)</li>
+			<li data-value="RZLC" >总行驶里程(公里)</li>
+			<li data-value="RZKLC" >载客行驶里程(公里)</li>
+			<li data-value="RKSLC" >空驶里程(公里)</li>
+			<li data-value="RYSJE" >总营收金额(元)</li>
+			<li data-value="DHSJ" >等候时间(分钟)</li>
+			<li data-value="RYYSC" >营运时长(小时)</li>
+			<li data-value="ZZCS" >周转次数(次/辆)</li>
+			<li data-value="PJYS" >平均营收(元/辆)</li>
+			<li data-value="PJXSSD" >平均行驶速度(公里/小时)</li>
+			<li data-value="PJYYSC" >平均营运时长(小时/辆)</li>
+			<li data-value="PJDHSJ" >平均等候时间(分/辆)</li>
+			<li data-value="SLL" >上路率</li>
+		</ul>
+	</div>
+	<div style="height: 100%;width: 100%" id="jjrEcharts"></div>
+</div>
+
+
+<script type="text/javascript">
+	require(['app/html/zhywbb/czsjcx/jytj_jjr', "dojo/domReady!"], function (JJR) {
+		new JJR();
+	});
+</script>
+</body>
+</html>

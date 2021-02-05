@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>公司车辆统计</title>
+	<style>
+		#tjbTabel {
+			height: calc(100% - 65px);
+		}
+		#tjbTabels {
+			height: 100%;
+		}
+		#tjbDialog .dijitDialogPaneContent {
+			padding: 0;
+		}
+		#tjbDialogPanel {
+			width: 850px;
+			height: 300px;
+		}
+	</style>
+</head>
+<body>
+<div class="">
+	<div class="iFInputItem">
+	<div class="iFInlineItem" id="gsmz-comboBoxPanel">
+			<label class="iFLabel">公司名称</label>
+			<div class="iFComboBox" id="gsmz-comboBox" style="width: 200px;">
+				<input type="text" class="gsmz-list" data-value="">
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList" id="gsmz-list-ul">
+<!-- 					<li data-value="" style="height: 1.5em;">1234</li> -->
+				</ul>
+			</div>
+	</div>
+		<div class="iFInlineItem" style="line-height: 30px;">
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="tjbQuery">查询</a>
+			<span class="w10px"></span>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="tjbDet">详细</a>
+			<span class="w10px"></span>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="tjbDc">导出</a>
+		</div>
+	</div>
+</div>
+<div id="tjbTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="tjbDialog" id="tjbDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="tjbDialogPanel" id="tjbDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	findgsmc().then(function(data){
+		xlktyff("gsmz-list-ul",data.datas);
+		comboboxDFun('#gsmz-comboBoxPanel');
+	});
+	
+	$(".gsmz-list").on('keyup',function(){
+		$("#gsmz-list-ul").empty();
+		console.log($(".gsmz-list").val());
+		if($(".gsmz-list").val()==''){
+			findgsmc().then(function(data){
+				xlktyffComboboxDFun("gsmz-comboBoxPanel",data);
+			});
+		}else{
+			findgsmctj($(".gsmz-list").val()).then(function(data){
+				xlktyffComboboxDFun("gsmz-comboBoxPanel",data);
+			});
+		}
+	})
+	require(['app/html/xhchtgl/tjb', "dojo/domReady!"], function (tjb) {
+		new tjb();
+	});
+</script>
+</body>
+</html>

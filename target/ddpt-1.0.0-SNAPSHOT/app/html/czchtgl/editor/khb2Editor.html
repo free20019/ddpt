@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>客户通讯表-编辑</title>
+</head>
+<body>
+<form action="" id="khb2EditorForm">
+	<div class="iFInputItem">
+	    <label class="iFLabel">客户姓名</label>
+	    <div class="iFInput">
+	        <input type="text" id="khb2-khm" name="CUST_NAME">
+	    </div>
+	</div>
+	<div class="iFInputItem">
+	    <label class="iFLabel">客户电话</label>
+	    <div class="iFInput">
+	        <input type="text" id="khb2-khdh" name="CUST_TEL">
+	    </div>
+	</div>
+	<div class="iFInputItem">
+	    <label class="iFLabel">用户级别</label>
+	    <div class="iFInput">
+	        <select id="khb2-yhjb" name="CUST_GRADE" style="width: 100%;height: 26px;">
+	        	<option value="0">普通</option>
+	        	<option value="1">VIP</option>
+	        	<option value="2">超级VIP</option>
+	        	<option value="F">黑名单</option>
+	        </select>
+	    </div>
+	</div>
+	<div class="iFInputItem">
+	    <label class="iFLabel">性别</label>
+	    <div class="iFInput">
+	        <select id="khb2-xb" name="CUST_SEX" style="width: 100%;height: 26px;">
+	        	<option value="男">男</option>
+	        	<option value="女">女</option>
+	        </select>
+	    </div>
+	</div>
+	<div class="iFInputItem">
+	    <label class="iFLabel">是否爱心出租</label>
+	    <div class="iFInput">
+	    	<select id="khb-love" name="IS_LOVE" style="width: 234px;height: 25px;">
+	    		<option value="是">是</option>
+	    		<option value="否">否</option>
+	    	</select>
+	    </div>
+	</div>
+	<div class="iFInputItem">
+	    <label class="iFLabel">其他联系电话</label>
+	    <div class="iFInput">
+	        <input type="text" id="khb2-qtlxdh" name="CUST_TEL_OTHER">
+	    </div>
+	</div>
+	<div class="iFInputItem">
+	    <label class="iFLabel">登录密码</label>
+	    <div class="iFInput">
+	        <input type="text" id="khb2-dlmm" name="LOGINPASS">
+	    </div>
+	</div>
+	<div class="iFInputItem">
+	    <label class="iFLabel">级别有效期</label>
+	    <div class="iFInput" style="width: calc(100% - 7em);">
+	        <input type="text" id="khb2-jbyxq" name="VALID_DAY" value = "0">
+	    </div>天
+	</div>
+	<div class="iFInputItem iFTextArea">
+	    <label class="iFLabel">靠近地址</label>
+	    <div class="iFInput">
+	        <textarea id="khb2-kjdz" name="ADDRESS_KJ"></textarea>
+	    </div>
+	</div>
+	<div class="iFInputItem iFTextArea">
+	    <label class="iFLabel">备注</label>
+	    <div class="iFInput">
+	        <textarea id="khb2-bz" name="NOTE"></textarea>
+	    </div>
+	</div>
+	<div class="iFBtnItem">
+	    <a href="javascript:void(0);" class="iFBtn khb2-iFBtnCommit">提交</a>
+	    <a href="javascript:void(0);" class="iFBtn khb2-iFBtnClose">关闭</a>
+	</div>
+</form>
+</body>
+</html>

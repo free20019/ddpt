@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>车辆表-编辑</title>
+	<style>
+		#cldEditorPanel .iFPanel {
+			padding: 10px;
+		}
+		#cldEditorPanel .iFComboBox {
+			width: calc(100% - 6em);
+		}
+		#cldEditorPanel .iFSubItem {
+			width: calc(50% - 60px);
+			padding-right: 60px;
+		}
+		#cldEditorPanel .iFTextArea {
+			width: calc(100% - 60px);
+			padding-right: 60px;
+		}
+	</style>
+</head>
+<body>
+<form action="" id="ddbEditorForm">
+	<div id="cldEditorPanel">
+		<div class="iFPanel" style="padding-left: 20px; padding-right: 10px;">
+			<div class="iFW50 clearfix">
+				<div class="iFSubItem">
+					<div class="iFInputItem">
+						<label class="iFLabel">调度员编号</label>
+						<div class="iFInput">
+							<input type="text" id="x-ddb-ddybh" name="DISP_USER">
+						</div>
+					</div>
+				</div>
+				<div class="iFSubItem">
+					<div class="iFInputItem">
+						<label class="iFLabel">派车车号</label>
+						<div class="iFInput">
+							<input type="text" id="x-ddb-pcch" name="VEHI_NO">
+						</div>
+					</div>
+				</div>
+				<div class="iFSubItem">
+					<div class="iFInputItem">
+						<label class="iFLabel">客户姓名</label>
+						<div class="iFInput">
+							<input type="text" id="x-ddb-khxm" name="CUST_NAME">
+						</div>
+					</div>
+				</div>
+				<div class="iFSubItem">
+					<div class="iFInputItem">
+						<label class="iFLabel">客户电话</label>
+						<div class="iFInput">
+							<input type="text" id="x-ddb-khdh" name="CUST_TEL">
+						</div>
+					</div>
+				</div>
+				<div class="iFSubItem">
+					<div class="iFInputItem">
+						<label class="iFLabel">详细地址</label>
+						<div class="iFInput">
+							<input type="text" id="x-ddb-xxdz" name="ADDRESS">
+						</div>
+					</div>
+				</div>
+				<div class="iFSubItem">
+					<div class="iFInputItem">
+						<label class="iFLabel">参考地址</label>
+						<div class="iFInput">
+							<input type="text" id="x-ddb-ckdz" name="ADDRESS_REF">
+						</div>
+					</div>
+				</div>
+				<div class="iFSubItem">
+					<div class="iFInputItem">
+						<label class="iFLabel">调度状态</label>
+						<div class="iFComboBox" id="ddbEditor-ddzt">
+							<input type="text" id="x-ddb-ddzt" readonly>
+<!-- 							<a href="javascript:void(0);"></a> -->
+<!-- 							<ul class="iFList"> -->
+<!-- 								<li data-value="0">派车确认</li> -->
+<!-- 								<li data-value="1">未调度</li> -->
+<!-- 								<li data-value="2">未接到客人(服务)</li> -->
+<!-- 								<li data-value="3">未接到客人(其它)</li> -->
+<!-- 								<li data-value="4">未接到客人(乘客)</li> -->
+<!-- 								<li data-value="5">未接到客人(技术)</li> -->
+<!-- 								<li data-value="6">接错客人</li> -->
+<!-- 								<li data-value="7">不去接客人</li> -->
+<!-- 								<li data-value="8">调度超时</li> -->
+<!-- 								<li data-value="9">调度取消</li> -->
+<!-- 								<li data-value="10">接错客人</li> -->
+<!-- 								<li data-value="11">已下单</li> -->
+<!-- 							</ul> -->
+						</div>
+					</div>
+				</div>
+				<div class="iFSubItem">
+					<div class="iFInputItem">
+						<label class="iFLabel">叫车数量</label>
+						<div class="iFInput">
+							<input type="text" id="x-ddb-jcsl" name="VEHI_NUM">
+						</div>
+					</div>
+				</div>
+				<div class="iFSubItem">
+					<div class="iFInputItem">
+						<label class="iFLabel">业务编号</label>
+						<div class="iFInput">
+							<input type="text" id="x-ddb-ywbh" readonly>
+						</div>
+					</div>
+				</div>
+				<div class="iFSubItem">
+					<div class="iFInputItem">
+						<label class="iFLabel">目的地</label>
+						<div class="iFInput">
+							<input type="text" id="x-ddb-mdd" name="DEST_ADDRESS">
+						</div>
+					</div>
+				</div>
+				<div class="iFSubItem">
+					<div class="iFInputItem">
+						<label class="iFLabel">调度时间</label>
+						<div class="iFInput">
+							<input type="text" id="x-ddb-ddsj" readonly>
+						</div>
+					</div>
+				</div>
+				<div class="iFSubItem">
+					<div class="iFInputItem">
+						<label class="iFLabel">是否长途</label>
+						<div class="iFComboBox" id="ddbEditor-sfct">
+							<input type="text" id="x-ddb-sfct" name="ISLONG" readonly data-value="" value="请选择">
+							<a href="javascript:void(0);"></a>
+							<ul class="iFList">
+								<li data-value="0">是</li>
+								<li data-value="1">否</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="iFInputItem iFTextArea">
+				<label class="iFLabel">备注</label>
+				<div class="iFInput">
+					<textarea id="x-ddb-bz" name="NOTE"></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="iFBtnItem">
+			<a href="javascript:void(0);" class="iFBtn ddb-iFBtnCommit">提交</a>
+			<a href="javascript:void(0);" class="iFBtn ddb-iFBtnClose">关闭</a>
+		</div>
+	</div>
+</form>
+</body>
+</html>

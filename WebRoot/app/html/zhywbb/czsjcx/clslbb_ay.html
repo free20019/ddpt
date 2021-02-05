@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>出租数据查询-统计1</title>
+	<style>
+		#clybTable {
+			width: 100%;
+			height: 250px;
+			margin-top: 10px;
+		}
+		#clybEcharts{
+			width: 100%;
+			height:calc(100% - 330px);
+			margin-top: 10px;
+		}
+
+		#clybTable .dgrid-cell {
+				width: 60px;
+		}
+
+		#clybTable .field-AREA_NAME {
+				width: 120px;
+		}
+		#clybTable .field-YF {
+				width: 80px;
+		}
+	</style>
+</head>
+<body>
+<div class="topQueryPanel clearfix"  id="s3Panel">
+	<div class="queryPanel">
+		<div class="iFInlineItem" id="clyb-rqBox">
+			<label class="iFLabel">日期</label>
+			<div class="iFInput" style="width: 90px">
+				<input type="text" id="clyb-date">
+			</div>
+		</div>
+	<div class="iFInlineItem" id="clyb-quyu">
+		<label class="iFLabel">重点区域</label>
+		<div class="iFComboBox" id="clyb-quyu-comboBox" style="width: 150px;">
+			<input type="text" value="" data-value="" >
+			<a href="javascript:void(0);"></a>
+			<ul class="iFList">
+			</ul>
+		</div>
+	</div>
+		<div class="iFInlineItem" style="line-height: 35px;">
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clyb-cx">查询</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="clyb-dc">导出</a>
+		</div>
+	</div>
+</div>
+<div id="clybTable" ></div>
+<div id="clybEcharts" ></div>
+<script type="text/javascript">
+	require(['app/html/zhywbb/czsjcx/clslbb_ay', "dojo/domReady!"], function (CLAY) {
+		new CLAY();
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>公司表</title>
+	<style>
+		#gsbTabel {
+			height: calc(100% - 50px);
+		}
+		#gsbDialog .dijitDialogPaneContent {
+			padding: 0;
+		}
+		#gsbDialogPanel {
+			width: 500px;
+			height: 410px;
+		}
+	</style>
+</head>
+<body>
+<div class="">
+	<div class="iFInputItem">
+		<div class="iFInlineItem">
+			<label class="iFLabel">公司名称</label>
+			<div class="iFInput" style="width: 160px;">
+				<input type="text" id="findgsb_name">
+			</div>
+		</div>
+		<div class="iFInlineItem" style="line-height: 30px;">
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="gsbQuery">查询</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="gsbAdd">添加</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="gsbUpd">修改</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="gsbDel">删除</a>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="gsbDc">导出</a>
+		</div>
+	</div>
+</div>
+<div id="gsbTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="gsbDialog" id="gsbDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="gsbDialogPanel" id="gsbDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	require(['app/html/czchtgl/gsb', "dojo/domReady!"], function (GSB) {
+		new GSB();
+	});
+</script>
+</body>
+</html>

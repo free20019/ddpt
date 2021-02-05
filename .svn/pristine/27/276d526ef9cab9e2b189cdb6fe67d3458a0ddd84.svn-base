@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>好人好事-编辑</title>
+	<style>
+		#hrhsEditorPanel {
+			margin-right: 30px;
+		}
+		#hrhsEditorPanel .iFInputItem > .iFLabel {
+			width: 5em;
+		}
+		#hrhsEditorPanel .iFInputItem > .iFInput {
+			width: calc(100% - 6em);
+		}
+	</style>
+</head>
+<body>
+<form action="" id="hrhs-form">
+	<div class="iFFormPanel" id="hrhsEditorPanel">
+		<div class="clearfix">
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">标题</label>
+					<div class="iFInput">
+						<input type="text" name="OG_TITLE" id="hrhs-bt">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">车牌号码</label>
+					<div class="iFInput">
+						<input type="text" name="OG_VEHI_NO" id="hrhs-cphm">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">记录人</label>
+					<div class="iFInput">
+						<input type="text" id="hrhs-jlr">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">时间</label>
+					<div class="iFInput">
+						<input type="text" id="hrhsEditor-sj" name="OG_TIME">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="iFInputItem iFTextArea">
+			<label class="iFLabel">内容</label>
+			<div class="iFInput">
+				<textarea name="OG_CONTENT" id="hrhs-nr"></textarea>
+			</div>
+		</div>
+		<div class="iFBtnItem">
+			<a href="javascript:void(0);" class="iFBtn iFBtnCommit">提交</a>
+			<a href="javascript:void(0);" class="iFBtn iFBtnClose">关闭</a>
+		</div>
+	</div>
+</form>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>区域表</title>
+</head>
+<body>
+<div class="iFFormPanel" id="qybEditorPanel">
+	<form action="" id="qybEditorForm">
+		<div class="iFInputItem">
+			<label class="iFLabel">区域名称</label>
+			<div class="iFInput">
+				<input type="text" id="qyb-qymc" name="RE_NAME">
+			</div>
+		</div>
+		<div class="iFInputItem">
+			<label class="iFLabel">区域代码</label>
+			<div class="iFInput">
+				<input type="text" id="qyb-qydm" name="RE_NUM">
+			</div>
+		</div>
+		<div class="iFInputItem">
+			<label class="iFLabel">区域类型</label>
+			<div class="iFInput">
+				<input type="text" id="qyb-qylx" name="RE_TYPE">
+			</div>
+		</div>
+		<div class="iFInputItem">
+			<label class="iFLabel">地图名称</label>
+			<div class="iFComboBox" id="qybEditor-dtmc">
+				<input type="text" readonly name="MAP_NAME" id="qyb-dtmc" data-value="" value="请选择地图">
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList" id="qyb-dtmc-xl">
+				</ul>
+			</div>
+		</div>
+		<div class="iFInputItem">
+			<label class="iFLabel">父节点编号</label>
+			<div class="iFInput">
+				<input type="text" id="qyb-fjdbh" name="PARENT_ID">
+			</div>
+		</div>
+		<div class="iFInputItem">
+			<label class="iFLabel">父节点路径</label>
+			<div class="iFInput">
+				<input type="text" id="qyb-fjdlj" name="PARE_PATH">
+			</div>
+		</div>
+		<div class="iFInputItem">
+			<label class="iFLabel">精度</label>
+			<div class="iFInput">
+				<input type="text" id="qyb-jd" name="LONGI">
+			</div>
+		</div>
+		<div class="iFInputItem">
+			<label class="iFLabel">维度</label>
+			<div class="iFInput">
+				<input type="text" id="qyb-wd" name="LATI">
+			</div>
+		</div>
+		<div class="iFInputItem">
+			<label class="iFLabel">排序号</label>
+			<div class="iFInput">
+				<input type="text" id="qyb-pxh" name="ORDER_ID">
+			</div>
+		</div>
+		<div class="iFInputItem iFTextArea">
+			<label class="iFLabel">备注</label>
+			<div class="iFInput">
+				<textarea id="qyb-bz" name="NOTE"></textarea>
+			</div>
+		</div>
+		<div class="iFBtnItem">
+			<a href="javascript:void(0);" class="iFBtn qyb-iFBtnCommit">提交</a>
+			<a href="javascript:void(0);" class="iFBtn qyb-iFBtnClose">关闭</a>
+		</div>
+	</form>
+</div>
+</body>
+</html>

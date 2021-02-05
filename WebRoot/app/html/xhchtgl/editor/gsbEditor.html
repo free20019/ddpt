@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>车牌类型表-编辑</title>
+	<style>
+		#gsbEditorPanel .iFComboBox {
+			width: calc(100% - 6em);
+		}
+		#gsbEditorPanel textarea {  height: 30px;  }
+		#gsbEditor-childCompany {  min-height: 179px;  padding: 5px;  border: 1px solid #1e8cff;  }
+
+		.childCompanyPanel {
+			position: relative;
+			margin-bottom: 5px;
+			padding: 5px;
+			padding-left: 60px;
+			border: 3px double #8ad8ff;
+		}
+		.childCompanyPanel:last-child {  margin-bottom: 0;  }
+		/*.childCompanyPanel[data-numId] {  margin-top: 30px;  }*/
+		/*.childCompanyPanel[data-numId]:before {  content: attr(data-numId);  position: absolute;  top: 0;  left: -3px;  right: -3px;  height: 30px;  line-height: 30px;  margin-top: -30px;  border: 1px solid #8ad8ff;  border-bottom: none;  font-size: 16px;  text-indent: .5em;  color: #8ad8ff;  }*/
+		.childCompanyPanel[data-numId]:before {
+			content: attr(data-numId);
+			position: absolute;
+			top: 50%;
+			left: 0;
+			width: 50px;
+			height: 100%;
+			line-height: 179px;
+			margin-top: -103px;
+			border-right: 1px solid #8ad8ff;
+			font-size: 32px;
+			text-align: center;
+			color: #8ad8ff;
+		}
+		.childCompanyPanel-clear {  display: none;  position: absolute;  top: 0;  right: 0;  width: 16px;  height: 16px;  line-height: 16px;  margin: -8px;  border-radius: 50%;  font-size: 16px;  text-align: center;  text-decoration: none;  color: #ffffff;  background: #e81123;  z-index: 10;  }
+		/*.childCompanyPanel[data-numId] .childCompanyPanel-clear {  top: -16px;  right: 15px;  }*/
+		.childCompanyPanel:hover .childCompanyPanel-clear {  display: inline-block;  }
+		/*.childCompanyPanel .iFInput, .childCompanyPanel .iFComboBox {  border-color: #1e8cff;  }*/
+		/*.childCompanyPanel .iFComboBox a {  color: #1e8cff;  }*/
+		/*.childCompanyPanel .iFComboBox .iFList li {  border-bottom: 1px solid #1e8cff;  }*/
+		/*.childCompanyPanel .iFComboBox .iFList li.selected, .childCompanyPanel .iFComboBox .iFList li:hover {  background: #1e8cff;  }*/
+	</style>
+</head>
+<body>
+<div class="iFFormPanel" id="gsbEditorPanel">
+	<form action="" id="gsbEditorForm">
+		<div class="iFInputItem">
+			<label class="iFLabel">业务区块</label>
+			<div class="iFComboBox" id="gsbEditor-ywqk">
+				<input type="text" readonly name="OWNER_NAME" id="gsb-ywqk" data-value="" value="请选择业务区块">
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList" id="zgsb_ywqk">
+<!-- 					<li data-value="0">余杭出租</li> -->
+<!-- 					<li data-value="1">萧山出租</li> -->
+<!-- 					<li data-value="2">富阳出租</li> -->
+				</ul>
+			</div>
+		</div>
+		<div class="iFInputItem">
+			<label class="iFLabel">公司名称</label>
+			<div class="iFInput">
+				<input type="text" id="gsb-gsmc" name="BA_NAME">
+			</div>
+		</div>
+<!-- 		<div class="iFInputItem"> -->
+<!-- 			<label class="iFLabel">公司代码</label> -->
+<!-- 			<div class="iFInput"> -->
+<!-- 				<input type="text" name=""> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+		<div class="iFInputItem iFTextArea">
+			<label class="iFLabel">备注</label>
+			<div class="iFInput">
+				<textarea id="gsb-bz" name="NOTE"></textarea>
+			</div>
+		</div>
+		<div class="iFBtnItem" style="text-align: left;">
+			<a href="javascript:void(0);" class="iFBtn" id="gsbEditor-addChildCompany">添加子公司</a>
+		</div>
+		<div id="gsbEditor-childCompany">
+			<!--<div class="childCompanyPanel" data-numId="1">
+				<a href="javascript:void(0);" class="childCompanyPanel-clear">-</a>
+				<div class="iFInputItem">
+					<label class="iFLabel">分公司名称</label>
+					<div class="iFInput">
+						<input type="text" name="">
+					</div>
+				</div>
+				<div class="iFInputItem">
+					<label class="iFLabel">所属区域</label>
+					<div class="iFInput">
+						<input type="text" name="">
+					</div>
+				</div>
+				<div class="iFInputItem">
+					<label class="iFLabel">维修负责人</label>
+					<div class="iFInput">
+						<input type="text" name="">
+					</div>
+				</div>
+				<div class="iFInputItem">
+					<label class="iFLabel">区域名称</label>
+					<div class="iFComboBox" id="gsbEditor-qymc1">
+						<input type="text" readonly name="" data-value="" value="请选择业务区块">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+							<li data-value="0">杭州地区</li>
+							<li data-value="1">湖州地区</li>
+							<li data-value="2">舟山地区</li>
+						</ul>
+					</div>
+				</div>
+				<div class="iFInputItem iFTextArea">
+					<label class="iFLabel">备注</label>
+					<div class="iFInput">
+						<textarea name=""></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="childCompanyPanel">
+				<a href="javascript:void(0);" class="childCompanyPanel-clear">-</a>
+				<div class="iFInputItem">
+					<label class="iFLabel">分公司名称</label>
+					<div class="iFInput">
+						<input type="text" name="">
+					</div>
+				</div>
+				<div class="iFInputItem">
+					<label class="iFLabel">所属区域</label>
+					<div class="iFInput">
+						<input type="text" name="">
+					</div>
+				</div>
+				<div class="iFInputItem">
+					<label class="iFLabel">维修负责人</label>
+					<div class="iFInput">
+						<input type="text" name="">
+					</div>
+				</div>
+				<div class="iFInputItem">
+					<label class="iFLabel">区域名称</label>
+					<div class="iFComboBox" id="gsbEditor-qymc2">
+						<input type="text" readonly name="" data-value="" value="请选择业务区块">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+							<li data-value="0">杭州地区</li>
+							<li data-value="1">湖州地区</li>
+							<li data-value="2">舟山地区</li>
+						</ul>
+					</div>
+				</div>
+				<div class="iFInputItem iFTextArea">
+					<label class="iFLabel">备注</label>
+					<div class="iFInput">
+						<textarea name=""></textarea>
+					</div>
+				</div>
+			</div>-->
+		</div>
+		<div class="iFBtnItem">
+			<a href="javascript:void(0);" class="iFBtn iFBtnCommit">提交</a>
+			<a href="javascript:void(0);" class="iFBtn iFBtnClose">关闭</a>
+		</div>
+	</form>
+</div>
+</body>
+</html>

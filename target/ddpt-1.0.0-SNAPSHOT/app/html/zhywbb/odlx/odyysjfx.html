@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定位表</title>
+    <style>
+        #odsjfxTabel {
+            height: calc(100% - 120px);
+        }
+        #odsjfxTabels {
+            height: 100%;
+        }
+        .field-dojoId{width: 80px;white-space: nowrap;}
+		.field-SIM{width: 130px;white-space: nowrap;}
+		.field-YINGYUN{width: 110px;white-space: nowrap;}
+		.field-VHIC{width: 100px;white-space: nowrap;}
+		.field-SHANGCHE{width: 180px;white-space: nowrap;}
+		.field-XIACHE{width: 180px;white-space: nowrap;}
+		.field-JICHENG{width: 80px;white-space: nowrap;}
+		.field-DENGHOU{width: 110px;white-space: nowrap;}
+		.field-JINE{width: 80px;white-space: nowrap;}
+		.field-KONGSHI{width: 80px;white-space: nowrap;}
+		.field-ZHONGXINTIME{width: 180px;white-space: nowrap;}
+		.field-YUANE{width: 100px;white-space: nowrap;}
+		.field-CITY{width: 100px;white-space: nowrap;}
+		.field-XIAOFEI{width: 100px;white-space: nowrap;}
+		.field-KAHAO{width: 100px;white-space: nowrap;}
+		.field-BAOLIU{width: 100px;white-space: nowrap;}
+		.field-ZHONGDUANNO{width: 100px;white-space: nowrap;}
+		.field-JIAOYI{width: 100px;white-space: nowrap;}
+		.field-KATYPE{width: 100px;white-space: nowrap;}
+		.field-QIANBAO{width: 100px;white-space: nowrap;}
+		.field-QIYONG{width: 100px;white-space: nowrap;}
+		.field-JIAKUAN{width: 100px;white-space: nowrap;}
+		.field-TAC{width: 100px;white-space: nowrap;}
+		.field-POS{width: 100px;white-space: nowrap;}
+		.field-QIYE{width: 100px;white-space: nowrap;}
+		.odyysjfxtable th,td{
+			white-space: nowrap;
+			color: black;
+		}
+    </style>
+</head>
+<body>
+<div class="topQueryPanel clearfix"  id="s2Panel">
+	<div class="queryPanel">
+		<div class="iFInlineItem" id="sjfx-sjd">
+			<label class="iFLabel">时间段</label>
+			<div class="iFComboBox" id="sjfx-sjd-comboBox" style="width: 100px;">
+				<input type="text" value="全天" data-value="全天" >
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+					<li data-value="全天" >全天</li>
+					<li data-value="23:00~2:00" >23:00~2:00</li>
+				</ul>
+			</div>
+		</div>
+		<div class="iFInlineItem" id="odsjfx-rqBox">
+			<label class="iFLabel">起始日期</label>
+			<div class="iFInput" style="width: 100px">
+				<input type="text" id="odsjfx-sdate" onfocus="WdatePicker({dateFmt: STATEDATE})">
+			</div>
+			<label>-</label>
+			<div class="iFInput" style="width: 100px">
+				<input type="text" id="odsjfx-edate" onfocus="WdatePicker({dateFmt: STATEDATE})">
+			</div>
+		</div>
+		<div class="iFInlineItem" id="odsjfx-quyu">
+			<label class="iFLabel">起点</label>
+			<div class="iFComboBox" id="odsjfx-quyu-comboBox" style="width: 100px;">
+				<input type="text" value="火车东站" data-value="火车东站" >
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+					<li data-value="火车东站" >火车东站</li>
+					<li data-value="萧山机场" >萧山机场</li>
+					<li data-value="城站火车站">城站火车站</li>
+				</ul>
+			</div>
+		</div>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="odsjfxFind">查询</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="odsjfxDc">导出</a>
+		</div>
+</div>
+<table class="iFTable odyysjfxtable" style="text-align: center" >
+		<thead>
+		<tr>
+			<th>总营运次数</th>
+			<th>营运车辆数</th>
+			<th>平均营收时长</th>
+			<th>平均等候时间</th>
+			<th>平均营收情况</th>
+			<th>平均实载里程</th>
+		</tr>
+		</thead>
+		<tbody id="sjfx_lxtj">
+		</tbody>
+	</table>
+	<br/><br/>
+<div id="odsjfxTabel"></div>
+<script type="text/javascript">
+    require(['app/html/zhywbb/odlx/odyysjfx', "dojo/domReady!"], function (ODYYSJFX) {
+        new ODYYSJFX();
+    });
+</script>
+</body>
+</html>

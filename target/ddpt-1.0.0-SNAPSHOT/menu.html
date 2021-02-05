@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>菜单</title>
+	<link rel="shortcut icon" href="resources/images/favicon.ico" />
+	<link rel="stylesheet" href="app/main.css"/>
+	<link rel="stylesheet" href="resources/style/iconfont.css"/>
+	<style>
+		html, body {
+			height: 100%;
+			min-width: 1024px;
+		}
+		#borderContainer {  width: 100%;  height: 100%;  margin: 0;  padding: 0;  background: url("resources/images/systemMenu/入口背景.jpg") no-repeat center/100% 100%  }
+
+		.systemListPanel {  width: 100%; text-align: center}
+		/*.systemListPanel {  position: absolute;  top: 30%;  left: 5%;  right: 5%;  width: 90%;    margin-top: -220px;  }*/
+		/*.title {  position: relative;  font-size: 32px !important;  font-weight: bold !important;  text-align: center;  text-indent: 52px;  letter-spacing: .1em;  color: #f6ab00;  }*/
+		/*.title:before {  content: '';  position: absolute;  top: 50%;  left: 0;  width: 48px;  height: 48px;  margin-top: -24px;  background: url(resources/images/logo.png) center / 100% no-repeat;  }*/
+
+		.systemListPanel .systemItemBox {  position: relative;  float: left;  width: 170px;  margin-left: calc((20% - 185px) / 2);  margin-right: calc((20% - 185px) / 2);  margin-bottom:1.0%;  padding-bottom: 2%;  border: 2px solid #76869c;  border-radius: .3em;  text-align: center;  background: rgba(0, 5, 56, 0.4);  }
+		.systemListPanel .systemItemBox:hover {  border: 2px solid #ffbc2b;  }
+
+		.systemItemBox .icon {  position: absolute;  top: 15px;  left: 50%;  display: inline-block;  width: 48px;  height: 48px;  margin-left: -24px;  }
+		.icon-ddxpt {  background: url(resources/images/systemMenu/icon-ddxpt.png);  background-size: 100%;  }
+		.systemItemBox:hover .icon-ddxpt {  background: url(resources/images/systemMenu/icon-ddxpt-h.png);  background-size: 100%;  }
+
+		.icon-bjjkx {  background: url(resources/images/systemMenu/icon-bjjkx.png);  background-size: 100%;  }
+		.systemItemBox:hover .icon-bjjkx {  background: url(resources/images/systemMenu/icon-bjjkx-h.png);  background-size: 100%;  }
+
+		.icon-xxfs {  background: url(resources/images/systemMenu/icon-xxfs.png);  background-size: 100%;  }
+		.systemItemBox:hover .icon-xxfs {  background: url(resources/images/systemMenu/icon-xxfs-h.png);  background-size: 100%;  }
+
+		.icon-xhcdd {  background: url(resources/images/systemMenu/icon-xhcdd.png);  background-size: 100%;  }
+		.systemItemBox:hover .icon-xhcdd {  background: url(resources/images/systemMenu/icon-xhcdd-h.png);  background-size: 100%;  }
+
+		.icon-jkx {  background: url(resources/images/systemMenu/icon-jkx.png);  background-size: 100%;  }
+		.systemItemBox:hover .icon-jkx {  background: url(resources/images/systemMenu/icon-jkx-h.png);  background-size: 100%;  }
+
+		.icon-zscyk {  background: url(resources/images/systemMenu/icon-zscyk.png);  background-size: 100%;  }
+		.systemItemBox:hover .icon-zscyk {  background: url(resources/images/systemMenu/icon-zscyk-h.png);  background-size: 100%;  }
+
+		.icon-zhywcx {  background: url(resources/images/systemMenu/icon-zhywcx.png);  background-size: 100%;  }
+		.systemItemBox:hover .icon-zhywcx {  background: url(resources/images/systemMenu/icon-zhywcx-h.png);  background-size: 100%;  }
+		.icon-zhywbb {  background: url(resources/images/systemMenu/icon-zhywbb.png);  background-size: 100%;  }
+		.systemItemBox:hover .icon-zhywbb {  background: url(resources/images/systemMenu/icon-zhywbb-h.png);  background-size: 100%;  }
+		.icon-wxglxt {  background: url(resources/images/systemMenu/icon-wxglxt.png);  background-size: 100%;  }
+		.systemItemBox:hover .icon-wxglxt {  background: url(resources/images/systemMenu/icon-wxglxt-h.png);  background-size: 100%;  }
+		.icon-oaxt {  background: url(resources/images/systemMenu/icon-oaxt.png);  background-size: 100%;  }
+		.systemItemBox:hover .icon-oaxt {  background: url(resources/images/systemMenu/icon-oaxt-h.png);  background-size: 100%;  }
+		.icon-swxc {  background: url(resources/images/systemMenu/icon-swcz.png);  background-size: 100%;  }
+		.systemItemBox:hover .icon-swxc {  background: url(resources/images/systemMenu/icon-swcz-h.png);  background-size: 100%;  }
+
+		.systemExplain {  height: 80px;  line-height: 16px;  margin: 73px 5px 10px 5px;  text-indent: 2em;  text-align: left;  letter-spacing: .07em;  color: #c4daff;  }
+		.systemItemBox .btn {  padding: 6px 20px;  border: 1px solid #a7c3ef;  border-radius: .4em;  text-decoration: none;  color: #ffffff;  background: #3b6bb3;  background-image: linear-gradient(#3b6bb3, #3768b4 30%, #3768b4 70%, #28589e);  }
+		.systemItemBox .btn:hover {  border: 1px solid #ffbc2b;  color: #090b62;  background: #ffbc2b;  }
+
+		#bottomContentPane {  height: 38px;  background: #14526b;  }
+		#bottomContentPane:before, #bottomContentPane:after {  content: '';  position: absolute;  left: 0;  width: 100%;  height: 1px;  background: #ffffff;  }
+		#bottomContentPane:before {  top: 0;  background-image: linear-gradient(to right, #ffffff, #154182 90%);  }
+		#bottomContentPane:after {  bottom: 0;  background-image: linear-gradient(to right, #154182 10%, #ffffff, #154182 70%);  }
+		.systemListUl li {  float: left;  width: 20%;  }
+		.systemListUl a {
+			display: block;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			border-right: 1px solid #ffffff;
+			text-decoration: none;
+			color: #ffffff;
+			text-align: center;
+		}
+		.systemListUl a:hover {  color: #ffbc2b;  }
+		.systemListUl li:last-child a {  border-right: none;  }
+		.systemListUl a:before {  content: '';  display: inline-block;  width: 8px;  height: 8px;  margin-right: 8px;  border-radius: 50%;  background: #ffffff;  }
+		.systemListUl a:hover:before {  background: #ffbc2b;  }
+		.claro h1{margin-bottom: 9em}
+		.head-title{width: 100%;height: 17%;background: url("resources/images/systemMenu/head-title2.png") no-repeat center/90% 100%;margin-bottom: 1%}
+		.footer-jsdw{width: 100%; color: #FFFFFF;text-align: right;font-size: 16px;}
+		.footer-jsdw p{margin-right: 15%}
+		.footer-jsdw p i{font-size: 19px}
+		.btn-c {
+			position: absolute;
+			top: 70px;
+			right: 50px;
+			color: #FEBE22;
+			text-decoration: none;
+			font-size: 16px;
+			margin-right: 20px;
+		}
+	</style>
+</head>
+<body class="claro">
+<div id="borderContainer" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="persist:true, gutters:false, liveSplitters:true">
+	<div id="bottomContentPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'bottom', splitter:false">
+		<ul class="systemListUl clearfix">
+			<li><a href="index-dxfs.html" target="_blank">短信发送</a></li>
+			<li><a href="http://115.236.61.148:9085/zdwx/login.html" target="_blank">车辆终端维修管理系统</a></li>
+			<li><a href="http://115.236.61.148:9080/taximonitor" target="_blank">企业分中心管理平台</a></li>
+			<li><a href="http://www.jtgps.com/" target="_blank">杭州交通卫星定位应用有限公司</a></li>
+			<li><a href="http://115.236.61.148:10005/jtwxtaxi/login.html" target="_blank">司机端审核</a></li>
+		</ul>
+	</div>
+	<div id="centerContentPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center', splitter:false">
+		<a href="javascript:void(0)" name="fhdlbtn" class="btn-c" title="返回登陆"><i class="iconfont icon-close"></i></a>
+		<div class="head-title"></div>
+		<div class="systemListPanel">
+			<ul class="systemListBox clearfix" style="display: inline-block; width: 90%">
+				<li class="systemItemBox">
+					<i class="icon icon-ddxpt"></i>
+					<p class="systemExplain">调度席平台功能主要实现出租汽车约车热线接入和用车需求调度工作。</p>
+					<a href="index-ddxpt.html" class="btn" target="_blank" id="mu0">调度席平台</a>
+				</li>
+				<li class="systemItemBox">
+					<i class="icon icon-oaxt"></i>
+					<p class="systemExplain">OA系统记录调度中心班次、出租汽车日程记录，日常通知等办公相关信息。</p>
+					<a href="index-oa.html" class="btn" target="_blank" id="mu1">OA系统</a>
+				</li>
+				<li class="systemItemBox">
+					<i class="icon icon-xxfs"></i>
+					<p class="systemExplain">消息发送实现平台发送逐个或批量信息至出租汽车终端。</p>
+					<a href="index-xxfs.html" class="btn" target="_blank" id="mu2">消息发送</a>
+				</li>
+				<li class="systemItemBox">
+					<i class="icon icon-zscyk"></i>
+					<p class="systemExplain">知识库是调度过程相关业务数据、订单情况、回程车辆、客户信息管理。</p>
+					<a href="index-zscxk.html" class="btn" target="_blank" id="mu3">知识查询库</a>
+				</li>
+				<li class="systemItemBox">
+					<i class="icon icon-zhywcx"></i>
+					<p class="systemExplain">运政数据查询是针对运政库内的车辆管理、违章管理、驾驶员管理的查询与统计。</p>
+					<a href="index-xhchtgl.html" class="btn" target="_blank" id="mu4">运政数据查询</a>
+				</li>
+				<li class="systemItemBox">
+					<i class="icon icon-bjjkx"></i>
+					<p class="systemExplain">报警监控席主要监控出租汽车实时报警及报警处理。</p>
+					<a href="index-bjjkx.html" class="btn" target="_blank" id="mu5">报警监控席</a>
+				</li>
+				<li class="systemItemBox">
+					<i class="icon icon-wxglxt"></i>
+					<p class="systemExplain">出租汽车后台管理系统的主要功能是对出租汽车相关基础信息进行管理和维护。</p>
+					<a href="index-czchtgl.html" class="btn" target="_blank" id="mu6">出租后台系统</a>
+				</li>
+				<li class="systemItemBox">
+					<i class="icon icon-zhywbb"></i>
+					<p class="systemExplain">出租车报表是出租汽车等营运数据按照需求定制统计出租数据报表。</p>
+					<a href="index-czbb.html" class="btn" target="_blank" id="mu7">出租报表</a>
+				</li>
+				<li class="systemItemBox">
+					<i class="icon icon-zhywcx"></i>
+					<p class="systemExplain">综合业务查询与报表是出租汽车等营运业务、订单信息等数据查询。</p>
+					<a href="index-zhywbb.html" class="btn" target="_blank" id="mu8" style="padding-left: 10px; padding-right: 10px;">综合业务查询与报表</a>
+				</li>
+				<li class="systemItemBox">
+					<i class="icon icon-swxc"></i>
+					<p class="systemExplain">协助乘坐出租车而丢失物品的乘客查询到自己乘坐的对应出租车，从而找回失物。</p>
+					<a href="index-swxc.html" class="btn" target="_blank" id="mu9" style="padding-left: 10px; padding-right: 10px;">失物协查</a>
+				</li>
+			</ul>
+		</div>
+		<div class="footer-jsdw">
+			<table style="width: 80%;margin: auto;">
+				<tr>
+					<td style="width: 60%"></td>
+					<td style="width: 60%;text-align: center;min-width: 300px;white-space: nowrap;">
+						<p style="margin-bottom: 5px;"><span>建设单位:杭州交通卫星定位应用有限公司</span></p>
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 60%"></td>
+					<td style="width: 60%;text-align: center;min-width: 300px;white-space: nowrap;">
+						<p><span>承建单位:杭州通悟科技有限公司</span></p>
+					</td>
+				</tr>
+			</table>
+			<!-- 				<p style="margin-bottom: 5px;"><span>建设单位:杭州交通卫星定位应用有限公司</span></p> -->
+			<!-- 				<p><span>承建单位:杭州通悟科技有限公司</span></p> -->
+		</div>
+	</div>
+</div>
+<script src="resources/script/jquery-1.12.1.min.js"></script>
+<script type="text/javascript" src="app/config.js"></script>
+<script src="resources/script/layer/layer.js"></script>
+<script src="http://115.236.61.148:9085/jslib/myDojo/dojo/dojo.js"></script>
+</body>
+</html>

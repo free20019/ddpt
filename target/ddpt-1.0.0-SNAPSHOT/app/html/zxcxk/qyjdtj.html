@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>企业结对订单统计</title>
+	<style>
+		#qyjdtjTabel {
+			height: calc(100% - 100px);
+		}
+		#qyjdtjTabel .field-dojoId{width: 80px;white-space: nowrap;}
+		#qyjdtjTabel .field-RQ{width: 90px;white-space: nowrap;}
+		#qyjdtjTabel .field-GSMC{width: 150px;white-space: nowrap;}
+		#qyjdtjTabel .field-FDMC{width: 150px;white-space: nowrap;}
+		#qyjdtjTabel .field-NUM{width: 110px;white-space: nowrap;}
+	</style>
+</head>
+<body>
+<div class="" id="qyjdtjPanel">
+	<div class="iFInputItem">
+		<div class="iFInlineItem">
+			<label class="iFLabel">开始时间</label>
+			<div class="iFInput" style="width: 150px;">
+				<input type="text" id="qyjdtj-stime"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">结束时间</label>
+			<div class="iFInput" style="width: 150px;">
+				<input type="text" id="qyjdtj-etime"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})">
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">公司名称</label>
+			<div class="iFComboBox" id="qyjdtj-gsmc-comboBox" style="width: 160px;">
+				<input type="text" >
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+					<li data-value="" style="height: 1.5em;"></li>
+				</ul>
+			</div>
+		</div>
+		<div class="iFInlineItem">
+			<label class="iFLabel">分队名称</label>
+			<div class="iFComboBox" id="qyjdtj-fdmc-comboBox" style="width: 160px;">
+				<input type="text" >
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+					<li data-value="" style="height: 1.5em;"></li>
+				</ul>
+			</div>
+		</div>
+		<div class="iFInlineItem" style="line-height: 30px;margin-left: 5px;vertical-align: middle;">
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="qyjdtjbtn">查询</a>
+			<span class="w10px"></span>
+			<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="qyjdtjdcbtn">导出</a>
+		</div>
+	</div>
+</div>
+<div id="qyjdtjTabel"></div>
+<script type="text/javascript">
+	require(['app/html/zxcxk/qyjdtj', "dojo/domReady!"], function (QYJDTJ) {
+		new QYJDTJ();
+	});
+</script>
+</body>
+</html>

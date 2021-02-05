@@ -1,0 +1,505 @@
+package mvc.service;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+import helper.JacksonUtil;
+
+import org.codehaus.jackson.type.TypeReference;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
+
+
+@Service
+public class BackExcelServer {
+	protected JdbcTemplate jdbcTemplate = null;
+	public JdbcTemplate getJdbcTemplate() {
+		return jdbcTemplate;
+	}
+
+	@Autowired
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+	
+	private JacksonUtil jacksonUtil = JacksonUtil.buildNormalBinder();
+	/**
+	 * 查询有无障碍车的区块表
+	 */
+	public String findzacqkb(){
+		String sql = "select * from TB_VEHI_NO_TYPE";
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
+		return jacksonUtil.toJson(list);
+	}
+	/**
+	 * 公司表查询
+	 */
+	public String findgsb(String postData){
+		Map<String,Object> paramMap = jacksonUtil.toObject(postData,new TypeReference<Map<String,Object>>() {});
+		String COMP_NAME = String.valueOf(paramMap.get("COMP_NAME"));
+		String tj = "";
+		if(COMP_NAME!=null&&!COMP_NAME.isEmpty()&&!COMP_NAME.equals("null")&&COMP_NAME.length()>0){
+			tj += " and b.ba_name like '%"+COMP_NAME+"%'";
+		}
+		String sql = "select"
+				+ " b.ba_name,b.note,c.comp_name,o.owner_name,b.ba_id,b.owner_id,c.comp_id from "
+				+ "TB_BUSI_AREA b,TB_COMPANY c,TB_OWNER o where b.ba_id = c.ba_id"
+				+ " and b.owner_id = o.owner_id";
+		sql += tj;
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
+        return jacksonUtil.toJson(list);
+	}
+	/**
+	 * 终端表查询
+	 */
+	public String findzdb(){
+		String sql = "select * from TB_MDT_TYPE";
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
+		for (int i = 0; i < list.size(); i++) {
+			list.get(i).put("NUM", zdbnum(list.get(i).get("MT_ID").toString()));
+		}
+		return jacksonUtil.toJson(list);
+	}
+	/**
+	 * 查询每种终端的数量
+	 */
+	public int zdbnum(String id){
+		String sql = "select mdt_no from TB_MDT where mt_id = ?";
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql,id);
+		int c = list.size();
+		return c;
+	}
+	/**
+	 * 车型表查询
+	 */
+	public String findcxb(String postData){
+		Map<String,Object> paramMap = jacksonUtil.toObject(postData,new TypeReference<Map<String,Object>>() {});
+		String VT_NAME = String.valueOf(paramMap.get("VT_NAME"));
+		String tj = "";
+		if(VT_NAME!=null&&!VT_NAME.isEmpty()&&!VT_NAME.equals("null")&&VT_NAME.length()>0){
+			tj += " and VT_NAME like '%"+VT_NAME+"%'";
+		}
+		String sql = "select"
+				+ " * from "
+				+ "TB_VEHI_TYPE where 1=1";
+		sql += tj;
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
+		for (int i = 0; i < list.size(); i++) {
+			list.get(i).put("NUM", findcxbnum(list.get(i).get("vt_id").toString()));
+		}
+        return jacksonUtil.toJson(list);
+	}
+	/**
+	 * 根据车型id查询该车型有多少辆车
+	 */
+	public int findcxbnum(String id){
+		String sql = "select vehi_no from TB_VEHICLE where vt_id = ?";
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql,id);
+		int c = list.size();
+		return c;
+	}
+	/**
+	 * 颜色表查询
+	 */
+	public String findysb(){
+		String sql = "select * from TB_VEHI_COLOR";
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
+		for (int i = 0; i < list.size(); i++) {
+			list.get(i).put("NUM", ysbnum(list.get(i).get("VC_ID").toString()));
+		}
+		return jacksonUtil.toJson(list);
+	}
+	/**
+	 * 查询每种颜色的数量
+	 */
+	public int ysbnum(String id){
+		String sql = "select VEHI_NO from TB_VEHICLE where vc_id = ?";
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql,id);
+		int c = list.size();
+		return c;
+	}
+	/**
+	 * 通信表查询
+	 */
+	public String findtxb(){
+		String sql = "select * from TB_COMM_TYPE";
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
+		for (int i = 0; i < list.size(); i++) {
+			list.get(i).put("NUM", txbnum(list.get(i).get("CT_ID").toString()));
+		}
+		return jacksonUtil.toJson(list);
+	}
+	/**
+	 * 查询每种通信类型的数量
+	 */
+	public int txbnum(String id){
+		String sql = "select mdt_no from TB_MDT where ct_id = ?";
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql,id);
+		int c = list.size();
+		return c;
+	}
+	/**
+	 * 调度表查询
+	 */
+	public String findddb(String postData){
+		Map<String,Object> paramMap = jacksonUtil.toObject(postData,new TypeReference<Map<String,Object>>() {});
+		String STIME = String.valueOf(paramMap.get("STIME"));//开始时间
+		String ETIME = String.valueOf(paramMap.get("ETIME"));//结束时间
+		String CUST_NAME = String.valueOf(paramMap.get("CUST_NAME"));//客户姓名
+		String CUST_TEL = String.valueOf(paramMap.get("CUST_TEL"));//客户电话
+		String ADDRESS_REF = String.valueOf(paramMap.get("ADDRESS_REF"));//参考地址
+		String ADDRESS = String.valueOf(paramMap.get("ADDRESS"));//详细地址
+		String DISP_TYPE = String.valueOf(paramMap.get("DISP_TYPE"));//调度类型
+		String table = STIME.substring(2, 4)+STIME.substring(5, 7);
+		String tj = "";
+		if(CUST_NAME!=null&&!CUST_NAME.isEmpty()&&!CUST_NAME.equals("null")&&CUST_NAME.length()>0){
+			tj += " and CUST_NAME like '%"+CUST_NAME+"%'";
+		}
+		if(CUST_TEL!=null&&!CUST_TEL.isEmpty()&&!CUST_TEL.equals("null")&&CUST_TEL.length()>0){
+			tj += " and CUST_TEL like '%"+CUST_TEL+"%'";
+		}
+		if(ADDRESS_REF!=null&&!ADDRESS_REF.isEmpty()&&!ADDRESS_REF.equals("null")&&ADDRESS_REF.length()>0){
+			tj += " and ADDRESS_REF like '%"+ADDRESS_REF+"%'";
+		}
+		if(ADDRESS!=null&&!ADDRESS.isEmpty()&&!ADDRESS.equals("null")&&ADDRESS.length()>0){
+			tj += " and ADDRESS like '%"+ADDRESS+"%'";
+		}
+		if(DISP_TYPE!=null&&!DISP_TYPE.isEmpty()&&!DISP_TYPE.equals("请选择")){
+			tj += " and DISP_TYPE like '%"+DISP_TYPE+"%'";
+		}
+		String sql = "select * from "
+				+ "TB_DISPATCH_"+table+" where DISP_TIME >= to_date('"+STIME+"','yyyy-mm-dd hh24:mi:ss')"
+				+ " and DISP_TIME <= to_date('"+ETIME+"','yyyy-mm-dd hh24:mi:ss')";
+		sql += tj;
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
+        return jacksonUtil.toJson(list);
+	}
+	/**
+	 * 定位表查询
+	 */
+	public String finddwb(String postData){
+		Map<String,Object> paramMap = jacksonUtil.toObject(postData,new TypeReference<Map<String,Object>>() {});
+		String PNAME = String.valueOf(paramMap.get("PNAME"));
+		String tj = "";
+		if(PNAME!=null&&!PNAME.isEmpty()&&!PNAME.equals("null")&&PNAME.length()>0){
+			tj += " and PNAME like '%"+PNAME+"%'";
+		}
+		String sql = "select * from TB_GPS_POINT where 1=1";
+		sql += tj;
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
+        return jacksonUtil.toJson(list);
+	}
+	/**
+	 * 区域表查询
+	 * @return
+	 */
+	public String findqyb(){
+		String sql = "select r.*,m.map_name from TB_REGION r,tb_map m where r.map_id=m.map_id";
+		return jacksonUtil.toJson(jdbcTemplate.queryForList(sql));
+	}
+	/**
+	 * 客户表查询
+	 * @return
+	 */
+	public String findkhb(String postData){
+		Map<String,Object> paramMap = jacksonUtil.toObject(postData,new TypeReference<Map<String,Object>>() {});
+		String CUST_NAME = String.valueOf(paramMap.get("CUST_NAME"));
+		String tj = "";
+		if(CUST_NAME!=null&&!CUST_NAME.isEmpty()&&!CUST_NAME.equals("null")&&CUST_NAME.length()>0){
+			tj += " and CUST_NAME like '%"+CUST_NAME+"%'";
+		}
+		String sql = "select * from TB_ADDRESS_BOOK where 1=1";
+		sql += tj;
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
+        return jacksonUtil.toJson(list);
+	}
+	/**
+	 * 车辆表导出
+	 */
+	public String clbdc(String postData){
+		Map<String,Object> paramMap = jacksonUtil.toObject(postData,new TypeReference<Map<String,Object>>() {});
+		String BA_ID = String.valueOf(paramMap.get("BA_ID"));
+		String COMP_ID = String.valueOf(paramMap.get("COMP_ID"));
+		String VEHI_NO = String.valueOf(paramMap.get("VEHI_NO"));
+		String GJZ = String.valueOf(paramMap.get("GJZ"));
+		String STIME = String.valueOf(paramMap.get("STIME"));
+		String ETIME = String.valueOf(paramMap.get("ETIME"));
+		String tj = "";
+		if(BA_ID!=null&&!BA_ID.isEmpty()&&!BA_ID.equals("null")&&BA_ID.length()>0&&!BA_ID.equals("请选择公司")){
+			tj += " and a.BA_NAME like '%"+BA_ID+"%'";
+			if(COMP_ID!=null&&!COMP_ID.isEmpty()&&!COMP_ID.equals("null")&&COMP_ID.length()>0&&!COMP_ID.equals("请选择分公司")){
+				tj += " and a.COMP_NAME like '%"+COMP_ID+"%'";
+			}
+		}
+		if(VEHI_NO!=null&&!VEHI_NO.isEmpty()&&!VEHI_NO.equals("null")&&VEHI_NO.length()>0){
+			tj += " and (a.VEHI_NO like '%"+VEHI_NO+"%' or a.mdt_no like '%"+VEHI_NO+"%' or a.sim_num like '%"+VEHI_NO+"%')";
+		}
+		if(GJZ!=null&&!GJZ.isEmpty()&&!GJZ.equals("null")&&GJZ.length()>0){
+			tj += " and (a.VEHI_NUM like '%"+GJZ+"%' or a.mt_name like '%"+GJZ+"%'"
+					+ " or a.own_name like '%"+GJZ+"%' or a.note like '%"+GJZ+"%'"
+					+ " or a.vnt_name like '%"+GJZ+"%' or a.VSIM_NUM like '%"+GJZ+"%' or sub_name like '%"+GJZ+"%')";
+		}
+		if(STIME!=null&&!STIME.isEmpty()&&!STIME.equals("null")&&STIME.length()>0){
+			tj += " and MTN_TIME >= to_date('"+STIME+"','yyyy-mm-dd')";
+		}
+		if(ETIME!=null&&!ETIME.isEmpty()&&!ETIME.equals("null")&&ETIME.length()>0){
+			tj += " and MTN_TIME <= to_date('"+ETIME+"','yyyy-mm-dd')";
+		}
+		String sql = "select a.*,vt.vt_name,vnc_name,vs.vs_name,ct.CT_NAME"
+				+ " from (select v.*,t.vnt_name,b.ba_name,c.comp_name,m.mdt_no,mt.mt_name,vc_name,m.MDT_SUB_TYPE,"
+				+ "m.ct_id,m.subid from TB_VEHICLE v,TB_VEHI_NO_TYPE t, TB_BUSI_AREA b,TB_COMPANY c, TB_MDT m,TB_MDT_TYPE mt,"
+				+ " TB_VEHI_COLOR vc where v.vnt_id = t.vnt_id and v.ba_id = b.ba_id and v.comp_id = c.comp_id"
+				+ " and v.mdt_id = m.mdt_id and m.mt_id = mt.mt_id and v.vc_id = vc.vc_id) a left join TB_VEHI_TYPE vt"
+				+ " on a.vt_id = vt.vt_id left join TB_VEHI_NO_COLOR vnc on a.vnc_id = vnc.vnc_id left join TB_VEHI_STATE vs"
+				+ " on a.vs_id = vs.vs_id left join TB_COMM_TYPE ct on a.ct_id = ct.ct_id"
+				+ " left join HZGPS_TAXI.TB_MDT_SUB_TYPE mst on a.SUBID=mst.SUBID where 1=1";
+		sql += tj;
+		System.out.println(sql);
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
+        return jacksonUtil.toJson(list);
+	}
+	/**
+	 * 查询车辆
+	 */
+	public String findclxx(String postData){
+		Map<String,Object> paramMap = jacksonUtil.toObject(postData,new TypeReference<Map<String,Object>>() {});
+		String VEHI_NO = String.valueOf(paramMap.get("VEHI_NO"));
+		String COMP_NAME = String.valueOf(paramMap.get("COMP_NAME"));
+		String AREA_NAME = String.valueOf(paramMap.get("AREA_NAME"));
+		String DLYS = String.valueOf(paramMap.get("DLYS"));
+		String JYXK = String.valueOf(paramMap.get("JYXK"));
+		String STATUS = String.valueOf(paramMap.get("STATUS"));
+		String tj = "";
+		if(VEHI_NO!=null&&!VEHI_NO.isEmpty()&&!VEHI_NO.equals("null")&&VEHI_NO.length()>0&&!VEHI_NO.equals("请选择车牌号码")){
+			tj += " and b.PLATE_NUMBER = '"+VEHI_NO+"'";
+		}
+		if(COMP_NAME!=null&&!COMP_NAME.isEmpty()&&!COMP_NAME.equals("null")&&COMP_NAME.length()>0&&!COMP_NAME.equals("请选择业户名称")){
+			tj += " and b.COMPANY_NAME = '"+COMP_NAME+"'";
+		}
+		if(AREA_NAME!=null&&!AREA_NAME.isEmpty()&&!AREA_NAME.equals("null")&&AREA_NAME.length()>0&&!AREA_NAME.equals("请选择地市")){
+			tj += " and b.AREA_NAME = '"+AREA_NAME+"'";
+		}
+		if(DLYS!=null&&!DLYS.isEmpty()&&!DLYS.equals("null")&&DLYS.length()>0){
+			tj += " and b.LICENSE_NUMBER = '"+DLYS+"'";
+		}
+		if(JYXK!=null&&!JYXK.isEmpty()&&!JYXK.equals("null")&&JYXK.length()>0){
+			tj += " and b.COMPANY_LICENSE_NUMBER = '"+JYXK+"'";
+		}
+		if(STATUS!=null&&!STATUS.isEmpty()&&!STATUS.equals("null")&&STATUS.length()>0){
+			tj += " and b.STATUS = '"+STATUS+"'";
+		}
+		String sql = "select b.* from TB_GLOBAL_VEHICLE b where 1=1 ";
+		sql += tj;
+		sql +="order by PLATE_NUMBER";
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
+		for (int i = 0; i < list.size(); i++) {
+			list.get(i).put("HFSJ", String.valueOf(list.get(i).get("LICENSE_VALID_PERIOD_FROM")).equals("null")?"":list.get(i).get("LICENSE_VALID_PERIOD_FROM").toString());
+			list.get(i).put("YXSJ", String.valueOf(list.get(i).get("LICENSE_VALID_PERIOD_END")).equals("null")?"":list.get(i).get("LICENSE_VALID_PERIOD_END").toString());		
+		}
+        return jacksonUtil.toJson(list);
+	}
+	/**
+	 * 查询违章信息
+	 */
+	public String findwz(String postData){
+		Map<String,Object> paramMap = jacksonUtil.toObject(postData,new TypeReference<Map<String,Object>>() {});
+		String STIME = String.valueOf(paramMap.get("STIME"));//开始时间
+		String ETIME = String.valueOf(paramMap.get("ETIME"));//结束时间
+		String PARTY_NAME = String.valueOf(paramMap.get("PARTY_NAME"));//人员姓名
+		String AUTO_NUM = String.valueOf(paramMap.get("AUTO_NUM"));//车牌号
+		String CERTI_NUM = String.valueOf(paramMap.get("CERTI_NUM"));//从业资格证
+		String LIENCE_NUM = String.valueOf(paramMap.get("LIENCE_NUM"));//经营许可证
+		String AREA = String.valueOf(paramMap.get("AREA"));//执法区域
+		String ORGAN = String.valueOf(paramMap.get("ORGAN"));//执法部门
+		String tj = "";
+		if(STIME!=null&&!STIME.isEmpty()&&!STIME.equals("null")&&STIME.length()>0){
+			tj += " and b.ILLEGAL_TIME >=to_date('"+STIME+"','yyyy-mm-dd hh24:mi:ss')";	
+		}
+		if(ETIME!=null&&!ETIME.isEmpty()&&!ETIME.equals("null")&&ETIME.length()>0){
+			tj += " and b.ILLEGAL_TIME <=to_date('"+ETIME+"','yyyy-mm-dd hh24:mi:ss')";
+		}
+		if(PARTY_NAME!=null&&!PARTY_NAME.isEmpty()&&!PARTY_NAME.equals("null")&&PARTY_NAME.length()>0){
+			tj += " and b.PARTY_NAME = '"+PARTY_NAME+"'";
+		}
+		if(AUTO_NUM!=null&&!AUTO_NUM.isEmpty()&&!AUTO_NUM.equals("null")&&AUTO_NUM.length()>0){
+			tj += " and b.AUTO_NUM = '"+AUTO_NUM+"'";
+		}
+		if(CERTI_NUM!=null&&!CERTI_NUM.isEmpty()&&!CERTI_NUM.equals("null")&&CERTI_NUM.length()>0){
+			tj += " and b.CERTI_NUM = '"+CERTI_NUM+"'";
+		}
+		if(LIENCE_NUM!=null&&!LIENCE_NUM.isEmpty()&&!LIENCE_NUM.equals("null")&&LIENCE_NUM.length()>0){
+			tj += " and b.LIENCE_NUM = '"+LIENCE_NUM+"'";
+		}
+		if(AREA!=null&&!AREA.isEmpty()&&!AREA.equals("null")&&AREA.length()>0&&!AREA.equals("请选择执法区域")){
+			tj += " and b.AREA = '"+AREA+"'";
+		}
+		if(ORGAN!=null&&!ORGAN.isEmpty()&&!ORGAN.equals("null")&&ORGAN.length()>0&&!ORGAN.equals("请选择执法部门")){
+			tj += " and b.ORGAN = '"+ORGAN+"'";
+		}
+
+		String sql = "select b.* from TB_TAXI_ILLEGAL_INFO_OUT b where 1=1 ";
+		sql += tj;	
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
+		for (int i = 0; i < list.size(); i++) {
+			list.get(i).put("WFSJ", String.valueOf(list.get(i).get("ILLEGAL_TIME")).equals("null")?"":list.get(i).get("ILLEGAL_TIME").toString());
+			list.get(i).put("ZFSJ", String.valueOf(list.get(i).get("LEGAL_TIME")).equals("null")?"":list.get(i).get("LEGAL_TIME").toString());		
+		}
+        return jacksonUtil.toJson(list);
+	}
+	/**
+	 * 查询驾驶员
+	 */
+	public String findjsy(String postData){
+		Map<String,Object> paramMap = jacksonUtil.toObject(postData,new TypeReference<Map<String,Object>>() {});
+		String ID_NUMBER = String.valueOf(paramMap.get("ID_NUMBER"));//身份证号
+		String VEHI_NO = String.valueOf(paramMap.get("VEHI_NO"));//车牌号
+		String NAME = String.valueOf(paramMap.get("NAME"));//姓名
+		String COMP_NAME = String.valueOf(paramMap.get("COMP_NAME"));//公司名
+		String VEHICLE_ID = String.valueOf(paramMap.get("VEHICLE_ID"));//服务证号
+		String LICENSE_NO = String.valueOf(paramMap.get("LICENSE_NO"));//经营许可证
+		String STATUS = String.valueOf(paramMap.get("STATUS"));//证照状态
+		String AREA_NAME = String.valueOf(paramMap.get("AREA_NAME"));//所在地市
+		String tj = "";
+		if(ID_NUMBER!=null&&!ID_NUMBER.isEmpty()&&!ID_NUMBER.equals("null")&&ID_NUMBER.length()>0){
+			tj += " and b.ID_NUMBER = '"+ID_NUMBER+"'";
+		}
+		if(VEHI_NO!=null&&!VEHI_NO.isEmpty()&&!VEHI_NO.equals("null")&&VEHI_NO.length()>0){
+			tj += " and b.PLATE_NUMBER = '"+VEHI_NO+"'";
+		}
+		if(NAME!=null&&!NAME.isEmpty()&&!NAME.equals("null")&&NAME.length()>0){
+			tj += " and b.NAME = '"+NAME+"'";
+		}
+		if(COMP_NAME!=null&&!COMP_NAME.isEmpty()&&!COMP_NAME.equals("null")&&COMP_NAME.length()>0&&!COMP_NAME.equals("请选择公司名称")){
+			tj += " and b.COMPANY_NAME = '"+COMP_NAME+"'";
+		}
+		if(VEHICLE_ID!=null&&!VEHICLE_ID.isEmpty()&&!VEHICLE_ID.equals("null")&&VEHICLE_ID.length()>0){
+			tj += " and b.VEHICLE_ID = '"+VEHICLE_ID+"'";
+		}
+		if(LICENSE_NO!=null&&!LICENSE_NO.isEmpty()&&!LICENSE_NO.equals("null")&&LICENSE_NO.length()>0){
+			tj += " and b.COMPANY_LICENSE_NUMBER = '"+LICENSE_NO+"'";
+		}
+		if(STATUS!=null&&!STATUS.isEmpty()&&!STATUS.equals("null")&&STATUS.length()>0){
+			tj += " and b.STATUS_NAME = '"+STATUS+"'";
+		}
+		if(AREA_NAME!=null&&!AREA_NAME.isEmpty()&&!AREA_NAME.equals("null")&&AREA_NAME.length()>0&&!AREA_NAME.equals("请选择地市")){
+			tj += " and b.AREA_NAME = '"+AREA_NAME+"'";
+		}
+		String sql = "";
+		sql+="  select t.* from (select"
+				+ " b.*,ti.ASSESS_SCORE,ti.ASSESS_YEAR from TB_GLOBAL_PERSON_CERTIFICATE b,TB_TAXI_INTEGRITY_INFO_OUT ti where b.PERSON_ID=ti.PERSON_ID"
+				+ " and (ti.PERSON_ID,ti.ASSESS_YEAR) in (select PERSON_ID,max(ti.ASSESS_YEAR) from TB_TAXI_INTEGRITY_INFO_OUT ti group by person_id having count(person_id)>1) ";
+		sql += tj;
+		sql +=") t";
+		sql +=" order by PLATE_NUMBER";
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
+		for (int i = 0; i < list.size(); i++) {
+			list.get(i).put("ZGZSJ", String.valueOf(list.get(i).get("VALID_PERIOD_END")).equals("null")?"":list.get(i).get("VALID_PERIOD_END").toString());
+		}
+        return jacksonUtil.toJson(list);
+	}
+	/**
+	 * 公司车辆违章统计
+	 */
+	public String findgswz(String postData){
+		Map<String,Object> paramMap = jacksonUtil.toObject(postData,new TypeReference<Map<String,Object>>() {});
+		String COM_NAME = String.valueOf(paramMap.get("COM_NAME"));//公司名
+		String tj = "";
+		if(COM_NAME!=null&&!COM_NAME.isEmpty()&&!COM_NAME.equals("null")&&COM_NAME.length()>0&&!COM_NAME.equals("请选择公司名称")){
+			tj += " and b.COM_NAME = '"+COM_NAME+"'";
+		}
+		String sql=" select t.* from (select"
+				+ " b.AUTO_ID,b.AUTO_NUM,b.COM_NAME,b.COM_ID,b.IC_SCORE,count(*) as count1 from TB_TAXI_ILLEGAL_INFO_OUT b where 1=1 ";
+		sql += tj;
+		sql +=" group by b.AUTO_ID,b.AUTO_NUM,b.COM_NAME,b.COM_ID,b.IC_SCORE";
+		sql += " ) t";
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);	
+        return jacksonUtil.toJson(list);
+	}
+	/**
+	 * 公司车辆违章信息
+	 */
+	public String findwzxx(String postData){
+		Map<String,Object> paramMap = jacksonUtil.toObject(postData,new TypeReference<Map<String,Object>>() {});
+		String COM_NAME = String.valueOf(paramMap.get("COM_NAME"));//公司名
+		String tj = "";
+		if(COM_NAME!=null&&!COM_NAME.isEmpty()&&!COM_NAME.equals("null")&&COM_NAME.length()>0&&!COM_NAME.equals("请选择公司名称")){
+			tj += " and b.COM_NAME = '"+COM_NAME+"'";
+		}		
+		String sql ="select b.* from TB_TAXI_ILLEGAL_INFO_OUT b where 1=1 ";
+		sql += tj;
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);	
+		for (int i = 0; i < list.size(); i++) {
+			list.get(i).put("WZSJ", String.valueOf(list.get(i).get("ILLEGAL_TIME")).equals("null")?"":list.get(i).get("ILLEGAL_TIME").toString());
+		}
+        return jacksonUtil.toJson(list);
+	}
+	/**
+	 * 公司车辆违章统计
+	 */
+	public String findtjb(String postData){
+		Map<String,Object> paramMap = jacksonUtil.toObject(postData,new TypeReference<Map<String,Object>>() {});
+		String COM_NAME = String.valueOf(paramMap.get("COM_NAME"));//公司名
+		String tj = "";
+		if(COM_NAME!=null&&!COM_NAME.isEmpty()&&!COM_NAME.equals("null")&&COM_NAME.length()>0&&!COM_NAME.equals("请选择公司名称")){
+			tj += " and gc.NAME = '"+COM_NAME+"'";
+		}
+		String sql="select distinct gc.ID,gc.NAME,count1,count2,count3 from  TB_GLOBAL_COMPANY gc"
+				+" left join (select gv.COMPANY_ID,count( COMPANY_ID) as count1 from TB_GLOBAL_VEHICLE gv group by gv.COMPANY_ID) gv on gv.COMPANY_ID = gc.ID "
+				+" left join (select ti.COM_ID,count( COM_ID) as count2 from (select auto_id,com_id from TB_TAXI_ILLEGAL_INFO_OUT group by auto_id,com_id) ti  group by ti.COM_ID) ti on trim(ti.COM_ID)=gc.ID"
+				+" left join (select ti.COM_ID,count( COM_ID) as count3 from TB_TAXI_ILLEGAL_INFO_OUT ti  group by ti.COM_ID) ti2 on trim(ti2.COM_ID)=gc.ID where 1=1 ";
+		sql += tj;
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
+        return jacksonUtil.toJson(list);
+	}
+	/**
+	 * 新旧车牌
+	 */
+	public String findnewoldexcle(String postData){
+		Map<String,Object> paramMap = jacksonUtil.toObject(postData,new TypeReference<Map<String,Object>>() {});
+		String gjz = String.valueOf(paramMap.get("gjz"));
+		String sql = "select * from TB_NEWOLD_VEHICLE where (new_vhic like '%"+gjz+"%' or new_comp_name like '%"+gjz+"%'"
+				+ " or old_vhic like '%"+gjz+"%' or old_comp_name like '%"+gjz+"%')";
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
+        return jacksonUtil.toJson(list);
+	}
+	public String findkhb2excel(String postData){
+		Map<String,Object> paramMap = jacksonUtil.toObject(postData,new TypeReference<Map<String,Object>>() {});
+		String CUST_NAME = String.valueOf(paramMap.get("CUST_NAME"));
+		String tj = "";
+		if(CUST_NAME!=null&&!CUST_NAME.isEmpty()&&!CUST_NAME.equals("null")&&CUST_NAME.length()>0){
+			tj += " and (CUST_NAME like '%"+CUST_NAME+"%' or CUST_TEL like '%"+CUST_NAME+"%'"
+					+ " or NOTE like '%"+CUST_NAME+"%' or CUST_SEX like '%"+CUST_NAME+"%'";
+			if(CUST_NAME.equals("黑")){
+				tj += " or CUST_GRADE = 'F')";
+			}else if(CUST_NAME.equals("普")){
+				tj += " or CUST_GRADE = '0')";
+			}else if(CUST_NAME.equals("V")||CUST_NAME.equals("v")){
+				tj += " or CUST_GRADE = '1')";
+			}else if(CUST_NAME.equals("超")){
+				tj += " or CUST_GRADE = '2')";
+			}else{
+				tj += ")";
+			}
+		}
+		String sql = "select"
+				+ " * from tb_customer where 1=1";
+		sql += tj;
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
+		for (int i = 0; i < list.size(); i++) {
+			list.get(i).put("JB", String.valueOf(list.get(i).get("CUST_GRADE")).equals("F")?"黑名单":String.valueOf(list.get(i).get("CUST_GRADE")).equals("1")?"VIP":String.valueOf(list.get(i).get("CUST_GRADE")).equals("2")?"超级VIP":"普通用户");
+		}
+        return jacksonUtil.toJson(list);
+	}
+}

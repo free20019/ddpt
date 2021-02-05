@@ -1,0 +1,87 @@
+.claro .dijitSplitContainer-child, .claro .dijitBorderContainer-child {
+	border: none;
+}
+.dijitTab .tabLabel, .claro .dijitDialogCloseIcon {
+	outline: none;
+}
+/*dialog*/
+.claro .dijitDialogTitleBar {
+	padding: 9px 13px 8px 13px;
+	border-color: #008AC3;
+	background-color: #0063A7;
+	background-image: none;
+}
+.claro .dijitDialogTitle {
+	font-size: 16px;
+	color: #FEBE22;
+}
+.claro .dijitDialogCloseIcon {
+	top: 19px;
+	margin-top: -7px;
+}
+/*tab*/
+.claro .dijitTab {
+	position: relative;
+	border: none;
+}
+.claro .dijitTabPaneWrapper, .claro .dijitTabContainerTop-tabs, .claro .dijitTabContainerBottom-tabs, .claro .dijitTabContainerLeft-tabs, .claro .dijitTabContainerRight-tabs {
+	border-color: #0bc572;
+}
+.claro .dijitTabContainerTop-tabs .dijitTab {
+	overflow: hidden;
+	min-width: 90px;
+	line-height: 15px;
+	margin-bottom: -2px;
+	padding: 5px 28px 5px 12px;
+	-moz-border-radius: 6px 6px 0 0;
+	 border-radius: 6px 6px 0 0;
+	border: 1px solid #0bc572;
+	background-color: #ffffff;
+	/*background-image: -webkit-linear-gradient(top, #ffffff 0px, #ffffff 50%, #f3f3f3 100%);
+	background-image: -moz-linear-gradient(top, #ffffff 0px, #ffffff 50%, #f3f3f3 100%);
+	background-image: -o-linear-gradient(top, #ffffff 0px, #ffffff 50%, #f3f3f3 100%);
+	background-image: linear-gradient(top, #ffffff 0px, #ffffff 50%, #f3f3f3 100%);*/
+}
+.claro .dijitTabContainerTop-tabs .dijitTabChecked {
+	padding: 10px 28px 5px 12px;
+	/*border-bottom: 2px solid #fb4554;*/
+	/*border-top-left-radius: 5px;*/
+	/*border-top-right-radius: 5px;*/
+	border-bottom-color: #ffffff;
+	background-color: #eaeffe ;
+	/*background-image: -webkit-linear-gradient(top, #969fa6 0px, #969fa6 50%, #969fa6 100%);
+	background-image: -moz-linear-gradient(top, #969fa6 0px, #969fa6 50%, #969fa6 100%);
+	background-image: -o-linear-gradient(top, #969fa6 0px, #969fa6 50%, #969fa6 100%);
+	background-image: linear-gradient(top, #969fa6 0px, #969fa6 50%, #969fa6 100%);*/
+}
+.claro .dijitTabContainerTop-tabs .dijitTabChecked:before {
+	content: '';
+	position: absolute;
+	top: 0;  left: 0;  right: 0;
+	height: 6px;
+	background: #0bc572;
+}
+.claro .dijitTabContainerTop-tabs .dijitTabChecked .tabLabel {
+	color: #020267;
+}
+.claro .dijitTabCloseButton {  position: absolute;  top: 50%;  right: 12px;  margin-top: -4px;  }
+
+/*table*/
+.claro .dgrid { border-color: #6bb3ff; }
+.dgrid-header .dgrid-cell { padding: 9px 0; text-align: center; white-space: nowrap; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+.dgrid-spacer-row .dgrid-cell { padding: 0; }
+.claro .dgrid-header, .claro .dgrid-footer { background: #ffffff none; }
+.claro .dgrid-header .dgrid-cell { border-color: #6bb3ff; vertical-align: middle;}
+.claro .dgrid-header .dgrid-cell:hover { background: none; }
+.dgrid-resize-header-container { height: auto; }
+.dgrid-sort-arrow { position: absolute; top: 50%; right: 0; margin-top: -6px; }
+.claro .dgrid-row{background: #eef9ff none;}
+.claro .dgrid-row-odd { background: #ffffff none; }
+.claro .dgrid-row:hover { background: #e0f8ff none; }
+.claro .dgrid-selected { background: #e0f8ff none!important; color: black; }
+.dgrid-scroller .dgrid-cell { height: 30px; padding: 9px 15px; text-align: center; vertical-align: middle; }
+.dgrid-cell dd { color: #333; }
+.dgrid-row .btn-line { color: #333; cursor: pointer; }
+.dgrid-selected .btn-line { color: #fff; }
+.claro .dgrid-row .dgrid-cell {border-bottom: 0;border-top: 0;border-left: 1px solid #eeeeee;border-right: 1px solid #eeeeee;white-space: nowrap;}
+.claro .dgrid-row:hover .dgrid-cell {white-space: normal;}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>主菜单</title>
+	<style>
+		#mainContainer_panel {
+			padding: 0;
+		}
+		.nevTitle.selected {  background: #04a2ea;  }
+	</style>
+</head>
+<body>
+<div id="mainContainer_panel" data-dojo-type="dijit/layout/ContentPane"  data-dojo-props="selected:true, title:'杭州调度中心运政数据查询'" >
+	<ul id="mainSplitterLeft" style="width:200px"></ul>
+</div>
+<script type="text/javascript">
+	require(["app/TreeLayout3", "dojo/domReady!"], function (TreeLayout) {
+		new TreeLayout('mainSplitterLeft',xhchtglMenu, {defaultDisplay: true}).init();
+	});
+</script>
+</body>
+</html>

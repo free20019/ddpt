@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加区域</title>
+    <style type="text/css">
+    .areabtn{
+            outline:none;
+            z-index: 200;
+            margin-top: 20px;
+            background-color: #fff;
+            border: 1px solid #a5a9ab;
+            border-radius: 5px;
+            color: #181819;
+            width: 40px;
+            height: 20px;
+            line-height: 20px;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+        }
+    
+    </style>
+</head>
+<body>
+<div class="formItems" style="text-align: center;">
+    <div class="iFInlineItem">
+        <label class=" iFTitleName" style="font-size: 14px">区域名称</label>
+        <div class="iFInput" style="width: 415px">
+            <input type="text" id="areaname">
+        </div>
+    </div>
+    <div class="iFInlineItem">
+        <label class=" iFTitleName" style="font-size: 14px">预报警数</label>
+        <div class="iFInput" style="width: 415px">
+            <input type="text" id="areabjs" value="10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;10;">
+        </div>
+    </div>
+    <div class="iFInlineItem">
+        <label class=" iFTitleName" style="font-size: 14px">区域描述</label>
+        <div class="iFInput" style="width: 415px">
+            <textarea cols="40" rows="3" id="areams"></textarea>
+        </div>
+    </div>
+    <div class="iFInlineItem">
+        <label class=" iFTitleName" style="font-size: 14px">区域面积</label>
+        <div class="iFInput" style="width: 415px">
+            <input type="text" id="areasize" disabled="disabled">
+        </div>
+    </div>
+    <div class="iFInlineItem">
+        <label class=" iFTitleName" style="font-size: 14px">区域坐标</label>
+        <div class="iFInput" style="width: 415px">
+            <textarea cols="40" rows="3" id="areazbs" disabled="disabled"></textarea>
+        </div>
+    </div>
+    <div class="iFInlineItem">
+        <a href="javascript:void(0);" class="btn-bottom areabtn" id="areaEditor-qued" style="top: 133px">确定</a>
+    	<a href="javascript:void(0);" class="btn-bottom areabtn" id="areaEditor-qux" style="top: 133px">取消</a>
+    </div>    
+</div>
+</body>
+</html>

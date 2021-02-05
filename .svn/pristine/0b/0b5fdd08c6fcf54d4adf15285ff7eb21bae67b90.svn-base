@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+    .wbo{
+    	    background-color: #ffe597;
+		    border: 1px solid #ffcc9d;
+		    height: 23px;
+		    line-height: 23px;
+    }
+    .iFTitleName_dialog{
+			width: 73px !important;
+		}
+    </style>
+</head>
+<body>
+<div class="formItems">
+	<div class="iFInputItem" style="margin-bottom: 13px">
+		<label class="iFLabel iFTitleName_dialog" style="font-size: 14px;">业务编号:</label>
+			<span id="xxddzpcl-dispid-edit"></span>
+	</div>
+	<div class="iFInputItem" style="margin-bottom: 13px">
+		<label class="iFLabel iFTitleName_dialog" style="font-size: 14px;">客户姓名:</label>
+		<div class="iFInput" style="width: 115px">
+			<input type="text" id="xxddzpcl-khxm-edit" value="" readonly>
+		</div>
+		<label class="iFLabel iFTitleName_dialog" style="font-size: 14px;">客户电话:</label>
+		<div class="iFInput" style="width: 115px">
+			<input type="text" id="xxddzpcl-khdh-edit" value="" readonly>
+		</div>
+	</div>
+	<div class="iFInputItem" style="margin-bottom: 13px">
+		<label class="iFLabel iFTitleName_dialog" style="font-size: 14px;">指派车辆:</label>
+		<div class="iFInput" style="width: 115px">
+			<input type="text" id="xxddzpcl-cphm-edit" value="浙A">
+		</div>
+		<label class="iFLabel iFTitleName_dialog" style="font-size: 14px;">车辆类型:</label>
+		<div class="iFInput" style="width: 115px">
+			<input type="text" id="xxddzpcl-cllx-edit">
+		</div>
+	</div>
+	<div class="iFInputItem" style="margin-bottom: 13px">
+		<label class="iFLabel iFTitleName_dialog" style="font-size: 14px;">司机姓名:</label>
+		<div class="iFInput" style="width: 115px">
+			<input type="text" id="xxddzpcl-sjxm-edit">
+		</div>
+		<label class="iFLabel iFTitleName_dialog" style="font-size: 14px;">司机电话:</label>
+		<div class="iFInput" style="width: 115px">
+			<input type="text" id="xxddzpcl-sjdh-edit">
+		</div>
+	</div>
+	<div class="iFInputItem" style="text-align: right">
+		<br/>
+		<a href="javascript:void(0);" class="btn-bottom wbo" id="xxddzpcl-qued" style="top: 133px">确定</a>
+	</div>
+</div>
+</body>
+</html>

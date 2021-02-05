@@ -1,0 +1,228 @@
+define(["exports"],
+		function(exports){
+//	console.log('=====================================================');
+	exports.show = function show(d){
+		console.log('#',d);
+	}
+	exports.formatYYYYMMDD = function formatYYYYMMDD(d){
+		if(d != ''){
+			return new Date(d).format("yyyy-MM-dd");
+		}else{
+			return ''
+		}
+	}
+	exports.formatYYYYMMDDHHMISS = function formatYYYYMMDDHHMISS(d){
+		if(d != ''){
+			return new Date(d).format("yyyy-MM-dd hh:mm:ss");
+		}else{
+			return '';
+		}
+	}
+	
+	exports.xuhao = function xuhao(d){
+			return d+1;
+	}
+	exports.formatBJ_DZLX = function formatBJ_DZLX(d){
+		if(d=='0'){
+			return "个人定制";
+		}else{
+			return "公司定制";
+		}
+	}
+	exports.formatBJ_SFDL = function formatBJ_SFDL(d){
+		if(d=='1'){
+			return "登录";
+		}else if(d=='0'){
+			return "未登录";
+		}else{
+			return "";
+		}
+	}
+	exports.formatDDQY = function formatDDQY(d){
+		if(d==null||d=='null'){
+			return "";
+		}else{
+			return d;
+		}
+	}
+	exports.formatTZZT = function formatTZZT(d){
+		if (d == "0")
+			return "通知成功";
+		if (d == "3")
+			return "外拨失败";
+		if (d == "5")
+			return "确认收到";
+		if (d == "7")
+			return "7";
+		if (d == "255")
+			return "未外呼";
+	}
+	exports.formatSFWB = function formatSFWB(d){
+		if (d == "0")
+			return "否";
+		if (d == "1")
+			return "是";
+	}
+	
+	exports.formatYYZT = function formatYYZT(d){
+		if(d=='-1'){
+			return "取消预约";
+		}else{
+			return "正在调度";
+		}
+	}
+	exports.formatJFLX = function formatJFLX(d){
+		if(d=="0"){
+			return "普通积分";
+		}else{
+			return "奖励积分";
+		}
+	}
+	exports.formatYWS = function formatYWS(d){
+		if(d<1){
+			return "0"+d;
+		}else{
+			return d;
+		}
+	}
+	
+	exports.formatQX = function formatQX(d){
+		var qxs="";
+		if (d .indexOf("0")>-1)
+			qxs+="调度席平台,";
+		if (d .indexOf("1")>-1)
+			qxs+="OA系统,";
+		if (d .indexOf("2")>-1)
+			qxs+="消息发送,";
+		if (d .indexOf("3")>-1)
+			qxs+="知识查询库,";
+		if (d .indexOf("4")>-1)
+			qxs+="小货车调度,";
+		if (d .indexOf("5")>-1)
+			qxs+="报警监控席,";
+		if (d .indexOf("6")>-1)
+			qxs+="出租后台系统,";
+		if (d .indexOf("7")>-1)
+			qxs+="出租报表,";
+		if (d .indexOf("8")>-1)
+			qxs+="综合业务查询和报表,";
+		if (d .indexOf("9")>-1)
+			qxs+="失物协查,";
+		return qxs;
+	}
+	
+	exports.formatLWS = function formatLWS(d){
+		if(parseInt(d)){
+			return parseInt(d)/100;
+		}else{
+			return d;
+		}
+	}
+	exports.formatYHLX = function formatYHLX(d){
+		if (d == "1")
+			return "VIP";
+		else if (d == "2")
+			return "超级VIP";
+		else if (d == "F")
+			return "黑名单";
+		else
+			return "普通用户";
+	}
+	Date.prototype.format = function(fmt)   
+	{ //author: meizz   
+	  var o = {   
+	    "M+" : this.getMonth()+1,                 //月份   
+	    "d+" : this.getDate(),                    //日   
+	    "h+" : this.getHours(),                   //小时   
+	    "m+" : this.getMinutes(),                 //分   
+	    "s+" : this.getSeconds(),                 //秒   
+	    "q+" : Math.floor((this.getMonth()+3)/3), //季度   
+	    "S"  : this.getMilliseconds()             //毫秒   
+	  };   
+	  if(/(y+)/.test(fmt))   
+	    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));   
+	  for(var k in o)   
+	    if(new RegExp("("+ k +")").test(fmt))   
+	  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
+	  return fmt;   
+	}
+	Array.prototype.removeByValue = function(val) {
+		  for(var i=0; i<this.length; i++) {
+		    if(this[i] == val) {
+		      this.splice(i, 1);
+		      break;
+		    }
+		  }
+		}
+	Array.prototype.removeByCP = function(val) {
+		  for(var i=0; i<this.length; i++) {
+		    if(this[i].cp == val) {
+		      this.splice(i, 1);
+		      break;
+		    }
+		  }
+		}
+	exports.formatimg = function formatimg(d){
+		return d=="1"?"<img src='resources/images/car/yes.png'>":"<img src='resources/images/car/no.png'>";
+	}
+	exports.regular = {
+		name: function(value) {
+            var reg = /^([\u4e00-\u9fa5]{2,10}|[a-zA-Z]{4,20})$/;
+            if (value.length === 0) {
+				return {type: false, msg: '请输入姓名'}
+			} else if (!reg.test(value)) {
+				return {type: false, msg: '姓名格式不正确'}
+			}
+            return {type: true, msg: ''}
+		},
+        pwd: function(value) {
+            var reg = /^\w{6,16}$/;
+            if (value.length === 0) {
+                return {type: false, msg: '请输入密码'}
+            } else if (!reg.test(value)) {
+                return {type: false, msg: '密码格式不正确'}
+            }
+            return {type: true, msg: ''}
+        },
+        card: function(value) {
+            var reg = /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/;
+            if (!value || value.length === 0) {
+                return {type: false, msg: '请输入身份证号码。'}
+            } else if (value.length === 15) {
+                return {type: false, msg: '只支持二代省份证。'}
+            } else if (!reg.test(value)) {
+                return {type: false, msg: '身份证格式不正确。'}
+            }
+            return {type: true, msg: ''}
+        },
+        tel: function(value) {
+            var reg = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|17[0-9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
+            if (!value || value.length === 0) {
+                return {type: false, msg: '请输入手机号码。'}
+            } else if (!reg.test(value)) {
+                return {type: false, msg: '手机格式不正确，手机号码只支持13、14、15、18开头的号码'}
+            }
+            return {type: true, msg: ''}
+
+        },
+        user_name: function(value) {
+            var reg = /^.{6,16}$/;
+            if (!value || value.length === 0) {
+                return {type: false, msg: '请输入手机号码。'}
+            } else if (!reg.test(value)) {
+                return {type: false, msg: '手机格式不正确，手机号码只支持13、14、15、18开头的号码'}
+            }
+            return {type: true, msg: ''}
+
+        },
+        age: function(value) {
+            var reg = /^120|((1[0-1]|\d)?\d)$/;
+            if (value.length === 0) {
+                return {type: false, msg: '请输入年龄'}
+            } else if (!reg.test(value)) {
+                return {type: false, msg: '年龄格式不正确'}
+            }
+            return {type: true, msg: ''}
+        }
+	}
+});

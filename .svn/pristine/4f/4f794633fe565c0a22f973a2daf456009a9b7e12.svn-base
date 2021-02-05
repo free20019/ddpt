@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>重车率分析</title>
+	<style>
+		.field-message{width: 70px;white-space: nowrap;}
+		.field-y0{width: 40px;white-space: nowrap;}
+		.field-y1{width: 40px;white-space: nowrap;}
+		.field-y2{width: 40px;white-space: nowrap;}
+		.field-y3{width: 40px;white-space: nowrap;}
+		.field-y4{width: 40px;white-space: nowrap;}
+		.field-y5{width: 40px;white-space: nowrap;}
+		.field-y6{width: 40px;white-space: nowrap;}
+		.field-y7{width: 40px;white-space: nowrap;}
+		.field-y8{width: 40px;white-space: nowrap;}
+		.field-y9{width: 40px;white-space: nowrap;}
+		.field-y10{width: 40px;white-space: nowrap;}
+		.field-y11{width: 40px;white-space: nowrap;}
+		.field-y12{width: 40px;white-space: nowrap;}
+		.field-y13{width: 40px;white-space: nowrap;}
+		.field-y14{width: 40px;white-space: nowrap;}
+		.field-y15{width: 40px;white-space: nowrap;}
+		.field-y16{width: 40px;white-space: nowrap;}
+		.field-y17{width: 40px;white-space: nowrap;}
+		.field-y18{width: 40px;white-space: nowrap;}
+		.field-y19{width: 40px;white-space: nowrap;}
+		.field-y20{width: 40px;white-space: nowrap;}
+		.field-y21{width: 40px;white-space: nowrap;}
+		.field-y22{width: 40px;white-space: nowrap;}
+		.field-y23{width: 40px;white-space: nowrap;}
+	</style>
+</head>
+<body>
+<div class="" id="zclfxPanel">
+	<div class="iFInlineItem">
+		<label class="iFLabel">时间</label>
+		<div class="iFInput" style="width: 110px;">
+			<input type="text" id="zclfx-Time">
+		</div>
+	</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="zclfxQuery">查询</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="zclfxDaochu">导出Excel</a>
+	</div>
+</div>
+
+<div class="dataListPanel center">
+		<div id="zclfxTabel" style="height:calc(100%-50%);min-height: 300px;"></div>
+		<div id="zclfxEchart" style="height:calc(100%-50%);min-height: 300px;width:100%"></div>
+</div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="zclfxDialog" id="zclfxDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="zclfxDialogPanel" id="zclfxDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	require(['app/html/zhywbb/yysjfx/zclfx', "dojo/domReady!"], function (ZCLFX) {
+		new ZCLFX();
+	});
+</script>
+</body>
+</html>

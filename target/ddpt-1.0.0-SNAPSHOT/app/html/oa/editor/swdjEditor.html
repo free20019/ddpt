@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>短信业务-编辑</title>
+	<style>
+		#swdjEditorPanel {
+			margin-right: 30px;
+		}
+		#swdjEditorPanel .iFInputItem > .iFLabel {
+			width: 8em;
+		}
+		#swdjEditorPanel .iFInputItem > .iFInput {
+			width: calc(100% - 9em);
+		}
+	</style>
+</head>
+<body>
+<form id="swdj-form" action="common/upload" target="upload" method="post" enctype="multipart/form-data" >
+	<div class="iFFormPanel" id="swdjEditorPanel">
+		<div class="clearfix">
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">调度员工号</label>
+					<div class="iFInput">
+						<input type="text" id="swdj-ddygh">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputItem">
+			<label class="iFLabel">车牌号码</label>
+			<div class="iFComboBox" id="clgsmc-comboBox" style="width: calc(100% - 35em);">
+				<input type="text" id="swdj-cphm" name="VEHI_NO">
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList" id="swdj-cp-ul">
+				</ul>
+			</div>
+		</div>
+		</div>
+		<div class="iFInputItem">
+			<label class="iFLabel">车辆公司名称</label>
+			<div class="iFComboBox" id="clgsmc-comboBox" style="width: calc(100% - 9em);">
+				<input type="text" id="swdj-gsmc" name="TAXICOMP">
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList" id="swdj-gsmc-ul">
+				</ul>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">客人姓名</label>
+					<div class="iFInput">
+						<input type="text" id="swdj-krxs" name="GUEST">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">客人联系电话</label>
+					<div class="iFInput">
+						<input type="text" id="swdj-krdh" name="TEL">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">事件性质</label>
+					<div class="iFComboBox" id="sjxz-comboBox" style="width: calc(100% - 9em);">
+						<input type="text" data-value="1" value="查找失物" id="swdj-sjxz" name="KIND">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+							<li data-value="1">查找失物</li>
+							<li data-value="2">寻找失主</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">接电话时间</label>
+					<div class="iFInput">
+						<input type="text" id="swdjEditor-jdhsj" name="DATETIME" onfocus="WdatePicker({dateFmt: STATEDATETIME})">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">上车时间</label>
+					<div class="iFInput">
+						<input type="text" id="swdjEditor-scsj" name="UPTIME" onfocus="WdatePicker({dateFmt: STATEDATETIME})">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">下车时间</label>
+					<div class="iFInput">
+						<input type="text" id="swdjEditor-xcsj" name="DOWNTIME" onfocus="WdatePicker({dateFmt: STATEDATETIME})">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="iFInputItem iFTextArea">
+			<label class="iFLabel">事件内容</label>
+			<div class="iFInput">
+				<textarea id="swdj-sjnr" name="CONTENT"></textarea>
+			</div>
+		</div>
+		<div class="iFInputItem iFTextArea">
+			<label class="iFLabel">处理结果</label>
+			<div class="iFInput">
+				<textarea id="swdj-cljg" name="RESULT"></textarea>
+			</div>
+		</div>
+		<div class="iFInputItem iFTextArea">
+			<label class="iFLabel">备注</label>
+			<div class="iFInput">
+				<textarea id="swdj-bz" name="NOTE"></textarea>
+			</div>
+		</div>
+		<div class="iFInputItem" id="swdj-puct-div" style="display:none">
+			<label class="iFLabel">图片</label>
+			<div class="iFComboBox" id="" style="width: calc(100% - 9em);">
+				<input type="file" id="swdj-puct" name="swdj-puct">
+			</div>
+		</div>
+		<div class="iFBtnItem">
+			<a href="javascript:void(0);" class="iFBtn iFBtnCommit">提交</a>
+			<a href="javascript:void(0);" class="iFBtn iFBtnClose">关闭</a>
+		</div>
+	</div>
+</form>
+<iframe id = "interface_data"  name="upload" style="display:none"></iframe>
+</body>
+</html>

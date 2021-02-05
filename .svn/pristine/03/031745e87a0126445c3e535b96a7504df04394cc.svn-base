@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>交易次数统计</title>
+	<style>
+		#jycsTabel {
+			height: calc(100% - 70px);
+		}
+		.field-dojoId{width: 80px;white-space: nowrap;}
+		.field-FGS{width: 180px;white-space: nowrap;}
+		.field-CP{width: 110px;white-space: nowrap;}
+		.field-JYCS{width: 110px;white-space: nowrap;}
+		
+	</style>
+</head>
+<body>
+<div class="" id="jycsPanel">
+	<div class="iFInlineItem">
+		<label class="iFLabel">起始时间</label>
+		<div class="iFInput" style="width: 110px;">
+			<input type="text" id="jycs-startTime">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">结束时间</label>
+		<div class="iFInput" style="width: 110px;">
+			<input type="text" id="jycs-endTime">
+		</div>
+	</div>
+		<div class="iFInlineItem" id="jycs-cphm">
+			<label class="iFLabel">车牌号码</label>
+			<div class="iFComboBox" id="jycs-cphm-comboBox" style="width: 110px;">
+				<input type="text" >
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+				</ul>
+			</div>
+		</div>
+	<div class="iFInlineItem" id="jycs-jycs">
+			<label class="iFLabel">交易次数</label>
+			<div class="iFComboBox" id="jycs-jycs-comboBox" style="width: 60px;">
+				<input type="text" value=">=" data-value="1" >
+				<a href="javascript:void(0);"></a>
+				<ul class="iFList">
+					<li data-value="1" >>=</li>
+					<li data-value="2"><=</li>
+				</ul>
+			</div>
+	</div>
+	<div class="iFInput" style="width: 60px;">
+			<input type="text" id="jycs-cs" value="0">
+	</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="jycsQuery">查询</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="jycsDaochu">导出Excel</a>
+	</div>
+</div>
+<div id="jycsTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="jycsDialog" id="jycsDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="jycsDialogPanel" id="jycsDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	require(['app/html/zhywbb/tjgl/jycs', "dojo/domReady!"], function (JYCS) {
+		new 	JYCS();
+	});
+</script>
+</body>
+</html>

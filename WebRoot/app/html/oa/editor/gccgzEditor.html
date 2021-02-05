@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>短信业务-编辑</title>
+	<style>
+		#gccgzEditorPanel {
+			margin-right: 30px;
+		}
+		#gccgzEditorPanel .iFInputItem > .iFLabel {
+			width: 5em;
+		}
+		#gccgzEditorPanel .iFInputItem > .iFInput {
+			width: calc(100% - 7em);
+		}
+	</style>
+</head>
+<body>
+<form action="" id="gccgz-form">
+	<div class="iFFormPanel" id="gccgzEditorPanel">
+		<div class="clearfix">
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">受理工号</label>
+					<div class="iFInput">
+						<input type="text" id="gccgz-slgh">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">受理时间</label>
+					<div class="iFInput">
+						<input type="text" id="gccgz-slsj" readonly onfocus="WdatePicker({dateFmt: STATEDATETIME})" name="ON_TIME">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">服务类型</label>
+					<div class="iFComboBox" id="gccgz-comboBox" style="width: calc(100% - 7em);">
+						<input type="text" readonly data-value="0" value="运营商" id="gccgz-fwlx" name="SERVER_TYPE">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+							<li data-value="0">运营商</li>
+							<li data-value="1">公司</li>
+							<li data-value="2">运管</li>
+							<li data-value="3">其他</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">受理方式</label>
+					<div class="iFComboBox" id="gccgz-slfscomboBox" style="width: calc(100% - 7em);">
+						<input type="text" readonly data-value="0" value="QQ" id="gccgz-slfs" name="CTYPE">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+							<li data-value="0">QQ</li>
+							<li data-value="1">电话</li>
+							<li data-value="2">短信</li>
+							<li data-value="3">其他</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">用户姓名</label>
+					<div class="iFInput">
+						<input type="text" id="gccgz-yhxm" name="CNAME">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">用户电话</label>
+					<div class="iFInput">
+						<input type="text" id="gccgz-yhdh" name="CTEL">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen"></div>
+			<div class="iFInputInlen"></div>
+			<div class="iFInputInlen"></div>
+			<div class="iFInputInlen"></div>
+		</div>
+		<div class="iFInputItem iFTextArea">
+			<label class="iFLabel">事件内容</label>
+			<div class="iFInput">
+				<textarea id="gccgz-sjnr" name="CONTENT"></textarea>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">处理工号</label>
+					<div class="iFInput">
+						<input type="text" id="gccgz-clgh" name="ACTION_NO">
+					</div>
+				</div>
+			</div>
+			<div class="iFInputInlen">
+				<div class="iFInputItem">
+					<label class="iFLabel">后续处理</label>
+					<div class="iFComboBox" id="gccgz-hxclcomboBox" style="width: calc(100% - 7em);">
+						<input type="text" readonly data-value="0" value="" id="gccgz-hxcl" name="AFERT_ACTION">
+						<a href="javascript:void(0);"></a>
+						<ul class="iFList">
+							<li data-value="0">班长处理</li>
+							<li data-value="1">调度员或组长处理</li>
+							<li data-value="2">转公司处理</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="iFInputItem iFTextArea">
+			<label class="iFLabel">处理结果</label>
+			<div class="iFInput">
+				<textarea id="gccgz-cljg" name="ALERT_ACTION_CONTENT"></textarea>
+			</div>
+		</div>
+		<div class="iFBtnItem">
+			<a href="javascript:void(0);" class="iFBtn iFBtnCommit">提交</a>
+			<a href="javascript:void(0);" class="iFBtn iFBtnClose">关闭</a>
+		</div>
+	</div>
+</form>
+</body>
+</html>

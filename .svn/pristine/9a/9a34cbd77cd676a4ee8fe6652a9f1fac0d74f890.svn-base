@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定位表</title>
+    <style>
+        #newoldTabel {
+            height: calc(100% - 60px);
+        }
+        #newoldTabels {
+            height: 100%;
+        }
+        #newoldDialog .dijitDialogPaneContent {
+            padding: 0;
+        }
+        #newoldDialogPanel {
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+<div class="">
+	<div class="iFInlineItem">
+		<label class="iFLabel">关键字</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="findnewold_dd">
+		</div>
+	</div>
+    <div class="iFInlineItem" style="line-height: 30px;">
+    	<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="newoldFind">查询</a>
+        <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="newoldAdd">添加</a>
+        <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="newoldUpd">修改</a>
+        <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="newoldDel">删除</a>
+        <a href="javascript:void(0);" class="iFBtn iFColorOrange" id="newoldDc">导出</a>
+    </div>
+</div>
+<div id="newoldTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="newoldDialog" id="newoldDialog">
+    <div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="newoldDialogPanel" id="newoldDialogPanel"></div>
+</div>
+<script type="text/javascript">
+    require(['app/html/czchtgl/newoldvhic', "dojo/domReady!"], function (NEWOLD) {
+        new NEWOLD();
+    });
+</script>
+</body>
+</html>

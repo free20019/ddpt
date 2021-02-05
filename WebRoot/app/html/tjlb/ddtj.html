@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>订单统计</title>
+	<style>
+		#ddtjQueryContentPane label.inputName {
+			width: 6.5em;
+		}
+		#ddtjTabel {
+			height: 60%;
+			box-sizing: border-box;
+		}
+		#ddtjEChart {
+			width: 100%;
+			height: 200px;
+		}
+	</style>
+</head>
+<body>
+<div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="liveSplitters:false" id="ddtjCenterContainer">
+	<div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top', splitter:false" id="ddtjQueryContentPane">
+		<form action="" method="post">
+			<div class="queryInlineBox">
+				<label class="inputName" for="ddtj-ddztQb">订单状态</label>
+				<select name="ddztQb" id="ddtj-ddztQb">
+					<option value="0">全部</option>
+					<option value="1">已支付</option>
+					<option value="2">待支付</option>
+					<option value="3">取消订单</option>
+				</select>
+			</div>
+			<div class="queryInlineBox">
+				<label class="inputName" for="ddtj-ddbhQb">订单编号</label>
+				<input id="ddtj-ddbhQb" type="text" >
+			</div>
+			<div class="queryInlineBox">
+				<label class="inputName" for="ddtj-ddksrqQb">订单开始日期</label>
+				<input id="ddtj-ddksrqQb" type="text" onfocus="var ddtjDdjzrqQb=$dp.$('ddtj-ddjzrqQb');WdatePicker({onpicked:function(){ddtjDdjzrqQb.focus();}, maxDate: new Date()})">
+			</div>
+			<div class="queryInlineBox">
+				<label class="inputName" for="ddtj-ddjzrqQb">订单截止日期</label>
+				<input id="ddtj-ddjzrqQb" type="text" onfocus="WdatePicker({minDate:'#F{$dp.$D(\'ddtj-ddksrqQb\',{d:1});}',maxDate: new Date()})">
+			</div>
+			<div class="queryInlineBox">
+				<label class="inputName" for="ddtj-cfdQb">出发地</label>
+				<input id="ddtj-cfdQb" type="text" >
+			</div>
+			<div class="queryInlineBox">
+				<label class="inputName" for="ddtj-mddQb">目的地</label>
+				<input id="ddtj-mddQb" type="text" >
+			</div>
+			<div class="queryInlineBox">
+				<label class="inputName" for="ddtj_gsd">归属地</label>
+				<select name="gsd" id="ddtj_gsd"></select>
+			</div>
+			<div class="queryInlineBox">
+				<label class="inputName" for="ddtj-khxxQb">客户手机号</label>
+				<input id="ddtj-khxxQb" type="text">
+			</div>
+			<div class="btnInlineBox">
+				<button class="btn" type="submit" id="ddtj_btnQuery">查询</button>
+			</div>
+		</form>
+	</div>
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-props="region:'center', splitter:false" id="ddtjContentPane">
+		<div id="ddtjTabel"></div>
+		<div>
+			<span class="yhltjSum">总金额：</span>
+			<span id="ddtjzje"></span>
+			<span class="yhltjSum">已支付：</span>
+			<span id="ddtjyzf"></span>
+			<span class="yhltjSum">待支付：</span>
+			<span id="ddtjdzf"></span>
+			<span class="yhltjSum">取消订单：</span>
+			<span id="ddtjqxdd"></span>
+		</div>
+	</div>
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-props="region:'bottom', splitter:false" id="ddtjBottomContentPane">
+		<div id="ddtjEChart"></div>
+	</div>
+</div>
+<script type="text/javascript">
+	require(['app/html/tjlb/ddtj', "dojo/domReady!"],
+		function (DDTJ) {
+			new DDTJ();
+			$('#ddtj-ddksrqQb').val(getPrevDay1(new Date()).format("yyyy-MM-dd"));
+			$('#ddtj-ddjzrqQb').val(new Date().format("yyyy-MM-dd"))
+		});
+</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>222.html</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=10" />-->
+    <script src="app/jquery-3.2.1.min.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+ <script type="text/javascript">
+ 	var voicestate=-1;
+  	var gh = "";
+	var fjh = "";
+	var pwd = "s123456";
+	var PhoneType="1";
+	var url = "http://192.168.0.55:9700/icsdk";
+	function dl(){
+		gh = $("#dlgh").val();
+		fjh = $("#dlfj").val();
+		var a = CTIProxy.Init(url, url);
+  	  	var b = CTIProxy.Login(gh, pwd, fjh);
+  	  	
+	}
+	function tc(){
+		CTIProxy.Logout();
+	}
+ 	function zhimang() {
+  		CTIProxy.MakeAUX("0");
+  	}
+  	function zhixian() {
+  		CTIProxy.MakeAvailable();
+  	}
+  	function wb() {
+		if($("#wbhm").val().length>6){
+		CTIProxy.MakeCall("9" + $("#wbhm").val());
+		}else{
+  		CTIProxy.MakeCall($("#wbhm").val());
+		}
+  	}
+
+  </script>
+  <script type="text/javascript" language="javascript" FOR="CTIProxy" EVENT="CallIncommingEvt(EDUID,ANI,DNIS,UUI,UCID)">
+  	voicestate = 2;
+	$("#log").append("<p>坐席来电1--电话="+ANI+"</p>");
+	$("#ldhm").val(ANI);
+	</script>
+	<script type="text/javascript" language="javascript" FOR="CTIProxy" EVENT="CallConnectEvt(EDUID,ANI,DNIS,UCID)">
+		$("#log").append("<p>电话接通--来电="+ANI+"</p>");
+		console.log("PhoneType=  "+PhoneType);
+		if(voicestate==2){
+			var UUI ="{'FUNC':'playagent','AGENTID':'8505'}";
+			console.log(UUI);
+			CTIProxy.BeginConference("4800", UUI);
+		}
+	</script>
+	<script type="text/javascript" language="javascript" FOR="CTIProxy" EVENT="CallDisconnectEvt(PhoneNum)">
+		voicestate=1;	
+		$("#log").append("<p>电话挂机--电话号码="+PhoneNum+"</p>");
+		setTimeout(function(){
+			CTIProxy.Complete();
+		},500);
+	</script>
+	<script type="text/javascript" language="javascript" FOR="CTIProxy" EVENT="WrapupEvt(PhoneNum)">
+		voicestate=1;	
+		$("#log").append("<p>电话挂机--电话号码="+PhoneNum+"</p>");
+		setTimeout(function(){
+			CTIProxy.Complete();
+		},500);
+	</script>
+	<script type="text/javascript" language="javascript" FOR="CTIProxy" EVENT="CallAlertingEvt(EDUID,ANI,DNIS)">
+		voicestate = 3;
+	</script>
+	<script type="text/javascript" language="javascript" FOR="CTIProxy" EVENT="LogInEvt(AgentID)">
+		voicestate=1;		
+		$("#log").append("<p>坐席登陆成功--工号="+AgentID+"</p>");
+	</script>
+	<script type="text/javascript" language="javascript" FOR="CTIProxy" EVENT="AgentAUXEvt(AgentID)">
+		$("#log").append("<p>坐席置忙成功--工号="+AgentID+"</p>");
+	</script>
+	<script type="text/javascript" language="javascript" FOR="CTIProxy" EVENT="AgentWorkEvt(AgentID)">
+		$("#log").append("<p>坐席置闲成功--工号="+AgentID+"</p>");
+	</script>
+	<script type="text/javascript" language="javascript" FOR="CTIProxy" EVENT="StartConferenceEvt(PhoneNum)">
+		$("#log").append("<p>会议开始>="+PhoneNum+"</p>");
+		if(voicestate==2){
+			CTIProxy.Hold();
+		}
+	</script>
+  	<script type="text/javascript" language="javascript" FOR="CTIProxy" EVENT="CompleteConferenceEvt(PhoneNum)">
+	  	$("#log").append("<p>会议完成>="+PhoneNum+"</p>");
+	  	if(voicestate==2){
+			CTIProxy.Retrieve();
+		}
+	</script>
+	<script type="text/javascript" language="javascript" FOR="CTIProxy" EVENT="CallHoldEvt(PhoneNum)">
+		$("#log").append("<p>电话保持>="+PhoneNum+"</p>");
+	</script>
+	<script type="text/javascript" language="javascript" FOR="CTIProxy" EVENT="CallRetrieveEvt(PhoneNum)">
+		$("#log").append("<p>电话保持取消>="+PhoneNum+"</p>");
+	</script>
+	<script type="text/javascript" language="javascript" FOR="CTIProxy" EVENT="ConferencingEvt(PhoneNum)">
+		$("#log").append("<p>会议中>="+PhoneNum+"</p>");
+		if(voicestate==2){
+			CTIProxy.CompleteConference();
+		}
+	</script>
+   </head>
+  <body>
+<object classid="clsid:6A1A94C3-6D64-423B-9836-0EC80128B844"
+style="width: 1px;
+height: 1px;" visible="true"
+id="CTIProxy"></object>
+  工号：<input type="text" id="dlgh">
+  分机：<input type="text" id="dlfj"><button onclick="dl()">登录</button><button onclick="tc()">退出</button>
+  <br>
+  	来电：<input type="text" id="ldhm">
+  	<br>
+  	外拨：<input type="text" id="wbhm"><button onclick="wb()">外拨</button>
+  	<br>
+  	<button onclick="zhimang()">置忙</button><button onclick="zhixian()">置闲</button>
+  	<div id="log" style="border: 1px solid;width: 300px;height: 200px;overflow: auto;">
+  	
+  	</div>
+
+  </body>
+
+</html>

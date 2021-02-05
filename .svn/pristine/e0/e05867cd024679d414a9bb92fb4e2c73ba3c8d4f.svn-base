@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>翻译记录</title>
+	<style>
+		#tsjlTabel {
+			height: calc(100% - 50px);
+		}
+		#tsjlDialog .dijitDialogPaneContent {
+			padding: 0;
+		}
+		#tsjlDialogPanel {
+			width: 600px;
+			height: 450px;
+		}
+	</style>
+</head>
+<body>
+<div class="" id="tsjlPanel" style="margin-bottom: 10px;">
+	<div class="iFInlineItem">
+		<label class="iFLabel">投诉时间</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="tsjl-cxsh" onfocus="WdatePicker({dateFmt: STATEYEARMONTH})">
+		</div>
+	</div>
+	<div class="iFInlineItem">
+		<label class="iFLabel">查询内容</label>
+		<div class="iFInput" style="width: 160px;">
+			<input type="text" id="tsjl-gjz">
+		</div>
+	</div>
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="tsjlQuery">查询</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="tsjl-add">添加</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="tsjl-dcsj">导出数据</a>
+	</div>
+</div>
+<dl class="iFTitlePanel" id="tsjl-infoPanel">
+	<dt class="iFTitle">
+		<div class="iFInlineItem">
+			<input type="checkbox" class="iFCheckBox" id="tsjl-allSelect">
+			<label for="tsjl-allSelect">全选</label>
+		</div>
+		<div class="iFBtn iFBtnDelect" id="tsjl-AllDelete">删除</div>
+	</dt>
+<!-- 	<dd class="iFItem iFContent"> -->
+<!-- 		<div class="iFTabularPanel"> -->
+<!-- 			<div class="iFTitle"> -->
+<!-- 				<input type="checkbox" class="iFCheckBox iFCheckboxItem"> -->
+<!-- 				<label>记录编号</label> -->
+<!-- 				<span>[132234]</span> -->
+<!-- 			</div> -->
+<!-- 			<div class="iFContent" data-numId="1"> -->
+<!-- 				<div class="iFWAuto iFItem clearfix"> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 25%"> -->
+<!-- 						<label class="iFLabel iFTitleName">受理时间</label> -->
+<!-- 						<div class="iFText">2017-09-01 09:20:00</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 20%"> -->
+<!-- 						<label class="iFLabel iFTitleName">受理工号</label> -->
+<!-- 						<div class="iFText">528(马蕾)</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 20%"> -->
+<!-- 						<label class="iFLabel iFTitleName">投诉类型</label> -->
+<!-- 						<div class="iFText">服务纠纷</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFBtnBox" style="width: 35%; line-height: 30px; text-align: center;"> -->
+<!-- 						<a href="javascript:void(0);" class="iFBtn iFBtnMin iFBtnEditor tsjlEditor">编辑</a> -->
+<!-- 						<a href="javascript:void(0);" class="iFBtn iFBtnMin iFBtnDelect tsjlDelete">删除</a> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="iFWAuto iFItem clearfix"> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 25%"> -->
+<!-- 						<label class="iFLabel iFTitleName">乘客名称</label> -->
+<!-- 						<div class="iFText">杨先生</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 20%"> -->
+<!-- 						<label class="iFLabel iFTitleName">电话</label> -->
+<!-- 						<div class="iFText">15126616140</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 25%"> -->
+<!-- 						<label class="iFLabel iFTitleName">约车时间</label> -->
+<!-- 						<div class="iFText">2017-09-10 19:03:43</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 20%"> -->
+<!-- 						<label class="iFLabel iFTitleName">约车地点</label> -->
+<!-- 						<div class="iFText">临平南大街海澜岛</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="iFWAuto iFItem clearfix"> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 25%"> -->
+<!-- 						<label class="iFLabel iFTitleName">投诉车牌</label> -->
+<!-- 						<div class="iFText">浙AQT613</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 20%"> -->
+<!-- 						<label class="iFLabel iFTitleName">所属公司</label> -->
+<!-- 						<div class="iFText">临平客运</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="iFSubItem iFInlineBox" style="width: 20%"> -->
+<!-- 						<label class="iFLabel iFTitleName">投诉类别</label> -->
+<!-- 						<div class="iFText">普通投诉</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="iFItem iFTextAreaItem"> -->
+<!-- 					<label class="iFLabel iFTitleName">事件内容</label> -->
+<!-- 					<div class="iFTextArea" style="padding-left: 5em;">15126616140乘客致电平台约车，临平南大街海澜到到丁桥，（未告知是海宁的丁桥）帮忙约到浙AQT613，过了近40分钟，接到该乘客投诉司机敲诈、中途抛客。我们这边致电13375716442当班司机，核实情况后，说已经把乘客快送到明珠街丁桥，乘客中途接到家人发来的定位，说不是明珠街丁桥，而是海宁丁桥，司机把乘客又拉回了临平，告知去海宁丁桥差不多200左右，乘客就自行下车了。后致电乘客，把司机告知的情况再次与乘客说明，并也告知，出城是按5块钱一公里计算，50公里是需要250元左右，后乘客表示不说了，会一直往上告，就自行挂断了电话。此投诉做记录</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</dd> -->
+</dl>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="tsjlDialog" id="tsjlDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="tsjlDialogPanel" id="tsjlDialogPanel"></div>
+</div>
+<script type="text/javascript">
+$("#tsjl-cxsh").val(setformat_month(new Date));
+	require(['app/html/oa/tsjl', "dojo/domReady!"], function (TSJL) {
+		new TSJL();
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>通信表</title>
+	<style>
+		#txlxbTabel {
+			height: calc(100% - 50px);
+		}
+		#txlxbTabels {
+			height: 100%;
+		}
+		#txlxbDialog .dijitDialogPaneContent {
+			padding: 0;
+		}
+		#txlxbDialogPanel {
+			width: 300px;
+			height: 200px;
+		}
+	</style>
+</head>
+<body>
+<div class="">
+	<div class="iFInlineItem" style="line-height: 30px;">
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="txlxbAdd">添加</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="txlxbUpd">修改</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="txlxbDel">删除</a>
+		<a href="javascript:void(0);" class="iFBtn iFColorOrange" id="txlxbDc">导出</a>
+	</div>
+</div>
+<div id="txlxbTabel"></div>
+<div data-dojo-type="dijit/Dialog" data-dojo-id="txlxbDialog" id="txlxbDialog">
+	<div data-dojo-type="dojox/layout/ContentPane" data-dojo-id="txlxbDialogPanel" id="txlxbDialogPanel"></div>
+</div>
+<script type="text/javascript">
+	require(['app/html/czchtgl/txlxb', "dojo/domReady!"], function (TXLXB) {
+		new TXLXB();
+	});
+</script>
+</body>
+</html>

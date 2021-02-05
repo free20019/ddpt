@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+    .wbo{
+    	    background-color: #ffe597;
+		    border: 1px solid #ffcc9d;
+		    height: 23px;
+		    line-height: 23px;
+    }
+    
+    </style>
+</head>
+<body>
+<div class="formItems">
+	<div class="iFInputItem" style="margin-bottom: 13px">
+		<label class="iFTitleName" style="font-size: 14px;">指派车辆</label>
+		<div class="iFInput" style="width: 115px">
+			<input type="text" id="axddzpcl-cp-edit" value="浙A">
+			<input type="hidden" id="axddzpcl-zd-edit">
+		</div>
+	</div>
+	<div class="iFInputItem" style="margin-bottom: 13px">
+		<label class="iFTitleName" style="font-size: 14px;">所属公司</label>
+		<div class="iFInput">
+			<input type="text" id="axddzpcl-gs-edit" disabled="disabled">
+		</div>
+	</div>
+	<div class="iFInputItem" style="text-align: right">
+		<a href="javascript:void(0);" class="btn-bottom wbo" id="axddzpcl-qued" style="top: 133px">确定</a>
+	</div>
+</div>
+</body>
+</html>
